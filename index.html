@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hasan Al Mahmud | Official Links</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.03);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --glow-1: rgba(56, 189, 248, 0.15);
+      --glow-2: rgba(168, 85, 247, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem 1rem;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background glow effects */
+    .bg-glow-1 {
+      position: fixed;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-glow-2 {
+      position: fixed;
+      bottom: -10%;
+      right: 10%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+   .container {
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .card {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 18px 20px;
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s ease;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 183, 255, 0.4);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+      transform: translateY(-2px);
+    }
+
+    /* Badge */
+    .badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #00b7ff;
+      color: #051329;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
+      border-bottom-left-radius: 8px;
+    }
+
+    /* Icon Styling */
+    .icon-wrapper {
+      width: 44px;
+      height: 44px;
+      background-color: rgba(0, 183, 255, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 16px;
+      flex-shrink: 0;
+    }
+
+    .icon-wrapper svg {
+      width: 22px;
+      height: 22px;
+      fill: none;
+      stroke: #00b7ff;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Content */
+    .content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .description {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+
+    /* Arrow */
+    .arrow {
+      color: #64748b;
+      margin-left: 12px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .card:hover .arrow {
+      color: #00b7ff;
+      transform: translateX(3px);
+    }
+
+    .arrow svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+
+    /* Profile Header */
+    .profile {
+      text-align: center;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+      margin-bottom: 1.25rem;
+    }
+
+    .profile-img {
+      width: 104px;
+      height: 104px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      display: block;
+    }
+
+    .badge-verified {
+      position: absolute;
+      bottom: 2px;
+      right: 2px;
+      background: var(--accent);
+      color: var(--bg);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      border: 2px solid var(--bg);
+    }
+
+    .profile-name {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.35rem;
+    }
+
+    .profile-title {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+
+    .profile-bio {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 380px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Social Icons Row */
+    .social-grid {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 2rem;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      text-decoration: none;
+      backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-btn:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Specific brand hover accent colors */
+    .social-btn.youtube:hover { color: #ff0000; border-color: #ff0000; }
+    .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; }
+    .social-btn.whatsapp:hover { color: #25d366; border-color: #25d366; }
+    .social-btn.website:hover { color: #38bdf8; border-color: #38bdf8; }
+    .social-btn.email:hover { color: #ea4335; border-color: #ea4335; }
+
+    /* Links Section */
+    .links {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.125rem;
+    }
+
+    /* Standard Card */
+    .link-card {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.125rem 1.35rem;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      color: var(--text);
+      text-decoration: none;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+
+    .link-card:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* Featured Link Card Unique Glow Treatment */
+    .link-card.featured {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.12));
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .link-card.featured:hover {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 0;
+      right: 1.5rem;
+      background: var(--accent);
+      color: var(--bg);
+      font-size: 0.65rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 2px 8px;
+      border-bottom-left-radius: 6px;
+      border-bottom-right-radius: 6px;
+    }
+
+    .link-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .icon-box {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .link-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .link-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .link-subtitle {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .arrow-icon {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      transition: transform 0.25s ease, color 0.25s ease;
+    }
+
+    .link-card:hover .arrow-icon {
+      color: var(--text);
+      transform: translateX(4px);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bg-glow-1"></div>
+  <div class="bg-glow-2"></div>
+
+  <div class="container">
+    <header class="profile">
+      <div class="profile-avatar-wrapper">
+        <img class="profile-img" src="https://i.ibb.co/PZjyTyJg/20260524-162827.jpg" alt="Hasan Al Mahmud">
+        <div class="badge-verified"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <h1 class="profile-name">Md Hasan Al Mahmud</h1>
+      <p class="profile-title">Turn your daydreams into reality.</p>
+      <p class="profile-bio">I’m H@M. Reach out via the links below. ↴</p>
+
+      <nav class="social-grid">
+        <a href="https://youtube.com/@HasanAlMahmud" class="social-btn youtube" aria-label="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+        <a href="https://facebook.com/HasanAlMahmudd" class="social-btn facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="https://wa.me/ImHasanAlMahmud" class="social-btn whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://bdham.blogspot.com" class="social-btn website" aria-label="Website" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i></a>
+        <a href="mailto:hasanalmahmud@europe.com" class="social-btn email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+      </nav>
+    </header>
+
+ <div class="container">
+
+    <!-- Card 1 -->
+    <a href="about.html" class="card">
+      <div class="badge">At a Glance</div>
+      <div class="icon-wrapper">
+        <svg viewBox="0 0 24 24">
+          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5C8 16 7 15 6 14c-1 0-2 1-1.5 2.5z"></path>
+          <path d="M12 15l-3-3m5.5-2.5a6 6 0 1 0-8.5-8.5 6 6 0 0 0 8.5 8.5z"></path>
+          <path d="M15 9l-2-2"></path>
+        </svg>
+      </div>
+      <div class="content">
+        <div class="title">About me</div>
+        <div class="description">The Person Behind the Work</div>
+      </div>
+      <div class="arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </div>
+    </a>
+
+    <!-- Card 2 -->
+    <a href="contact.html" class="card">
+      <div class="icon-wrapper">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+        </svg>
+      </div>
+      <div class="content">
+        <div class="title">Get in touch</div>
+        <div class="description">Connect & Collaborate</div>
+      </div>
+      <div class="arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </div>
+    </a>
+
+    <!-- Card 3 -->
+    <a href="https://bdham.blogspot.com/search/label/Vocab?m=1" class="card">
+      <div class="icon-wrapper">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+          <path d="M7 7h10M7 11h10M7 15h6"></path>
+        </svg>
+      </div>
+      <div class="content">
+        <div class="title">Spanish Vocabulary</div>
+        <div class="description">Vocabulario Esencial: Key words for everyday fluency</div>
+      </div>
+      <div class="arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </div>
+    </a>
+
+    
+
+    <!-- Card 4 -->
+    <a href="https://ham-cv.vercel.app/" class="card">
+      <div class="icon-wrapper">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+      </div>
+      <div class="content">
+        <div class="title">Curriculum Vitae</div>
+        <div class="description">Professional Resume & History</div>
+      </div>
+      <div class="arrow">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+      </div>
+    </a>
+
+    <footer class="footer">
+      <p>&copy; 2026
+		 <b> Hasan Al Mahmud.</b> All rights reserved.</p>
+    </footer>
+  </div>
+
+
+</body>
+</html>
+
