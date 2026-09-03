@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Correspondence</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --midnight:#1c2333;
+    --midnight-deep:#12172422;
+    --card:#eee7d8;
+    --ink:#2a2620;
+    --brass:#b6923f;
+    --brass-light:#d9b876;
+    --thread:#8a1f2b;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{ height:100%; }
+
+  body{
+    margin:0;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+      radial-gradient(1200px 800px at 20% -10%, #232b3f 0%, transparent 60%),
+      linear-gradient(180deg, #10141f 0%, #0b0e16 100%);
+    font-family:'EB Garamond', serif;
+    padding:32px;
+  }
+
+  .stage{
+    width:min(92vw, 460px);
+  }
+
+  /* ============ ENVELOPE ============ */
+  .envelope{
+    position:relative;
+    width:100%;
+    aspect-ratio:16/10;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+
+  .card-edge{
+    position:absolute;
+    inset:6%;
+    background:var(--card);
+    border-radius:2px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .sleeve{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(150deg, #232b3f 0%, var(--midnight) 55%, #171d2b 100%);
+    border-radius:3px;
+    box-shadow:0 30px 60px -10px rgba(0,0,0,0.7), 0 0 0 1px rgba(182,146,63,0.15);
+    overflow:hidden;
+  }
+
+  .sleeve::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(135deg, rgba(255,255,255,0.05), transparent 40%);
+    pointer-events:none;
+  }
+
+  .corner-mark{
+    position:absolute;
+    width:9px;
+    height:9px;
+    border:1px solid var(--brass);
+    opacity:0.55;
+  }
+  .corner-mark.tl{ top:10px; left:10px; border-right:none; border-bottom:none; }
+  .corner-mark.tr{ top:10px; right:10px; border-left:none; border-bottom:none; }
+  .corner-mark.bl{ bottom:10px; left:10px; border-right:none; border-top:none; }
+  .corner-mark.br{ bottom:10px; right:10px; border-left:none; border-top:none; }
+
+  .monogram{
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:clamp(1.6rem, 6vw, 2.1rem);
+    color:var(--brass-light);
+    letter-spacing:0.05em;
+    z-index:2;
+    transition:opacity 0.4s ease;
+  }
+
+  /* Ribbon that "ties" the envelope shut */
+  .ribbon{
+    position:absolute;
+    top:50%;
+    left:-4%;
+    right:-4%;
+    height:15%;
+    transform:translateY(-50%);
+    background:linear-gradient(180deg, #9c2432, var(--thread) 50%, #6e1620);
+    box-shadow:0 3px 8px rgba(0,0,0,0.4);
+    z-index:3;
+    transform-origin:center;
+    transition:transform 0.65s cubic-bezier(.7,-0.4,.3,1.4), opacity 0.5s ease;
+  }
+  .ribbon::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:50%;
+    width:34px;
+    height:34px;
+    transform:translate(-50%,-50%) rotate(45deg);
+    background:linear-gradient(160deg, var(--brass-light), var(--brass));
+    box-shadow:0 3px 6px rgba(0,0,0,0.4);
+  }
+
+  .seam{
+    position:absolute;
+    left:8%;
+    right:8%;
+    top:0;
+    height:100%;
+    z-index:1;
+    background:
+      linear-gradient(to bottom right, transparent 49.5%, rgba(0,0,0,0.18) 50%, transparent 50.5%),
+      linear-gradient(to bottom left, transparent 49.5%, rgba(0,0,0,0.18) 50%, transparent 50.5%);
+  }
+
+  .caption{
+    text-align:center;
+    color:#a99a7a;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    margin-top:26px;
+    transition:opacity 0.3s ease;
+  }
+
+  /* Opened state */
+  .envelope.open .ribbon{
+    transform:translateY(-50%) scaleX(0.02);
+    opacity:0;
+  }
+  .envelope.open .monogram{
+    opacity:0;
+  }
+  .envelope.open .card-edge{
+    box-shadow:0 8px 20px rgba(0,0,0,0.35);
+  }
+
+  /* ============ LETTER ============ */
+  .letter{
+    position:relative;
+    margin-top:26px;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0.015), transparent 12%),
+      var(--card);
+    border-radius:2px;
+    padding:0;
+    color:var(--ink);
+    max-height:0;
+    opacity:0;
+    overflow:hidden;
+    transform:translateY(-10px);
+    box-shadow:0 35px 70px -15px rgba(0,0,0,0.6);
+    transition:max-height 0.7s cubic-bezier(.2,.7,.2,1), opacity 0.5s ease 0.12s, transform 0.7s ease;
+  }
+
+  .letter.show{
+    max-height:900px;
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  .letter-inner{
+    padding:44px 40px 34px;
+    border:1px solid rgba(182,146,63,0.35);
+    margin:10px;
+  }
+
+  .letter-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(42,38,32,0.15);
+    padding-bottom:14px;
+    margin-bottom:22px;
+  }
+
+  .letter-head .eyebrow{
+    font-size:0.68rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:#8a7a55;
+  }
+
+  .letter-head .mark{
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    color:var(--thread);
+    font-size:1.1rem;
+  }
+
+  .letter h2{
+    font-family:'Playfair Display', serif;
+    font-weight:500;
+    font-style:italic;
+    font-size:1.9rem;
+    color:var(--ink);
+    margin:0 0 20px;
+  }
+
+  .letter p{
+    font-size:1.18rem;
+    line-height:1.8;
+    margin:0 0 16px;
+    color:#332e26;
+  }
+
+  .signature{
+    margin-top:22px;
+    font-family:'Playfair Display', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    color:var(--thread);
+  }
+
+  .actions{
+    display:flex;
+    justify-content:center;
+    margin-top:30px;
+  }
+
+  .close-btn{
+    position:relative;
+    background:none;
+    border:none;
+    font-family:'EB Garamond', serif;
+    font-size:0.82rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:#7a6b48;
+    cursor:pointer;
+    padding:6px 2px;
+  }
+  .close-btn::after{
+    content:"";
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:1px;
+    background:var(--brass);
+    transform:scaleX(0.3);
+    transform-origin:center;
+    transition:transform 0.3s ease;
+  }
+  .close-btn:hover::after,
+  .close-btn:focus-visible::after{
+    transform:scaleX(1);
+  }
+  .close-btn:focus-visible{ outline:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    .ribbon, .monogram, .letter{ transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="stage">
+    <div class="envelope" id="envelope" role="button" tabindex="0" aria-expanded="false" aria-controls="letter" aria-label="Untie the ribbon to read the letter">
+      <div class="card-edge"></div>
+      <div class="sleeve">
+        <span class="corner-mark tl"></span>
+        <span class="corner-mark tr"></span>
+        <span class="corner-mark bl"></span>
+        <span class="corner-mark br"></span>
+      </div>
+      <div class="seam"></div>
+      <div class="monogram">Ever Yours</div>
+      <div class="ribbon"></div>
+    </div>
+    <p class="caption" id="caption">untie to read</p>
+
+    <div class="letter" id="letter">
+      <div class="letter-inner">
+        <div class="letter-head">
+          <span class="eyebrow">Private Correspondence</span>
+          <span class="mark">✒</span>
+        </div>
+        <h2>My Dearest,</h2>
+        <p>Every ordinary moment becomes something worth keeping, simply because you're in it. I wanted to put that down in writing, so it exists somewhere outside my own head — proof, in case you ever wonder.</p>
+        <p>You have a way of making the everyday feel unhurried and warm, like sunlight through a window on a quiet afternoon. I notice it more than I say it.</p>
+        <p>So here it is, plainly: thank you for being exactly who you are, and for letting me be exactly who I am, right beside you.</p>
+        <p class="signature">Always</p>
+
+        <div class="actions">
+          <button class="close-btn" id="closeBtn">Tie it closed again</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const envelope = document.getElementById('envelope');
+  const letter = document.getElementById('letter');
+  const closeBtn = document.getElementById('closeBtn');
+  const caption = document.getElementById('caption');
+
+  function openLetter(){
+    envelope.classList.add('open');
+    envelope.setAttribute('aria-expanded', 'true');
+    caption.style.opacity = '0';
+    setTimeout(() => letter.classList.add('show'), 320);
+  }
+
+  function closeLetter(){
+    letter.classList.remove('show');
+    envelope.classList.remove('open');
+    envelope.setAttribute('aria-expanded', 'false');
+    caption.style.opacity = '1';
+  }
+
+  envelope.addEventListener('click', () => {
+    if (!envelope.classList.contains('open')) openLetter();
+  });
+
+  envelope.addEventListener('keydown', (e) => {
+    if ((e.key === 'Enter' || e.key === ' ') && !envelope.classList.contains('open')) {
+      e.preventDefault();
+      openLetter();
+    }
+  });
+
+  closeBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    closeLetter();
+  });
+</script>
+
+</body>
+</html>
