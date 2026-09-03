@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>I Love You, Morium</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root{
+    --midnight:#1a0f22;
+    --midnight-deep:#120a17;
+    --rose:#e8547c;
+    --rose-soft:#f087a3;
+    --gold:#f4c95d;
+    --cream:#fbeee6;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html,body{
+    margin:0;
+    height:100%;
+    background: radial-gradient(circle at 50% 30%, var(--midnight) 0%, var(--midnight-deep) 70%);
+    overflow:hidden;
+    font-family:'Cormorant Garamond', serif;
+  }
+
+  .stage{
+    position:relative;
+    width:100%;
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* ambient floating hearts */
+  .float{
+    position:absolute;
+    bottom:-10%;
+    color:var(--rose-soft);
+    opacity:0.55;
+    animation: rise linear infinite;
+    filter: drop-shadow(0 0 6px rgba(232,84,124,0.5));
+  }
+  @keyframes rise{
+    0%{ transform: translateY(0) translateX(0) rotate(0deg); opacity:0; }
+    10%{ opacity:0.6; }
+    90%{ opacity:0.35; }
+    100%{ transform: translateY(-115vh) translateX(var(--drift,20px)) rotate(360deg); opacity:0; }
+  }
+
+  /* the signature heart */
+  .heart-wrap{
+    position:relative;
+    width:160px;
+    height:160px;
+    margin-bottom:2.2rem;
+    animation: beat 1.15s ease-in-out infinite;
+  }
+  .heart{
+    position:absolute;
+    width:100px;
+    height:100px;
+    top:30px;
+    left:30px;
+    background: linear-gradient(135deg, var(--rose-soft), var(--rose) 60%, #c93763);
+    transform: rotate(45deg);
+    box-shadow: 0 0 40px rgba(232,84,124,0.55), 0 0 90px rgba(232,84,124,0.25);
+  }
+  .heart::before,
+  .heart::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    background:inherit;
+    border-radius:50%;
+  }
+  .heart::before{ top:-50px; left:0; }
+  .heart::after{ left:-50px; top:0; }
+
+  @keyframes beat{
+    0%, 100%{ transform: scale(1); }
+    25%{ transform: scale(1.12); }
+    40%{ transform: scale(0.96); }
+    55%{ transform: scale(1.08); }
+    70%{ transform: scale(1); }
+  }
+
+  /* glow ring pulses outward */
+  .ring{
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    border:1.5px solid rgba(244,201,93,0.55);
+    animation: pulse 2.4s ease-out infinite;
+  }
+  .ring.delay{ animation-delay:1.2s; }
+  @keyframes pulse{
+    0%{ transform:scale(0.6); opacity:0.8; }
+    100%{ transform:scale(1.9); opacity:0; }
+  }
+
+  .message{
+    text-align:center;
+    z-index:2;
+  }
+
+  .line-one{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:1.4rem;
+    letter-spacing:0.42em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin:0 0 0.9rem;
+    opacity:0;
+    animation: fadeUp 1.2s ease forwards 0.3s;
+  }
+
+  .say{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:2.1rem;
+    color:var(--cream);
+    margin:0 0 0.25rem;
+    opacity:0;
+    animation: fadeUp 1.2s ease forwards 0.75s;
+  }
+
+  .name{
+    font-family:'Dancing Script', cursive;
+    font-weight:700;
+    font-size:7.5rem;
+    line-height:1;
+    margin:0;
+    background: linear-gradient(180deg, var(--cream) 15%, var(--gold) 65%, var(--rose-soft) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 45px rgba(244,201,93,0.4)) drop-shadow(0 0 18px rgba(232,84,124,0.5));
+    opacity:0;
+    animation: fadeUp 1.2s ease forwards 1.25s;
+  }
+
+  .underline{
+    width:0;
+    height:2px;
+    margin:1.1rem auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    animation: growLine 1.4s ease forwards 2s;
+  }
+
+  @keyframes growLine{
+    to{ width:220px; }
+  }
+
+  @keyframes fadeUp{
+    from{ opacity:0; transform: translateY(18px); }
+    to{ opacity:1; transform: translateY(0); }
+  }
+
+  .vignette{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background: radial-gradient(circle at 50% 45%, transparent 35%, rgba(10,5,13,0.75) 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .heart-wrap, .ring, .float, .line-one, .say, .name, .underline{ animation: none !important; opacity:1 !important; transform:none !important; width:220px !important; }
+  }
+
+  @media (max-width: 480px){
+    .name{ font-size:4rem; }
+    .say{ font-size:1.5rem; }
+    .heart-wrap{ width:120px; height:120px; }
+    .heart{ width:75px; height:75px; top:22px; left:22px; }
+    .heart::before, .heart::after{ width:75px; height:75px; }
+    .heart::before{ top:-37.5px; }
+    .heart::after{ left:-37.5px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage">
+  <div class="vignette"></div>
+  <div class="heart-wrap">
+    <div class="ring"></div>
+    <div class="ring delay"></div>
+    <div class="heart"></div>
+  </div>
+
+  <div class="message">
+    <p class="line-one">Always &amp; only</p>
+    <p class="say">I love you</p>
+    <h1 class="name">Morium</h1>
+    <div class="underline"></div>
+  </div>
+</div>
+
+<script>
+  // scatter small floating hearts across the width
+  const stage = document.querySelector('.stage');
+  const count = 18;
+  for(let i=0;i<count;i++){
+    const h = document.createElement('div');
+    h.className = 'float';
+    h.textContent = '♥';
+    const size = 10 + Math.random()*18;
+    h.style.left = Math.random()*100 + '%';
+    h.style.fontSize = size + 'px';
+    h.style.animationDuration = (6 + Math.random()*6) + 's';
+    h.style.animationDelay = (Math.random()*8) + 's';
+    h.style.setProperty('--drift', (Math.random()*80 - 40) + 'px');
+    stage.appendChild(h);
+  }
+</script>
+
+</body>
+</html>
