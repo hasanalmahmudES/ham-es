@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Español del día a día — Vocabulario esencial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cover:#1B2A3D;
+    --cover-dark:#121E2C;
+    --paper:#F7F4EC;
+    --paper-line:#E1DACB;
+    --ink:#241F19;
+    --ink-soft:#6B6152;
+    --gold:#B4923D;
+    --gold-soft:#D8C48F;
+    --teal:#2E5F58;
+    --wine:#7A3B3B;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    background:linear-gradient(160deg, var(--cover) 0%, var(--cover-dark) 100%);
+    color:var(--gold-soft);
+    padding:52px 24px 40px;
+    text-align:center;
+    position:relative;
+    animation:coverIn .7s ease-out;
+  }
+  @keyframes coverIn{
+    from{opacity:0; transform:translateY(-8px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .cover h1{
+    font-family:'Lora', serif;
+    font-weight:700;
+    font-size:clamp(28px, 6vw, 42px);
+    margin:0 0 10px;
+    letter-spacing:0.3px;
+    color:#F3E9CE;
+  }
+  .cover .rule{
+    width:64px;
+    height:2px;
+    background:var(--gold);
+    margin:16px auto;
+    border:none;
+  }
+  .cover p{
+    font-size:15px;
+    color:#B9C3CF;
+    max-width:440px;
+    margin:0 auto;
+    line-height:1.6;
+  }
+
+  /* ---------- TABS ---------- */
+  .tabs-wrap{
+    background:var(--cover);
+    padding:0 12px;
+    overflow-x:auto;
+    white-space:nowrap;
+    scrollbar-width:none;
+    border-bottom:3px solid var(--gold);
+  }
+  .tabs-wrap::-webkit-scrollbar{display:none;}
+  .tabs{
+    display:inline-flex;
+    gap:2px;
+    padding:10px 4px;
+  }
+  .tab-btn{
+    font-family:'Work Sans', sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    color:#AEB9C6;
+    background:transparent;
+    border:none;
+    padding:9px 14px;
+    cursor:pointer;
+    border-radius:3px 3px 0 0;
+    transition:color .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .tab-btn:hover{ color:#EFE6CC; }
+  .tab-btn.active{
+    color:#1B2A3D;
+    background:var(--gold-soft);
+    font-weight:600;
+  }
+
+  /* ---------- SEARCH ---------- */
+  .search-row{
+    max-width:900px;
+    margin:26px auto 8px;
+    padding:0 20px;
+  }
+  .search-row input{
+    width:100%;
+    font-family:'Work Sans', sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    background:transparent;
+    border:none;
+    border-bottom:1.5px solid var(--paper-line);
+    padding:8px 2px 10px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .search-row input:focus{ border-bottom-color:var(--gold); }
+  .search-row input::placeholder{ color:#A79E8C; }
+
+  .meta-line{
+    max-width:900px;
+    margin:0 auto;
+    padding:10px 22px 0;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- ENTRIES ---------- */
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:18px 16px 70px;
+  }
+  .entries{
+    columns:2 340px;
+    column-gap:36px;
+  }
+  .entry{
+    break-inside:avoid;
+    padding:14px 0;
+    border-bottom:1px solid var(--paper-line);
+    margin-bottom:2px;
+  }
+  .entry-head{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:5px;
+  }
+  .entry-word{
+    font-family:'Lora', serif;
+    font-weight:700;
+    font-size:18px;
+    color:var(--ink);
+  }
+  .entry-pos{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--teal);
+  }
+  .entry-en{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  .entry-example{
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  .entry-example .es{
+    font-style:italic;
+  }
+  .entry-example .en{
+    color:var(--ink-soft);
+  }
+
+  .no-results{
+    text-align:center;
+    color:var(--ink-soft);
+    padding:50px 20px;
+    font-size:14.5px;
+    display:none;
+  }
+
+  footer{
+    text-align:center;
+    padding:22px;
+    font-size:12px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--paper-line);
+  }
+  footer .copyright{
+    margin-top:6px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:0.2px;
+  }
+
+  .back-to-top{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--cover);
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(18,30,44,0.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index:50;
+  }
+  .back-to-top.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .back-to-top:hover{
+    background:var(--cover-dark);
+  }
+  .back-to-top svg{
+    width:18px;
+    height:18px;
+  }
+
+  .back-to-bottom{
+    position:fixed;
+    right:18px;
+    bottom:70px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--cover);
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(18,30,44,0.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index:50;
+  }
+  .back-to-bottom.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .back-to-bottom:hover{
+    background:var(--cover-dark);
+  }
+  .back-to-bottom svg{
+    width:18px;
+    height:18px;
+  }
+
+  .scroll-down{
+    margin:22px auto 0;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:transparent;
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+    animation:bob 2s ease-in-out infinite;
+  }
+  .scroll-down:hover{
+    background:rgba(180,146,61,0.15);
+  }
+  .scroll-down svg{
+    width:16px;
+    height:16px;
+  }
+  @keyframes bob{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(4px); }
+  }
+
+  @media (max-width:600px){
+    .entries{ columns:1; }
+    .cover{ padding:40px 20px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Español del día a día</h1>
+  <hr class="rule">
+  <p>Vocabulario esencial organizado por categoría gramatical, para el uso diario — nivel principiante a intermedio.</p>
+  <button class="scroll-down" id="scrollDown" aria-label="Ir al vocabulario" title="Ir al vocabulario">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14"></path>
+      <path d="M19 12l-7 7-7-7"></path>
+    </svg>
+  </button>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="search-row">
+  <input type="text" id="search" placeholder="Buscar una palabra, en español o inglés…">
+</div>
+<div class="meta-line" id="metaLine"></div>
+
+<main>
+  <div class="entries" id="entries"></div>
+  <div class="no-results" id="noResults">No se encontraron palabras. Prueba con otra búsqueda.</div>
+</main>
+
+<footer>
+  <div>Guía de vocabulario para práctica diaria de español</div>
+  
+      <p>&copy; 2026
+		 <b> <a href="/" style="color: black;" style="text-decoration: none;"> Hasan Al Mahmud</a></b>. All rights reserved.</p>
+   <style>
+        a {
+            text-decoration: none;
+        }
+    </style>
+	 
+</footer>
+
+<button class="back-to-bottom" id="backToBottom" aria-label="Ir abajo" title="Ir abajo">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v14"></path>
+    <path d="M19 12l-7 7-7-7"></path>
+  </svg>
+</button>
+
+<button class="back-to-top" id="backToTop" aria-label="Volver arriba" title="Volver arriba">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+
+<script>
+const categories = [
+  { key:'todos', label:'Todos' },
+  { key:'sustantivo', label:'Sustantivos', abbr:'s.' },
+  { key:'verbo', label:'Verbos', abbr:'v.' },
+  { key:'adjetivo', label:'Adjetivos', abbr:'adj.' },
+  { key:'adverbio', label:'Adverbios', abbr:'adv.' },
+  { key:'pronombre', label:'Pronombres', abbr:'pron.' },
+  { key:'preposicion', label:'Preposiciones', abbr:'prep.' },
+  { key:'conjuncion', label:'Conjunciones', abbr:'conj.' },
+  { key:'interjeccion', label:'Interjecciones', abbr:'interj.' },
+];
+
+const data = [
+  // SUSTANTIVOS
+  {cat:'sustantivo', es:'la casa', en:'house', ex:'Mi casa está cerca del trabajo.', exEn:'My house is near work.'},
+  {cat:'sustantivo', es:'la familia', en:'family', ex:'Mi familia cena junta los domingos.', exEn:'My family has dinner together on Sundays.'},
+  {cat:'sustantivo', es:'el trabajo', en:'work, job', ex:'Voy al trabajo en autobús.', exEn:'I go to work by bus.'},
+  {cat:'sustantivo', es:'la comida', en:'food, meal', ex:'La comida está lista.', exEn:'The food is ready.'},
+  {cat:'sustantivo', es:'el tiempo', en:'time, weather', ex:'No tengo tiempo hoy.', exEn:"I don't have time today."},
+  {cat:'sustantivo', es:'el dinero', en:'money', ex:'Necesito más dinero este mes.', exEn:'I need more money this month.'},
+  {cat:'sustantivo', es:'el amigo / la amiga', en:'friend', ex:'Ella es mi mejor amiga.', exEn:'She is my best friend.'},
+  {cat:'sustantivo', es:'el agua', en:'water', ex:'Bebo agua todos los días.', exEn:'I drink water every day.'},
+  {cat:'sustantivo', es:'el coche', en:'car', ex:'El coche está en la calle.', exEn:'The car is on the street.'},
+  {cat:'sustantivo', es:'la escuela', en:'school', ex:'Los niños van a la escuela.', exEn:'The kids go to school.'},
+  {cat:'sustantivo', es:'la ciudad', en:'city', ex:'Vivo en una ciudad grande.', exEn:'I live in a big city.'},
+  {cat:'sustantivo', es:'la calle', en:'street', ex:'La tienda está en esta calle.', exEn:'The store is on this street.'},
+  {cat:'sustantivo', es:'la tienda', en:'store, shop', ex:'Compro pan en la tienda.', exEn:'I buy bread at the store.'},
+  {cat:'sustantivo', es:'el teléfono', en:'phone', ex:'Mi teléfono está sin batería.', exEn:'My phone is out of battery.'},
+  {cat:'sustantivo', es:'el hospital', en:'hospital', ex:'Trabajo en el hospital todos los días.', exEn:'I work at the hospital every day.'},
+  {cat:'sustantivo', es:'la salud', en:'health', ex:'Cuido mi salud con ejercicio.', exEn:'I take care of my health with exercise.'},
+  {cat:'sustantivo', es:'el padre', en:'father', ex:'Mi padre trabaja en el banco.', exEn:'My father works at the bank.'},
+  {cat:'sustantivo', es:'la madre', en:'mother', ex:'Mi madre cocina muy bien.', exEn:'My mother cooks very well.'},
+  {cat:'sustantivo', es:'el hijo', en:'son', ex:'Tengo un hijo pequeño.', exEn:'I have a young son.'},
+  {cat:'sustantivo', es:'la hija', en:'daughter', ex:'Mi hija estudia en la universidad.', exEn:'My daughter studies at the university.'},
+  {cat:'sustantivo', es:'el hermano', en:'brother', ex:'Mi hermano vive en la ciudad.', exEn:'My brother lives in the city.'},
+  {cat:'sustantivo', es:'la hermana', en:'sister', ex:'Hablo con mi hermana cada día.', exEn:'I talk to my sister every day.'},
+  {cat:'sustantivo', es:'el abuelo', en:'grandfather', ex:'Mi abuelo tiene ochenta años.', exEn:'My grandfather is eighty years old.'},
+  {cat:'sustantivo', es:'la abuela', en:'grandmother', ex:'Visito a mi abuela los domingos.', exEn:'I visit my grandmother on Sundays.'},
+  {cat:'sustantivo', es:'el esposo', en:'husband', ex:'Su esposo trabaja en el hospital.', exEn:'Her husband works at the hospital.'},
+  {cat:'sustantivo', es:'la esposa', en:'wife', ex:'Su esposa es profesora.', exEn:'His wife is a teacher.'},
+  {cat:'sustantivo', es:'el tío', en:'uncle', ex:'Mi tío vive lejos.', exEn:'My uncle lives far away.'},
+  {cat:'sustantivo', es:'la tía', en:'aunt', ex:'Mi tía cocina platos deliciosos.', exEn:'My aunt cooks delicious dishes.'},
+  {cat:'sustantivo', es:'el primo', en:'cousin', ex:'Juego fútbol con mi primo.', exEn:'I play soccer with my cousin.'},
+  {cat:'sustantivo', es:'la prima', en:'cousin', ex:'Mi prima llega mañana.', exEn:'My cousin arrives tomorrow.'},
+  {cat:'sustantivo', es:'el niño', en:'boy, child', ex:'El niño juega en el parque.', exEn:'The boy plays in the park.'},
+  {cat:'sustantivo', es:'la niña', en:'girl', ex:'La niña canta una canción.', exEn:'The girl sings a song.'},
+  {cat:'sustantivo', es:'el bebé', en:'baby', ex:'El bebé duerme toda la noche.', exEn:'The baby sleeps all night.'},
+  {cat:'sustantivo', es:'el pan', en:'bread', ex:'Compro pan fresco cada mañana.', exEn:'I buy fresh bread every morning.'},
+  {cat:'sustantivo', es:'el arroz', en:'rice', ex:'Como arroz con pollo.', exEn:'I eat rice with chicken.'},
+  {cat:'sustantivo', es:'la carne', en:'meat', ex:'No como carne los viernes.', exEn:"I don't eat meat on Fridays."},
+  {cat:'sustantivo', es:'el pescado', en:'fish', ex:'El pescado está muy fresco.', exEn:'The fish is very fresh.'},
+  {cat:'sustantivo', es:'la fruta', en:'fruit', ex:'Como fruta todos los días.', exEn:'I eat fruit every day.'},
+  {cat:'sustantivo', es:'la verdura', en:'vegetable', ex:'Las verduras son buenas para la salud.', exEn:'Vegetables are good for your health.'},
+  {cat:'sustantivo', es:'el huevo', en:'egg', ex:'Desayuno huevos y pan.', exEn:'I have eggs and bread for breakfast.'},
+  {cat:'sustantivo', es:'la leche', en:'milk', ex:'Bebo leche con el café.', exEn:'I drink milk with my coffee.'},
+  {cat:'sustantivo', es:'el café', en:'coffee', ex:'Tomo café por la mañana.', exEn:'I drink coffee in the morning.'},
+  {cat:'sustantivo', es:'el té', en:'tea', ex:'Prefiero el té al café.', exEn:'I prefer tea to coffee.'},
+  {cat:'sustantivo', es:'el azúcar', en:'sugar', ex:'No pongo azúcar en el café.', exEn:"I don't put sugar in my coffee."},
+  {cat:'sustantivo', es:'la sal', en:'salt', ex:'Necesita un poco de sal.', exEn:'It needs a little salt.'},
+  {cat:'sustantivo', es:'la sopa', en:'soup', ex:'La sopa está caliente.', exEn:'The soup is hot.'},
+  {cat:'sustantivo', es:'la habitación', en:'room', ex:'Mi habitación es pequeña.', exEn:'My room is small.'},
+  {cat:'sustantivo', es:'la cocina', en:'kitchen', ex:'Cocino en la cocina cada noche.', exEn:'I cook in the kitchen every night.'},
+  {cat:'sustantivo', es:'el baño', en:'bathroom', ex:'El baño está al final del pasillo.', exEn:'The bathroom is at the end of the hallway.'},
+  {cat:'sustantivo', es:'la puerta', en:'door', ex:'Cierra la puerta, por favor.', exEn:'Close the door, please.'},
+  {cat:'sustantivo', es:'la ventana', en:'window', ex:'Abro la ventana por la mañana.', exEn:'I open the window in the morning.'},
+  {cat:'sustantivo', es:'la mesa', en:'table', ex:'Ponemos la comida en la mesa.', exEn:'We put the food on the table.'},
+  {cat:'sustantivo', es:'la silla', en:'chair', ex:'La silla está rota.', exEn:'The chair is broken.'},
+  {cat:'sustantivo', es:'la cama', en:'bed', ex:'Hago la cama cada mañana.', exEn:'I make the bed every morning.'},
+  {cat:'sustantivo', es:'el sofá', en:'sofa', ex:'Descanso en el sofá después del trabajo.', exEn:'I rest on the sofa after work.'},
+  {cat:'sustantivo', es:'el armario', en:'closet', ex:'Guardo la ropa en el armario.', exEn:'I keep my clothes in the closet.'},
+  {cat:'sustantivo', es:'la cabeza', en:'head', ex:'Me duele la cabeza.', exEn:'My head hurts.'},
+  {cat:'sustantivo', es:'la mano', en:'hand', ex:'Lávate las manos antes de comer.', exEn:'Wash your hands before eating.'},
+  {cat:'sustantivo', es:'el pie', en:'foot', ex:'Tengo dolor en el pie.', exEn:'I have pain in my foot.'},
+  {cat:'sustantivo', es:'el ojo', en:'eye', ex:'Tiene los ojos verdes.', exEn:'He/she has green eyes.'},
+  {cat:'sustantivo', es:'la boca', en:'mouth', ex:'Abre la boca, por favor.', exEn:'Open your mouth, please.'},
+  {cat:'sustantivo', es:'el corazón', en:'heart', ex:'El ejercicio es bueno para el corazón.', exEn:'Exercise is good for the heart.'},
+  {cat:'sustantivo', es:'la espalda', en:'back', ex:'Me duele la espalda.', exEn:'My back hurts.'},
+  {cat:'sustantivo', es:'el brazo', en:'arm', ex:'Se rompió el brazo.', exEn:'He/she broke their arm.'},
+  {cat:'sustantivo', es:'la pierna', en:'leg', ex:'Tengo la pierna cansada.', exEn:'My leg is tired.'},
+  {cat:'sustantivo', es:'la nariz', en:'nose', ex:'Le sangra la nariz.', exEn:'His/her nose is bleeding.'},
+  {cat:'sustantivo', es:'la semana', en:'week', ex:'Trabajo cinco días a la semana.', exEn:'I work five days a week.'},
+  {cat:'sustantivo', es:'el mes', en:'month', ex:'Viajo el próximo mes.', exEn:"I'm traveling next month."},
+  {cat:'sustantivo', es:'el año', en:'year', ex:'Este año estudio mucho.', exEn:"This year I'm studying a lot."},
+  {cat:'sustantivo', es:'la hora', en:'hour', ex:'Espero una hora en la clínica.', exEn:'I wait an hour at the clinic.'},
+  {cat:'sustantivo', es:'la mañana', en:'morning', ex:'Estudio por la mañana.', exEn:'I study in the morning.'},
+  {cat:'sustantivo', es:'la tarde', en:'afternoon', ex:'Trabajo por la tarde.', exEn:'I work in the afternoon.'},
+  {cat:'sustantivo', es:'la noche', en:'night', ex:'Duermo bien por la noche.', exEn:'I sleep well at night.'},
+  {cat:'sustantivo', es:'el fin de semana', en:'weekend', ex:'Descanso el fin de semana.', exEn:'I rest on the weekend.'},
+  {cat:'sustantivo', es:'el mercado', en:'market', ex:'Compro verduras en el mercado.', exEn:'I buy vegetables at the market.'},
+  {cat:'sustantivo', es:'el parque', en:'park', ex:'Caminamos por el parque.', exEn:'We walk through the park.'},
+  {cat:'sustantivo', es:'la oficina', en:'office', ex:'Llego a la oficina a las nueve.', exEn:'I arrive at the office at nine.'},
+  {cat:'sustantivo', es:'la universidad', en:'university', ex:'Estudio en la universidad.', exEn:'I study at the university.'},
+  {cat:'sustantivo', es:'el aeropuerto', en:'airport', ex:'El aeropuerto está lejos de aquí.', exEn:'The airport is far from here.'},
+  {cat:'sustantivo', es:'la estación', en:'station', ex:'Espero el tren en la estación.', exEn:'I wait for the train at the station.'},
+  {cat:'sustantivo', es:'el banco', en:'bank', ex:'Voy al banco por la mañana.', exEn:'I go to the bank in the morning.'},
+  {cat:'sustantivo', es:'la farmacia', en:'pharmacy', ex:'Compro medicina en la farmacia.', exEn:'I buy medicine at the pharmacy.'},
+  {cat:'sustantivo', es:'el restaurante', en:'restaurant', ex:'Cenamos en un restaurante nuevo.', exEn:'We had dinner at a new restaurant.'},
+  {cat:'sustantivo', es:'la playa', en:'beach', ex:'Nadamos en la playa.', exEn:'We swim at the beach.'},
+  {cat:'sustantivo', es:'la ropa', en:'clothing', ex:'Lavo la ropa los sábados.', exEn:'I wash clothes on Saturdays.'},
+  {cat:'sustantivo', es:'la camisa', en:'shirt', ex:'Llevo una camisa blanca.', exEn:"I'm wearing a white shirt."},
+  {cat:'sustantivo', es:'el pantalón', en:'pants', ex:'Necesito un pantalón nuevo.', exEn:'I need new pants.'},
+  {cat:'sustantivo', es:'el vestido', en:'dress', ex:'El vestido es muy bonito.', exEn:'The dress is very pretty.'},
+  {cat:'sustantivo', es:'el zapato', en:'shoe', ex:'Estos zapatos son cómodos.', exEn:'These shoes are comfortable.'},
+  {cat:'sustantivo', es:'la chaqueta', en:'jacket', ex:'Llevo una chaqueta en invierno.', exEn:'I wear a jacket in winter.'},
+  {cat:'sustantivo', es:'el estudiante / la estudiante', en:'student', ex:'Soy estudiante de enfermería.', exEn:'I am a nursing student.'},
+  {cat:'sustantivo', es:'el profesor', en:'teacher', ex:'El profesor explica bien la lección.', exEn:'The teacher explains the lesson well.'},
+  {cat:'sustantivo', es:'la profesora', en:'teacher', ex:'La profesora es muy paciente.', exEn:'The teacher is very patient.'},
+  {cat:'sustantivo', es:'el médico / la médica', en:'doctor', ex:'El médico revisa al paciente.', exEn:'The doctor examines the patient.'},
+  {cat:'sustantivo', es:'la enfermera', en:'nurse', ex:'La enfermera cuida a los pacientes.', exEn:'The nurse cares for the patients.'},
+  {cat:'sustantivo', es:'el libro', en:'book', ex:'Leo un libro nuevo.', exEn:"I'm reading a new book."},
+  {cat:'sustantivo', es:'el cuaderno', en:'notebook', ex:'Escribo en mi cuaderno.', exEn:'I write in my notebook.'},
+  {cat:'sustantivo', es:'la computadora', en:'computer', ex:'Trabajo con la computadora todo el día.', exEn:'I work on the computer all day.'},
+  {cat:'sustantivo', es:'el examen', en:'exam', ex:'Tengo un examen mañana.', exEn:'I have an exam tomorrow.'},
+  {cat:'sustantivo', es:'la clase', en:'class', ex:'La clase empieza a las ocho.', exEn:'Class starts at eight.'},
+  {cat:'sustantivo', es:'el abogado / la abogada', en:'lawyer', ex:'El abogado defiende a su cliente.', exEn:'The lawyer defends his client.'},
+  {cat:'sustantivo', es:'el ingeniero / la ingeniera', en:'engineer', ex:'Mi hermano es ingeniero.', exEn:'My brother is an engineer.'},
+  {cat:'sustantivo', es:'el cocinero / la cocinera', en:'cook, chef', ex:'El cocinero prepara la cena.', exEn:'The cook prepares dinner.'},
+  {cat:'sustantivo', es:'el camarero / la camarera', en:'waiter, waitress', ex:'El camarero trae la cuenta.', exEn:'The waiter brings the bill.'},
+  {cat:'sustantivo', es:'el policía / la policía', en:'police officer', ex:'El policía ayuda a los turistas.', exEn:'The police officer helps tourists.'},
+  {cat:'sustantivo', es:'el bombero / la bombera', en:'firefighter', ex:'Los bomberos apagan el fuego.', exEn:'The firefighters put out the fire.'},
+  {cat:'sustantivo', es:'el conductor / la conductora', en:'driver', ex:'El conductor maneja con cuidado.', exEn:'The driver drives carefully.'},
+  {cat:'sustantivo', es:'el vendedor / la vendedora', en:'salesperson', ex:'El vendedor me ayudó a elegir.', exEn:'The salesperson helped me choose.'},
+  {cat:'sustantivo', es:'el jefe / la jefa', en:'boss', ex:'Mi jefa es muy amable.', exEn:'My boss is very kind.'},
+  {cat:'sustantivo', es:'el empleado / la empleada', en:'employee', ex:'El empleado trabaja de nueve a cinco.', exEn:'The employee works from nine to five.'},
+  {cat:'sustantivo', es:'el cliente / la clienta', en:'customer', ex:'El cliente espera su pedido.', exEn:'The customer waits for their order.'},
+  {cat:'sustantivo', es:'el vecino / la vecina', en:'neighbor', ex:'Mi vecino saluda todos los días.', exEn:'My neighbor greets me every day.'},
+  {cat:'sustantivo', es:'el escritor / la escritora', en:'writer', ex:'La escritora publica un libro nuevo.', exEn:'The writer publishes a new book.'},
+  {cat:'sustantivo', es:'el artista / la artista', en:'artist', ex:'El artista pinta un cuadro.', exEn:'The artist paints a picture.'},
+  {cat:'sustantivo', es:'el músico / la música', en:'musician', ex:'El músico toca la guitarra.', exEn:'The musician plays the guitar.'},
+  {cat:'sustantivo', es:'el periodista / la periodista', en:'journalist', ex:'La periodista escribe sobre política.', exEn:'The journalist writes about politics.'},
+  {cat:'sustantivo', es:'el dentista / la dentista', en:'dentist', ex:'Voy al dentista mañana.', exEn:"I'm going to the dentist tomorrow."},
+  {cat:'sustantivo', es:'el piloto / la piloto', en:'pilot', ex:'El piloto controla el avión.', exEn:'The pilot controls the plane.'},
+  {cat:'sustantivo', es:'el arquitecto / la arquitecta', en:'architect', ex:'El arquitecto diseña edificios.', exEn:'The architect designs buildings.'},
+  {cat:'sustantivo', es:'el científico / la científica', en:'scientist', ex:'La científica estudia el clima.', exEn:'The scientist studies the climate.'},
+  {cat:'sustantivo', es:'la lámpara', en:'lamp', ex:'Enciendo la lámpara por la noche.', exEn:'I turn on the lamp at night.'},
+  {cat:'sustantivo', es:'el espejo', en:'mirror', ex:'Me miro en el espejo.', exEn:'I look at myself in the mirror.'},
+  {cat:'sustantivo', es:'la toalla', en:'towel', ex:'Uso una toalla limpia.', exEn:'I use a clean towel.'},
+  {cat:'sustantivo', es:'la almohada', en:'pillow', ex:'Duermo con dos almohadas.', exEn:'I sleep with two pillows.'},
+  {cat:'sustantivo', es:'el jabón', en:'soap', ex:'Me lavo las manos con jabón.', exEn:'I wash my hands with soap.'},
+  {cat:'sustantivo', es:'el cepillo de dientes', en:'toothbrush', ex:'Compro un cepillo de dientes nuevo.', exEn:'I buy a new toothbrush.'},
+  {cat:'sustantivo', es:'la pasta de dientes', en:'toothpaste', ex:'Necesito pasta de dientes.', exEn:'I need toothpaste.'},
+  {cat:'sustantivo', es:'el paraguas', en:'umbrella', ex:'Llevo un paraguas por si llueve.', exEn:'I bring an umbrella in case it rains.'},
+  {cat:'sustantivo', es:'la maleta', en:'suitcase', ex:'Hago la maleta para el viaje.', exEn:'I pack the suitcase for the trip.'},
+  {cat:'sustantivo', es:'la mochila', en:'backpack', ex:'Llevo mis libros en la mochila.', exEn:'I carry my books in the backpack.'},
+  {cat:'sustantivo', es:'la bolsa', en:'bag', ex:'Pongo las frutas en la bolsa.', exEn:'I put the fruit in the bag.'},
+  {cat:'sustantivo', es:'el bolsillo', en:'pocket', ex:'Tengo las llaves en el bolsillo.', exEn:'I have the keys in my pocket.'},
+  {cat:'sustantivo', es:'la llave', en:'key', ex:'No encuentro mi llave.', exEn:"I can't find my key."},
+  {cat:'sustantivo', es:'las gafas', en:'glasses', ex:'Uso gafas para leer.', exEn:'I use glasses to read.'},
+  {cat:'sustantivo', es:'el reloj', en:'clock, watch', ex:'El reloj marca las ocho.', exEn:'The clock shows eight o\'clock.'},
+  {cat:'sustantivo', es:'la basura', en:'trash', ex:'Saco la basura los martes.', exEn:'I take out the trash on Tuesdays.'},
+  {cat:'sustantivo', es:'la escoba', en:'broom', ex:'Barro con la escoba.', exEn:'I sweep with the broom.'},
+  {cat:'sustantivo', es:'la aspiradora', en:'vacuum cleaner', ex:'Paso la aspiradora los sábados.', exEn:'I vacuum on Saturdays.'},
+  {cat:'sustantivo', es:'la lavadora', en:'washing machine', ex:'Pongo la ropa en la lavadora.', exEn:'I put the clothes in the washing machine.'},
+  {cat:'sustantivo', es:'el microondas', en:'microwave', ex:'Caliento la comida en el microondas.', exEn:'I heat the food in the microwave.'},
+  {cat:'sustantivo', es:'la nevera', en:'refrigerator', ex:'Guardo la leche en la nevera.', exEn:'I keep the milk in the fridge.'},
+  {cat:'sustantivo', es:'la estufa', en:'stove', ex:'Cocino en la estufa.', exEn:'I cook on the stove.'},
+  {cat:'sustantivo', es:'el horno', en:'oven', ex:'El pan está en el horno.', exEn:'The bread is in the oven.'},
+  {cat:'sustantivo', es:'la plancha', en:'iron', ex:'Uso la plancha para la camisa.', exEn:'I use the iron for the shirt.'},
+  {cat:'sustantivo', es:'el ordenador', en:'computer', ex:'Trabajo en el ordenador todo el día.', exEn:'I work on the computer all day.'},
+  {cat:'sustantivo', es:'la pantalla', en:'screen', ex:'La pantalla del teléfono está rota.', exEn:'The phone screen is broken.'},
+  {cat:'sustantivo', es:'el ratón', en:'mouse (computer)', ex:'El ratón del ordenador no funciona.', exEn:"The computer mouse isn't working."},
+  {cat:'sustantivo', es:'el teclado', en:'keyboard', ex:'Escribo rápido en el teclado.', exEn:'I type fast on the keyboard.'},
+  {cat:'sustantivo', es:'la impresora', en:'printer', ex:'La impresora no tiene tinta.', exEn:'The printer has no ink.'},
+  {cat:'sustantivo', es:'la aplicación', en:'app', ex:'Descargo una aplicación nueva.', exEn:'I download a new app.'},
+  {cat:'sustantivo', es:'la contraseña', en:'password', ex:'Olvidé mi contraseña.', exEn:'I forgot my password.'},
+  {cat:'sustantivo', es:'el internet', en:'internet', ex:'No tengo internet en casa.', exEn:"I don't have internet at home."},
+  {cat:'sustantivo', es:'el correo electrónico', en:'email', ex:'Envío un correo electrónico.', exEn:'I send an email.'},
+  {cat:'sustantivo', es:'la cámara', en:'camera', ex:'Tomo fotos con mi cámara.', exEn:'I take photos with my camera.'},
+  {cat:'sustantivo', es:'la batería', en:'battery', ex:'La batería del teléfono está baja.', exEn:'The phone battery is low.'},
+  {cat:'sustantivo', es:'el cargador', en:'charger', ex:'Necesito un cargador nuevo.', exEn:'I need a new charger.'},
+  {cat:'sustantivo', es:'la tableta', en:'tablet', ex:'Leo libros en mi tableta.', exEn:'I read books on my tablet.'},
+  {cat:'sustantivo', es:'el autobús', en:'bus', ex:'Tomo el autobús a las ocho.', exEn:'I take the bus at eight.'},
+  {cat:'sustantivo', es:'el tren', en:'train', ex:'El tren llega a tiempo.', exEn:'The train arrives on time.'},
+  {cat:'sustantivo', es:'el avión', en:'airplane', ex:'El avión sale a las diez.', exEn:'The plane departs at ten.'},
+  {cat:'sustantivo', es:'el barco', en:'boat, ship', ex:'Viajamos en barco.', exEn:'We travel by boat.'},
+  {cat:'sustantivo', es:'la bicicleta', en:'bicycle', ex:'Voy al trabajo en bicicleta.', exEn:'I go to work by bicycle.'},
+  {cat:'sustantivo', es:'el metro', en:'subway', ex:'Tomo el metro cada mañana.', exEn:'I take the subway every morning.'},
+  {cat:'sustantivo', es:'el taxi', en:'taxi', ex:'Pido un taxi para el aeropuerto.', exEn:'I call a taxi to the airport.'},
+  {cat:'sustantivo', es:'la moto', en:'motorcycle', ex:'Mi hermano tiene una moto.', exEn:'My brother has a motorcycle.'},
+  {cat:'sustantivo', es:'la carretera', en:'road, highway', ex:'La carretera está muy ocupada.', exEn:'The road is very busy.'},
+  {cat:'sustantivo', es:'el semáforo', en:'traffic light', ex:'Paro en el semáforo rojo.', exEn:'I stop at the red traffic light.'},
+  {cat:'sustantivo', es:'el billete', en:'ticket', ex:'Compro un billete de tren.', exEn:'I buy a train ticket.'},
+  {cat:'sustantivo', es:'el pasaporte', en:'passport', ex:'Necesito mi pasaporte para viajar.', exEn:'I need my passport to travel.'},
+  {cat:'sustantivo', es:'la nube', en:'cloud', ex:'Hay muchas nubes hoy.', exEn:'There are a lot of clouds today.'},
+  {cat:'sustantivo', es:'la nieve', en:'snow', ex:'La nieve cubre las montañas.', exEn:'Snow covers the mountains.'},
+  {cat:'sustantivo', es:'la tormenta', en:'storm', ex:'Viene una tormenta esta noche.', exEn:'A storm is coming tonight.'},
+  {cat:'sustantivo', es:'el trueno', en:'thunder', ex:'El trueno me asustó.', exEn:'The thunder scared me.'},
+  {cat:'sustantivo', es:'la niebla', en:'fog', ex:'Hay mucha niebla esta mañana.', exEn:"There's a lot of fog this morning."},
+  {cat:'sustantivo', es:'el hielo', en:'ice', ex:'El agua se convierte en hielo.', exEn:'Water turns into ice.'},
+  {cat:'sustantivo', es:'la temperatura', en:'temperature', ex:'La temperatura baja por la noche.', exEn:'The temperature drops at night.'},
+  {cat:'sustantivo', es:'el clima', en:'climate', ex:'El clima aquí es cálido.', exEn:'The climate here is warm.'},
+  {cat:'sustantivo', es:'la primavera', en:'spring', ex:'Las flores crecen en primavera.', exEn:'Flowers grow in spring.'},
+  {cat:'sustantivo', es:'el verano', en:'summer', ex:'Hace calor en verano.', exEn:"It's hot in summer."},
+  {cat:'sustantivo', es:'el otoño', en:'autumn', ex:'Las hojas caen en otoño.', exEn:'The leaves fall in autumn.'},
+  {cat:'sustantivo', es:'el invierno', en:'winter', ex:'Nieva en invierno.', exEn:'It snows in winter.'},
+  {cat:'sustantivo', es:'la selva', en:'jungle', ex:'La selva tiene muchos animales.', exEn:'The jungle has many animals.'},
+  {cat:'sustantivo', es:'el desierto', en:'desert', ex:'El desierto es muy seco.', exEn:'The desert is very dry.'},
+  {cat:'sustantivo', es:'el bosque', en:'forest', ex:'Caminamos por el bosque.', exEn:'We walk through the forest.'},
+  {cat:'sustantivo', es:'la piedra', en:'stone', ex:'Hay una piedra en el camino.', exEn:"There's a stone in the path."},
+  {cat:'sustantivo', es:'la arena', en:'sand', ex:'Los niños juegan en la arena.', exEn:'The children play in the sand.'},
+  {cat:'sustantivo', es:'la hoja', en:'leaf', ex:'Las hojas son verdes.', exEn:'The leaves are green.'},
+  {cat:'sustantivo', es:'la biblioteca', en:'library', ex:'Estudio en la biblioteca.', exEn:'I study at the library.'},
+  {cat:'sustantivo', es:'la tarea', en:'homework', ex:'Hago la tarea después de cenar.', exEn:'I do homework after dinner.'},
+  {cat:'sustantivo', es:'el horario', en:'schedule', ex:'Mi horario de trabajo cambió.', exEn:'My work schedule changed.'},
+  {cat:'sustantivo', es:'la nota', en:'grade', ex:'Saqué una buena nota.', exEn:'I got a good grade.'},
+  {cat:'sustantivo', es:'el título', en:'degree', ex:'Terminé mi título este año.', exEn:'I finished my degree this year.'},
+  {cat:'sustantivo', es:'la beca', en:'scholarship', ex:'Recibí una beca para estudiar.', exEn:'I received a scholarship to study.'},
+  {cat:'sustantivo', es:'el diploma', en:'diploma', ex:'Recibo mi diploma en junio.', exEn:'I receive my diploma in June.'},
+  {cat:'sustantivo', es:'la lección', en:'lesson', ex:'La lección de hoy es difícil.', exEn:"Today's lesson is difficult."},
+  {cat:'sustantivo', es:'el vocabulario', en:'vocabulary', ex:'Aprendo vocabulario nuevo cada día.', exEn:'I learn new vocabulary every day.'},
+  {cat:'sustantivo', es:'la gramática', en:'grammar', ex:'La gramática española es interesante.', exEn:'Spanish grammar is interesting.'},
+  {cat:'sustantivo', es:'la pregunta', en:'question', ex:'Tengo una pregunta para el profesor.', exEn:'I have a question for the teacher.'},
+  {cat:'sustantivo', es:'la respuesta', en:'answer', ex:'No sé la respuesta correcta.', exEn:"I don't know the correct answer."},
+  {cat:'sustantivo', es:'la felicidad', en:'happiness', ex:'La familia es mi felicidad.', exEn:'Family is my happiness.'},
+  {cat:'sustantivo', es:'la tristeza', en:'sadness', ex:'Sentí tristeza al despedirme.', exEn:'I felt sadness when saying goodbye.'},
+  {cat:'sustantivo', es:'el miedo', en:'fear', ex:'Tengo miedo a las alturas.', exEn:"I'm afraid of heights."},
+  {cat:'sustantivo', es:'la sorpresa', en:'surprise', ex:'Le preparé una sorpresa.', exEn:'I prepared a surprise for him/her.'},
+  {cat:'sustantivo', es:'el amor', en:'love', ex:'El amor de mi familia me ayuda.', exEn:"My family's love helps me."},
+  {cat:'sustantivo', es:'la amistad', en:'friendship', ex:'Valoro mucho nuestra amistad.', exEn:'I really value our friendship.'},
+  {cat:'sustantivo', es:'la paz', en:'peace', ex:'Deseo paz en el mundo.', exEn:'I wish for peace in the world.'},
+  {cat:'sustantivo', es:'la libertad', en:'freedom', ex:'La libertad es importante para todos.', exEn:'Freedom is important for everyone.'},
+  {cat:'sustantivo', es:'la justicia', en:'justice', ex:'Todos merecen justicia.', exEn:'Everyone deserves justice.'},
+  {cat:'sustantivo', es:'la verdad', en:'truth', ex:'Siempre digo la verdad.', exEn:'I always tell the truth.'},
+  {cat:'sustantivo', es:'la mentira', en:'lie', ex:'No me gustan las mentiras.', exEn:"I don't like lies."},
+  {cat:'sustantivo', es:'el problema', en:'problem', ex:'Tenemos un problema con el coche.', exEn:'We have a problem with the car.'},
+  {cat:'sustantivo', es:'la solución', en:'solution', ex:'Buscamos una solución rápida.', exEn:"We're looking for a quick solution."},
+  {cat:'sustantivo', es:'la idea', en:'idea', ex:'Tengo una idea nueva.', exEn:'I have a new idea.'},
+  {cat:'sustantivo', es:'el sueño', en:'dream', ex:'Mi sueño es viajar por el mundo.', exEn:'My dream is to travel the world.'},
+  {cat:'sustantivo', es:'la esperanza', en:'hope', ex:'Nunca pierdo la esperanza.', exEn:'I never lose hope.'},
+  {cat:'sustantivo', es:'la suerte', en:'luck', ex:'Tuve mucha suerte hoy.', exEn:'I had a lot of luck today.'},
+  {cat:'sustantivo', es:'el éxito', en:'success', ex:'Le deseo mucho éxito.', exEn:'I wish him/her much success.'},
+  {cat:'sustantivo', es:'el gobierno', en:'government', ex:'El gobierno anunció nuevas leyes.', exEn:'The government announced new laws.'},
+  {cat:'sustantivo', es:'la ley', en:'law', ex:'Esa ley es nueva.', exEn:'That law is new.'},
+  {cat:'sustantivo', es:'el presidente / la presidenta', en:'president', ex:'El presidente habla esta noche.', exEn:'The president speaks tonight.'},
+  {cat:'sustantivo', es:'la política', en:'politics', ex:'No hablamos de política en el trabajo.', exEn:"We don't talk about politics at work."},
+  {cat:'sustantivo', es:'la economía', en:'economy', ex:'La economía crece este año.', exEn:'The economy is growing this year.'},
+  {cat:'sustantivo', es:'la sociedad', en:'society', ex:'La educación mejora la sociedad.', exEn:'Education improves society.'},
+  {cat:'sustantivo', es:'la cultura', en:'culture', ex:'Me interesa la cultura española.', exEn:"I'm interested in Spanish culture."},
+  {cat:'sustantivo', es:'la religión', en:'religion', ex:'Respeto todas las religiones.', exEn:'I respect all religions.'},
+  {cat:'sustantivo', es:'la iglesia', en:'church', ex:'La iglesia está en el centro.', exEn:'The church is downtown.'},
+  {cat:'sustantivo', es:'el museo', en:'museum', ex:'Visitamos el museo el sábado.', exEn:'We visited the museum on Saturday.'},
+  {cat:'sustantivo', es:'el teatro', en:'theater', ex:'Vamos al teatro esta noche.', exEn:"We're going to the theater tonight."},
+  {cat:'sustantivo', es:'el cine', en:'movie theater', ex:'Vamos al cine los viernes.', exEn:'We go to the movies on Fridays.'},
+  {cat:'sustantivo', es:'el estadio', en:'stadium', ex:'El estadio está lleno de gente.', exEn:'The stadium is full of people.'},
+  {cat:'sustantivo', es:'la plaza', en:'square', ex:'Nos encontramos en la plaza.', exEn:'We meet at the square.'},
+  {cat:'sustantivo', es:'el puente', en:'bridge', ex:'Cruzamos el puente a pie.', exEn:'We cross the bridge on foot.'},
+  {cat:'sustantivo', es:'el edificio', en:'building', ex:'El edificio es muy alto.', exEn:'The building is very tall.'},
+  {cat:'sustantivo', es:'el fútbol', en:'soccer', ex:'Jugamos fútbol los domingos.', exEn:'We play soccer on Sundays.'},
+  {cat:'sustantivo', es:'el baloncesto', en:'basketball', ex:'Me gusta ver baloncesto.', exEn:'I like watching basketball.'},
+  {cat:'sustantivo', es:'el tenis', en:'tennis', ex:'Juego tenis con mi amigo.', exEn:'I play tennis with my friend.'},
+  {cat:'sustantivo', es:'la natación', en:'swimming', ex:'La natación es un buen ejercicio.', exEn:'Swimming is good exercise.'},
+  {cat:'sustantivo', es:'el equipo', en:'team', ex:'Nuestro equipo ganó el partido.', exEn:'Our team won the match.'},
+  {cat:'sustantivo', es:'el partido', en:'game, match', ex:'El partido empieza a las siete.', exEn:'The match starts at seven.'},
+  {cat:'sustantivo', es:'el gimnasio', en:'gym', ex:'Voy al gimnasio tres veces a la semana.', exEn:'I go to the gym three times a week.'},
+  {cat:'sustantivo', es:'la pintura', en:'painting', ex:'Me gusta la pintura moderna.', exEn:'I like modern painting.'},
+  {cat:'sustantivo', es:'el baile', en:'dance', ex:'El baile es parte de la fiesta.', exEn:'Dance is part of the celebration.'},
+  {cat:'sustantivo', es:'la película', en:'movie', ex:'Vimos una película anoche.', exEn:'We watched a movie last night.'},
+  {cat:'sustantivo', es:'la canción', en:'song', ex:'Esta canción me encanta.', exEn:'I love this song.'},
+  {cat:'sustantivo', es:'el juego', en:'game', ex:'Los niños juegan un juego nuevo.', exEn:'The kids are playing a new game.'},
+  {cat:'sustantivo', es:'la cuenta', en:'bill, account', ex:'Pido la cuenta al camarero.', exEn:'I ask the waiter for the bill.'},
+  {cat:'sustantivo', es:'la tarjeta', en:'card', ex:'Pago con tarjeta.', exEn:'I pay by card.'},
+  {cat:'sustantivo', es:'el recibo', en:'receipt', ex:'Guardo el recibo de la compra.', exEn:'I keep the receipt from the purchase.'},
+  {cat:'sustantivo', es:'el descuento', en:'discount', ex:'Hay un descuento en esta tienda.', exEn:"There's a discount at this store."},
+  {cat:'sustantivo', es:'la oferta', en:'offer, deal', ex:'Aproveché una buena oferta.', exEn:'I took advantage of a good deal.'},
+
+  // VERBOS
+  {cat:'verbo', es:'ser', en:'to be (permanent)', ex:'Ella es enfermera.', exEn:'She is a nurse.'},
+  {cat:'verbo', es:'estar', en:'to be (state, place)', ex:'Estoy cansado hoy.', exEn:'I am tired today.'},
+  {cat:'verbo', es:'tener', en:'to have', ex:'Tengo dos hermanos.', exEn:'I have two siblings.'},
+  {cat:'verbo', es:'ir', en:'to go', ex:'Voy a la universidad.', exEn:'I go to the university.'},
+  {cat:'verbo', es:'hacer', en:'to do, to make', ex:'Hago la tarea por la noche.', exEn:'I do homework at night.'},
+  {cat:'verbo', es:'comer', en:'to eat', ex:'Comemos a las dos.', exEn:'We eat at two.'},
+  {cat:'verbo', es:'beber', en:'to drink', ex:'Bebo café por la mañana.', exEn:'I drink coffee in the morning.'},
+  {cat:'verbo', es:'dormir', en:'to sleep', ex:'Duermo ocho horas.', exEn:'I sleep eight hours.'},
+  {cat:'verbo', es:'hablar', en:'to speak', ex:'Hablo español un poco.', exEn:'I speak a little Spanish.'},
+  {cat:'verbo', es:'trabajar', en:'to work', ex:'Trabajo en un hospital.', exEn:'I work in a hospital.'},
+  {cat:'verbo', es:'estudiar', en:'to study', ex:'Estudio enfermería.', exEn:'I study nursing.'},
+  {cat:'verbo', es:'vivir', en:'to live', ex:'Vivimos en la misma ciudad.', exEn:'We live in the same city.'},
+  {cat:'verbo', es:'comprar', en:'to buy', ex:'Voy a comprar verduras.', exEn:"I'm going to buy vegetables."},
+  {cat:'verbo', es:'querer', en:'to want, to love', ex:'Quiero aprender español.', exEn:'I want to learn Spanish.'},
+  {cat:'verbo', es:'poder', en:'to be able to, can', ex:'¿Puedes ayudarme?', exEn:'Can you help me?'},
+  {cat:'verbo', es:'gustar', en:'to like', ex:'Me gusta la música.', exEn:'I like music.'},
+  {cat:'verbo', es:'decir', en:'to say, to tell', ex:'Ella dice la verdad.', exEn:'She tells the truth.'},
+  {cat:'verbo', es:'ver', en:'to see', ex:'Veo la televisión por la noche.', exEn:'I watch TV at night.'},
+  {cat:'verbo', es:'dar', en:'to give', ex:'Le doy las gracias.', exEn:'I thank him/her.'},
+  {cat:'verbo', es:'saber', en:'to know (facts)', ex:'No sé la respuesta.', exEn:"I don't know the answer."},
+  {cat:'verbo', es:'conocer', en:'to know (people, places)', ex:'Conozco a tu hermana.', exEn:'I know your sister.'},
+  {cat:'verbo', es:'llegar', en:'to arrive', ex:'Llego a casa a las siete.', exEn:'I arrive home at seven.'},
+  {cat:'verbo', es:'pasar', en:'to pass, to happen', ex:'¿Qué pasa aquí?', exEn:"What's happening here?"},
+  {cat:'verbo', es:'deber', en:'to owe, should', ex:'Debo estudiar más.', exEn:'I should study more.'},
+  {cat:'verbo', es:'poner', en:'to put', ex:'Pongo la mesa para cenar.', exEn:'I set the table for dinner.'},
+  {cat:'verbo', es:'parecer', en:'to seem', ex:'Parece un buen plan.', exEn:'It seems like a good plan.'},
+  {cat:'verbo', es:'quedar', en:'to stay, to meet up', ex:'Quedamos a las cinco.', exEn:"We're meeting at five."},
+  {cat:'verbo', es:'creer', en:'to believe', ex:'Creo que tienes razón.', exEn:"I think you're right."},
+  {cat:'verbo', es:'llevar', en:'to carry, to wear', ex:'Llevo un abrigo hoy.', exEn:"I'm wearing a coat today."},
+  {cat:'verbo', es:'dejar', en:'to leave, to let', ex:'Dejo las llaves en la mesa.', exEn:'I leave the keys on the table.'},
+  {cat:'verbo', es:'seguir', en:'to follow, to continue', ex:'Sigo trabajando aquí.', exEn:"I'm still working here."},
+  {cat:'verbo', es:'encontrar', en:'to find', ex:'Encuentro las llaves fácilmente.', exEn:'I find the keys easily.'},
+  {cat:'verbo', es:'llamar', en:'to call', ex:'Te llamo esta noche.', exEn:"I'll call you tonight."},
+  {cat:'verbo', es:'venir', en:'to come', ex:'Vengo de la universidad.', exEn:"I'm coming from the university."},
+  {cat:'verbo', es:'pensar', en:'to think', ex:'Pienso en mi familia.', exEn:'I think about my family.'},
+  {cat:'verbo', es:'salir', en:'to leave, to go out', ex:'Salgo con mis amigos.', exEn:'I go out with my friends.'},
+  {cat:'verbo', es:'volver', en:'to return', ex:'Vuelvo a casa tarde.', exEn:'I return home late.'},
+  {cat:'verbo', es:'tomar', en:'to take, to drink', ex:'Tomo el autobús cada mañana.', exEn:'I take the bus every morning.'},
+  {cat:'verbo', es:'tratar', en:'to try, to deal with', ex:'Trato de llegar a tiempo.', exEn:'I try to arrive on time.'},
+  {cat:'verbo', es:'mirar', en:'to look, to watch', ex:'Miro por la ventana.', exEn:'I look out the window.'},
+  {cat:'verbo', es:'contar', en:'to count, to tell', ex:'Cuento los días.', exEn:'I count the days.'},
+  {cat:'verbo', es:'empezar', en:'to begin', ex:'Empiezo a trabajar a las nueve.', exEn:'I start work at nine.'},
+  {cat:'verbo', es:'esperar', en:'to wait, to hope', ex:'Espero el autobús.', exEn:"I'm waiting for the bus."},
+  {cat:'verbo', es:'buscar', en:'to look for', ex:'Busco un buen restaurante.', exEn:"I'm looking for a good restaurant."},
+  {cat:'verbo', es:'existir', en:'to exist', ex:'Ese problema ya no existe.', exEn:'That problem no longer exists.'},
+  {cat:'verbo', es:'entrar', en:'to enter', ex:'Entro a la clase a tiempo.', exEn:'I enter class on time.'},
+  {cat:'verbo', es:'pedir', en:'to ask for, to order', ex:'Pido agua, por favor.', exEn:'I order water, please.'},
+  {cat:'verbo', es:'servir', en:'to serve', ex:'Sirven comida deliciosa aquí.', exEn:'They serve delicious food here.'},
+  {cat:'verbo', es:'sacar', en:'to take out', ex:'Saco la basura por la noche.', exEn:'I take out the trash at night.'},
+  {cat:'verbo', es:'necesitar', en:'to need', ex:'Necesito descansar un poco.', exEn:'I need to rest a little.'},
+  {cat:'verbo', es:'mantener', en:'to maintain', ex:'Mantengo mi cuarto ordenado.', exEn:'I keep my room tidy.'},
+  {cat:'verbo', es:'resultar', en:'to result, to turn out', ex:'Resultó un buen día.', exEn:'It turned out to be a good day.'},
+  {cat:'verbo', es:'leer', en:'to read', ex:'Leo un libro cada mes.', exEn:'I read a book every month.'},
+  {cat:'verbo', es:'caer', en:'to fall', ex:'El vaso cayó al suelo.', exEn:'The glass fell to the floor.'},
+  {cat:'verbo', es:'cambiar', en:'to change', ex:'Cambio de trabajo pronto.', exEn:"I'm changing jobs soon."},
+  {cat:'verbo', es:'presentar', en:'to present, to introduce', ex:'Te presento a mi amigo.', exEn:'Let me introduce you to my friend.'},
+  {cat:'verbo', es:'crear', en:'to create', ex:'Creamos un plan nuevo.', exEn:'We create a new plan.'},
+  {cat:'verbo', es:'abrir', en:'to open', ex:'Abro la puerta.', exEn:'I open the door.'},
+  {cat:'verbo', es:'considerar', en:'to consider', ex:'Considero tu opinión.', exEn:'I consider your opinion.'},
+  {cat:'verbo', es:'terminar', en:'to finish', ex:'Termino el trabajo a las cinco.', exEn:'I finish work at five.'},
+  {cat:'verbo', es:'permitir', en:'to allow', ex:'No permito eso.', exEn:"I don't allow that."},
+  {cat:'verbo', es:'aparecer', en:'to appear', ex:'El sol aparece temprano.', exEn:'The sun appears early.'},
+  {cat:'verbo', es:'conseguir', en:'to get, to achieve', ex:'Consigo un buen resultado.', exEn:'I get a good result.'},
+  {cat:'verbo', es:'comenzar', en:'to begin', ex:'Comienzo mis estudios en marzo.', exEn:'I begin my studies in March.'},
+  {cat:'verbo', es:'acabar', en:'to finish, to end', ex:'Acabo de llegar.', exEn:'I just arrived.'},
+  {cat:'verbo', es:'formar', en:'to form', ex:'Formamos un buen equipo.', exEn:'We form a good team.'},
+  {cat:'verbo', es:'sentir', en:'to feel', ex:'Siento mucho frío.', exEn:'I feel very cold.'},
+  {cat:'verbo', es:'recordar', en:'to remember', ex:'Recuerdo su nombre.', exEn:"I remember his/her name."},
+  {cat:'verbo', es:'mostrar', en:'to show', ex:'Te muestro el camino.', exEn:"I'll show you the way."},
+  {cat:'verbo', es:'escribir', en:'to write', ex:'Escribo una carta.', exEn:'I write a letter.'},
+  {cat:'verbo', es:'perder', en:'to lose', ex:'No quiero perder el tren.', exEn:"I don't want to miss the train."},
+  {cat:'verbo', es:'producir', en:'to produce', ex:'La fábrica produce mucho.', exEn:'The factory produces a lot.'},
+  {cat:'verbo', es:'ocurrir', en:'to occur, to happen', ex:'El accidente ocurrió ayer.', exEn:'The accident happened yesterday.'},
+  {cat:'verbo', es:'entender', en:'to understand', ex:'Entiendo la lección.', exEn:'I understand the lesson.'},
+  {cat:'verbo', es:'recibir', en:'to receive', ex:'Recibo un mensaje.', exEn:'I receive a message.'},
+  {cat:'verbo', es:'usar', en:'to use', ex:'Uso mi teléfono todo el día.', exEn:'I use my phone all day.'},
+  {cat:'verbo', es:'cerrar', en:'to close', ex:'Cierro la ventana.', exEn:'I close the window.'},
+  {cat:'verbo', es:'correr', en:'to run', ex:'Corro por la mañana.', exEn:'I run in the morning.'},
+  {cat:'verbo', es:'aprender', en:'to learn', ex:'Aprendo palabras nuevas.', exEn:'I learn new words.'},
+  {cat:'verbo', es:'subir', en:'to go up', ex:'Subo las escaleras.', exEn:'I go up the stairs.'},
+  {cat:'verbo', es:'bajar', en:'to go down', ex:'Bajo del autobús aquí.', exEn:'I get off the bus here.'},
+  {cat:'verbo', es:'jugar', en:'to play', ex:'Juego fútbol los fines de semana.', exEn:'I play soccer on weekends.'},
+  {cat:'verbo', es:'cocinar', en:'to cook', ex:'Cocino la cena hoy.', exEn:"I'm cooking dinner today."},
+  {cat:'verbo', es:'limpiar', en:'to clean', ex:'Limpio la casa los sábados.', exEn:'I clean the house on Saturdays.'},
+  {cat:'verbo', es:'lavar', en:'to wash', ex:'Lavo los platos después de comer.', exEn:'I wash the dishes after eating.'},
+  {cat:'verbo', es:'cortar', en:'to cut', ex:'Corto las verduras.', exEn:'I cut the vegetables.'},
+  {cat:'verbo', es:'andar', en:'to walk', ex:'Ando por el parque.', exEn:'I walk through the park.'},
+  {cat:'verbo', es:'caminar', en:'to walk', ex:'Camino a la escuela.', exEn:'I walk to school.'},
+  {cat:'verbo', es:'bailar', en:'to dance', ex:'Bailamos en la fiesta.', exEn:'We dance at the party.'},
+  {cat:'verbo', es:'cantar', en:'to sing', ex:'Canto en la ducha.', exEn:'I sing in the shower.'},
+  {cat:'verbo', es:'escuchar', en:'to listen', ex:'Escucho música clásica.', exEn:'I listen to classical music.'},
+  {cat:'verbo', es:'viajar', en:'to travel', ex:'Viajo mucho por trabajo.', exEn:'I travel a lot for work.'},
+  {cat:'verbo', es:'manejar', en:'to drive', ex:'Manejo al trabajo.', exEn:'I drive to work.'},
+  {cat:'verbo', es:'conducir', en:'to drive', ex:'Conduzco con cuidado.', exEn:'I drive carefully.'},
+  {cat:'verbo', es:'montar', en:'to ride, to set up', ex:'Monto en bicicleta.', exEn:'I ride a bike.'},
+  {cat:'verbo', es:'nadar', en:'to swim', ex:'Nado los fines de semana.', exEn:'I swim on weekends.'},
+  {cat:'verbo', es:'saltar', en:'to jump', ex:'El niño salta feliz.', exEn:'The child jumps happily.'},
+  {cat:'verbo', es:'reír', en:'to laugh', ex:'Reímos mucho juntos.', exEn:'We laugh a lot together.'},
+  {cat:'verbo', es:'sonreír', en:'to smile', ex:'Ella siempre sonríe.', exEn:'She always smiles.'},
+  {cat:'verbo', es:'llorar', en:'to cry', ex:'El bebé llora por la noche.', exEn:'The baby cries at night.'},
+  {cat:'verbo', es:'gritar', en:'to shout', ex:'No grites, por favor.', exEn:"Don't shout, please."},
+  {cat:'verbo', es:'cuidar', en:'to take care of', ex:'Cuido a mi abuela.', exEn:'I take care of my grandmother.'},
+  {cat:'verbo', es:'ayudar', en:'to help', ex:'Ayudo a mis compañeros.', exEn:'I help my classmates.'},
+  {cat:'verbo', es:'amar', en:'to love', ex:'Amo a mi familia.', exEn:'I love my family.'},
+  {cat:'verbo', es:'odiar', en:'to hate', ex:'Odio el tráfico.', exEn:'I hate traffic.'},
+  {cat:'verbo', es:'desear', en:'to wish, to desire', ex:'Deseo un buen viaje.', exEn:'I wish you a good trip.'},
+  {cat:'verbo', es:'imaginar', en:'to imagine', ex:'Imagino un futuro mejor.', exEn:'I imagine a better future.'},
+  {cat:'verbo', es:'soñar', en:'to dream', ex:'Sueño con viajar a España.', exEn:'I dream of traveling to Spain.'},
+  {cat:'verbo', es:'olvidar', en:'to forget', ex:'Olvido las llaves a veces.', exEn:'I forget my keys sometimes.'},
+  {cat:'verbo', es:'aprovechar', en:'to take advantage of', ex:'Aprovecho el fin de semana.', exEn:'I make the most of the weekend.'},
+  {cat:'verbo', es:'intentar', en:'to try', ex:'Intento hablar más español.', exEn:'I try to speak more Spanish.'},
+  {cat:'verbo', es:'lograr', en:'to achieve', ex:'Logro mis metas poco a poco.', exEn:'I achieve my goals little by little.'},
+  {cat:'verbo', es:'ganar', en:'to win, to earn', ex:'Gano un buen salario.', exEn:'I earn a good salary.'},
+  {cat:'verbo', es:'invertir', en:'to invest', ex:'Invierto en mi educación.', exEn:'I invest in my education.'},
+  {cat:'verbo', es:'ahorrar', en:'to save (money)', ex:'Ahorro dinero cada mes.', exEn:'I save money every month.'},
+  {cat:'verbo', es:'gastar', en:'to spend', ex:'Gasto poco en ropa.', exEn:'I spend little on clothes.'},
+  {cat:'verbo', es:'pagar', en:'to pay', ex:'Pago la cuenta.', exEn:'I pay the bill.'},
+  {cat:'verbo', es:'vender', en:'to sell', ex:'Vendo mi coche viejo.', exEn:"I'm selling my old car."},
+  {cat:'verbo', es:'costar', en:'to cost', ex:'¿Cuánto cuesta esto?', exEn:'How much does this cost?'},
+  {cat:'verbo', es:'prestar', en:'to lend', ex:'Te presto mi libro.', exEn:"I'll lend you my book."},
+  {cat:'verbo', es:'devolver', en:'to return (something)', ex:'Devuelvo el libro mañana.', exEn:"I'll return the book tomorrow."},
+  {cat:'verbo', es:'reservar', en:'to reserve, to book', ex:'Reservo una mesa para dos.', exEn:'I book a table for two.'},
+  {cat:'verbo', es:'volar', en:'to fly', ex:'El avión vuela alto.', exEn:'The plane flies high.'},
+  {cat:'verbo', es:'aterrizar', en:'to land', ex:'El avión aterriza a las ocho.', exEn:'The plane lands at eight.'},
+  {cat:'verbo', es:'despegar', en:'to take off', ex:'El vuelo despega pronto.', exEn:'The flight takes off soon.'},
+  {cat:'verbo', es:'descargar', en:'to download', ex:'Descargo la aplicación.', exEn:'I download the app.'},
+  {cat:'verbo', es:'cargar', en:'to load, to charge', ex:'Cargo mi teléfono por la noche.', exEn:'I charge my phone at night.'},
+  {cat:'verbo', es:'enviar', en:'to send', ex:'Envío el correo ahora.', exEn:'I send the email now.'},
+  {cat:'verbo', es:'mandar', en:'to send, to order', ex:'Mando un mensaje rápido.', exEn:'I send a quick message.'},
+  {cat:'verbo', es:'contestar', en:'to answer', ex:'Contesto el teléfono.', exEn:'I answer the phone.'},
+  {cat:'verbo', es:'responder', en:'to respond', ex:'Respondo a tus preguntas.', exEn:'I answer your questions.'},
+  {cat:'verbo', es:'preguntar', en:'to ask', ex:'Pregunto por el precio.', exEn:'I ask about the price.'},
+  {cat:'verbo', es:'explicar', en:'to explain', ex:'Explico la lección de nuevo.', exEn:'I explain the lesson again.'},
+  {cat:'verbo', es:'enseñar', en:'to teach', ex:'Enseño español a mis amigos.', exEn:'I teach Spanish to my friends.'},
+  {cat:'verbo', es:'practicar', en:'to practice', ex:'Practico cada día.', exEn:'I practice every day.'},
+  {cat:'verbo', es:'repetir', en:'to repeat', ex:'Repito la palabra despacio.', exEn:'I repeat the word slowly.'},
+  {cat:'verbo', es:'corregir', en:'to correct', ex:'Corrijo mis errores.', exEn:'I correct my mistakes.'},
+  {cat:'verbo', es:'revisar', en:'to review, to check', ex:'Reviso mi tarea antes de entregarla.', exEn:'I check my homework before submitting it.'},
+  {cat:'verbo', es:'firmar', en:'to sign', ex:'Firmo el documento.', exEn:'I sign the document.'},
+  {cat:'verbo', es:'imprimir', en:'to print', ex:'Imprimo el informe.', exEn:'I print the report.'},
+  {cat:'verbo', es:'copiar', en:'to copy', ex:'Copio los apuntes.', exEn:'I copy the notes.'},
+  {cat:'verbo', es:'pegar', en:'to paste, to stick, to hit', ex:'Pego la foto en el álbum.', exEn:'I stick the photo in the album.'},
+  {cat:'verbo', es:'borrar', en:'to erase', ex:'Borro el error.', exEn:'I erase the mistake.'},
+  {cat:'verbo', es:'dibujar', en:'to draw', ex:'Dibujo en mi tiempo libre.', exEn:'I draw in my free time.'},
+  {cat:'verbo', es:'pintar', en:'to paint', ex:'Pinto la pared de azul.', exEn:'I paint the wall blue.'},
+  {cat:'verbo', es:'construir', en:'to build', ex:'Construyen un hospital nuevo.', exEn:'They are building a new hospital.'},
+  {cat:'verbo', es:'reparar', en:'to repair', ex:'Reparo mi bicicleta.', exEn:'I repair my bike.'},
+  {cat:'verbo', es:'romper', en:'to break', ex:'Rompo el papel.', exEn:'I tear the paper.'},
+  {cat:'verbo', es:'arreglar', en:'to fix, to arrange', ex:'Arreglo mi cuarto.', exEn:'I tidy my room.'},
+  {cat:'verbo', es:'mover', en:'to move', ex:'Muevo la silla.', exEn:'I move the chair.'},
+  {cat:'verbo', es:'tocar', en:'to touch, to play (instrument)', ex:'Toco la guitarra.', exEn:'I play the guitar.'},
+  {cat:'verbo', es:'abrazar', en:'to hug', ex:'Abrazo a mi madre.', exEn:'I hug my mother.'},
+  {cat:'verbo', es:'besar', en:'to kiss', ex:'Besa a su hijo.', exEn:'He/she kisses their child.'},
+  {cat:'verbo', es:'saludar', en:'to greet', ex:'Saludo a mis vecinos.', exEn:'I greet my neighbors.'},
+  {cat:'verbo', es:'despedirse', en:'to say goodbye', ex:'Me despido de mis amigos.', exEn:'I say goodbye to my friends.'},
+  {cat:'verbo', es:'presentarse', en:'to introduce oneself', ex:'Me presento a la clase.', exEn:'I introduce myself to the class.'},
+  {cat:'verbo', es:'levantarse', en:'to get up', ex:'Me levanto a las seis.', exEn:'I get up at six.'},
+  {cat:'verbo', es:'acostarse', en:'to go to bed', ex:'Me acuesto temprano.', exEn:'I go to bed early.'},
+  {cat:'verbo', es:'despertarse', en:'to wake up', ex:'Me despierto con el sol.', exEn:'I wake up with the sun.'},
+  {cat:'verbo', es:'bañarse', en:'to bathe', ex:'Me baño por la noche.', exEn:'I bathe at night.'},
+  {cat:'verbo', es:'ducharse', en:'to shower', ex:'Me ducho antes de salir.', exEn:'I shower before going out.'},
+  {cat:'verbo', es:'vestirse', en:'to get dressed', ex:'Me visto rápido.', exEn:'I get dressed quickly.'},
+  {cat:'verbo', es:'peinarse', en:"to comb one's hair", ex:'Me peino antes de salir.', exEn:'I comb my hair before going out.'},
+  {cat:'verbo', es:'afeitarse', en:'to shave', ex:'Se afeita cada mañana.', exEn:'He shaves every morning.'},
+  {cat:'verbo', es:'sentarse', en:'to sit down', ex:'Me siento en la silla.', exEn:'I sit in the chair.'},
+  {cat:'verbo', es:'pararse', en:'to stand up, to stop', ex:'Me paro cerca de la puerta.', exEn:'I stand near the door.'},
+  {cat:'verbo', es:'quedarse', en:'to stay', ex:'Me quedo en casa hoy.', exEn:"I'm staying home today."},
+  {cat:'verbo', es:'moverse', en:'to move (oneself)', ex:'No te muevas, por favor.', exEn:"Don't move, please."},
+  {cat:'verbo', es:'casarse', en:'to get married', ex:'Se casan en junio.', exEn:"They're getting married in June."},
+  {cat:'verbo', es:'divorciarse', en:'to get divorced', ex:'Se divorciaron el año pasado.', exEn:'They got divorced last year.'},
+  {cat:'verbo', es:'enamorarse', en:'to fall in love', ex:'Me enamoré de ella.', exEn:'I fell in love with her.'},
+  {cat:'verbo', es:'mudarse', en:'to move house', ex:'Nos mudamos la próxima semana.', exEn:"We're moving next week."},
+  {cat:'verbo', es:'jubilarse', en:'to retire', ex:'Mi padre se jubila este año.', exEn:'My father is retiring this year.'},
+  {cat:'verbo', es:'graduarse', en:'to graduate', ex:'Me gradúo en mayo.', exEn:'I graduate in May.'},
+  {cat:'verbo', es:'nacer', en:'to be born', ex:'Nací en Rajshahi.', exEn:'I was born in Rajshahi.'},
+  {cat:'verbo', es:'morir', en:'to die', ex:'Nadie quiere morir joven.', exEn:'No one wants to die young.'},
+  {cat:'verbo', es:'crecer', en:'to grow', ex:'Los niños crecen rápido.', exEn:'Children grow up fast.'},
+  {cat:'verbo', es:'mejorar', en:'to improve', ex:'Mi español mejora cada día.', exEn:'My Spanish improves every day.'},
+  {cat:'verbo', es:'empeorar', en:'to worsen', ex:'El clima empeora esta semana.', exEn:'The weather is getting worse this week.'},
+  {cat:'verbo', es:'curar', en:'to cure, to heal', ex:'El médico cura al paciente.', exEn:'The doctor heals the patient.'},
+  {cat:'verbo', es:'enfermar', en:'to get sick', ex:'No quiero enfermarme.', exEn:'I don\'t want to get sick.'},
+  {cat:'verbo', es:'sanar', en:'to heal', ex:'La herida sana bien.', exEn:'The wound is healing well.'},
+  {cat:'verbo', es:'respirar', en:'to breathe', ex:'Respiro aire fresco.', exEn:'I breathe fresh air.'},
+  {cat:'verbo', es:'descansar', en:'to rest', ex:'Descanso los domingos.', exEn:'I rest on Sundays.'},
+  {cat:'verbo', es:'relajarse', en:'to relax', ex:'Me relajo con música.', exEn:'I relax with music.'},
+  {cat:'verbo', es:'preocuparse', en:'to worry', ex:'No te preocupes tanto.', exEn:"Don't worry so much."},
+  {cat:'verbo', es:'alegrarse', en:'to be glad', ex:'Me alegro de verte.', exEn:"I'm glad to see you."},
+  {cat:'verbo', es:'enojarse', en:'to get angry', ex:'Se enoja fácilmente.', exEn:'He/she gets angry easily.'},
+  {cat:'verbo', es:'sorprenderse', en:'to be surprised', ex:'Me sorprendo con la noticia.', exEn:"I'm surprised by the news."},
+  {cat:'verbo', es:'quejarse', en:'to complain', ex:'No me gusta quejarme.', exEn:"I don't like to complain."},
+  {cat:'verbo', es:'disfrutar', en:'to enjoy', ex:'Disfruto mi trabajo.', exEn:'I enjoy my job.'},
+  {cat:'verbo', es:'celebrar', en:'to celebrate', ex:'Celebramos su cumpleaños.', exEn:"We celebrate his/her birthday."},
+  {cat:'verbo', es:'invitar', en:'to invite', ex:'Te invito a cenar.', exEn:'I invite you to dinner.'},
+  {cat:'verbo', es:'visitar', en:'to visit', ex:'Visito a mi familia cada año.', exEn:'I visit my family every year.'},
+  {cat:'verbo', es:'acompañar', en:'to accompany', ex:'Te acompaño a casa.', exEn:"I'll walk you home."},
+  {cat:'verbo', es:'reunirse', en:'to meet up', ex:'Nos reunimos el viernes.', exEn:'We meet up on Friday.'},
+  {cat:'verbo', es:'charlar', en:'to chat', ex:'Charlamos por horas.', exEn:'We chat for hours.'},
+  {cat:'verbo', es:'discutir', en:'to argue, to discuss', ex:'No quiero discutir contigo.', exEn:"I don't want to argue with you."},
+  {cat:'verbo', es:'aceptar', en:'to accept', ex:'Acepto tu invitación.', exEn:'I accept your invitation.'},
+  {cat:'verbo', es:'negar', en:'to deny, to refuse', ex:'No puedo negarlo.', exEn:"I can't deny it."},
+  {cat:'verbo', es:'desayunar', en:'to have breakfast', ex:'Desayuno pan y café.', exEn:'I have bread and coffee for breakfast.'},
+  {cat:'verbo', es:'almorzar', en:'to have lunch', ex:'Almuerzo a la una.', exEn:'I have lunch at one.'},
+  {cat:'verbo', es:'cenar', en:'to have dinner', ex:'Cenamos juntos los domingos.', exEn:'We have dinner together on Sundays.'},
+  {cat:'verbo', es:'merendar', en:'to have a snack', ex:'Los niños meriendan a las cinco.', exEn:'The kids have a snack at five.'},
+  {cat:'verbo', es:'elegir', en:'to choose', ex:'Elijo la camisa azul.', exEn:'I choose the blue shirt.'},
+  {cat:'verbo', es:'decidir', en:'to decide', ex:'No puedo decidir qué comer.', exEn:"I can't decide what to eat."},
+  {cat:'verbo', es:'incluir', en:'to include', ex:'El precio incluye el desayuno.', exEn:'The price includes breakfast.'},
+  {cat:'verbo', es:'añadir', en:'to add', ex:'Añado sal a la sopa.', exEn:'I add salt to the soup.'},
+  {cat:'verbo', es:'quitar', en:'to remove, to take away', ex:'Quito los platos de la mesa.', exEn:'I clear the plates from the table.'},
+  {cat:'verbo', es:'meter', en:'to put in', ex:'Meto la ropa en la maleta.', exEn:'I put the clothes in the suitcase.'},
+  {cat:'verbo', es:'colocar', en:'to place', ex:'Coloco los libros en el estante.', exEn:'I place the books on the shelf.'},
+  {cat:'verbo', es:'guardar', en:'to keep, to save', ex:'Guardo el dinero en el banco.', exEn:'I keep the money in the bank.'},
+  {cat:'verbo', es:'tirar', en:'to throw, to pull', ex:'Tiro la basura todos los días.', exEn:'I throw out the trash every day.'},
+  {cat:'verbo', es:'empujar', en:'to push', ex:'Empujo la puerta para abrirla.', exEn:'I push the door to open it.'},
+  {cat:'verbo', es:'llenar', en:'to fill', ex:'Lleno el vaso de agua.', exEn:'I fill the glass with water.'},
+  {cat:'verbo', es:'vaciar', en:'to empty', ex:'Vacío la mochila antes de dormir.', exEn:'I empty my backpack before sleeping.'},
+  {cat:'verbo', es:'doblar', en:'to fold, to turn', ex:'Doblo la ropa limpia.', exEn:'I fold the clean clothes.'},
+  {cat:'verbo', es:'cepillarse', en:'to brush', ex:'Me cepillo los dientes dos veces al día.', exEn:'I brush my teeth twice a day.'},
+  {cat:'verbo', es:'maquillarse', en:'to put on makeup', ex:'Se maquilla antes de salir.', exEn:'She puts on makeup before going out.'},
+  {cat:'verbo', es:'desvestirse', en:'to undress', ex:'Se desviste antes de bañarse.', exEn:'He/she undresses before bathing.'},
+  {cat:'verbo', es:'continuar', en:'to continue', ex:'Continúo mis estudios el próximo año.', exEn:'I continue my studies next year.'},
+  {cat:'verbo', es:'parar', en:'to stop', ex:'El autobús para aquí.', exEn:'The bus stops here.'},
+  {cat:'verbo', es:'detener', en:'to stop, to detain', ex:'El policía detiene el tráfico.', exEn:'The police officer stops traffic.'},
+  {cat:'verbo', es:'avanzar', en:'to advance', ex:'Avanzo poco a poco en mis estudios.', exEn:'I advance little by little in my studies.'},
+  {cat:'verbo', es:'acercarse', en:'to approach', ex:'Me acerco a la puerta.', exEn:'I approach the door.'},
+  {cat:'verbo', es:'alejarse', en:'to move away', ex:'El coche se aleja despacio.', exEn:'The car moves away slowly.'},
+  {cat:'verbo', es:'separar', en:'to separate', ex:'Separo la ropa de color.', exEn:'I separate the colored clothes.'},
+  {cat:'verbo', es:'juntar', en:'to join, to gather', ex:'Junto todas las fotos en un álbum.', exEn:'I gather all the photos in an album.'},
+  {cat:'verbo', es:'combinar', en:'to combine', ex:'Combino los colores con cuidado.', exEn:'I combine the colors carefully.'},
+  {cat:'verbo', es:'mezclar', en:'to mix', ex:'Mezclo el azúcar con el café.', exEn:'I mix the sugar with the coffee.'},
+  {cat:'verbo', es:'calcular', en:'to calculate', ex:'Calculo el precio total.', exEn:'I calculate the total price.'},
+  {cat:'verbo', es:'medir', en:'to measure', ex:'Mido la habitación antes de comprar muebles.', exEn:'I measure the room before buying furniture.'},
+  {cat:'verbo', es:'pesar', en:'to weigh', ex:'Peso las frutas en el mercado.', exEn:'I weigh the fruit at the market.'},
+  {cat:'verbo', es:'sumar', en:'to add up', ex:'Sumo los números rápido.', exEn:'I add up the numbers quickly.'},
+  {cat:'verbo', es:'resolver', en:'to solve, to resolve', ex:'Resuelvo el problema con calma.', exEn:'I solve the problem calmly.'},
+  {cat:'verbo', es:'organizar', en:'to organize', ex:'Organizo mi cuarto los fines de semana.', exEn:'I organize my room on weekends.'},
+  {cat:'verbo', es:'planear', en:'to plan', ex:'Planeamos un viaje juntos.', exEn:'We plan a trip together.'},
+  {cat:'verbo', es:'escoger', en:'to choose, to pick', ex:'Escojo el camino más corto.', exEn:'I pick the shortest route.'},
+  {cat:'verbo', es:'preferir', en:'to prefer', ex:'Prefiero el té al café.', exEn:'I prefer tea over coffee.'},
+  {cat:'verbo', es:'evitar', en:'to avoid', ex:'Evito el tráfico por la mañana.', exEn:'I avoid traffic in the morning.'},
+  {cat:'verbo', es:'fallar', en:'to fail', ex:'El plan falló al final.', exEn:'The plan failed in the end.'},
+  {cat:'verbo', es:'equivocarse', en:'to make a mistake', ex:'Me equivoco a veces al hablar español.', exEn:'I make mistakes sometimes when speaking Spanish.'},
+  {cat:'verbo', es:'arrepentirse', en:'to regret', ex:'No me arrepiento de mi decisión.', exEn:"I don't regret my decision."},
+  {cat:'verbo', es:'disculparse', en:'to apologize', ex:'Me disculpo por llegar tarde.', exEn:'I apologize for arriving late.'},
+  {cat:'verbo', es:'atreverse', en:'to dare', ex:'Me atrevo a hablar en público.', exEn:'I dare to speak in public.'},
+  {cat:'verbo', es:'rendirse', en:'to give up', ex:'Nunca me rindo fácilmente.', exEn:'I never give up easily.'},
+  {cat:'verbo', es:'luchar', en:'to fight, to struggle', ex:'Luchamos por nuestros sueños.', exEn:'We fight for our dreams.'},
+  {cat:'verbo', es:'competir', en:'to compete', ex:'Competimos en el torneo.', exEn:'We compete in the tournament.'},
+  {cat:'verbo', es:'vencer', en:'to defeat, to overcome', ex:'Vencí mi miedo a hablar en público.', exEn:'I overcame my fear of public speaking.'},
+  {cat:'verbo', es:'marcar', en:'to mark, to dial, to score', ex:'Marco tu número de teléfono.', exEn:'I dial your phone number.'},
+
+  // ADJETIVOS
+  {cat:'adjetivo', es:'bueno / buena', en:'good', ex:'Es un buen día.', exEn:"It's a good day."},
+  {cat:'adjetivo', es:'malo / mala', en:'bad', ex:'El tráfico es malo hoy.', exEn:'The traffic is bad today.'},
+  {cat:'adjetivo', es:'grande', en:'big, large', ex:'Es una casa grande.', exEn:"It's a big house."},
+  {cat:'adjetivo', es:'pequeño / pequeña', en:'small', ex:'Tengo un cuarto pequeño.', exEn:'I have a small room.'},
+  {cat:'adjetivo', es:'feliz', en:'happy', ex:'Estoy feliz hoy.', exEn:'I am happy today.'},
+  {cat:'adjetivo', es:'triste', en:'sad', ex:'Se siente triste.', exEn:'He/she feels sad.'},
+  {cat:'adjetivo', es:'cansado / cansada', en:'tired', ex:'Estamos cansados después del trabajo.', exEn:'We are tired after work.'},
+  {cat:'adjetivo', es:'ocupado / ocupada', en:'busy', ex:'Ella está muy ocupada.', exEn:'She is very busy.'},
+  {cat:'adjetivo', es:'caro / cara', en:'expensive', ex:'Ese restaurante es caro.', exEn:'That restaurant is expensive.'},
+  {cat:'adjetivo', es:'barato / barata', en:'cheap', ex:'El mercado es barato.', exEn:'The market is cheap.'},
+  {cat:'adjetivo', es:'nuevo / nueva', en:'new', ex:'Compré un teléfono nuevo.', exEn:'I bought a new phone.'},
+  {cat:'adjetivo', es:'fácil', en:'easy', ex:'El examen fue fácil.', exEn:'The exam was easy.'},
+  {cat:'adjetivo', es:'difícil', en:'difficult', ex:'El español es difícil al principio.', exEn:'Spanish is difficult at first.'},
+  {cat:'adjetivo', es:'importante', en:'important', ex:'La salud es importante.', exEn:'Health is important.'},
+  {cat:'adjetivo', es:'contento / contenta', en:'happy, content', ex:'Estoy contento con mi trabajo.', exEn:"I'm happy with my job."},
+  {cat:'adjetivo', es:'enfermo / enferma', en:'sick', ex:'Mi hermano está enfermo hoy.', exEn:'My brother is sick today.'},
+  {cat:'adjetivo', es:'alto / alta', en:'tall', ex:'Mi hermano es muy alto.', exEn:'My brother is very tall.'},
+  {cat:'adjetivo', es:'bajo / baja', en:'short (height)', ex:'Ella es un poco baja.', exEn:'She is a bit short.'},
+  {cat:'adjetivo', es:'gordo / gorda', en:'fat', ex:'El gato está un poco gordo.', exEn:'The cat is a bit fat.'},
+  {cat:'adjetivo', es:'delgado / delgada', en:'thin', ex:'Es alto y delgado.', exEn:'He is tall and thin.'},
+  {cat:'adjetivo', es:'joven', en:'young', ex:'Ella es muy joven.', exEn:'She is very young.'},
+  {cat:'adjetivo', es:'viejo / vieja', en:'old', ex:'Mi abuelo ya es viejo.', exEn:'My grandfather is already old.'},
+  {cat:'adjetivo', es:'guapo / guapa', en:'handsome, pretty', ex:'Su novio es muy guapo.', exEn:'Her boyfriend is very handsome.'},
+  {cat:'adjetivo', es:'bonito / bonita', en:'pretty', ex:'Es un vestido muy bonito.', exEn:"It's a very pretty dress."},
+  {cat:'adjetivo', es:'feo / fea', en:'ugly', ex:'El edificio es un poco feo.', exEn:'The building is a bit ugly.'},
+  {cat:'adjetivo', es:'inteligente', en:'intelligent', ex:'Es una estudiante muy inteligente.', exEn:'She is a very intelligent student.'},
+  {cat:'adjetivo', es:'tonto / tonta', en:'silly, dumb', ex:'No seas tonto.', exEn:"Don't be silly."},
+  {cat:'adjetivo', es:'amable', en:'kind', ex:'El profesor es muy amable.', exEn:'The teacher is very kind.'},
+  {cat:'adjetivo', es:'simpático / simpática', en:'nice, friendly', ex:'Mis compañeros son simpáticos.', exEn:'My classmates are nice.'},
+  {cat:'adjetivo', es:'antipático / antipática', en:'unpleasant', ex:'El vendedor fue antipático.', exEn:'The salesman was unpleasant.'},
+  {cat:'adjetivo', es:'fuerte', en:'strong', ex:'Mi padre es muy fuerte.', exEn:'My father is very strong.'},
+  {cat:'adjetivo', es:'débil', en:'weak', ex:'Me siento un poco débil hoy.', exEn:'I feel a bit weak today.'},
+  {cat:'adjetivo', es:'rápido / rápida', en:'fast', ex:'Su coche es muy rápido.', exEn:'His car is very fast.'},
+  {cat:'adjetivo', es:'lento / lenta', en:'slow', ex:'El internet está muy lento.', exEn:'The internet is very slow.'},
+  {cat:'adjetivo', es:'limpio / limpia', en:'clean', ex:'La casa está limpia.', exEn:'The house is clean.'},
+  {cat:'adjetivo', es:'sucio / sucia', en:'dirty', ex:'Mis zapatos están sucios.', exEn:'My shoes are dirty.'},
+  {cat:'adjetivo', es:'seguro / segura', en:'safe, sure', ex:'Este barrio es muy seguro.', exEn:'This neighborhood is very safe.'},
+  {cat:'adjetivo', es:'peligroso / peligrosa', en:'dangerous', ex:'Manejar rápido es peligroso.', exEn:'Driving fast is dangerous.'},
+  {cat:'adjetivo', es:'libre', en:'free', ex:'Estoy libre esta tarde.', exEn:"I'm free this afternoon."},
+  {cat:'adjetivo', es:'cercano / cercana', en:'nearby', ex:'Vivo en un barrio cercano.', exEn:'I live in a nearby neighborhood.'},
+  {cat:'adjetivo', es:'lejano / lejana', en:'distant, far', ex:'Su casa está en un lugar lejano.', exEn:'His house is in a distant place.'},
+  {cat:'adjetivo', es:'abierto / abierta', en:'open', ex:'La tienda está abierta.', exEn:'The store is open.'},
+  {cat:'adjetivo', es:'cerrado / cerrada', en:'closed', ex:'El banco está cerrado hoy.', exEn:'The bank is closed today.'},
+  {cat:'adjetivo', es:'lleno / llena', en:'full', ex:'El autobús está lleno.', exEn:'The bus is full.'},
+  {cat:'adjetivo', es:'vacío / vacía', en:'empty', ex:'La botella está vacía.', exEn:'The bottle is empty.'},
+  {cat:'adjetivo', es:'caliente', en:'hot', ex:'El café está muy caliente.', exEn:'The coffee is very hot.'},
+  {cat:'adjetivo', es:'frío / fría', en:'cold', ex:'El agua está fría.', exEn:'The water is cold.'},
+  {cat:'adjetivo', es:'seco / seca', en:'dry', ex:'El clima aquí es seco.', exEn:'The climate here is dry.'},
+  {cat:'adjetivo', es:'mojado / mojada', en:'wet', ex:'Mi ropa está mojada.', exEn:'My clothes are wet.'},
+  {cat:'adjetivo', es:'claro / clara', en:'clear, light-colored', ex:'El cielo está claro hoy.', exEn:'The sky is clear today.'},
+  {cat:'adjetivo', es:'rojo / roja', en:'red', ex:'Me gusta el color rojo.', exEn:'I like the color red.'},
+  {cat:'adjetivo', es:'azul', en:'blue', ex:'El cielo es azul hoy.', exEn:'The sky is blue today.'},
+  {cat:'adjetivo', es:'verde', en:'green', ex:'Las hojas son verdes.', exEn:'The leaves are green.'},
+  {cat:'adjetivo', es:'amarillo / amarilla', en:'yellow', ex:'El sol parece amarillo.', exEn:'The sun looks yellow.'},
+  {cat:'adjetivo', es:'negro / negra', en:'black', ex:'Tengo un coche negro.', exEn:'I have a black car.'},
+  {cat:'adjetivo', es:'blanco / blanca', en:'white', ex:'La nieve es blanca.', exEn:'The snow is white.'},
+  {cat:'adjetivo', es:'gris', en:'gray', ex:'El cielo está gris hoy.', exEn:'The sky is gray today.'},
+  {cat:'adjetivo', es:'marrón', en:'brown', ex:'Sus ojos son marrones.', exEn:'His/her eyes are brown.'},
+  {cat:'adjetivo', es:'rosa', en:'pink', ex:'Le regalé una flor rosa.', exEn:'I gave her a pink flower.'},
+  {cat:'adjetivo', es:'morado / morada', en:'purple', ex:'Compré una camisa morada.', exEn:'I bought a purple shirt.'},
+  {cat:'adjetivo', es:'naranja', en:'orange', ex:'El atardecer es naranja.', exEn:'The sunset is orange.'},
+  {cat:'adjetivo', es:'honesto / honesta', en:'honest', ex:'Es una persona muy honesta.', exEn:'He/she is a very honest person.'},
+  {cat:'adjetivo', es:'sincero / sincera', en:'sincere', ex:'Prefiero un amigo sincero.', exEn:'I prefer a sincere friend.'},
+  {cat:'adjetivo', es:'generoso / generosa', en:'generous', ex:'Mi abuela es muy generosa.', exEn:'My grandmother is very generous.'},
+  {cat:'adjetivo', es:'egoísta', en:'selfish', ex:'No me gusta la gente egoísta.', exEn:"I don't like selfish people."},
+  {cat:'adjetivo', es:'tímido / tímida', en:'shy', ex:'Mi hermano pequeño es tímido.', exEn:'My little brother is shy.'},
+  {cat:'adjetivo', es:'valiente', en:'brave', ex:'El bombero fue muy valiente.', exEn:'The firefighter was very brave.'},
+  {cat:'adjetivo', es:'curioso / curiosa', en:'curious', ex:'Los niños son muy curiosos.', exEn:'Children are very curious.'},
+  {cat:'adjetivo', es:'paciente', en:'patient', ex:'El médico es muy paciente.', exEn:'The doctor is very patient.'},
+  {cat:'adjetivo', es:'impaciente', en:'impatient', ex:'Estoy impaciente por el examen.', exEn:"I'm impatient about the exam."},
+  {cat:'adjetivo', es:'responsable', en:'responsible', ex:'Es un estudiante responsable.', exEn:'He/she is a responsible student.'},
+  {cat:'adjetivo', es:'trabajador / trabajadora', en:'hardworking', ex:'Mi padre es muy trabajador.', exEn:'My father is very hardworking.'},
+  {cat:'adjetivo', es:'perezoso / perezosa', en:'lazy', ex:'Hoy me siento un poco perezoso.', exEn:'Today I feel a bit lazy.'},
+  {cat:'adjetivo', es:'educado / educada', en:'polite', ex:'Su hijo es muy educado.', exEn:'Her son is very polite.'},
+  {cat:'adjetivo', es:'maleducado / maleducada', en:'rude, impolite', ex:'Fue maleducado con el camarero.', exEn:'He was rude to the waiter.'},
+  {cat:'adjetivo', es:'gracioso / graciosa', en:'funny', ex:'Mi amigo es muy gracioso.', exEn:'My friend is very funny.'},
+  {cat:'adjetivo', es:'serio / seria', en:'serious', ex:'El profesor es muy serio.', exEn:'The teacher is very serious.'},
+  {cat:'adjetivo', es:'callado / callada', en:'quiet', ex:'Ella es callada en clase.', exEn:'She is quiet in class.'},
+  {cat:'adjetivo', es:'hablador / habladora', en:'talkative', ex:'Mi hermana es muy habladora.', exEn:'My sister is very talkative.'},
+  {cat:'adjetivo', es:'optimista', en:'optimistic', ex:'Siempre soy optimista.', exEn:"I'm always optimistic."},
+  {cat:'adjetivo', es:'pesimista', en:'pessimistic', ex:'No seas tan pesimista.', exEn:"Don't be so pessimistic."},
+  {cat:'adjetivo', es:'tranquilo / tranquila', en:'calm', ex:'El paciente está tranquilo.', exEn:'The patient is calm.'},
+  {cat:'adjetivo', es:'nervioso / nerviosa', en:'nervous', ex:'Estoy nervioso por el examen.', exEn:"I'm nervous about the exam."},
+  {cat:'adjetivo', es:'sensible', en:'sensitive', ex:'Es una persona muy sensible.', exEn:'He/she is a very sensitive person.'},
+  {cat:'adjetivo', es:'práctico / práctica', en:'practical', ex:'Prefiero un regalo práctico.', exEn:'I prefer a practical gift.'},
+  {cat:'adjetivo', es:'creativo / creativa', en:'creative', ex:'Mi hija es muy creativa.', exEn:'My daughter is very creative.'},
+  {cat:'adjetivo', es:'ambicioso / ambiciosa', en:'ambitious', ex:'Es un estudiante ambicioso.', exEn:'He/she is an ambitious student.'},
+  {cat:'adjetivo', es:'humilde', en:'humble', ex:'El médico es muy humilde.', exEn:'The doctor is very humble.'},
+  {cat:'adjetivo', es:'fiel', en:'loyal, faithful', ex:'Mi perro es muy fiel.', exEn:'My dog is very loyal.'},
+  {cat:'adjetivo', es:'dulce', en:'sweet', ex:'Este pastel es muy dulce.', exEn:'This cake is very sweet.'},
+  {cat:'adjetivo', es:'salado / salada', en:'salty', ex:'La sopa está muy salada.', exEn:'The soup is very salty.'},
+  {cat:'adjetivo', es:'amargo / amarga', en:'bitter', ex:'El café sin azúcar es amargo.', exEn:'Coffee without sugar is bitter.'},
+  {cat:'adjetivo', es:'ácido / ácida', en:'sour, acidic', ex:'El limón es ácido.', exEn:'Lemon is sour.'},
+  {cat:'adjetivo', es:'picante', en:'spicy', ex:'La comida india es picante.', exEn:'Indian food is spicy.'},
+  {cat:'adjetivo', es:'sabroso / sabrosa', en:'tasty', ex:'Este plato está muy sabroso.', exEn:'This dish is very tasty.'},
+  {cat:'adjetivo', es:'delicioso / deliciosa', en:'delicious', ex:'La cena fue deliciosa.', exEn:'The dinner was delicious.'},
+  {cat:'adjetivo', es:'fresco / fresca', en:'fresh, cool', ex:'El pescado está fresco.', exEn:'The fish is fresh.'},
+  {cat:'adjetivo', es:'congelado / congelada', en:'frozen', ex:'Compro verduras congeladas.', exEn:'I buy frozen vegetables.'},
+  {cat:'adjetivo', es:'ancho / ancha', en:'wide', ex:'La calle es muy ancha.', exEn:'The street is very wide.'},
+  {cat:'adjetivo', es:'estrecho / estrecha', en:'narrow', ex:'El pasillo es estrecho.', exEn:'The hallway is narrow.'},
+  {cat:'adjetivo', es:'largo / larga', en:'long', ex:'Tiene el pelo largo.', exEn:'She has long hair.'},
+  {cat:'adjetivo', es:'corto / corta', en:'short (length)', ex:'Este camino es más corto.', exEn:'This path is shorter.'},
+  {cat:'adjetivo', es:'profundo / profunda', en:'deep', ex:'El río es muy profundo.', exEn:'The river is very deep.'},
+  {cat:'adjetivo', es:'plano / plana', en:'flat', ex:'El terreno es plano aquí.', exEn:'The terrain is flat here.'},
+  {cat:'adjetivo', es:'redondo / redonda', en:'round', ex:'La mesa es redonda.', exEn:'The table is round.'},
+  {cat:'adjetivo', es:'cuadrado / cuadrada', en:'square', ex:'La caja es cuadrada.', exEn:'The box is square.'},
+  {cat:'adjetivo', es:'recto / recta', en:'straight', ex:'La calle es recta.', exEn:'The street is straight.'},
+  {cat:'adjetivo', es:'curvo / curva', en:'curved', ex:'El camino es curvo.', exEn:'The road is curved.'},
+  {cat:'adjetivo', es:'perfecto / perfecta', en:'perfect', ex:'El plan es perfecto.', exEn:'The plan is perfect.'},
+  {cat:'adjetivo', es:'correcto / correcta', en:'correct', ex:'Tu respuesta es correcta.', exEn:'Your answer is correct.'},
+  {cat:'adjetivo', es:'incorrecto / incorrecta', en:'incorrect', ex:'Esa información es incorrecta.', exEn:'That information is incorrect.'},
+  {cat:'adjetivo', es:'exacto / exacta', en:'exact', ex:'Necesito la hora exacta.', exEn:'I need the exact time.'},
+  {cat:'adjetivo', es:'normal', en:'normal', ex:'Es un día normal de trabajo.', exEn:"It's a normal work day."},
+  {cat:'adjetivo', es:'especial', en:'special', ex:'Hoy es un día especial.', exEn:'Today is a special day.'},
+  {cat:'adjetivo', es:'único / única', en:'unique, only', ex:'Eres único.', exEn:'You are unique.'},
+  {cat:'adjetivo', es:'común', en:'common', ex:'Es un problema común.', exEn:"It's a common problem."},
+  {cat:'adjetivo', es:'extraño / extraña', en:'strange', ex:'Escuché un ruido extraño.', exEn:'I heard a strange noise.'},
+  {cat:'adjetivo', es:'distinto / distinta', en:'different', ex:'Cada persona es distinta.', exEn:'Each person is different.'},
+  {cat:'adjetivo', es:'diferente', en:'different', ex:'Tenemos gustos diferentes.', exEn:'We have different tastes.'},
+  {cat:'adjetivo', es:'similar', en:'similar', ex:'Nuestras opiniones son similares.', exEn:'Our opinions are similar.'},
+  {cat:'adjetivo', es:'igual', en:'equal, same', ex:'Los dos son de igual tamaño.', exEn:'Both are the same size.'},
+  {cat:'adjetivo', es:'mismo / misma', en:'same', ex:'Vivimos en el mismo barrio.', exEn:'We live in the same neighborhood.'},
+  {cat:'adjetivo', es:'adecuado / adecuada', en:'appropriate', ex:'No es el momento adecuado.', exEn:"It's not the right moment."},
+  {cat:'adjetivo', es:'necesario / necesaria', en:'necessary', ex:'Es necesario descansar.', exEn:'It is necessary to rest.'},
+  {cat:'adjetivo', es:'útil', en:'useful', ex:'Este consejo fue muy útil.', exEn:'This advice was very useful.'},
+  {cat:'adjetivo', es:'inútil', en:'useless', ex:'Ese aparato es inútil.', exEn:'That device is useless.'},
+  {cat:'adjetivo', es:'posible', en:'possible', ex:'Es posible llegar a tiempo.', exEn:"It's possible to arrive on time."},
+  {cat:'adjetivo', es:'imposible', en:'impossible', ex:'Es imposible terminar hoy.', exEn:"It's impossible to finish today."},
+  {cat:'adjetivo', es:'probable', en:'probable', ex:'Es probable que llueva.', exEn:"It's probably going to rain."},
+  {cat:'adjetivo', es:'cierto / cierta', en:'certain, true', ex:'Es cierto lo que dices.', exEn:'What you say is true.'},
+  {cat:'adjetivo', es:'obvio / obvia', en:'obvious', ex:'Es obvio que está cansado.', exEn:"It's obvious that he's tired."},
+  {cat:'adjetivo', es:'evidente', en:'evident', ex:'El resultado es evidente.', exEn:'The result is evident.'},
+  {cat:'adjetivo', es:'aburrido / aburrida', en:'bored, boring', ex:'La película fue aburrida.', exEn:'The movie was boring.'},
+  {cat:'adjetivo', es:'interesante', en:'interesting', ex:'Es un libro interesante.', exEn:"It's an interesting book."},
+  {cat:'adjetivo', es:'emocionante', en:'exciting', ex:'El partido fue emocionante.', exEn:'The match was exciting.'},
+  {cat:'adjetivo', es:'sorprendente', en:'surprising', ex:'El resultado fue sorprendente.', exEn:'The result was surprising.'},
+  {cat:'adjetivo', es:'divertido / divertida', en:'fun', ex:'La fiesta fue muy divertida.', exEn:'The party was very fun.'},
+  {cat:'adjetivo', es:'molesto / molesta', en:'annoying, bothered', ex:'El ruido es molesto.', exEn:'The noise is annoying.'},
+  {cat:'adjetivo', es:'enojado / enojada', en:'angry', ex:'Está enojado conmigo.', exEn:"He's angry with me."},
+  {cat:'adjetivo', es:'asustado / asustada', en:'scared', ex:'El niño está asustado.', exEn:'The child is scared.'},
+  {cat:'adjetivo', es:'avergonzado / avergonzada', en:'embarrassed', ex:'Me sentí avergonzado.', exEn:'I felt embarrassed.'},
+  {cat:'adjetivo', es:'orgulloso / orgullosa', en:'proud', ex:'Estoy orgulloso de ti.', exEn:"I'm proud of you."},
+  {cat:'adjetivo', es:'satisfecho / satisfecha', en:'satisfied', ex:'Estoy satisfecho con mi trabajo.', exEn:"I'm satisfied with my work."},
+  {cat:'adjetivo', es:'confundido / confundida', en:'confused', ex:'Estoy confundido con la tarea.', exEn:"I'm confused about the homework."},
+  {cat:'adjetivo', es:'relajado / relajada', en:'relaxed', ex:'Me siento relajado después de dormir.', exEn:'I feel relaxed after sleeping.'},
+  {cat:'adjetivo', es:'actual', en:'current', ex:'La situación actual es difícil.', exEn:'The current situation is difficult.'},
+  {cat:'adjetivo', es:'reciente', en:'recent', ex:'Es una noticia reciente.', exEn:"It's recent news."},
+  {cat:'adjetivo', es:'moderno / moderna', en:'modern', ex:'Vivo en un edificio moderno.', exEn:'I live in a modern building.'},
+  {cat:'adjetivo', es:'antiguo / antigua', en:'old, ancient', ex:'Visitamos un templo antiguo.', exEn:'We visited an ancient temple.'},
+  {cat:'adjetivo', es:'puntual', en:'punctual', ex:'Mi jefe siempre es puntual.', exEn:'My boss is always punctual.'},
+
+  // ADVERBIOS
+  {cat:'adverbio', es:'muy', en:'very', ex:'Estoy muy contento.', exEn:'I am very happy.'},
+  {cat:'adverbio', es:'también', en:'also, too', ex:'Yo también hablo inglés.', exEn:'I also speak English.'},
+  {cat:'adverbio', es:'siempre', en:'always', ex:'Siempre estudio por la noche.', exEn:'I always study at night.'},
+  {cat:'adverbio', es:'nunca', en:'never', ex:'Nunca llego tarde.', exEn:'I never arrive late.'},
+  {cat:'adverbio', es:'ahora', en:'now', ex:'Ahora estoy trabajando.', exEn:'I am working now.'},
+  {cat:'adverbio', es:'después', en:'after, later', ex:'Comemos después de clase.', exEn:'We eat after class.'},
+  {cat:'adverbio', es:'aquí', en:'here', ex:'Vivo aquí desde el año pasado.', exEn:"I've lived here since last year."},
+  {cat:'adverbio', es:'allí', en:'there', ex:'El hospital está allí.', exEn:'The hospital is there.'},
+  {cat:'adverbio', es:'bien', en:'well', ex:'Hablo bien el inglés.', exEn:'I speak English well.'},
+  {cat:'adverbio', es:'rápidamente', en:'quickly', ex:'Ella escribe rápidamente.', exEn:'She writes quickly.'},
+  {cat:'adverbio', es:'mucho', en:'a lot', ex:'Trabajo mucho esta semana.', exEn:'I work a lot this week.'},
+  {cat:'adverbio', es:'poco', en:'a little', ex:'Descanso un poco cada tarde.', exEn:'I rest a little every afternoon.'},
+  {cat:'adverbio', es:'todavía', en:'still, yet', ex:'Todavía no he comido.', exEn:"I haven't eaten yet."},
+  {cat:'adverbio', es:'ya', en:'already', ex:'Ya terminé la tarea.', exEn:'I already finished the homework.'},
+  {cat:'adverbio', es:'hoy', en:'today', ex:'Hoy tengo mucho trabajo.', exEn:'Today I have a lot of work.'},
+  {cat:'adverbio', es:'pronto', en:'soon', ex:'Nos vemos pronto.', exEn:'See you soon.'},
+  {cat:'adverbio', es:'mañana', en:'tomorrow', ex:'Mañana empiezo mis clases.', exEn:'Tomorrow I start my classes.'},
+  {cat:'adverbio', es:'ayer', en:'yesterday', ex:'Ayer llovió mucho.', exEn:'It rained a lot yesterday.'},
+  {cat:'adverbio', es:'anoche', en:'last night', ex:'Anoche dormí poco.', exEn:'I slept little last night.'},
+  {cat:'adverbio', es:'luego', en:'then, later', ex:'Como y luego estudio.', exEn:'I eat and then study.'},
+  {cat:'adverbio', es:'antes', en:'before', ex:'Antes trabajaba en otro hospital.', exEn:'Before, I worked at another hospital.'},
+  {cat:'adverbio', es:'temprano', en:'early', ex:'Me levanto temprano.', exEn:'I get up early.'},
+  {cat:'adverbio', es:'tarde', en:'late', ex:'Llegué tarde hoy.', exEn:'I arrived late today.'},
+  {cat:'adverbio', es:'enseguida', en:'right away', ex:'Vuelvo enseguida.', exEn:"I'll be right back."},
+  {cat:'adverbio', es:'a veces', en:'sometimes', ex:'A veces estudio de noche.', exEn:'Sometimes I study at night.'},
+  {cat:'adverbio', es:'a menudo', en:'often', ex:'Voy al mercado a menudo.', exEn:'I often go to the market.'},
+  {cat:'adverbio', es:'raramente', en:'rarely', ex:'Raramente como fuera de casa.', exEn:'I rarely eat out.'},
+  {cat:'adverbio', es:'diariamente', en:'daily', ex:'Practico español diariamente.', exEn:'I practice Spanish daily.'},
+  {cat:'adverbio', es:'semanalmente', en:'weekly', ex:'Nos reunimos semanalmente.', exEn:'We meet weekly.'},
+  {cat:'adverbio', es:'mensualmente', en:'monthly', ex:'Pago la renta mensualmente.', exEn:'I pay rent monthly.'},
+  {cat:'adverbio', es:'anualmente', en:'yearly', ex:'Viajamos anualmente.', exEn:'We travel yearly.'},
+  {cat:'adverbio', es:'constantemente', en:'constantly', ex:'Estudia constantemente.', exEn:'He/she studies constantly.'},
+  {cat:'adverbio', es:'inmediatamente', en:'immediately', ex:'Llamé inmediatamente.', exEn:'I called immediately.'},
+  {cat:'adverbio', es:'finalmente', en:'finally', ex:'Finalmente terminé la tarea.', exEn:'I finally finished the homework.'},
+  {cat:'adverbio', es:'últimamente', en:'lately', ex:'Últimamente estoy muy ocupado.', exEn:"Lately I'm very busy."},
+  {cat:'adverbio', es:'actualmente', en:'currently', ex:'Actualmente estudio enfermería.', exEn:"I'm currently studying nursing."},
+  {cat:'adverbio', es:'recientemente', en:'recently', ex:'Recientemente cambié de trabajo.', exEn:'I recently changed jobs.'},
+  {cat:'adverbio', es:'cerca', en:'near, close', ex:'Vivo cerca del hospital.', exEn:'I live near the hospital.'},
+  {cat:'adverbio', es:'lejos', en:'far', ex:'La escuela está lejos.', exEn:'The school is far.'},
+  {cat:'adverbio', es:'arriba', en:'up, above', ex:'El libro está arriba.', exEn:'The book is up there.'},
+  {cat:'adverbio', es:'abajo', en:'down, below', ex:'Los zapatos están abajo.', exEn:'The shoes are down there.'},
+  {cat:'adverbio', es:'dentro', en:'inside', ex:'Está lloviendo, quédate dentro.', exEn:"It's raining, stay inside."},
+  {cat:'adverbio', es:'fuera', en:'outside', ex:'Los niños juegan fuera.', exEn:'The kids play outside.'},
+  {cat:'adverbio', es:'adelante', en:'forward', ex:'Sigue adelante con el plan.', exEn:'Keep going forward with the plan.'},
+  {cat:'adverbio', es:'atrás', en:'behind', ex:'Se quedó atrás.', exEn:'He/she stayed behind.'},
+  {cat:'adverbio', es:'alrededor', en:'around', ex:'Miré alrededor.', exEn:'I looked around.'},
+  {cat:'adverbio', es:'enfrente', en:'in front, across', ex:'El banco está enfrente.', exEn:'The bank is across the street.'},
+  {cat:'adverbio', es:'así', en:'like this, like that', ex:'Hazlo así.', exEn:'Do it like this.'},
+  {cat:'adverbio', es:'despacio', en:'slowly', ex:'Habla despacio, por favor.', exEn:'Speak slowly, please.'},
+  {cat:'adverbio', es:'fácilmente', en:'easily', ex:'Aprendo fácilmente.', exEn:'I learn easily.'},
+  {cat:'adverbio', es:'difícilmente', en:'with difficulty', ex:'Difícilmente entiendo eso.', exEn:'I hardly understand that.'},
+  {cat:'adverbio', es:'claramente', en:'clearly', ex:'Explica claramente.', exEn:'He/she explains clearly.'},
+  {cat:'adverbio', es:'tranquilamente', en:'calmly', ex:'Habla tranquilamente.', exEn:'He/she speaks calmly.'},
+  {cat:'adverbio', es:'cuidadosamente', en:'carefully', ex:'Maneja cuidadosamente.', exEn:'He/she drives carefully.'},
+  {cat:'adverbio', es:'simplemente', en:'simply', ex:'Simplemente no lo sé.', exEn:"I simply don't know."},
+  {cat:'adverbio', es:'especialmente', en:'especially', ex:'Me gusta, especialmente el café.', exEn:'I like it, especially the coffee.'},
+  {cat:'adverbio', es:'realmente', en:'really', ex:'Realmente me gusta este trabajo.', exEn:'I really like this job.'},
+  {cat:'adverbio', es:'verdaderamente', en:'truly', ex:'Es verdaderamente difícil.', exEn:"It's truly difficult."},
+  {cat:'adverbio', es:'probablemente', en:'probably', ex:'Probablemente llueva mañana.', exEn:'It will probably rain tomorrow.'},
+  {cat:'adverbio', es:'posiblemente', en:'possibly', ex:'Posiblemente llegue tarde.', exEn:'I might possibly arrive late.'},
+  {cat:'adverbio', es:'seguramente', en:'surely', ex:'Seguramente lo sabe.', exEn:'He/she surely knows it.'},
+  {cat:'adverbio', es:'naturalmente', en:'naturally', ex:'Naturalmente, acepto la invitación.', exEn:'Naturally, I accept the invitation.'},
+  {cat:'adverbio', es:'generalmente', en:'generally', ex:'Generalmente ceno a las ocho.', exEn:'I generally have dinner at eight.'},
+  {cat:'adverbio', es:'normalmente', en:'normally', ex:'Normalmente trabajo de lunes a viernes.', exEn:'I normally work Monday to Friday.'},
+  {cat:'adverbio', es:'personalmente', en:'personally', ex:'Personalmente, prefiero el té.', exEn:'Personally, I prefer tea.'},
+  {cat:'adverbio', es:'directamente', en:'directly', ex:'Voy directamente a casa.', exEn:'I go directly home.'},
+  {cat:'adverbio', es:'completamente', en:'completely', ex:'Estoy completamente de acuerdo.', exEn:'I completely agree.'},
+  {cat:'adverbio', es:'totalmente', en:'totally', ex:'Es totalmente diferente.', exEn:"It's totally different."},
+  {cat:'adverbio', es:'absolutamente', en:'absolutely', ex:'Absolutamente, tienes razón.', exEn:"Absolutely, you're right."},
+  {cat:'adverbio', es:'exactamente', en:'exactly', ex:'Eso es exactamente lo que pienso.', exEn:"That's exactly what I think."},
+  {cat:'adverbio', es:'aproximadamente', en:'approximately', ex:'Llego en aproximadamente diez minutos.', exEn:"I'll arrive in about ten minutes."},
+  {cat:'adverbio', es:'bastante', en:'quite, enough', ex:'Estoy bastante cansado.', exEn:"I'm quite tired."},
+  {cat:'adverbio', es:'demasiado', en:'too much', ex:'Trabajo demasiado esta semana.', exEn:"I'm working too much this week."},
+  {cat:'adverbio', es:'tanto', en:'so much', ex:'No comas tanto.', exEn:"Don't eat so much."},
+  {cat:'adverbio', es:'tan', en:'so', ex:'Es tan fácil.', exEn:"It's so easy."},
+  {cat:'adverbio', es:'casi', en:'almost', ex:'Casi termino la tarea.', exEn:'I almost finished the homework.'},
+  {cat:'adverbio', es:'apenas', en:'barely, just', ex:'Apenas duermo cinco horas.', exEn:'I barely sleep five hours.'},
+  {cat:'adverbio', es:'solamente', en:'only', ex:'Solamente tengo una hora libre.', exEn:'I only have one hour free.'},
+  {cat:'adverbio', es:'únicamente', en:'solely, only', ex:'Estudio únicamente por la noche.', exEn:'I study only at night.'},
+  {cat:'adverbio', es:'incluso', en:'even', ex:'Incluso mi hermano habla español.', exEn:'Even my brother speaks Spanish.'},
+  {cat:'adverbio', es:'además', en:'besides, also', ex:'Además, tengo que trabajar.', exEn:'Besides, I have to work.'},
+  {cat:'adverbio', es:'aparte', en:'apart, aside', ex:'Aparte de eso, todo bien.', exEn:'Aside from that, all good.'},
+  {cat:'adverbio', es:'tampoco', en:'neither, not either', ex:'Yo tampoco lo sé.', exEn:"I don't know either."},
+  {cat:'adverbio', es:'quizás', en:'maybe', ex:'Quizás vaya mañana.', exEn:"Maybe I'll go tomorrow."},
+  {cat:'adverbio', es:'tal vez', en:'maybe, perhaps', ex:'Tal vez llueva hoy.', exEn:'Maybe it will rain today.'},
+  {cat:'adverbio', es:'acaso', en:'perhaps', ex:'¿Acaso no lo sabías?', exEn:"Perhaps you didn't know?"},
+  {cat:'adverbio', es:'efectivamente', en:'indeed', ex:'Efectivamente, así fue.', exEn:"Indeed, that's how it was."},
+  {cat:'adverbio', es:'sí', en:'yes', ex:'Sí, quiero café.', exEn:'Yes, I want coffee.'},
+  {cat:'adverbio', es:'no', en:'no', ex:'No, gracias.', exEn:'No, thank you.'},
+  {cat:'adverbio', es:'obviamente', en:'obviously', ex:'Obviamente, quiero aprender más.', exEn:'Obviously, I want to learn more.'},
+
+  // PRONOMBRES
+  {cat:'pronombre', es:'yo', en:'I', ex:'Yo estudio enfermería.', exEn:'I study nursing.'},
+  {cat:'pronombre', es:'tú', en:'you (informal)', ex:'¿Tú vives cerca?', exEn:'Do you live nearby?'},
+  {cat:'pronombre', es:'él / ella', en:'he / she', ex:'Ella trabaja en el hospital.', exEn:'She works at the hospital.'},
+  {cat:'pronombre', es:'nosotros / nosotras', en:'we', ex:'Nosotros somos estudiantes.', exEn:'We are students.'},
+  {cat:'pronombre', es:'ellos / ellas', en:'they', ex:'Ellos son mis vecinos.', exEn:'They are my neighbors.'},
+  {cat:'pronombre', es:'me', en:'me (object)', ex:'Me llamo Hasan.', exEn:'My name is Hasan.'},
+  {cat:'pronombre', es:'te', en:'you (object)', ex:'Te veo mañana.', exEn:"I'll see you tomorrow."},
+  {cat:'pronombre', es:'lo / la', en:'him, her, it', ex:'Lo conozco bien.', exEn:'I know him well.'},
+  {cat:'pronombre', es:'nos', en:'us', ex:'Nos gusta el café.', exEn:'We like coffee.'},
+  {cat:'pronombre', es:'esto / eso', en:'this / that', ex:'Eso es interesante.', exEn:'That is interesting.'},
+  {cat:'pronombre', es:'alguien', en:'someone', ex:'Alguien llamó por teléfono.', exEn:'Someone called on the phone.'},
+  {cat:'pronombre', es:'nada', en:'nothing', ex:'No quiero nada más.', exEn:"I don't want anything else."},
+  {cat:'pronombre', es:'mío / mía', en:'mine', ex:'Este libro es mío.', exEn:'This book is mine.'},
+  {cat:'pronombre', es:'tuyo / tuya', en:'yours', ex:'¿Es tuyo este bolígrafo?', exEn:'Is this pen yours?'},
+  {cat:'pronombre', es:'usted', en:'you (formal)', ex:'¿Cómo está usted?', exEn:'How are you, sir/ma\'am?'},
+  {cat:'pronombre', es:'ustedes', en:'you all', ex:'¿De dónde son ustedes?', exEn:'Where are you all from?'},
+  {cat:'pronombre', es:'vosotros / vosotras', en:'you all (Spain)', ex:'Vosotros sois mis amigos.', exEn:'You all are my friends.'},
+  {cat:'pronombre', es:'le', en:'to him, to her', ex:'Le doy el libro.', exEn:'I give the book to him/her.'},
+  {cat:'pronombre', es:'les', en:'to them', ex:'Les explico la lección.', exEn:'I explain the lesson to them.'},
+  {cat:'pronombre', es:'os', en:'you all (object, Spain)', ex:'Os quiero mucho.', exEn:'I love you all a lot.'},
+  {cat:'pronombre', es:'se', en:'himself, herself, itself', ex:'Se lava las manos.', exEn:'He/she washes his/her hands.'},
+  {cat:'pronombre', es:'suyo / suya', en:'his, hers, theirs, yours', ex:'Ese libro es suyo.', exEn:'That book is his/hers.'},
+  {cat:'pronombre', es:'nuestro / nuestra', en:'our, ours', ex:'Esta es nuestra casa.', exEn:'This is our house.'},
+  {cat:'pronombre', es:'vuestro / vuestra', en:'your, yours (Spain)', ex:'¿Es vuestro este coche?', exEn:'Is this car yours?'},
+  {cat:'pronombre', es:'este / esta', en:'this', ex:'Este libro es interesante.', exEn:'This book is interesting.'},
+  {cat:'pronombre', es:'ese / esa', en:'that', ex:'Esa casa es grande.', exEn:'That house is big.'},
+  {cat:'pronombre', es:'aquel / aquella', en:'that (over there)', ex:'Aquel edificio es un hospital.', exEn:'That building over there is a hospital.'},
+  {cat:'pronombre', es:'estos / estas', en:'these', ex:'Estos zapatos son cómodos.', exEn:'These shoes are comfortable.'},
+  {cat:'pronombre', es:'esos / esas', en:'those', ex:'Esos niños son mis primos.', exEn:'Those kids are my cousins.'},
+  {cat:'pronombre', es:'aquellos / aquellas', en:'those (over there)', ex:'Aquellos días fueron difíciles.', exEn:'Those days were hard.'},
+  {cat:'pronombre', es:'quién', en:'who', ex:'¿Quién es ella?', exEn:'Who is she?'},
+  {cat:'pronombre', es:'qué', en:'what', ex:'¿Qué quieres comer?', exEn:'What do you want to eat?'},
+  {cat:'pronombre', es:'cuál', en:'which', ex:'¿Cuál prefieres?', exEn:'Which one do you prefer?'},
+  {cat:'pronombre', es:'cuánto / cuánta', en:'how much', ex:'¿Cuánto cuesta esto?', exEn:'How much does this cost?'},
+  {cat:'pronombre', es:'cuántos / cuántas', en:'how many', ex:'¿Cuántos hermanos tienes?', exEn:'How many siblings do you have?'},
+  {cat:'pronombre', es:'cada uno', en:'each one', ex:'Cada uno paga su parte.', exEn:'Each one pays their share.'},
+  {cat:'pronombre', es:'todos / todas', en:'everyone, all', ex:'Todos están listos.', exEn:'Everyone is ready.'},
+  {cat:'pronombre', es:'ninguno / ninguna', en:'none, no one', ex:'Ninguno de ellos llamó.', exEn:'None of them called.'},
+  {cat:'pronombre', es:'otro / otra', en:'another, other', ex:'Necesito otro café.', exEn:'I need another coffee.'},
+  {cat:'pronombre', es:'alguno / alguna', en:'some, someone', ex:'Alguna vez viajé a España.', exEn:'I once traveled to Spain.'},
+
+  // PREPOSICIONES
+  {cat:'preposicion', es:'en', en:'in, on, at', ex:'Estudio en la universidad.', exEn:'I study at the university.'},
+  {cat:'preposicion', es:'con', en:'with', ex:'Voy con mi amigo.', exEn:"I'm going with my friend."},
+  {cat:'preposicion', es:'de', en:'of, from', ex:'Soy de Bangladesh.', exEn:'I am from Bangladesh.'},
+  {cat:'preposicion', es:'para', en:'for, to', ex:'Esto es para ti.', exEn:'This is for you.'},
+  {cat:'preposicion', es:'por', en:'for, by, through', ex:'Camino por la calle.', exEn:'I walk through the street.'},
+  {cat:'preposicion', es:'sin', en:'without', ex:'No puedo vivir sin café.', exEn:"I can't live without coffee."},
+  {cat:'preposicion', es:'sobre', en:'on, about', ex:'El libro está sobre la mesa.', exEn:'The book is on the table.'},
+  {cat:'preposicion', es:'entre', en:'between', ex:'El banco está entre las tiendas.', exEn:'The bank is between the stores.'},
+  {cat:'preposicion', es:'hasta', en:'until', ex:'Trabajo hasta las seis.', exEn:'I work until six.'},
+  {cat:'preposicion', es:'desde', en:'since, from', ex:'Estudio español desde enero.', exEn:"I've studied Spanish since January."},
+  {cat:'preposicion', es:'durante', en:'during', ex:'Descanso durante el día.', exEn:'I rest during the day.'},
+  {cat:'preposicion', es:'hacia', en:'toward', ex:'Camino hacia la escuela.', exEn:'I walk toward the school.'},
+  {cat:'preposicion', es:'contra', en:'against', ex:'Estoy contra esa idea.', exEn:"I'm against that idea."},
+  {cat:'preposicion', es:'bajo', en:'under, below', ex:'El gato está bajo la mesa.', exEn:'The cat is under the table.'},
+  {cat:'preposicion', es:'a', en:'to, at', ex:'Voy a la escuela.', exEn:'I go to school.'},
+  {cat:'preposicion', es:'ante', en:'before, in front of', ex:'Ante la duda, pregunta.', exEn:'When in doubt, ask.'},
+  {cat:'preposicion', es:'tras', en:'after, behind', ex:'Corrió tras el autobús.', exEn:'He/she ran after the bus.'},
+  {cat:'preposicion', es:'según', en:'according to', ex:'Según el médico, estoy bien.', exEn:"According to the doctor, I'm fine."},
+  {cat:'preposicion', es:'mediante', en:'by means of', ex:'Aprendo mediante la práctica.', exEn:'I learn through practice.'},
+  {cat:'preposicion', es:'excepto', en:'except', ex:'Trabajo todos los días excepto domingo.', exEn:'I work every day except Sunday.'},
+  {cat:'preposicion', es:'salvo', en:'except, save for', ex:'Todos vinieron, salvo mi hermano.', exEn:'Everyone came, except my brother.'},
+  {cat:'preposicion', es:'dentro de', en:'inside of', ex:'Dentro de la casa hace calor.', exEn:"Inside the house it's hot."},
+  {cat:'preposicion', es:'fuera de', en:'outside of', ex:'Estudio fuera de casa.', exEn:'I study outside of home.'},
+  {cat:'preposicion', es:'cerca de', en:'near', ex:'Vivo cerca de la universidad.', exEn:'I live near the university.'},
+  {cat:'preposicion', es:'lejos de', en:'far from', ex:'Trabajo lejos de mi casa.', exEn:'I work far from my house.'},
+  {cat:'preposicion', es:'encima de', en:'on top of', ex:'El libro está encima de la mesa.', exEn:'The book is on top of the table.'},
+  {cat:'preposicion', es:'debajo de', en:'underneath', ex:'El gato duerme debajo de la cama.', exEn:'The cat sleeps under the bed.'},
+  {cat:'preposicion', es:'delante de', en:'in front of', ex:'Espera delante del hospital.', exEn:'Wait in front of the hospital.'},
+  {cat:'preposicion', es:'detrás de', en:'behind', ex:'El parque está detrás de la escuela.', exEn:'The park is behind the school.'},
+  {cat:'preposicion', es:'al lado de', en:'next to', ex:'Vivo al lado de la tienda.', exEn:'I live next to the store.'},
+  {cat:'preposicion', es:'junto a', en:'next to, close to', ex:'Siéntate junto a mí.', exEn:'Sit next to me.'},
+  {cat:'preposicion', es:'alrededor de', en:'around', ex:'Hay tiendas alrededor de la plaza.', exEn:'There are shops around the square.'},
+  {cat:'preposicion', es:'a través de', en:'through', ex:'Aprendí mucho a través de la práctica.', exEn:'I learned a lot through practice.'},
+  {cat:'preposicion', es:'a pesar de', en:'despite', ex:'A pesar de la lluvia, salimos.', exEn:'Despite the rain, we went out.'},
+  {cat:'preposicion', es:'en contra de', en:'against', ex:'Estoy en contra de esa idea.', exEn:"I'm against that idea."},
+  {cat:'preposicion', es:'a favor de', en:'in favor of', ex:'Estoy a favor del plan.', exEn:"I'm in favor of the plan."},
+  {cat:'preposicion', es:'antes de', en:'before', ex:'Estudio antes de dormir.', exEn:'I study before sleeping.'},
+  {cat:'preposicion', es:'después de', en:'after', ex:'Descanso después de trabajar.', exEn:'I rest after working.'},
+  {cat:'preposicion', es:'gracias a', en:'thanks to', ex:'Aprobé gracias a tu ayuda.', exEn:'I passed thanks to your help.'},
+  {cat:'preposicion', es:'respecto a', en:'regarding', ex:'No sé nada respecto a eso.', exEn:"I don't know anything regarding that."},
+
+  // CONJUNCIONES
+  {cat:'conjuncion', es:'y', en:'and', ex:'Estudio y trabajo.', exEn:'I study and work.'},
+  {cat:'conjuncion', es:'o', en:'or', ex:'¿Café o té?', exEn:'Coffee or tea?'},
+  {cat:'conjuncion', es:'pero', en:'but', ex:'Quiero ir, pero estoy cansado.', exEn:"I want to go, but I'm tired."},
+  {cat:'conjuncion', es:'porque', en:'because', ex:'Estudio porque quiero aprender.', exEn:'I study because I want to learn.'},
+  {cat:'conjuncion', es:'si', en:'if', ex:'Si tienes tiempo, ven.', exEn:'If you have time, come.'},
+  {cat:'conjuncion', es:'aunque', en:'although', ex:'Aunque llueve, salgo.', exEn:"Although it's raining, I go out."},
+  {cat:'conjuncion', es:'cuando', en:'when', ex:'Te llamo cuando llego.', exEn:"I'll call you when I arrive."},
+  {cat:'conjuncion', es:'mientras', en:'while', ex:'Escucho música mientras estudio.', exEn:'I listen to music while I study.'},
+  {cat:'conjuncion', es:'entonces', en:'then, so', ex:'No tengo dinero, entonces no compro.', exEn:"I don't have money, so I don't buy."},
+  {cat:'conjuncion', es:'que', en:'that', ex:'Creo que es verdad.', exEn:"I think that it's true."},
+  {cat:'conjuncion', es:'sino', en:'but rather', ex:'No es rojo, sino azul.', exEn:"It's not red, but blue."},
+  {cat:'conjuncion', es:'pues', en:'well, since', ex:'Pues, no lo sé.', exEn:"Well, I don't know."},
+  {cat:'conjuncion', es:'ni', en:'nor', ex:'No como carne ni pescado.', exEn:'I eat neither meat nor fish.'},
+  {cat:'conjuncion', es:'o sea', en:'that is, meaning', ex:'Llego tarde, o sea, después de las ocho.', exEn:"I'll arrive late, that is, after eight."},
+  {cat:'conjuncion', es:'es decir', en:'that is to say', ex:'Trabajo en salud, es decir, soy enfermero.', exEn:'I work in health, that is, I\'m a nurse.'},
+  {cat:'conjuncion', es:'sin embargo', en:'however', ex:'Estudio mucho, sin embargo, apruebo poco.', exEn:'I study a lot, however, I pass little.'},
+  {cat:'conjuncion', es:'no obstante', en:'nevertheless', ex:'Llueve; no obstante, salgo.', exEn:"It's raining; nevertheless, I'm going out."},
+  {cat:'conjuncion', es:'por lo tanto', en:'therefore', ex:'No dormí bien, por lo tanto, estoy cansado.', exEn:"I didn't sleep well, therefore, I'm tired."},
+  {cat:'conjuncion', es:'por eso', en:"that's why", ex:'Tengo examen, por eso estudio.', exEn:"I have an exam, that's why I'm studying."},
+  {cat:'conjuncion', es:'por consiguiente', en:'consequently', ex:'Llegué tarde, por consiguiente, perdí el autobús.', exEn:'I arrived late, consequently, I missed the bus.'},
+  {cat:'conjuncion', es:'asimismo', en:'likewise', ex:'Estudio español; asimismo, practico inglés.', exEn:'I study Spanish; likewise, I practice English.'},
+  {cat:'conjuncion', es:'como', en:'as, since', ex:'Como no llovía, salimos.', exEn:"Since it wasn't raining, we went out."},
+  {cat:'conjuncion', es:'ya que', en:'since, given that', ex:'Ya que estás aquí, ayúdame.', exEn:"Since you're here, help me."},
+  {cat:'conjuncion', es:'puesto que', en:'since, given that', ex:'Puesto que es tarde, me voy.', exEn:"Since it's late, I'm leaving."},
+  {cat:'conjuncion', es:'a menos que', en:'unless', ex:'No voy a menos que llueva.', exEn:"I'm not going unless it rains."},
+  {cat:'conjuncion', es:'con tal de que', en:'provided that', ex:'Voy con tal de que vengas tú también.', exEn:"I'll go provided that you come too."},
+  {cat:'conjuncion', es:'siempre que', en:'whenever, as long as', ex:'Te ayudo siempre que pueda.', exEn:"I'll help you whenever I can."},
+  {cat:'conjuncion', es:'para que', en:'so that', ex:'Estudio para que apruebe el examen.', exEn:'I study so that I pass the exam.'},
+  {cat:'conjuncion', es:'antes de que', en:'before', ex:'Llama antes de que salgas.', exEn:'Call before you leave.'},
+  {cat:'conjuncion', es:'después de que', en:'after', ex:'Comemos después de que llegue.', exEn:'We eat after he/she arrives.'},
+  {cat:'conjuncion', es:'hasta que', en:'until', ex:'Espero hasta que llegues.', exEn:"I'll wait until you arrive."},
+  {cat:'conjuncion', es:'desde que', en:'since (time)', ex:'Estudio español desde que llegué aquí.', exEn:"I've studied Spanish since I arrived here."},
+  {cat:'conjuncion', es:'mientras que', en:'whereas', ex:'Yo trabajo, mientras que él descansa.', exEn:'I work, whereas he rests.'},
+  {cat:'conjuncion', es:'aun cuando', en:'even when', ex:'Sonríe aun cuando está triste.', exEn:'He/she smiles even when sad.'},
+  {cat:'conjuncion', es:'de modo que', en:'so that', ex:'Habla claro, de modo que todos entiendan.', exEn:'Speak clearly, so that everyone understands.'},
+  {cat:'conjuncion', es:'de manera que', en:'so that', ex:'Organízalo de manera que sea fácil.', exEn:"Organize it so that it's easy."},
+  {cat:'conjuncion', es:'tanto...como', en:'both...and', ex:'Habla tanto inglés como español.', exEn:'He/she speaks both English and Spanish.'},
+  {cat:'conjuncion', es:'no solo...sino también', en:'not only...but also', ex:'No solo estudia, sino también trabaja.', exEn:'He/she not only studies, but also works.'},
+  {cat:'conjuncion', es:'cuanto más...más', en:'the more...the more', ex:'Cuanto más practico, más aprendo.', exEn:'The more I practice, the more I learn.'},
+  {cat:'conjuncion', es:'como si', en:'as if', ex:'Habla como si lo supiera todo.', exEn:'He/she talks as if he/she knew everything.'},
+
+  // INTERJECCIONES
+  {cat:'interjeccion', es:'¡Hola!', en:'Hi!', ex:'¡Hola! ¿Cómo estás?', exEn:'Hi! How are you?'},
+  {cat:'interjeccion', es:'¡Gracias!', en:'Thanks!', ex:'¡Gracias por tu ayuda!', exEn:'Thanks for your help!'},
+  {cat:'interjeccion', es:'Por favor', en:'Please', ex:'Ayúdame, por favor.', exEn:'Help me, please.'},
+  {cat:'interjeccion', es:'¡Lo siento!', en:'Sorry!', ex:'¡Lo siento, llego tarde!', exEn:"Sorry, I'm arriving late!"},
+  {cat:'interjeccion', es:'¡Claro!', en:'Of course!', ex:'¡Claro, sin problema!', exEn:'Of course, no problem!'},
+  {cat:'interjeccion', es:'¡Vale!', en:'Okay!', ex:'Vale, nos vemos mañana.', exEn:'Okay, see you tomorrow.'},
+  {cat:'interjeccion', es:'¡Qué bien!', en:'How nice!', ex:'¡Qué bien que viniste!', exEn:'How nice that you came!'},
+  {cat:'interjeccion', es:'¡Cuidado!', en:'Careful!', ex:'¡Cuidado con el coche!', exEn:'Careful with the car!'},
+  {cat:'interjeccion', es:'¡Adiós!', en:'Bye!', ex:'¡Adiós, hasta luego!', exEn:'Bye, see you later!'},
+  {cat:'interjeccion', es:'¡Buena suerte!', en:'Good luck!', ex:'¡Buena suerte en el examen!', exEn:'Good luck on the exam!'},
+  {cat:'interjeccion', es:'¡Ojalá!', en:'Hopefully!, I hope so!', ex:'¡Ojalá llueva mañana!', exEn:'I hope it rains tomorrow!'},
+  {cat:'interjeccion', es:'¡Felicidades!', en:'Congratulations!', ex:'¡Felicidades por tu graduación!', exEn:'Congratulations on your graduation!'},
+  {cat:'interjeccion', es:'¡Buenos días!', en:'Good morning!', ex:'¡Buenos días! ¿Cómo dormiste?', exEn:'Good morning! How did you sleep?'},
+  {cat:'interjeccion', es:'¡Buenas tardes!', en:'Good afternoon!', ex:'¡Buenas tardes! Bienvenido.', exEn:'Good afternoon! Welcome.'},
+  {cat:'interjeccion', es:'¡Buenas noches!', en:'Good night!', ex:'¡Buenas noches! Que descanses.', exEn:'Good night! Rest well.'},
+  {cat:'interjeccion', es:'¡Hasta luego!', en:'See you later!', ex:'Me voy, ¡hasta luego!', exEn:"I'm leaving, see you later!"},
+  {cat:'interjeccion', es:'¡Hasta pronto!', en:'See you soon!', ex:'Cuídate, ¡hasta pronto!', exEn:'Take care, see you soon!'},
+  {cat:'interjeccion', es:'¡Hasta mañana!', en:'See you tomorrow!', ex:'Buenas noches, ¡hasta mañana!', exEn:'Good night, see you tomorrow!'},
+  {cat:'interjeccion', es:'¡Nos vemos!', en:'See you!', ex:'¡Nos vemos en la clase!', exEn:'See you in class!'},
+  {cat:'interjeccion', es:'¡Bienvenido! / ¡Bienvenida!', en:'Welcome!', ex:'¡Bienvenida a la ciudad!', exEn:'Welcome to the city!'},
+  {cat:'interjeccion', es:'¿Qué tal?', en:"How's it going?", ex:'¡Hola! ¿Qué tal todo?', exEn:"Hi! How's everything going?"},
+  {cat:'interjeccion', es:'¿Cómo estás?', en:'How are you?', ex:'¿Cómo estás hoy?', exEn:'How are you today?'},
+  {cat:'interjeccion', es:'¿Qué pasa?', en:"What's up?", ex:'¿Qué pasa? Te veo preocupado.', exEn:"What's up? You look worried."},
+  {cat:'interjeccion', es:'De nada', en:"You're welcome", ex:'Gracias. — De nada.', exEn:'"Thanks." — "You\'re welcome."'},
+  {cat:'interjeccion', es:'Con permiso', en:'Excuse me (to pass)', ex:'Con permiso, necesito pasar.', exEn:'Excuse me, I need to get by.'},
+  {cat:'interjeccion', es:'Perdón', en:'Sorry, excuse me', ex:'Perdón, ¿qué hora es?', exEn:'Excuse me, what time is it?'},
+  {cat:'interjeccion', es:'Disculpe', en:'Excuse me (formal)', ex:'Disculpe, ¿dónde está el hospital?', exEn:'Excuse me, where is the hospital?'},
+  {cat:'interjeccion', es:'Muchas gracias', en:'Thank you very much', ex:'Muchas gracias por tu ayuda.', exEn:'Thank you very much for your help.'},
+  {cat:'interjeccion', es:'Mucho gusto', en:'Nice to meet you', ex:'Mucho gusto, soy Hasan.', exEn:"Nice to meet you, I'm Hasan."},
+  {cat:'interjeccion', es:'Igualmente', en:'Likewise', ex:'Mucho gusto. — Igualmente.', exEn:'"Nice to meet you." — "Likewise."'},
+  {cat:'interjeccion', es:'No hay de qué', en:"Don't mention it", ex:'Gracias por todo. — No hay de qué.', exEn:'"Thanks for everything." — "Don\'t mention it."'},
+  {cat:'interjeccion', es:'Buen provecho', en:'Enjoy your meal', ex:'Buen provecho, disfruta la comida.', exEn:'Enjoy your meal.'},
+  {cat:'interjeccion', es:'Salud', en:'Cheers, bless you', ex:'¡Salud! Por tu nuevo trabajo.', exEn:'Cheers! To your new job.'},
+  {cat:'interjeccion', es:'De acuerdo', en:'Agreed', ex:'De acuerdo, nos vemos a las cinco.', exEn:'Agreed, see you at five.'},
+  {cat:'interjeccion', es:'Está bien', en:"That's fine", ex:'Está bien, no hay problema.', exEn:"That's fine, no problem."},
+  {cat:'interjeccion', es:'No importa', en:"It doesn't matter", ex:'No importa, lo hago mañana.', exEn:"It doesn't matter, I'll do it tomorrow."},
+  {cat:'interjeccion', es:'Por supuesto', en:'Of course', ex:'¿Puedes ayudarme? — Por supuesto.', exEn:'"Can you help me?" — "Of course."'},
+  {cat:'interjeccion', es:'En absoluto', en:'Not at all', ex:'¿Te molesta? — En absoluto.', exEn:'"Does it bother you?" — "Not at all."'},
+  {cat:'interjeccion', es:'Ni hablar', en:'No way', ex:'¿Salir con este clima? Ni hablar.', exEn:'Go out in this weather? No way.'},
+  {cat:'interjeccion', es:'Tienes razón', en:"You're right", ex:'Tienes razón, debo descansar más.', exEn:"You're right, I should rest more."},
+  {cat:'interjeccion', es:'No tienes razón', en:"You're wrong", ex:'Creo que no tienes razón esta vez.', exEn:"I think you're wrong this time."},
+  {cat:'interjeccion', es:'Puede ser', en:'Maybe, could be', ex:'¿Lloverá hoy? — Puede ser.', exEn:'"Will it rain today?" — "Maybe."'},
+  {cat:'interjeccion', es:'¡Qué sorpresa!', en:'What a surprise!', ex:'¡Qué sorpresa verte aquí!', exEn:'What a surprise to see you here!'},
+  {cat:'interjeccion', es:'¡No puede ser!', en:"It can't be!", ex:'¡No puede ser, perdí mi teléfono!', exEn:"It can't be, I lost my phone!"},
+  {cat:'interjeccion', es:'¡Increíble!', en:'Incredible!', ex:'¡Increíble! Aprobaste el examen.', exEn:'Incredible! You passed the exam.'},
+  {cat:'interjeccion', es:'¡Qué raro!', en:'How strange!', ex:'¡Qué raro, la tienda está cerrada!', exEn:'How strange, the store is closed!'},
+  {cat:'interjeccion', es:'¡Qué susto!', en:'What a scare!', ex:'¡Qué susto me diste!', exEn:'You gave me such a scare!'},
+  {cat:'interjeccion', es:'¡Vaya!', en:'Wow!, Well!', ex:'¡Vaya! No lo sabía.', exEn:"Wow! I didn't know that."},
+  {cat:'interjeccion', es:'¡Anda!', en:'Wow!, Come on!', ex:'¡Anda, no lo puedo creer!', exEn:"Wow, I can't believe it!"},
+  {cat:'interjeccion', es:'¡Caramba!', en:'Wow!, Gosh!', ex:'¡Caramba, qué calor hace!', exEn:"Gosh, it's so hot!"},
+  {cat:'interjeccion', es:'¡Madre mía!', en:'Oh my!', ex:'¡Madre mía, qué tarde es!', exEn:"Oh my, it's so late!"},
+  {cat:'interjeccion', es:'¡Dios mío!', en:'My God!', ex:'¡Dios mío, casi me caigo!', exEn:'My God, I almost fell!'},
+  {cat:'interjeccion', es:'¡Ánimo!', en:'Cheer up!', ex:'¡Ánimo, tú puedes con el examen!', exEn:'Cheer up, you can do the exam!'},
+  {cat:'interjeccion', es:'¡Vamos!', en:"Let's go!", ex:'¡Vamos, se hace tarde!', exEn:"Let's go, it's getting late!"},
+  {cat:'interjeccion', es:'¡Adelante!', en:'Go ahead!', ex:'¡Adelante, pasa!', exEn:'Go ahead, come in!'},
+  {cat:'interjeccion', es:'¡Tú puedes!', en:'You can do it!', ex:'¡Ánimo, tú puedes!', exEn:'Come on, you can do it!'},
+  {cat:'interjeccion', es:'¡Buen viaje!', en:'Have a good trip!', ex:'¡Buen viaje, cuídate mucho!', exEn:'Have a good trip, take care!'},
+  {cat:'interjeccion', es:'¡Buen fin de semana!', en:'Have a good weekend!', ex:'¡Buen fin de semana para todos!', exEn:'Have a good weekend, everyone!'},
+  {cat:'interjeccion', es:'¡Que te mejores!', en:'Get well soon!', ex:'¡Que te mejores pronto!', exEn:'Get well soon!'},
+  {cat:'interjeccion', es:'¡Que duermas bien!', en:'Sleep well!', ex:'Buenas noches, ¡que duermas bien!', exEn:'Good night, sleep well!'},
+  {cat:'interjeccion', es:'¡Que tengas un buen día!', en:'Have a good day!', ex:'¡Que tengas un buen día en el trabajo!', exEn:'Have a good day at work!'},
+  {cat:'interjeccion', es:'¡Enhorabuena!', en:'Congratulations!', ex:'¡Enhorabuena por tu nuevo trabajo!', exEn:'Congratulations on your new job!'},
+  {cat:'interjeccion', es:'No sé', en:"I don't know", ex:'No sé la respuesta correcta.', exEn:"I don't know the correct answer."},
+  {cat:'interjeccion', es:'No entiendo', en:"I don't understand", ex:'No entiendo esta palabra.', exEn:"I don't understand this word."},
+  {cat:'interjeccion', es:'¿Puedes repetir?', en:'Can you repeat?', ex:'¿Puedes repetir, por favor?', exEn:'Can you repeat, please?'},
+  {cat:'interjeccion', es:'Más despacio, por favor', en:'Slower, please', ex:'Habla más despacio, por favor.', exEn:'Speak slower, please.'},
+  {cat:'interjeccion', es:'¿Cómo se dice…?', en:'How do you say…?', ex:"¿Cómo se dice 'hospital' en inglés?", exEn:"How do you say 'hospital' in English?"},
+  {cat:'interjeccion', es:'¿Qué significa esto?', en:'What does this mean?', ex:'¿Qué significa esta palabra?', exEn:'What does this word mean?'},
+  {cat:'interjeccion', es:'Estoy de acuerdo', en:'I agree', ex:'Estoy de acuerdo con tu idea.', exEn:'I agree with your idea.'},
+  {cat:'interjeccion', es:'No estoy de acuerdo', en:'I disagree', ex:'No estoy de acuerdo con eso.', exEn:'I disagree with that.'},
+  {cat:'interjeccion', es:'Tengo una pregunta', en:'I have a question', ex:'Tengo una pregunta sobre la tarea.', exEn:'I have a question about the homework.'},
+  {cat:'interjeccion', es:'¿Me puedes ayudar?', en:'Can you help me?', ex:'¿Me puedes ayudar con esto?', exEn:'Can you help me with this?'},
+  {cat:'interjeccion', es:'Necesito ayuda', en:'I need help', ex:'Necesito ayuda con el proyecto.', exEn:'I need help with the project.'},
+  {cat:'interjeccion', es:'Un momento, por favor', en:'One moment, please', ex:'Un momento, por favor, ya termino.', exEn:"One moment, please, I'm almost done."},
+  {cat:'interjeccion', es:'Ya voy', en:"I'm coming", ex:'¡Ya voy! Espera un segundo.', exEn:"I'm coming! Wait a second."},
+  {cat:'interjeccion', es:'Vamos a ver', en:"Let's see", ex:'Vamos a ver qué pasa.', exEn:"Let's see what happens."},
+  {cat:'interjeccion', es:'No pasa nada', en:"No worries, it's okay", ex:'No pasa nada, tranquilo.', exEn:"It's okay, don't worry."},
+  {cat:'interjeccion', es:'Tranquilo / Tranquila', en:'Calm down, relax', ex:'Tranquilo, todo va a salir bien.', exEn:'Relax, everything will be fine.'},
+  {cat:'interjeccion', es:'¡Qué pena!', en:'What a shame!', ex:'¡Qué pena que no puedas venir!', exEn:"What a shame you can't come!"},
+  {cat:'interjeccion', es:'¡Qué lástima!', en:'What a pity!', ex:'¡Qué lástima, perdimos el tren!', exEn:'What a pity, we missed the train!'},
+  {cat:'interjeccion', es:'¡Qué bueno!', en:'How great!', ex:'¡Qué bueno que llegaste!', exEn:'How great that you arrived!'},
+  {cat:'interjeccion', es:'¡Qué mal!', en:'How bad!', ex:'¡Qué mal, se rompió mi teléfono!', exEn:'How bad, my phone broke!'},
+  {cat:'interjeccion', es:'Es igual', en:"It's all the same", ex:'Es igual, no importa la hora.', exEn:"It's all the same, the time doesn't matter."},
+  {cat:'interjeccion', es:'Depende', en:'It depends', ex:'¿Vienes mañana? — Depende.', exEn:'"Are you coming tomorrow?" — "It depends."'},
+  {cat:'interjeccion', es:'A ver', en:"Let's see", ex:'A ver qué dice el médico.', exEn:"Let's see what the doctor says."},
+  {cat:'interjeccion', es:'Por cierto', en:'By the way', ex:'Por cierto, ¿tienes mi número?', exEn:'By the way, do you have my number?'},
+  {cat:'interjeccion', es:'En fin', en:'Anyway', ex:'En fin, así son las cosas.', exEn:"Anyway, that's how things are."},
+  {cat:'interjeccion', es:'Al final', en:'In the end', ex:'Al final, todo salió bien.', exEn:'In the end, everything turned out fine.'},
+  {cat:'interjeccion', es:'Sin duda', en:'Without a doubt', ex:'Sin duda, es el mejor plan.', exEn:"Without a doubt, it's the best plan."},
+  {cat:'interjeccion', es:'De verdad', en:'Really, truly', ex:'¿De verdad vienes hoy?', exEn:'Are you really coming today?'},
+  {cat:'interjeccion', es:'En serio', en:'Seriously', ex:'¿Lo dices en serio?', exEn:'Are you serious?'},
+  {cat:'interjeccion', es:'Es broma', en:"It's a joke", ex:'Tranquilo, es broma.', exEn:"Relax, it's a joke."},
+  {cat:'interjeccion', es:'No me digas', en:"You don't say!", ex:'¿Te casas? ¡No me digas!', exEn:"You're getting married? No way!"},
+  {cat:'interjeccion', es:'Ya está', en:"That's it, done", ex:'Ya está, terminé la tarea.', exEn:"That's it, I finished the homework."},
+  {cat:'interjeccion', es:'Vale la pena', en:"It's worth it", ex:'El esfuerzo vale la pena.', exEn:'The effort is worth it.'},
+  {cat:'interjeccion', es:'Cuánto tiempo', en:'Long time no see', ex:'¡Cuánto tiempo sin verte!', exEn:'Long time no see!'},
+  {cat:'interjeccion', es:'Qué gusto verte', en:'So glad to see you', ex:'¡Qué gusto verte de nuevo!', exEn:'So glad to see you again!'},
+  {cat:'interjeccion', es:'Cuídate', en:'Take care', ex:'Me voy, ¡cuídate mucho!', exEn:"I'm leaving, take care!"},
+  {cat:'interjeccion', es:'Que descanses', en:'Rest well', ex:'Buenas noches, que descanses.', exEn:'Good night, rest well.'},
+  {cat:'interjeccion', es:'Estoy listo / lista', en:"I'm ready", ex:'Estoy lista para salir.', exEn:"I'm ready to go."},
+  {cat:'interjeccion', es:'Todo bien', en:'All good', ex:'No te preocupes, todo bien.', exEn:"Don't worry, all good."},
+  {cat:'interjeccion', es:'Más o menos', en:'So-so', ex:'¿Cómo estás? — Más o menos.', exEn:'"How are you?" — "So-so."'},
+  {cat:'interjeccion', es:'Como quieras', en:'As you wish', ex:'Podemos ir hoy o mañana, como quieras.', exEn:'We can go today or tomorrow, as you wish.'},
+  {cat:'interjeccion', es:'Lo que sea', en:'Whatever', ex:'Podemos comer lo que sea.', exEn:'We can eat whatever.'},
+  {cat:'interjeccion', es:'A propósito', en:'By the way', ex:'A propósito, ¿cómo está tu familia?', exEn:"By the way, how's your family?"},
+  {cat:'interjeccion', es:'Por si acaso', en:'Just in case', ex:'Llevo un paraguas por si acaso.', exEn:'I bring an umbrella just in case.'},
+  {cat:'interjeccion', es:'De todos modos', en:'Anyway', ex:'De todos modos, voy a intentarlo.', exEn:"Anyway, I'm going to try it."},
+  {cat:'interjeccion', es:'Sin falta', en:'Without fail', ex:'Te llamo mañana sin falta.', exEn:"I'll call you tomorrow without fail."},
+  {cat:'interjeccion', es:'Poco a poco', en:'Little by little', ex:'Aprendo español poco a poco.', exEn:"I'm learning Spanish little by little."},
+  {cat:'interjeccion', es:'Cuanto antes', en:'As soon as possible', ex:'Necesito la respuesta cuanto antes.', exEn:'I need the answer as soon as possible.'},
+  {cat:'interjeccion', es:'De vez en cuando', en:'From time to time', ex:'Salimos a cenar de vez en cuando.', exEn:'We go out to eat from time to time.'},
+  {cat:'interjeccion', es:'Hoy en día', en:'Nowadays', ex:'Hoy en día todos usan el teléfono.', exEn:'Nowadays everyone uses the phone.'},
+  {cat:'interjeccion', es:'Cada vez más', en:'More and more', ex:'Hablo español cada vez más.', exEn:'I speak Spanish more and more.'},
+  {cat:'interjeccion', es:'Otra vez', en:'Again', ex:'Perdón, ¿otra vez, por favor?', exEn:'Sorry, again please?'},
+  {cat:'interjeccion', es:'De nuevo', en:'Again', ex:'Inténtalo de nuevo.', exEn:'Try it again.'},
+  {cat:'interjeccion', es:'Por fin', en:'Finally', ex:'¡Por fin es viernes!', exEn:"Finally, it's Friday!"},
+  {cat:'interjeccion', es:'Al fin y al cabo', en:'At the end of the day', ex:'Al fin y al cabo, todo salió bien.', exEn:'At the end of the day, everything turned out fine.'},
+  {cat:'interjeccion', es:'En cambio', en:'On the other hand', ex:'Yo trabajo temprano; ella, en cambio, trabaja de noche.', exEn:'I work early; she, on the other hand, works at night.'},
+  {cat:'interjeccion', es:'Por un lado', en:'On one hand', ex:'Por un lado, quiero descansar.', exEn:'On one hand, I want to rest.'},
+  {cat:'interjeccion', es:'Por otro lado', en:'On the other hand', ex:'Por otro lado, necesito estudiar.', exEn:'On the other hand, I need to study.'},
+  {cat:'interjeccion', es:'En cuanto a', en:'Regarding', ex:'En cuanto a la tarea, ya terminé.', exEn:'Regarding the homework, I already finished.'},
+  {cat:'interjeccion', es:'Con respecto a', en:'With respect to', ex:'Con respecto a tu pregunta, no estoy seguro.', exEn:"With respect to your question, I'm not sure."},
+  {cat:'interjeccion', es:'¡Feliz cumpleaños!', en:'Happy birthday!', ex:'¡Feliz cumpleaños, que lo disfrutes!', exEn:'Happy birthday, enjoy it!'},
+  {cat:'interjeccion', es:'¡Feliz Navidad!', en:'Merry Christmas!', ex:'¡Feliz Navidad a toda tu familia!', exEn:'Merry Christmas to your whole family!'},
+  {cat:'interjeccion', es:'¡Feliz año nuevo!', en:'Happy New Year!', ex:'¡Feliz año nuevo, mucha salud!', exEn:'Happy New Year, lots of health!'},
+  {cat:'interjeccion', es:'¡Que aproveche!', en:'Enjoy your meal!', ex:'¡Que aproveche la comida!', exEn:'Enjoy your meal!'},
+  {cat:'interjeccion', es:'Estoy bien, gracias', en:"I'm fine, thanks", ex:'¿Cómo estás? — Estoy bien, gracias.', exEn:'"How are you?" — "I\'m fine, thanks."'},
+  {cat:'interjeccion', es:'¿Y tú?', en:'And you?', ex:'Estoy bien, ¿y tú?', exEn:'I\'m fine, and you?'},
+  {cat:'interjeccion', es:'¿Y usted?', en:'And you (formal)?', ex:'Muy bien, gracias, ¿y usted?', exEn:'Very well, thanks, and you?'},
+  {cat:'interjeccion', es:'Nada nuevo', en:'Nothing new', ex:'¿Qué hay de nuevo? — Nada nuevo.', exEn:'"What\'s new?" — "Nothing new."'},
+  {cat:'interjeccion', es:'Todo tranquilo', en:'All calm, all good', ex:'No te preocupes, todo tranquilo.', exEn:'Don\'t worry, all is calm.'},
+  {cat:'interjeccion', es:'Qué alivio', en:'What a relief', ex:'¡Qué alivio, ya terminé el examen!', exEn:'What a relief, I finished the exam!'},
+  {cat:'interjeccion', es:'Menos mal', en:'Thank goodness', ex:'Menos mal que llegaste a tiempo.', exEn:'Thank goodness you arrived on time.'},
+  {cat:'interjeccion', es:'Ni idea', en:'No idea', ex:'¿Dónde está? — Ni idea.', exEn:'"Where is it?" — "No idea."'},
+  {cat:'interjeccion', es:'Claro que sí', en:'Of course', ex:'¿Puedes venir? — Claro que sí.', exEn:'"Can you come?" — "Of course."'},
+  {cat:'interjeccion', es:'Claro que no', en:'Of course not', ex:'¿Estás enojado? — Claro que no.', exEn:'"Are you angry?" — "Of course not."'},
+  {cat:'interjeccion', es:'Buena pregunta', en:'Good question', ex:'Buena pregunta, déjame pensar.', exEn:'Good question, let me think.'},
+  {cat:'interjeccion', es:'Vamos al grano', en:"Let's get to the point", ex:'Vamos al grano, no hay tiempo.', exEn:"Let's get to the point, there's no time."},
+  {cat:'interjeccion', es:'Ojo', en:'Watch out, pay attention', ex:'Ojo con ese escalón.', exEn:'Watch out for that step.'},
+  {cat:'interjeccion', es:'Cuenta conmigo', en:'Count on me', ex:'Si necesitas ayuda, cuenta conmigo.', exEn:'If you need help, count on me.'},
+];
+
+const posMap = Object.fromEntries(categories.filter(c=>c.abbr).map(c=>[c.key,c.abbr]));
+
+const tabsEl = document.getElementById('tabs');
+const entriesEl = document.getElementById('entries');
+const noResultsEl = document.getElementById('noResults');
+const searchEl = document.getElementById('search');
+const metaLineEl = document.getElementById('metaLine');
+
+let activeCat = 'todos';
+let query = '';
+
+function counts(){
+  const c = {};
+  data.forEach(d => c[d.cat] = (c[d.cat]||0)+1);
+  return c;
+}
+const catCounts = counts();
+
+categories.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (c.key === activeCat ? ' active' : '');
+  const n = c.key === 'todos' ? data.length : (catCounts[c.key]||0);
+  btn.textContent = c.label + ' (' + n + ')';
+  btn.addEventListener('click', () => {
+    activeCat = c.key;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+  tabsEl.appendChild(btn);
+});
+
+searchEl.addEventListener('input', (e) => {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+function render(){
+  const filtered = data.filter(d => {
+    const matchesCat = activeCat === 'todos' || d.cat === activeCat;
+    const matchesQuery = !query || d.es.toLowerCase().includes(query) || d.en.toLowerCase().includes(query);
+    return matchesCat && matchesQuery;
+  });
+
+  entriesEl.innerHTML = '';
+  noResultsEl.style.display = filtered.length ? 'none' : 'block';
+  metaLineEl.textContent = filtered.length + (filtered.length === 1 ? ' palabra' : ' palabras');
+
+  filtered.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'entry';
+    el.innerHTML = `
+      <div class="entry-head">
+        <span class="entry-word">${d.es}</span>
+        <span class="entry-pos">${posMap[d.cat] || ''}</span>
+      </div>
+      <p class="entry-en">${d.en}</p>
+      <p class="entry-example"><span class="es">${d.ex}</span> <span class="en">(${d.exEn})</span></p>
+    `;
+    entriesEl.appendChild(el);
+  });
+}
+
+render();
+
+const backToTopBtn = document.getElementById('backToTop');
+const backToBottomBtn = document.getElementById('backToBottom');
+function updateScrollButtons(){
+  const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 300;
+  backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+  backToBottomBtn.classList.toggle('visible', !nearBottom);
+}
+window.addEventListener('scroll', updateScrollButtons);
+window.addEventListener('resize', updateScrollButtons);
+updateScrollButtons();
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+backToBottomBtn.addEventListener('click', () => {
+  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+});
+
+const scrollDownBtn = document.getElementById('scrollDown');
+scrollDownBtn.addEventListener('click', () => {
+  document.querySelector('.tabs-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+</body>
+</html>
