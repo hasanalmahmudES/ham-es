@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oxford 3000 Words — English Vocabulary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,500&family=Work+Sans:wght@400;500;600&family=Noto+Sans+Bengali:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cover:#1B2A3D;
+    --cover-dark:#121E2C;
+    --paper:#F7F4EC;
+    --paper-line:#E1DACB;
+    --ink:#241F19;
+    --ink-soft:#6B6152;
+    --gold:#B4923D;
+    --gold-soft:#D8C48F;
+    --teal:#2E5F58;
+    --wine:#7A3B3B;
+  }
+
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', 'Noto Sans Bengali', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .bn{ font-family:'Noto Sans Bengali','Work Sans', sans-serif; }
+
+  /* ---------- COVER ---------- */
+  .cover{
+    background:linear-gradient(160deg, var(--cover) 0%, var(--cover-dark) 100%);
+    color:var(--gold-soft);
+    padding:52px 24px 40px;
+    text-align:center;
+    position:relative;
+    animation:coverIn .7s ease-out;
+  }
+  @keyframes coverIn{
+    from{opacity:0; transform:translateY(-8px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+  .cover h1{
+    font-family:'Lora', serif;
+    font-weight:700;
+    font-size:clamp(26px, 6vw, 40px);
+    margin:0 0 10px;
+    letter-spacing:0.3px;
+    color:#F3E9CE;
+  }
+  .cover .rule{
+    width:64px;
+    height:2px;
+    background:var(--gold);
+    margin:16px auto;
+    border:none;
+  }
+  .cover p{
+    font-size:15px;
+    color:#B9C3CF;
+    max-width:460px;
+    margin:0 auto;
+    line-height:1.6;
+  }
+  .cover .note{
+    margin-top:14px;
+    font-size:12.5px;
+    color:#8F9CAA;
+    max-width:460px;
+  }
+
+  /* ---------- TABS ---------- */
+  .tabs-wrap{
+    background:var(--cover);
+    padding:0 12px;
+    overflow-x:auto;
+    white-space:nowrap;
+    scrollbar-width:none;
+    border-bottom:3px solid var(--gold);
+  }
+  .tabs-wrap::-webkit-scrollbar{display:none;}
+  .tabs{
+    display:inline-flex;
+    gap:2px;
+    padding:10px 4px;
+  }
+  .tab-btn{
+    font-family:'Work Sans', sans-serif;
+    font-size:13.5px;
+    font-weight:500;
+    color:#AEB9C6;
+    background:transparent;
+    border:none;
+    padding:9px 14px;
+    cursor:pointer;
+    border-radius:3px 3px 0 0;
+    transition:color .15s ease, background .15s ease;
+    white-space:nowrap;
+  }
+  .tab-btn:hover{ color:#EFE6CC; }
+  .tab-btn.active{
+    color:#1B2A3D;
+    background:var(--gold-soft);
+    font-weight:600;
+  }
+
+  /* ---------- SEARCH ---------- */
+  .search-row{
+    max-width:900px;
+    margin:26px auto 8px;
+    padding:0 20px;
+  }
+  .search-row input{
+    width:100%;
+    font-family:'Work Sans', sans-serif;
+    font-size:15px;
+    color:var(--ink);
+    background:transparent;
+    border:none;
+    border-bottom:1.5px solid var(--paper-line);
+    padding:8px 2px 10px;
+    outline:none;
+    transition:border-color .15s ease;
+  }
+  .search-row input:focus{ border-bottom-color:var(--gold); }
+  .search-row input::placeholder{ color:#A79E8C; }
+
+  .meta-line{
+    max-width:900px;
+    margin:0 auto;
+    padding:10px 22px 0;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ---------- ENTRIES ---------- */
+  main{
+    max-width:900px;
+    margin:0 auto;
+    padding:18px 16px 70px;
+  }
+  .entries{
+    columns:2 340px;
+    column-gap:36px;
+  }
+  .entry{
+    break-inside:avoid;
+    padding:14px 0;
+    border-bottom:1px solid var(--paper-line);
+    margin-bottom:2px;
+  }
+  .entry-head{
+    display:flex;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-bottom:3px;
+  }
+  .entry-word{
+    font-family:'Lora', serif;
+    font-weight:700;
+    font-size:18px;
+    color:var(--ink);
+  }
+  .entry-pos{
+    font-family:'Lora', serif;
+    font-style:italic;
+    font-size:13px;
+    color:var(--teal);
+  }
+  .entry-ipa{
+    font-size:13.5px;
+    color:var(--wine);
+    margin:0 0 6px;
+  }
+  .entry-bn{
+    font-size:15px;
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  .entry-example{
+    font-size:13.5px;
+    line-height:1.55;
+    color:var(--ink);
+  }
+  .entry-example .en{
+    font-style:italic;
+  }
+  .entry-example .bnex{
+    color:var(--ink-soft);
+    display:block;
+    margin-top:2px;
+  }
+
+  .no-results{
+    text-align:center;
+    color:var(--ink-soft);
+    padding:50px 20px;
+    font-size:14.5px;
+    display:none;
+  }
+
+  footer{
+    text-align:center;
+    padding:22px;
+    font-size:12px;
+    color:var(--ink-soft);
+    border-top:1px solid var(--paper-line);
+  }
+  footer .copyright{
+    margin-top:6px;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    letter-spacing:0.2px;
+  }
+
+  .back-to-top{
+    position:fixed;
+    right:18px;
+    bottom:20px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--cover);
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(18,30,44,0.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index:50;
+  }
+  .back-to-top.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .back-to-top:hover{
+    background:var(--cover-dark);
+  }
+  .back-to-top svg{
+    width:18px;
+    height:18px;
+  }
+
+  .back-to-bottom{
+    position:fixed;
+    right:18px;
+    bottom:70px;
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--cover);
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 3px 10px rgba(18,30,44,0.35);
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(-8px);
+    transition:opacity .2s ease, transform .2s ease, visibility .2s ease;
+    z-index:50;
+  }
+  .back-to-bottom.visible{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+  }
+  .back-to-bottom:hover{
+    background:var(--cover-dark);
+  }
+  .back-to-bottom svg{
+    width:18px;
+    height:18px;
+  }
+
+  .scroll-down{
+    margin:22px auto 0;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:transparent;
+    border:1.5px solid var(--gold);
+    color:var(--gold-soft);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+    animation:bob 2s ease-in-out infinite;
+  }
+  .scroll-down:hover{
+    background:rgba(180,146,61,0.15);
+  }
+  .scroll-down svg{
+    width:16px;
+    height:16px;
+  }
+  @keyframes bob{
+    0%, 100%{ transform:translateY(0); }
+    50%{ transform:translateY(4px); }
+  }
+
+  @media (max-width:600px){
+    .entries{ columns:1; }
+    .cover{ padding:40px 20px 30px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <h1>Oxford 3000 Words</h1>
+  <hr class="rule">
+  <p>Essential English vocabulary with British IPA pronunciation and Bangla (বাংলা) meanings and examples — organized by part of speech.</p>
+  <p class="note">367 words so far, sourced from the official Oxford 3000 (American English) word list — British RP pronunciation throughout. This is a growing set, not the full 3000 yet; more batches are being added. Treat Bangla translations as a learning aid and cross-check nuance with a dictionary where it matters.</p>
+  <button class="scroll-down" id="scrollDown" aria-label="Go to vocabulary" title="Go to vocabulary">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 5v14"></path>
+      <path d="M19 12l-7 7-7-7"></path>
+    </svg>
+  </button>
+</div>
+
+<div class="tabs-wrap">
+  <div class="tabs" id="tabs"></div>
+</div>
+
+<div class="search-row">
+  <input type="text" id="search" placeholder="Search a word, in English or Bangla…">
+</div>
+<div class="meta-line" id="metaLine"></div>
+
+<main>
+  <div class="entries" id="entries"></div>
+  <div class="no-results" id="noResults">No words found. Try a different search.</div>
+</main>
+
+<footer>
+  <div>Oxford 3000 vocabulary guide for daily English practice</div>
+  <p>&copy; 2026
+     <b><a href="/" style="color:black;text-decoration:none;">Hasan Al Mahmud</a></b>. All rights reserved.</p>
+</footer>
+
+<button class="back-to-bottom" id="backToBottom" aria-label="Go down" title="Go down">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5v14"></path>
+    <path d="M19 12l-7 7-7-7"></path>
+  </svg>
+</button>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top" title="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 19V5"></path>
+    <path d="M5 12l7-7 7 7"></path>
+  </svg>
+</button>
+
+<script>
+const categories = [
+  { key:'all', label:'All' },
+  { key:'noun', label:'Nouns', abbr:'n.' },
+  { key:'verb', label:'Verbs', abbr:'v.' },
+  { key:'adjective', label:'Adjectives', abbr:'adj.' },
+  { key:'adverb', label:'Adverbs', abbr:'adv.' },
+  { key:'pronoun', label:'Pronouns', abbr:'pron.' },
+  { key:'preposition', label:'Prepositions', abbr:'prep.' },
+  { key:'conjunction', label:'Conjunctions', abbr:'conj.' },
+  { key:'phrase', label:'Everyday Phrases', abbr:'phr.' },
+  { key:'other', label:'Other (det./num.)', abbr:'other' },
+];
+
+const data = [
+  // NOUNS
+  {cat:'noun', en:'time', ipa:'/taɪm/', bn:'সময়', ex:'I don\u2019t have much time today.', exBn:'আজ আমার হাতে বেশি সময় নেই।'},
+  {cat:'noun', en:'people', ipa:'/ˈpiː.pəl/', bn:'মানুষ', ex:'Many people were waiting outside.', exBn:'অনেক মানুষ বাইরে অপেক্ষা করছিল।'},
+  {cat:'noun', en:'year', ipa:'/jɪər/', bn:'বছর', ex:'This year has been busy.', exBn:'এই বছরটা ব্যস্ত গেছে।'},
+  {cat:'noun', en:'way', ipa:'/weɪ/', bn:'পথ, উপায়', ex:'There is no easy way to do this.', exBn:'এটা করার সহজ কোনো উপায় নেই।'},
+  {cat:'noun', en:'day', ipa:'/deɪ/', bn:'দিন', ex:'I go for a walk every day.', exBn:'আমি প্রতিদিন হাঁটতে যাই।'},
+  {cat:'noun', en:'thing', ipa:'/θɪŋ/', bn:'জিনিস, বিষয়', ex:'That is a strange thing to say.', exBn:'এটা বলা একটা অদ্ভুত বিষয়।'},
+  {cat:'noun', en:'child', ipa:'/tʃaɪld/', bn:'সন্তান, শিশু', ex:'The child is sleeping now.', exBn:'শিশুটি এখন ঘুমাচ্ছে।'},
+  {cat:'noun', en:'life', ipa:'/laɪf/', bn:'জীবন', ex:'She loves her new life in the city.', exBn:'সে শহরে তার নতুন জীবন খুব পছন্দ করে।'},
+  {cat:'noun', en:'world', ipa:'/wɜːld/', bn:'পৃথিবী, বিশ্ব', ex:'We want to see the world.', exBn:'আমরা পৃথিবী দেখতে চাই।'},
+  {cat:'noun', en:'school', ipa:'/skuːl/', bn:'বিদ্যালয়, স্কুল', ex:'The children walk to school.', exBn:'বাচ্চারা হেঁটে স্কুলে যায়।'},
+  {cat:'noun', en:'family', ipa:'/ˈfæm.əl.i/', bn:'পরিবার', ex:'My family lives near the market.', exBn:'আমার পরিবার বাজারের কাছে থাকে।'},
+  {cat:'noun', en:'student', ipa:'/ˈstjuː.dənt/', bn:'শিক্ষার্থী, ছাত্র/ছাত্রী', ex:'She is a good student.', exBn:'সে একজন ভালো শিক্ষার্থী।'},
+  {cat:'noun', en:'country', ipa:'/ˈkʌn.tri/', bn:'দেশ', ex:'This is a beautiful country.', exBn:'এটি একটি সুন্দর দেশ।'},
+  {cat:'noun', en:'problem', ipa:'/ˈprɒb.ləm/', bn:'সমস্যা', ex:'We need to solve this problem.', exBn:'আমাদের এই সমস্যাটা সমাধান করতে হবে।'},
+  {cat:'noun', en:'hand', ipa:'/hænd/', bn:'হাত', ex:'He raised his hand to answer.', exBn:'সে উত্তর দিতে হাত তুলল।'},
+  {cat:'noun', en:'place', ipa:'/pleɪs/', bn:'জায়গা, স্থান', ex:'This is a quiet place to study.', exBn:'এটি পড়াশোনার জন্য একটি শান্ত জায়গা।'},
+  {cat:'noun', en:'week', ipa:'/wiːk/', bn:'সপ্তাহ', ex:'I will finish it next week.', exBn:'আমি আগামী সপ্তাহে এটা শেষ করব।'},
+  {cat:'noun', en:'company', ipa:'/ˈkʌm.pə.ni/', bn:'কোম্পানি, প্রতিষ্ঠান', ex:'He works for a small company.', exBn:'সে একটি ছোট কোম্পানিতে কাজ করে।'},
+  {cat:'noun', en:'question', ipa:'/ˈkwes.tʃən/', bn:'প্রশ্ন', ex:'Can I ask you a question?', exBn:'আমি কি তোমাকে একটা প্রশ্ন করতে পারি?'},
+  {cat:'noun', en:'government', ipa:'/ˈɡʌv.ən.mənt/', bn:'সরকার', ex:'The government announced a new policy.', exBn:'সরকার একটি নতুন নীতি ঘোষণা করেছে।'},
+  {cat:'noun', en:'money', ipa:'/ˈmʌn.i/', bn:'টাকা, অর্থ', ex:'I don\u2019t have enough money right now.', exBn:'আমার এখন যথেষ্ট টাকা নেই।'},
+  {cat:'noun', en:'story', ipa:'/ˈstɔː.ri/', bn:'গল্প', ex:'She told us an interesting story.', exBn:'সে আমাদের একটা মজার গল্প বলল।'},
+  {cat:'noun', en:'fact', ipa:'/fækt/', bn:'সত্য, তথ্য', ex:'It is a well-known fact.', exBn:'এটি একটি সুপরিচিত তথ্য।'},
+  {cat:'noun', en:'month', ipa:'/mʌnθ/', bn:'মাস', ex:'We are moving next month.', exBn:'আমরা আগামী মাসে বাসা বদলাচ্ছি।'},
+  {cat:'noun', en:'book', ipa:'/bʊk/', bn:'বই', ex:'I am reading a new book.', exBn:'আমি একটা নতুন বই পড়ছি।'},
+  {cat:'noun', en:'job', ipa:'/dʒɒb/', bn:'চাকরি, কাজ', ex:'She found a good job in the city.', exBn:'সে শহরে একটা ভালো চাকরি পেয়েছে।'},
+  {cat:'noun', en:'word', ipa:'/wɜːd/', bn:'শব্দ', ex:'I don\u2019t know this word.', exBn:'আমি এই শব্দটা জানি না।'},
+  {cat:'noun', en:'business', ipa:'/ˈbɪz.nɪs/', bn:'ব্যবসা', ex:'He started his own business.', exBn:'সে নিজের ব্যবসা শুরু করেছে।'},
+  {cat:'noun', en:'friend', ipa:'/frend/', bn:'বন্ধু', ex:'She is my best friend.', exBn:'সে আমার সবচেয়ে ভালো বন্ধু।'},
+  {cat:'noun', en:'father', ipa:'/ˈfɑː.ðər/', bn:'বাবা', ex:'My father works at a bank.', exBn:'আমার বাবা একটি ব্যাংকে কাজ করেন।'},
+  {cat:'noun', en:'mother', ipa:'/ˈmʌð.ər/', bn:'মা', ex:'My mother cooks very well.', exBn:'আমার মা খুব ভালো রান্না করেন।'},
+  {cat:'noun', en:'hour', ipa:'/aʊər/', bn:'ঘণ্টা', ex:'The meeting lasted one hour.', exBn:'সভাটি এক ঘণ্টা স্থায়ী হয়েছিল।'},
+  {cat:'noun', en:'house', ipa:'/haʊs/', bn:'বাড়ি', ex:'Their house is near the park.', exBn:'তাদের বাড়ি পার্কের কাছে।'},
+  {cat:'noun', en:'name', ipa:'/neɪm/', bn:'নাম', ex:'What is your name?', exBn:'তোমার নাম কী?'},
+  {cat:'noun', en:'city', ipa:'/ˈsɪt.i/', bn:'শহর', ex:'I live in a large city.', exBn:'আমি একটি বড় শহরে থাকি।'},
+  {cat:'noun', en:'water', ipa:'/ˈwɔː.tər/', bn:'পানি', ex:'Please drink more water.', exBn:'অনুগ্রহ করে বেশি পানি পান করো।'},
+  {cat:'noun', en:'food', ipa:'/fuːd/', bn:'খাবার', ex:'The food here is delicious.', exBn:'এখানকার খাবার খুব সুস্বাদু।'},
+  {cat:'noun', en:'door', ipa:'/dɔːr/', bn:'দরজা', ex:'Please close the door.', exBn:'অনুগ্রহ করে দরজা বন্ধ করো।'},
+  {cat:'noun', en:'health', ipa:'/helθ/', bn:'স্বাস্থ্য', ex:'Exercise is good for your health.', exBn:'ব্যায়াম স্বাস্থ্যের জন্য ভালো।'},
+  {cat:'noun', en:'car', ipa:'/kɑːr/', bn:'গাড়ি', ex:'He parked the car outside.', exBn:'সে গাড়িটা বাইরে রাখল।'},
+  {cat:'noun', en:'road', ipa:'/rəʊd/', bn:'রাস্তা', ex:'This road leads to the station.', exBn:'এই রাস্তাটা স্টেশনে গিয়ে ওঠে।'},
+  {cat:'noun', en:'phone', ipa:'/fəʊn/', bn:'ফোন', ex:'My phone battery is low.', exBn:'আমার ফোনের চার্জ কম।'},
+  {cat:'noun', en:'teacher', ipa:'/ˈtiː.tʃər/', bn:'শিক্ষক/শিক্ষিকা', ex:'The teacher explained the lesson well.', exBn:'শিক্ষক পাঠটা ভালোভাবে বুঝিয়ে দিলেন।'},
+  {cat:'noun', en:'doctor', ipa:'/ˈdɒk.tər/', bn:'ডাক্তার', ex:'I need to see a doctor.', exBn:'আমাকে একজন ডাক্তার দেখাতে হবে।'},
+  {cat:'noun', en:'morning', ipa:'/ˈmɔː.nɪŋ/', bn:'সকাল', ex:'I study in the morning.', exBn:'আমি সকালে পড়াশোনা করি।'},
+  {cat:'noun', en:'night', ipa:'/naɪt/', bn:'রাত', ex:'I sleep well at night.', exBn:'আমি রাতে ভালো ঘুমাই।'},
+  {cat:'noun', en:'weekend', ipa:'/ˈwiːk.end/', bn:'সাপ্তাহিক ছুটি', ex:'We rest on the weekend.', exBn:'আমরা সাপ্তাহিক ছুটিতে বিশ্রাম নিই।'},
+  {cat:'noun', en:'market', ipa:'/ˈmɑː.kɪt/', bn:'বাজার', ex:'I buy vegetables at the market.', exBn:'আমি বাজার থেকে সবজি কিনি।'},
+  {cat:'noun', en:'park', ipa:'/pɑːk/', bn:'উদ্যান, পার্ক', ex:'We walked through the park.', exBn:'আমরা পার্কের ভেতর দিয়ে হাঁটলাম।'},
+  {cat:'noun', en:'office', ipa:'/ˈɒf.ɪs/', bn:'অফিস', ex:'I arrive at the office at nine.', exBn:'আমি নয়টায় অফিসে পৌঁছাই।'},
+  {cat:'noun', en:'university', ipa:'/ˌjuː.nɪˈvɜː.sɪ.ti/', bn:'বিশ্ববিদ্যালয়', ex:'She studies at the university.', exBn:'সে বিশ্ববিদ্যালয়ে পড়ে।'},
+  {cat:'noun', en:'restaurant', ipa:'/ˈres.tər.ɒnt/', bn:'রেস্তোরাঁ', ex:'We had dinner at a new restaurant.', exBn:'আমরা একটা নতুন রেস্তোরাঁয় রাতের খাবার খেয়েছিলাম।'},
+  {cat:'noun', en:'clothes', ipa:'/kləʊðz/', bn:'পোশাক', ex:'I wash my clothes on Saturdays.', exBn:'আমি শনিবার জামাকাপড় ধুই।'},
+  {cat:'noun', en:'idea', ipa:'/aɪˈdɪə/', bn:'ধারণা, ভাবনা', ex:'That\u2019s a great idea.', exBn:'এটা একটা দারুণ ধারণা।'},
+  {cat:'noun', en:'group', ipa:'/ɡruːp/', bn:'দল', ex:'We worked in a small group.', exBn:'আমরা একটি ছোট দলে কাজ করেছি।'},
+  {cat:'noun', en:'number', ipa:'/ˈnʌm.bər/', bn:'সংখ্যা', ex:'Please write down the number.', exBn:'অনুগ্রহ করে সংখ্যাটা লিখে রাখো।'},
+  {cat:'noun', en:'letter', ipa:'/ˈlet.ər/', bn:'চিঠি', ex:'I received a letter yesterday.', exBn:'আমি গতকাল একটা চিঠি পেয়েছি।'},
+  {cat:'noun', en:'news', ipa:'/njuːz/', bn:'সংবাদ', ex:'Have you heard the news?', exBn:'তুমি কি খবরটা শুনেছ?'},
+  {cat:'noun', en:'music', ipa:'/ˈmjuː.zɪk/', bn:'সংগীত', ex:'She listens to music every evening.', exBn:'সে প্রতি সন্ধ্যায় গান শোনে।'},
+  {cat:'noun', en:'weather', ipa:'/ˈweð.ər/', bn:'আবহাওয়া', ex:'The weather is nice today.', exBn:'আজ আবহাওয়া চমৎকার।'},
+
+  // VERBS
+  {cat:'verb', en:'be', ipa:'/biː/', bn:'হওয়া', ex:'She wants to be a doctor.', exBn:'সে ডাক্তার হতে চায়।'},
+  {cat:'verb', en:'have', ipa:'/hæv/', bn:'থাকা, রাখা', ex:'I have two brothers.', exBn:'আমার দুই ভাই আছে।'},
+  {cat:'verb', en:'do', ipa:'/duː/', bn:'করা', ex:'What do you do on weekends?', exBn:'তুমি সপ্তাহান্তে কী করো?'},
+  {cat:'verb', en:'say', ipa:'/seɪ/', bn:'বলা', ex:'She didn\u2019t say anything.', exBn:'সে কিছু বলেনি।'},
+  {cat:'verb', en:'get', ipa:'/ɡet/', bn:'পাওয়া, পেয়ে যাওয়া', ex:'I need to get some rest.', exBn:'আমার কিছু বিশ্রাম দরকার।'},
+  {cat:'verb', en:'make', ipa:'/meɪk/', bn:'তৈরি করা', ex:'Let\u2019s make dinner together.', exBn:'চলো একসাথে রাতের খাবার তৈরি করি।'},
+  {cat:'verb', en:'go', ipa:'/ɡəʊ/', bn:'যাওয়া', ex:'I go to work by bus.', exBn:'আমি বাসে করে কাজে যাই।'},
+  {cat:'verb', en:'know', ipa:'/nəʊ/', bn:'জানা', ex:'I don\u2019t know the answer.', exBn:'আমি উত্তরটা জানি না।'},
+  {cat:'verb', en:'take', ipa:'/teɪk/', bn:'নেওয়া', ex:'Please take a seat.', exBn:'অনুগ্রহ করে বসুন।'},
+  {cat:'verb', en:'see', ipa:'/siː/', bn:'দেখা', ex:'I can see the mountains from here.', exBn:'আমি এখান থেকে পাহাড় দেখতে পাচ্ছি।'},
+  {cat:'verb', en:'come', ipa:'/kʌm/', bn:'আসা', ex:'Can you come to the party?', exBn:'তুমি কি পার্টিতে আসতে পারবে?'},
+  {cat:'verb', en:'think', ipa:'/θɪŋk/', bn:'ভাবা', ex:'I think it will rain today.', exBn:'আমার মনে হয় আজ বৃষ্টি হবে।'},
+  {cat:'verb', en:'look', ipa:'/lʊk/', bn:'তাকানো, দেখা', ex:'Look at that beautiful sunset.', exBn:'ওই সুন্দর সূর্যাস্তের দিকে তাকাও।'},
+  {cat:'verb', en:'want', ipa:'/wɒnt/', bn:'চাওয়া', ex:'I want to learn English.', exBn:'আমি ইংরেজি শিখতে চাই।'},
+  {cat:'verb', en:'give', ipa:'/ɡɪv/', bn:'দেওয়া', ex:'Can you give me a hand?', exBn:'তুমি কি আমাকে একটু সাহায্য করবে?'},
+  {cat:'verb', en:'use', ipa:'/juːz/', bn:'ব্যবহার করা', ex:'I use my phone for work.', exBn:'আমি কাজের জন্য আমার ফোন ব্যবহার করি।'},
+  {cat:'verb', en:'find', ipa:'/faɪnd/', bn:'খুঁজে পাওয়া', ex:'I can\u2019t find my keys.', exBn:'আমি আমার চাবি খুঁজে পাচ্ছি না।'},
+  {cat:'verb', en:'tell', ipa:'/tel/', bn:'বলা, জানানো', ex:'Tell me what happened.', exBn:'কী হয়েছে আমাকে বলো।'},
+  {cat:'verb', en:'ask', ipa:'/ɑːsk/', bn:'জিজ্ঞাসা করা', ex:'She asked a lot of questions.', exBn:'সে অনেক প্রশ্ন জিজ্ঞাসা করেছিল।'},
+  {cat:'verb', en:'need', ipa:'/niːd/', bn:'প্রয়োজন হওয়া', ex:'I need more time.', exBn:'আমার আরও সময় দরকার।'},
+  {cat:'verb', en:'feel', ipa:'/fiːl/', bn:'অনুভব করা', ex:'I feel tired today.', exBn:'আজ আমার ক্লান্ত লাগছে।'},
+  {cat:'verb', en:'try', ipa:'/traɪ/', bn:'চেষ্টা করা', ex:'Please try again later.', exBn:'অনুগ্রহ করে পরে আবার চেষ্টা করো।'},
+  {cat:'verb', en:'leave', ipa:'/liːv/', bn:'ছেড়ে যাওয়া', ex:'The train leaves at nine.', exBn:'ট্রেনটা নয়টায় ছাড়বে।'},
+  {cat:'verb', en:'call', ipa:'/kɔːl/', bn:'ডাকা, ফোন করা', ex:'I\u2019ll call you tonight.', exBn:'আমি আজ রাতে তোমাকে ফোন করব।'},
+  {cat:'verb', en:'work', ipa:'/wɜːk/', bn:'কাজ করা', ex:'She works in a hospital.', exBn:'সে একটি হাসপাতালে কাজ করে।'},
+  {cat:'verb', en:'become', ipa:'/bɪˈkʌm/', bn:'হয়ে ওঠা', ex:'He wants to become a teacher.', exBn:'সে শিক্ষক হতে চায়।'},
+  {cat:'verb', en:'help', ipa:'/help/', bn:'সাহায্য করা', ex:'Can you help me with this?', exBn:'তুমি কি আমাকে এতে সাহায্য করবে?'},
+  {cat:'verb', en:'begin', ipa:'/bɪˈɡɪn/', bn:'শুরু করা', ex:'The class begins at eight.', exBn:'ক্লাস আটটায় শুরু হয়।'},
+  {cat:'verb', en:'show', ipa:'/ʃəʊ/', bn:'দেখানো', ex:'Can you show me the way?', exBn:'তুমি কি আমাকে পথ দেখাবে?'},
+  {cat:'verb', en:'hear', ipa:'/hɪər/', bn:'শোনা', ex:'I can hear music outside.', exBn:'আমি বাইরে গান শুনতে পাচ্ছি।'},
+  {cat:'verb', en:'play', ipa:'/pleɪ/', bn:'খেলা', ex:'The children play in the garden.', exBn:'বাচ্চারা বাগানে খেলে।'},
+  {cat:'verb', en:'move', ipa:'/muːv/', bn:'নড়া, স্থানান্তর হওয়া', ex:'We are moving to a new house.', exBn:'আমরা একটা নতুন বাড়িতে যাচ্ছি।'},
+  {cat:'verb', en:'live', ipa:'/lɪv/', bn:'বাস করা', ex:'They live near the river.', exBn:'তারা নদীর কাছে বাস করে।'},
+  {cat:'verb', en:'believe', ipa:'/bɪˈliːv/', bn:'বিশ্বাস করা', ex:'I believe you.', exBn:'আমি তোমাকে বিশ্বাস করি।'},
+  {cat:'verb', en:'bring', ipa:'/brɪŋ/', bn:'নিয়ে আসা', ex:'Please bring your books tomorrow.', exBn:'অনুগ্রহ করে আগামীকাল তোমার বই নিয়ে এসো।'},
+  {cat:'verb', en:'write', ipa:'/raɪt/', bn:'লেখা', ex:'She writes in her diary every day.', exBn:'সে প্রতিদিন তার ডায়েরিতে লেখে।'},
+  {cat:'verb', en:'sit', ipa:'/sɪt/', bn:'বসা', ex:'Please sit down.', exBn:'অনুগ্রহ করে বসুন।'},
+  {cat:'verb', en:'stand', ipa:'/stænd/', bn:'দাঁড়ানো', ex:'He stood near the door.', exBn:'সে দরজার কাছে দাঁড়িয়ে ছিল।'},
+  {cat:'verb', en:'lose', ipa:'/luːz/', bn:'হারানো', ex:'Don\u2019t lose your ticket.', exBn:'তোমার টিকিটটা হারিয়ো না।'},
+  {cat:'verb', en:'pay', ipa:'/peɪ/', bn:'পরিশোধ করা', ex:'I need to pay the bill.', exBn:'আমাকে বিলটা পরিশোধ করতে হবে।'},
+  {cat:'verb', en:'meet', ipa:'/miːt/', bn:'সাক্ষাৎ করা', ex:'Nice to meet you.', exBn:'তোমার সাথে দেখা হয়ে ভালো লাগল।'},
+  {cat:'verb', en:'learn', ipa:'/lɜːn/', bn:'শেখা', ex:'I want to learn to swim.', exBn:'আমি সাঁতার শিখতে চাই।'},
+  {cat:'verb', en:'change', ipa:'/tʃeɪndʒ/', bn:'পরিবর্তন করা', ex:'We changed our plans.', exBn:'আমরা আমাদের পরিকল্পনা পরিবর্তন করেছি।'},
+  {cat:'verb', en:'understand', ipa:'/ˌʌn.dəˈstænd/', bn:'বোঝা', ex:'I don\u2019t understand this word.', exBn:'আমি এই শব্দটা বুঝছি না।'},
+  {cat:'verb', en:'watch', ipa:'/wɒtʃ/', bn:'দেখা, পর্যবেক্ষণ করা', ex:'We watched a movie last night.', exBn:'আমরা গতরাতে একটা সিনেমা দেখেছি।'},
+  {cat:'verb', en:'follow', ipa:'/ˈfɒl.əʊ/', bn:'অনুসরণ করা', ex:'Please follow the instructions.', exBn:'অনুগ্রহ করে নির্দেশনাগুলো অনুসরণ করো।'},
+  {cat:'verb', en:'stop', ipa:'/stɒp/', bn:'থামা', ex:'The bus stopped suddenly.', exBn:'বাসটা হঠাৎ থেমে গেল।'},
+  {cat:'verb', en:'speak', ipa:'/spiːk/', bn:'কথা বলা', ex:'Do you speak English?', exBn:'তুমি কি ইংরেজি বলতে পারো?'},
+  {cat:'verb', en:'read', ipa:'/riːd/', bn:'পড়া', ex:'I read the newspaper every morning.', exBn:'আমি প্রতি সকালে সংবাদপত্র পড়ি।'},
+  {cat:'verb', en:'buy', ipa:'/baɪ/', bn:'কেনা', ex:'I want to buy a new phone.', exBn:'আমি একটা নতুন ফোন কিনতে চাই।'},
+  {cat:'verb', en:'wait', ipa:'/weɪt/', bn:'অপেক্ষা করা', ex:'Please wait a moment.', exBn:'অনুগ্রহ করে একটু অপেক্ষা করো।'},
+  {cat:'verb', en:'sell', ipa:'/sel/', bn:'বিক্রি করা', ex:'They sell fresh fruit here.', exBn:'তারা এখানে তাজা ফল বিক্রি করে।'},
+  {cat:'verb', en:'send', ipa:'/send/', bn:'পাঠানো', ex:'I will send you the file.', exBn:'আমি তোমাকে ফাইলটা পাঠিয়ে দেব।'},
+  {cat:'verb', en:'open', ipa:'/ˈəʊ.pən/', bn:'খোলা', ex:'Can you open the window?', exBn:'তুমি কি জানালাটা খুলবে?'},
+  {cat:'verb', en:'close', ipa:'/kləʊz/', bn:'বন্ধ করা', ex:'Please close the door quietly.', exBn:'অনুগ্রহ করে দরজাটা আস্তে বন্ধ করো।'},
+  {cat:'verb', en:'walk', ipa:'/wɔːk/', bn:'হাঁটা', ex:'We walk to school together.', exBn:'আমরা একসাথে হেঁটে স্কুলে যাই।'},
+  {cat:'verb', en:'run', ipa:'/rʌn/', bn:'দৌড়ানো', ex:'He runs every morning.', exBn:'সে প্রতি সকালে দৌড়ায়।'},
+  {cat:'verb', en:'sleep', ipa:'/sliːp/', bn:'ঘুমানো', ex:'The baby is sleeping now.', exBn:'শিশুটি এখন ঘুমাচ্ছে।'},
+  {cat:'verb', en:'eat', ipa:'/iːt/', bn:'খাওয়া', ex:'We eat dinner at eight.', exBn:'আমরা আটটায় রাতের খাবার খাই।'},
+  {cat:'verb', en:'drink', ipa:'/drɪŋk/', bn:'পান করা', ex:'I drink coffee every morning.', exBn:'আমি প্রতি সকালে কফি পান করি।'},
+  {cat:'verb', en:'remember', ipa:'/rɪˈmem.bər/', bn:'মনে রাখা', ex:'I remember his name now.', exBn:'আমার এখন তার নাম মনে পড়েছে।'},
+  {cat:'verb', en:'forget', ipa:'/fəˈɡet/', bn:'ভুলে যাওয়া', ex:'Don\u2019t forget your umbrella.', exBn:'তোমার ছাতা ভুলো না।'},
+
+  // ADJECTIVES
+  {cat:'adjective', en:'good', ipa:'/ɡʊd/', bn:'ভালো', ex:'This is a good idea.', exBn:'এটা একটা ভালো ধারণা।'},
+  {cat:'adjective', en:'new', ipa:'/njuː/', bn:'নতুন', ex:'I bought a new bag.', exBn:'আমি একটা নতুন ব্যাগ কিনেছি।'},
+  {cat:'adjective', en:'old', ipa:'/əʊld/', bn:'পুরনো, বয়স্ক', ex:'This is an old building.', exBn:'এটা একটা পুরনো ভবন।'},
+  {cat:'adjective', en:'big', ipa:'/bɪɡ/', bn:'বড়', ex:'They live in a big house.', exBn:'তারা একটা বড় বাড়িতে থাকে।'},
+  {cat:'adjective', en:'small', ipa:'/smɔːl/', bn:'ছোট', ex:'My room is quite small.', exBn:'আমার ঘরটা বেশ ছোট।'},
+  {cat:'adjective', en:'long', ipa:'/lɒŋ/', bn:'লম্বা, দীর্ঘ', ex:'It was a long journey.', exBn:'এটা একটা দীর্ঘ যাত্রা ছিল।'},
+  {cat:'adjective', en:'important', ipa:'/ɪmˈpɔː.tənt/', bn:'গুরুত্বপূর্ণ', ex:'This is an important decision.', exBn:'এটা একটা গুরুত্বপূর্ণ সিদ্ধান্ত।'},
+  {cat:'adjective', en:'different', ipa:'/ˈdɪf.ər.ənt/', bn:'ভিন্ন, আলাদা', ex:'We have different opinions.', exBn:'আমাদের মতামত ভিন্ন।'},
+  {cat:'adjective', en:'high', ipa:'/haɪ/', bn:'উঁচু', ex:'The mountain is very high.', exBn:'পাহাড়টা অনেক উঁচু।'},
+  {cat:'adjective', en:'young', ipa:'/jʌŋ/', bn:'তরুণ, অল্পবয়সী', ex:'She is a young doctor.', exBn:'সে একজন তরুণ ডাক্তার।'},
+  {cat:'adjective', en:'happy', ipa:'/ˈhæp.i/', bn:'সুখী, খুশি', ex:'I am happy to see you.', exBn:'তোমাকে দেখে আমি খুশি।'},
+  {cat:'adjective', en:'sad', ipa:'/sæd/', bn:'দুঃখিত, বিষণ্ন', ex:'She looked sad this morning.', exBn:'আজ সকালে তাকে দুঃখী মনে হচ্ছিল।'},
+  {cat:'adjective', en:'easy', ipa:'/ˈiː.zi/', bn:'সহজ', ex:'This exercise is very easy.', exBn:'এই অনুশীলনটা খুব সহজ।'},
+  {cat:'adjective', en:'difficult', ipa:'/ˈdɪf.ɪ.kəlt/', bn:'কঠিন', ex:'This question is difficult.', exBn:'এই প্রশ্নটা কঠিন।'},
+  {cat:'adjective', en:'beautiful', ipa:'/ˈbjuː.tɪ.fəl/', bn:'সুন্দর', ex:'What a beautiful garden!', exBn:'কী সুন্দর একটা বাগান!'},
+  {cat:'adjective', en:'strong', ipa:'/strɒŋ/', bn:'শক্তিশালী', ex:'He is very strong.', exBn:'সে অনেক শক্তিশালী।'},
+  {cat:'adjective', en:'weak', ipa:'/wiːk/', bn:'দুর্বল', ex:'I feel a bit weak today.', exBn:'আজ আমার একটু দুর্বল লাগছে।'},
+  {cat:'adjective', en:'fast', ipa:'/fɑːst/', bn:'দ্রুত', ex:'He is a fast runner.', exBn:'সে খুব দ্রুত দৌড়ায়।'},
+  {cat:'adjective', en:'slow', ipa:'/sləʊ/', bn:'ধীর', ex:'The internet is very slow.', exBn:'ইন্টারনেটের গতি খুব ধীর।'},
+  {cat:'adjective', en:'hot', ipa:'/hɒt/', bn:'গরম', ex:'The soup is too hot.', exBn:'স্যুপটা খুব গরম।'},
+  {cat:'adjective', en:'cold', ipa:'/kəʊld/', bn:'ঠান্ডা', ex:'It is cold outside today.', exBn:'আজ বাইরে ঠান্ডা।'},
+  {cat:'adjective', en:'clean', ipa:'/kliːn/', bn:'পরিষ্কার', ex:'Keep your room clean.', exBn:'তোমার ঘর পরিষ্কার রাখো।'},
+  {cat:'adjective', en:'cheap', ipa:'/tʃiːp/', bn:'সস্তা', ex:'This shop sells cheap clothes.', exBn:'এই দোকানে সস্তা কাপড় বিক্রি হয়।'},
+  {cat:'adjective', en:'expensive', ipa:'/ɪkˈspen.sɪv/', bn:'ব্যয়বহুল', ex:'That watch is very expensive.', exBn:'ঐ ঘড়িটা খুব ব্যয়বহুল।'},
+  {cat:'adjective', en:'safe', ipa:'/seɪf/', bn:'নিরাপদ', ex:'This area is safe at night.', exBn:'রাতে এই এলাকা নিরাপদ।'},
+  {cat:'adjective', en:'dangerous', ipa:'/ˈdeɪn.dʒər.əs/', bn:'বিপজ্জনক', ex:'That road is dangerous.', exBn:'ঐ রাস্তাটা বিপজ্জনক।'},
+  {cat:'adjective', en:'healthy', ipa:'/ˈhel.θi/', bn:'সুস্থ, স্বাস্থ্যকর', ex:'Eat healthy food every day.', exBn:'প্রতিদিন স্বাস্থ্যকর খাবার খাও।'},
+  {cat:'adjective', en:'tired', ipa:'/taɪəd/', bn:'ক্লান্ত', ex:'I am tired after work.', exBn:'কাজের পর আমি ক্লান্ত।'},
+  {cat:'adjective', en:'busy', ipa:'/ˈbɪz.i/', bn:'ব্যস্ত', ex:'She is busy this week.', exBn:'সে এই সপ্তাহে ব্যস্ত।'},
+  {cat:'adjective', en:'free', ipa:'/friː/', bn:'মুক্ত, অবসর', ex:'Are you free this evening?', exBn:'তুমি কি আজ সন্ধ্যায় ফ্রি আছো?'},
+
+  // ADVERBS
+  {cat:'adverb', en:'quickly', ipa:'/ˈkwɪk.li/', bn:'দ্রুত', ex:'She finished the work quickly.', exBn:'সে দ্রুত কাজটা শেষ করল।'},
+  {cat:'adverb', en:'slowly', ipa:'/ˈsləʊ.li/', bn:'ধীরে ধীরে', ex:'Please speak slowly.', exBn:'অনুগ্রহ করে ধীরে ধীরে কথা বলো।'},
+  {cat:'adverb', en:'carefully', ipa:'/ˈkeə.fəl.i/', bn:'সতর্কতার সাথে', ex:'Drive carefully on this road.', exBn:'এই রাস্তায় সতর্কতার সাথে গাড়ি চালাও।'},
+  {cat:'adverb', en:'well', ipa:'/wel/', bn:'ভালোভাবে', ex:'She sings very well.', exBn:'সে খুব ভালো গায়।'},
+  {cat:'adverb', en:'often', ipa:'/ˈɒf.ən/', bn:'প্রায়ই', ex:'We often meet on Fridays.', exBn:'আমরা প্রায়ই শুক্রবারে দেখা করি।'},
+  {cat:'adverb', en:'always', ipa:'/ˈɔːl.weɪz/', bn:'সবসময়', ex:'He is always on time.', exBn:'সে সবসময় সময়মতো আসে।'},
+  {cat:'adverb', en:'never', ipa:'/ˈnev.ər/', bn:'কখনো না', ex:'I never eat breakfast late.', exBn:'আমি কখনো দেরিতে নাস্তা করি না।'},
+  {cat:'adverb', en:'usually', ipa:'/ˈjuː.ʒu.ə.li/', bn:'সাধারণত', ex:'I usually wake up at six.', exBn:'আমি সাধারণত ছয়টায় ঘুম থেকে উঠি।'},
+  {cat:'adverb', en:'sometimes', ipa:'/ˈsʌm.taɪmz/', bn:'কখনো কখনো', ex:'Sometimes I work from home.', exBn:'কখনো কখনো আমি বাসা থেকে কাজ করি।'},
+  {cat:'adverb', en:'really', ipa:'/ˈrɪə.li/', bn:'সত্যিই', ex:'I am really happy for you.', exBn:'আমি তোমার জন্য সত্যিই খুশি।'},
+  {cat:'adverb', en:'very', ipa:'/ˈver.i/', bn:'খুব', ex:'This tea is very hot.', exBn:'এই চা খুব গরম।'},
+  {cat:'adverb', en:'today', ipa:'/təˈdeɪ/', bn:'আজ', ex:'What are you doing today?', exBn:'তুমি আজ কী করছো?'},
+  {cat:'adverb', en:'tomorrow', ipa:'/təˈmɒr.əʊ/', bn:'আগামীকাল', ex:'See you tomorrow.', exBn:'আগামীকাল দেখা হবে।'},
+  {cat:'adverb', en:'yesterday', ipa:'/ˈjes.tə.deɪ/', bn:'গতকাল', ex:'I called her yesterday.', exBn:'আমি গতকাল তাকে ফোন করেছিলাম।'},
+  {cat:'adverb', en:'here', ipa:'/hɪər/', bn:'এখানে', ex:'Please wait here.', exBn:'অনুগ্রহ করে এখানে অপেক্ষা করো।'},
+  {cat:'adverb', en:'there', ipa:'/ðeər/', bn:'সেখানে', ex:'Put the bag over there.', exBn:'ব্যাগটা ওখানে রাখো।'},
+
+  // PRONOUNS
+  {cat:'pronoun', en:'I', ipa:'/aɪ/', bn:'আমি', ex:'I live in Dhaka.', exBn:'আমি ঢাকায় থাকি।'},
+  {cat:'pronoun', en:'you', ipa:'/juː/', bn:'তুমি, আপনি', ex:'You look tired today.', exBn:'আজ তোমাকে ক্লান্ত দেখাচ্ছে।'},
+  {cat:'pronoun', en:'he', ipa:'/hiː/', bn:'সে (পুরুষ)', ex:'He works at a bank.', exBn:'সে একটা ব্যাংকে কাজ করে।'},
+  {cat:'pronoun', en:'she', ipa:'/ʃiː/', bn:'সে (মহিলা)', ex:'She is my sister.', exBn:'সে আমার বোন।'},
+  {cat:'pronoun', en:'it', ipa:'/ɪt/', bn:'এটা', ex:'It is raining outside.', exBn:'বাইরে বৃষ্টি হচ্ছে।'},
+  {cat:'pronoun', en:'we', ipa:'/wiː/', bn:'আমরা', ex:'We are going home now.', exBn:'আমরা এখন বাড়ি যাচ্ছি।'},
+  {cat:'pronoun', en:'they', ipa:'/ðeɪ/', bn:'তারা', ex:'They arrived late last night.', exBn:'তারা গতরাতে দেরিতে এসেছে।'},
+  {cat:'pronoun', en:'this', ipa:'/ðɪs/', bn:'এই, এটা', ex:'This is my new phone.', exBn:'এটা আমার নতুন ফোন।'},
+  {cat:'pronoun', en:'that', ipa:'/ðæt/', bn:'ঐ, সেটা', ex:'That was a good movie.', exBn:'ঐটা একটা ভালো সিনেমা ছিল।'},
+  {cat:'pronoun', en:'who', ipa:'/huː/', bn:'কে', ex:'Who is at the door?', exBn:'দরজায় কে?'},
+
+  // PREPOSITIONS
+  {cat:'preposition', en:'in', ipa:'/ɪn/', bn:'ভেতরে, মধ্যে', ex:'The keys are in the drawer.', exBn:'চাবিগুলো ড্রয়ারের ভেতরে আছে।'},
+  {cat:'preposition', en:'on', ipa:'/ɒn/', bn:'উপরে', ex:'The book is on the table.', exBn:'বইটা টেবিলের উপরে আছে।'},
+  {cat:'preposition', en:'at', ipa:'/æt/', bn:'তে, এ', ex:'I\u2019ll meet you at seven.', exBn:'আমি সাতটায় তোমার সাথে দেখা করব।'},
+  {cat:'preposition', en:'to', ipa:'/tuː/', bn:'দিকে, প্রতি', ex:'We are going to the market.', exBn:'আমরা বাজারের দিকে যাচ্ছি।'},
+  {cat:'preposition', en:'for', ipa:'/fɔːr/', bn:'জন্য', ex:'This gift is for you.', exBn:'এই উপহারটা তোমার জন্য।'},
+  {cat:'preposition', en:'with', ipa:'/wɪð/', bn:'সাথে', ex:'I live with my parents.', exBn:'আমি আমার বাবা-মায়ের সাথে থাকি।'},
+  {cat:'preposition', en:'from', ipa:'/frɒm/', bn:'থেকে', ex:'She is from Chittagong.', exBn:'সে চট্টগ্রাম থেকে এসেছে।'},
+  {cat:'preposition', en:'of', ipa:'/ɒv/', bn:'এর', ex:'The color of the sky is blue.', exBn:'আকাশের রং নীল।'},
+  {cat:'preposition', en:'about', ipa:'/əˈbaʊt/', bn:'সম্পর্কে', ex:'Tell me about your day.', exBn:'তোমার দিনটা কেমন কাটল আমাকে বলো।'},
+  {cat:'preposition', en:'near', ipa:'/nɪər/', bn:'কাছে', ex:'The shop is near my house.', exBn:'দোকানটা আমার বাড়ির কাছে।'},
+
+  // CONJUNCTIONS
+  {cat:'conjunction', en:'and', ipa:'/ænd/', bn:'এবং', ex:'I like tea and coffee.', exBn:'আমি চা এবং কফি দুটোই পছন্দ করি।'},
+  {cat:'conjunction', en:'but', ipa:'/bʌt/', bn:'কিন্তু', ex:'I called her, but she didn\u2019t answer.', exBn:'আমি তাকে ফোন করেছিলাম, কিন্তু সে ধরেনি।'},
+  {cat:'conjunction', en:'or', ipa:'/ɔːr/', bn:'অথবা', ex:'Do you want tea or coffee?', exBn:'তুমি চা নাকি কফি চাও?'},
+  {cat:'conjunction', en:'because', ipa:'/bɪˈkɒz/', bn:'কারণ', ex:'I stayed home because I was sick.', exBn:'আমি বাসায় ছিলাম কারণ আমি অসুস্থ ছিলাম।'},
+  {cat:'conjunction', en:'if', ipa:'/ɪf/', bn:'যদি', ex:'Call me if you need help.', exBn:'তোমার সাহায্য দরকার হলে আমাকে ফোন করো।'},
+  {cat:'conjunction', en:'although', ipa:'/ɔːlˈðəʊ/', bn:'যদিও', ex:'Although it was raining, we went out.', exBn:'যদিও বৃষ্টি হচ্ছিল, আমরা বাইরে গিয়েছিলাম।'},
+  {cat:'conjunction', en:'so', ipa:'/səʊ/', bn:'তাই', ex:'I was tired, so I went to bed early.', exBn:'আমি ক্লান্ত ছিলাম, তাই তাড়াতাড়ি ঘুমাতে গিয়েছিলাম।'},
+  {cat:'conjunction', en:'while', ipa:'/waɪl/', bn:'যখন, যদিও', ex:'She reads while she eats.', exBn:'সে খাওয়ার সময় বই পড়ে।'},
+
+  // EVERYDAY PHRASES
+  {cat:'phrase', en:'Excuse me', ipa:'/ɪkˈskjuːz miː/', bn:'দুঃখিত/মাফ করবেন', ex:'Excuse me, where is the station?', exBn:'মাফ করবেন, স্টেশনটা কোথায়?'},
+  {cat:'phrase', en:'Thank you', ipa:'/ˈθæŋk juː/', bn:'ধন্যবাদ', ex:'Thank you for your help.', exBn:'তোমার সাহায্যের জন্য ধন্যবাদ।'},
+  {cat:'phrase', en:'You\u2019re welcome', ipa:'/jʊə ˈwel.kəm/', bn:'তোমাকে স্বাগতম', ex:'Thanks a lot! — You\u2019re welcome.', exBn:'অনেক ধন্যবাদ! — তোমাকে স্বাগতম।'},
+  {cat:'phrase', en:'I\u2019m sorry', ipa:'/aɪm ˈsɒr.i/', bn:'আমি দুঃখিত', ex:'I\u2019m sorry I\u2019m late.', exBn:'দেরি হওয়ার জন্য আমি দুঃখিত।'},
+  {cat:'phrase', en:'Nice to meet you', ipa:'/naɪs tuː miːt juː/', bn:'তোমার সাথে দেখা হয়ে ভালো লাগল', ex:'Nice to meet you, I\u2019m Rahim.', exBn:'তোমার সাথে দেখা হয়ে ভালো লাগল, আমি রহিম।'},
+  {cat:'phrase', en:'See you later', ipa:'/siː juː ˈleɪ.tər/', bn:'পরে দেখা হবে', ex:'I have to go now. See you later!', exBn:'আমাকে এখন যেতে হবে। পরে দেখা হবে!'},
+  {cat:'phrase', en:'Good luck', ipa:'/ɡʊd lʌk/', bn:'শুভকামনা', ex:'Good luck with your exam.', exBn:'তোমার পরীক্ষার জন্য শুভকামনা।'},
+  {cat:'phrase', en:'Take care', ipa:'/teɪk keər/', bn:'নিজের যত্ন নিও', ex:'I\u2019m leaving now, take care.', exBn:'আমি এখন যাচ্ছি, নিজের যত্ন নিও।'},
+  {cat:'phrase', en:'No problem', ipa:'/nəʊ ˈprɒb.ləm/', bn:'কোনো সমস্যা নেই', ex:'Can you help me? — No problem.', exBn:'তুমি কি আমাকে সাহায্য করবে? — কোনো সমস্যা নেই।'},
+  {cat:'phrase', en:'Of course', ipa:'/əv kɔːs/', bn:'অবশ্যই', ex:'Can I sit here? — Of course.', exBn:'আমি কি এখানে বসতে পারি? — অবশ্যই।'},
+
+  // ===== BATCH 2: OXFORD 3000 (A–B) =====
+  {cat:'noun', en:'ability', ipa:'/əˈbɪl.ɪ.ti/', bn:'সামর্থ্য, যোগ্যতা', ex:'She has the ability to learn fast.', exBn:'দ্রুত শেখার সামর্থ্য তার আছে।'},
+  {cat:'noun', en:'accident', ipa:'/ˈæk.sɪ.dənt/', bn:'দুর্ঘটনা', ex:'There was a car accident this morning.', exBn:'আজ সকালে একটা গাড়ি দুর্ঘটনা ঘটেছে।'},
+  {cat:'noun', en:'account', ipa:'/əˈkaʊnt/', bn:'হিসাব, অ্যাকাউন্ট', ex:'I opened a new bank account.', exBn:'আমি একটা নতুন ব্যাংক অ্যাকাউন্ট খুলেছি।'},
+  {cat:'noun', en:'achievement', ipa:'/əˈtʃiːv.mənt/', bn:'অর্জন, সাফল্য', ex:'Winning the prize was a great achievement.', exBn:'পুরস্কার জেতাটা একটা বড় অর্জন ছিল।'},
+  {cat:'noun', en:'activity', ipa:'/ækˈtɪv.ɪ.ti/', bn:'কার্যক্রম, কর্মকাণ্ড', ex:'Swimming is my favorite activity.', exBn:'সাঁতার আমার প্রিয় কার্যক্রম।'},
+  {cat:'noun', en:'actor', ipa:'/ˈæk.tər/', bn:'অভিনেতা', ex:'He is a famous actor.', exBn:'সে একজন বিখ্যাত অভিনেতা।'},
+  {cat:'noun', en:'address', ipa:'/əˈdres/', bn:'ঠিকানা', ex:'Please write down your address.', exBn:'অনুগ্রহ করে তোমার ঠিকানা লিখে দাও।'},
+  {cat:'noun', en:'advantage', ipa:'/ədˈvɑːn.tɪdʒ/', bn:'সুবিধা', ex:'Living near school is an advantage.', exBn:'স্কুলের কাছে থাকাটা একটা সুবিধা।'},
+  {cat:'noun', en:'adventure', ipa:'/ədˈven.tʃər/', bn:'অভিযান, রোমাঞ্চ', ex:'The trip was a great adventure.', exBn:'ভ্রমণটা একটা দারুণ অভিযান ছিল।'},
+  {cat:'noun', en:'advice', ipa:'/ədˈvaɪs/', bn:'পরামর্শ', ex:'Can you give me some advice?', exBn:'তুমি কি আমাকে কিছু পরামর্শ দেবে?'},
+  {cat:'noun', en:'age', ipa:'/eɪdʒ/', bn:'বয়স', ex:'What is your age?', exBn:'তোমার বয়স কত?'},
+  {cat:'noun', en:'agreement', ipa:'/əˈɡriː.mənt/', bn:'চুক্তি, সম্মতি', ex:'We signed the agreement yesterday.', exBn:'আমরা গতকাল চুক্তিতে স্বাক্ষর করেছি।'},
+  {cat:'noun', en:'air', ipa:'/eər/', bn:'বাতাস', ex:'The air here is very fresh.', exBn:'এখানকার বাতাস খুব তাজা।'},
+  {cat:'noun', en:'airport', ipa:'/ˈeə.pɔːt/', bn:'বিমানবন্দর', ex:'The airport is far from here.', exBn:'বিমানবন্দরটা এখান থেকে অনেক দূরে।'},
+  {cat:'noun', en:'amount', ipa:'/əˈmaʊnt/', bn:'পরিমাণ', ex:'We need a large amount of water.', exBn:'আমাদের প্রচুর পরিমাণ পানি দরকার।'},
+  {cat:'noun', en:'animal', ipa:'/ˈæn.ɪ.məl/', bn:'প্রাণী', ex:'The zoo has many kinds of animals.', exBn:'চিড়িয়াখানায় অনেক ধরনের প্রাণী আছে।'},
+  {cat:'noun', en:'apartment', ipa:'/əˈpɑːt.mənt/', bn:'বাসা, ফ্ল্যাট', ex:'They live in a small apartment.', exBn:'তারা একটা ছোট ফ্ল্যাটে থাকে।'},
+  {cat:'noun', en:'appointment', ipa:'/əˈpɔɪnt.mənt/', bn:'সাক্ষাতের সময়, অ্যাপয়েন্টমেন্ট', ex:'I have a doctor\u2019s appointment today.', exBn:'আজ আমার ডাক্তারের সাথে অ্যাপয়েন্টমেন্ট আছে।'},
+  {cat:'noun', en:'area', ipa:'/ˈeə.ri.ə/', bn:'এলাকা', ex:'This area is very quiet.', exBn:'এই এলাকাটা খুব শান্ত।'},
+  {cat:'noun', en:'argument', ipa:'/ˈɑː.ɡjʊ.mənt/', bn:'তর্ক, যুক্তি', ex:'They had an argument last night.', exBn:'গতরাতে তাদের মধ্যে তর্ক হয়েছিল।'},
+  {cat:'noun', en:'arm', ipa:'/ɑːm/', bn:'বাহু', ex:'He broke his arm playing football.', exBn:'ফুটবল খেলতে গিয়ে তার হাত ভেঙে গিয়েছিল।'},
+  {cat:'noun', en:'army', ipa:'/ˈɑː.mi/', bn:'সেনাবাহিনী', ex:'His father served in the army.', exBn:'তার বাবা সেনাবাহিনীতে কাজ করতেন।'},
+  {cat:'noun', en:'art', ipa:'/ɑːt/', bn:'শিল্প, চারুকলা', ex:'She studies art at university.', exBn:'সে বিশ্ববিদ্যালয়ে চারুকলা পড়ে।'},
+  {cat:'noun', en:'article', ipa:'/ˈɑː.tɪ.kəl/', bn:'নিবন্ধ, প্রবন্ধ', ex:'I read an interesting article today.', exBn:'আজ আমি একটা মজার নিবন্ধ পড়েছি।'},
+  {cat:'noun', en:'artist', ipa:'/ˈɑː.tɪst/', bn:'শিল্পী', ex:'The artist painted a beautiful picture.', exBn:'শিল্পীটি একটা সুন্দর ছবি এঁকেছিলেন।'},
+  {cat:'noun', en:'aunt', ipa:'/ɑːnt/', bn:'খালা, ফুপু, চাচী', ex:'My aunt cooks delicious food.', exBn:'আমার খালা সুস্বাদু খাবার রান্না করেন।'},
+  {cat:'noun', en:'author', ipa:'/ˈɔː.θər/', bn:'লেখক', ex:'She is the author of this novel.', exBn:'সে এই উপন্যাসের লেখক।'},
+  {cat:'noun', en:'baby', ipa:'/ˈbeɪ.bi/', bn:'শিশু, বাচ্চা', ex:'The baby is sleeping peacefully.', exBn:'শিশুটি শান্তিতে ঘুমাচ্ছে।'},
+  {cat:'noun', en:'background', ipa:'/ˈbæk.ɡraʊnd/', bn:'পটভূমি', ex:'Tell me about your background.', exBn:'তোমার পটভূমি সম্পর্কে আমাকে বলো।'},
+  {cat:'noun', en:'bag', ipa:'/bæɡ/', bn:'ব্যাগ', ex:'I left my bag on the bus.', exBn:'আমি আমার ব্যাগটা বাসে ফেলে এসেছি।'},
+  {cat:'noun', en:'balance', ipa:'/ˈbæl.əns/', bn:'ভারসাম্য', ex:'It\u2019s hard to keep your balance on ice.', exBn:'বরফের ওপর ভারসাম্য রাখা কঠিন।'},
+  {cat:'noun', en:'ball', ipa:'/bɔːl/', bn:'বল', ex:'The children played with a ball.', exBn:'বাচ্চারা একটা বল দিয়ে খেলেছে।'},
+  {cat:'noun', en:'band', ipa:'/bænd/', bn:'ব্যান্ড, দল', ex:'My brother plays in a band.', exBn:'আমার ভাই একটা ব্যান্ডে বাজায়।'},
+  {cat:'noun', en:'bank', ipa:'/bæŋk/', bn:'ব্যাংক', ex:'I go to the bank every Monday.', exBn:'আমি প্রতি সোমবার ব্যাংকে যাই।'},
+  {cat:'noun', en:'baseball', ipa:'/ˈbeɪs.bɔːl/', bn:'বেসবল', ex:'They watched a baseball game.', exBn:'তারা একটা বেসবল খেলা দেখেছিল।'},
+  {cat:'noun', en:'basketball', ipa:'/ˈbɑː.skɪt.bɔːl/', bn:'বাস্কেটবল', ex:'He plays basketball every weekend.', exBn:'সে প্রতি সপ্তাহান্তে বাস্কেটবল খেলে।'},
+  {cat:'noun', en:'bath', ipa:'/bɑːθ/', bn:'গোসল, স্নান', ex:'I take a bath every morning.', exBn:'আমি প্রতি সকালে গোসল করি।'},
+  {cat:'noun', en:'battery', ipa:'/ˈbæt.ər.i/', bn:'ব্যাটারি', ex:'My phone battery is almost dead.', exBn:'আমার ফোনের ব্যাটারি প্রায় শেষ।'},
+  {cat:'noun', en:'battle', ipa:'/ˈbæt.əl/', bn:'যুদ্ধ, লড়াই', ex:'It was a long, hard battle.', exBn:'এটা একটা দীর্ঘ, কঠিন লড়াই ছিল।'},
+  {cat:'noun', en:'beach', ipa:'/biːtʃ/', bn:'সমুদ্র সৈকত', ex:'We spent the day at the beach.', exBn:'আমরা সারাদিন সমুদ্র সৈকতে কাটিয়েছি।'},
+  {cat:'noun', en:'beauty', ipa:'/ˈbjuː.ti/', bn:'সৌন্দর্য', ex:'The beauty of the mountains amazed us.', exBn:'পাহাড়ের সৌন্দর্য আমাদের মুগ্ধ করেছিল।'},
+  {cat:'noun', en:'bedroom', ipa:'/ˈbed.ruːm/', bn:'শোবার ঘর', ex:'My bedroom is upstairs.', exBn:'আমার শোবার ঘর উপরতলায়।'},
+  {cat:'noun', en:'beer', ipa:'/bɪər/', bn:'বিয়ার', ex:'He ordered a cold beer.', exBn:'সে একটা ঠান্ডা বিয়ার অর্ডার করল।'},
+  {cat:'noun', en:'behavior', ipa:'/bɪˈheɪv.jər/', bn:'আচরণ', ex:'His behavior surprised everyone.', exBn:'তার আচরণ সবাইকে অবাক করেছিল।'},
+  {cat:'noun', en:'belief', ipa:'/bɪˈliːf/', bn:'বিশ্বাস', ex:'It is a strong personal belief.', exBn:'এটা একটা দৃঢ় ব্যক্তিগত বিশ্বাস।'},
+  {cat:'noun', en:'bicycle', ipa:'/ˈbaɪ.sɪ.kəl/', bn:'সাইকেল', ex:'I ride my bicycle to work.', exBn:'আমি সাইকেল চালিয়ে কাজে যাই।'},
+  {cat:'noun', en:'bill', ipa:'/bɪl/', bn:'বিল', ex:'Can I have the bill, please?', exBn:'আমাকে বিলটা দেওয়া যাবে, অনুগ্রহ করে?'},
+  {cat:'noun', en:'biology', ipa:'/baɪˈɒl.ə.dʒi/', bn:'জীববিজ্ঞান', ex:'She loves studying biology.', exBn:'সে জীববিজ্ঞান পড়তে খুব পছন্দ করে।'},
+  {cat:'noun', en:'bird', ipa:'/bɜːd/', bn:'পাখি', ex:'A bird is singing in the tree.', exBn:'গাছে একটা পাখি গান গাইছে।'},
+  {cat:'noun', en:'birth', ipa:'/bɜːθ/', bn:'জন্ম', ex:'What is your date of birth?', exBn:'তোমার জন্ম তারিখ কী?'},
+  {cat:'noun', en:'birthday', ipa:'/ˈbɜːθ.deɪ/', bn:'জন্মদিন', ex:'Happy birthday to you!', exBn:'তোমাকে জন্মদিনের শুভেচ্ছা!'},
+  {cat:'noun', en:'blood', ipa:'/blʌd/', bn:'রক্ত', ex:'The doctor took a blood sample.', exBn:'ডাক্তার একটা রক্তের নমুনা নিলেন।'},
+  {cat:'noun', en:'boat', ipa:'/bəʊt/', bn:'নৌকা', ex:'We crossed the river by boat.', exBn:'আমরা নৌকায় করে নদী পার হয়েছি।'},
+  {cat:'noun', en:'bone', ipa:'/bəʊn/', bn:'হাড়', ex:'He broke a bone in his leg.', exBn:'তার পায়ের একটা হাড় ভেঙে গিয়েছিল।'},
+  {cat:'noun', en:'border', ipa:'/ˈbɔː.dər/', bn:'সীমান্ত', ex:'The town is near the border.', exBn:'শহরটা সীমান্তের কাছে।'},
+  {cat:'noun', en:'boss', ipa:'/bɒs/', bn:'বস, মালিক', ex:'My boss is very supportive.', exBn:'আমার বস খুব সহায়ক।'},
+  {cat:'noun', en:'bottle', ipa:'/ˈbɒt.əl/', bn:'বোতল', ex:'Please fill this bottle with water.', exBn:'অনুগ্রহ করে এই বোতলটা পানি দিয়ে ভরো।'},
+  {cat:'noun', en:'box', ipa:'/bɒks/', bn:'বাক্স', ex:'She kept her photos in a box.', exBn:'সে তার ছবিগুলো একটা বাক্সে রেখেছিল।'},
+  {cat:'noun', en:'boyfriend', ipa:'/ˈbɔɪ.frend/', bn:'প্রেমিক', ex:'She introduced her boyfriend to us.', exBn:'সে তার প্রেমিককে আমাদের সাথে পরিচয় করিয়ে দিল।'},
+  {cat:'noun', en:'brain', ipa:'/breɪn/', bn:'মস্তিষ্ক', ex:'The brain controls the whole body.', exBn:'মস্তিষ্ক পুরো শরীর নিয়ন্ত্রণ করে।'},
+  {cat:'noun', en:'branch', ipa:'/brɑːntʃ/', bn:'শাখা', ex:'This bank has a branch nearby.', exBn:'এই ব্যাংকের একটা শাখা কাছেই আছে।'},
+  {cat:'noun', en:'brand', ipa:'/brænd/', bn:'ব্র্যান্ড', ex:'This is a popular clothing brand.', exBn:'এটা একটা জনপ্রিয় পোশাকের ব্র্যান্ড।'},
+  {cat:'noun', en:'bread', ipa:'/bred/', bn:'রুটি', ex:'I buy fresh bread every morning.', exBn:'আমি প্রতি সকালে তাজা রুটি কিনি।'},
+  {cat:'noun', en:'breakfast', ipa:'/ˈbrek.fəst/', bn:'সকালের নাস্তা', ex:'We have breakfast together every day.', exBn:'আমরা প্রতিদিন একসাথে নাস্তা করি।'},
+  {cat:'noun', en:'bridge', ipa:'/brɪdʒ/', bn:'সেতু', ex:'The bridge crosses the river.', exBn:'সেতুটা নদীর উপর দিয়ে চলে গেছে।'},
+  {cat:'noun', en:'budget', ipa:'/ˈbʌdʒ.ɪt/', bn:'বাজেট', ex:'We need to plan our budget carefully.', exBn:'আমাদের সতর্কভাবে বাজেট পরিকল্পনা করতে হবে।'},
+  {cat:'noun', en:'building', ipa:'/ˈbɪl.dɪŋ/', bn:'ভবন', ex:'That is a very tall building.', exBn:'ওটা একটা খুব উঁচু ভবন।'},
+  {cat:'noun', en:'bunch', ipa:'/bʌntʃ/', bn:'গুচ্ছ', ex:'She bought a bunch of bananas.', exBn:'সে একগুচ্ছ কলা কিনেছিল।'},
+  {cat:'noun', en:'button', ipa:'/ˈbʌt.ən/', bn:'বোতাম', ex:'Press this button to start.', exBn:'শুরু করতে এই বোতামটা চাপো।'},
+
+  {cat:'verb', en:'accept', ipa:'/əkˈsept/', bn:'গ্রহণ করা', ex:'I accept your offer.', exBn:'আমি তোমার প্রস্তাব গ্রহণ করছি।'},
+  {cat:'verb', en:'achieve', ipa:'/əˈtʃiːv/', bn:'অর্জন করা', ex:'She achieved her goal at last.', exBn:'সে অবশেষে তার লক্ষ্য অর্জন করল।'},
+  {cat:'verb', en:'act', ipa:'/ækt/', bn:'কাজ করা, অভিনয় করা', ex:'We must act quickly.', exBn:'আমাদের দ্রুত কাজ করতে হবে।'},
+  {cat:'verb', en:'add', ipa:'/æd/', bn:'যোগ করা', ex:'Add some salt to the soup.', exBn:'স্যুপে একটু লবণ যোগ করো।'},
+  {cat:'verb', en:'admit', ipa:'/ədˈmɪt/', bn:'স্বীকার করা', ex:'He admitted his mistake.', exBn:'সে তার ভুল স্বীকার করল।'},
+  {cat:'verb', en:'advise', ipa:'/ədˈvaɪz/', bn:'পরামর্শ দেওয়া', ex:'The doctor advised her to rest.', exBn:'ডাক্তার তাকে বিশ্রাম নিতে পরামর্শ দিলেন।'},
+  {cat:'verb', en:'affect', ipa:'/əˈfekt/', bn:'প্রভাবিত করা', ex:'The news affected him deeply.', exBn:'খবরটা তাকে গভীরভাবে প্রভাবিত করেছিল।'},
+  {cat:'verb', en:'afford', ipa:'/əˈfɔːd/', bn:'সামর্থ্য থাকা', ex:'We can\u2019t afford a new car right now.', exBn:'আমাদের এখন নতুন গাড়ি কেনার সামর্থ্য নেই।'},
+  {cat:'verb', en:'agree', ipa:'/əˈɡriː/', bn:'একমত হওয়া', ex:'I agree with you completely.', exBn:'আমি তোমার সাথে সম্পূর্ণ একমত।'},
+  {cat:'verb', en:'allow', ipa:'/əˈlaʊ/', bn:'অনুমতি দেওয়া', ex:'They don\u2019t allow pets here.', exBn:'তারা এখানে পোষা প্রাণী রাখার অনুমতি দেয় না।'},
+  {cat:'verb', en:'announce', ipa:'/əˈnaʊns/', bn:'ঘোষণা করা', ex:'They announced the results today.', exBn:'তারা আজ ফলাফল ঘোষণা করেছে।'},
+  {cat:'verb', en:'apologize', ipa:'/əˈpɒl.ə.dʒaɪz/', bn:'ক্ষমা চাওয়া', ex:'He apologized for being late.', exBn:'সে দেরি হওয়ার জন্য ক্ষমা চাইল।'},
+  {cat:'verb', en:'appear', ipa:'/əˈpɪər/', bn:'দেখা দেওয়া', ex:'The sun appeared after the rain.', exBn:'বৃষ্টির পর সূর্য দেখা দিল।'},
+  {cat:'verb', en:'apply', ipa:'/əˈplaɪ/', bn:'আবেদন করা', ex:'I applied for the job last week.', exBn:'আমি গত সপ্তাহে চাকরির জন্য আবেদন করেছিলাম।'},
+  {cat:'verb', en:'argue', ipa:'/ˈɑː.ɡjuː/', bn:'তর্ক করা', ex:'They argued about money.', exBn:'তারা টাকা নিয়ে তর্ক করেছিল।'},
+  {cat:'verb', en:'arrange', ipa:'/əˈreɪndʒ/', bn:'ব্যবস্থা করা', ex:'Let\u2019s arrange a meeting next week.', exBn:'চলো আগামী সপ্তাহে একটা মিটিংয়ের ব্যবস্থা করি।'},
+  {cat:'verb', en:'arrest', ipa:'/əˈrest/', bn:'গ্রেপ্তার করা', ex:'The police arrested two suspects.', exBn:'পুলিশ দুইজন সন্দেহভাজনকে গ্রেপ্তার করেছে।'},
+  {cat:'verb', en:'arrive', ipa:'/əˈraɪv/', bn:'পৌঁছানো', ex:'We arrived home very late.', exBn:'আমরা খুব দেরিতে বাড়ি পৌঁছেছি।'},
+  {cat:'verb', en:'attach', ipa:'/əˈtætʃ/', bn:'সংযুক্ত করা', ex:'Please attach the file to your email.', exBn:'অনুগ্রহ করে ফাইলটা তোমার ইমেইলে সংযুক্ত করো।'},
+  {cat:'verb', en:'attack', ipa:'/əˈtæk/', bn:'আক্রমণ করা', ex:'The dog attacked a stranger.', exBn:'কুকুরটা একজন অপরিচিত লোককে আক্রমণ করেছিল।'},
+  {cat:'verb', en:'attend', ipa:'/əˈtend/', bn:'উপস্থিত থাকা', ex:'I will attend the meeting tomorrow.', exBn:'আমি আগামীকাল মিটিংয়ে উপস্থিত থাকব।'},
+  {cat:'verb', en:'attract', ipa:'/əˈtrækt/', bn:'আকৃষ্ট করা', ex:'The museum attracts many tourists.', exBn:'জাদুঘরটি অনেক পর্যটককে আকৃষ্ট করে।'},
+  {cat:'verb', en:'avoid', ipa:'/əˈvɔɪd/', bn:'এড়ানো', ex:'Try to avoid heavy traffic.', exBn:'ভারী যানজট এড়ানোর চেষ্টা করো।'},
+  {cat:'verb', en:'bake', ipa:'/beɪk/', bn:'বেক করা, ওভেনে সেঁকা', ex:'She bakes bread every Sunday.', exBn:'সে প্রতি রবিবার রুটি বেক করে।'},
+  {cat:'verb', en:'base', ipa:'/beɪs/', bn:'ভিত্তি করা', ex:'The movie is based on a true story.', exBn:'সিনেমাটা একটা সত্য ঘটনার উপর ভিত্তি করে তৈরি।'},
+  {cat:'verb', en:'beat', ipa:'/biːt/', bn:'হারানো, আঘাত করা', ex:'Our team beat them easily.', exBn:'আমাদের দল তাদের সহজেই হারিয়ে দিয়েছে।'},
+  {cat:'verb', en:'behave', ipa:'/bɪˈheɪv/', bn:'আচরণ করা', ex:'Please behave well at school.', exBn:'অনুগ্রহ করে স্কুলে ভালো আচরণ করো।'},
+  {cat:'verb', en:'blow', ipa:'/bləʊ/', bn:'উড়িয়ে দেওয়া, বাতাস বওয়া', ex:'The wind is blowing hard today.', exBn:'আজ প্রবল বাতাস বইছে।'},
+  {cat:'verb', en:'boil', ipa:'/bɔɪl/', bn:'সিদ্ধ করা', ex:'Boil the water before drinking.', exBn:'পান করার আগে পানি সিদ্ধ করো।'},
+  {cat:'verb', en:'book', ipa:'/bʊk/', bn:'বুক করা', ex:'I booked our tickets online.', exBn:'আমি অনলাইনে আমাদের টিকিট বুক করেছি।'},
+  {cat:'verb', en:'borrow', ipa:'/ˈbɒr.əʊ/', bn:'ধার নেওয়া', ex:'Can I borrow your pen?', exBn:'আমি কি তোমার কলমটা ধার নিতে পারি?'},
+  {cat:'verb', en:'break', ipa:'/breɪk/', bn:'ভাঙা', ex:'Be careful not to break the glass.', exBn:'সাবধান, কাচটা যেন না ভাঙে।'},
+  {cat:'verb', en:'breathe', ipa:'/briːð/', bn:'শ্বাস নেওয়া', ex:'Breathe deeply and relax.', exBn:'গভীরভাবে শ্বাস নাও এবং শিথিল হও।'},
+  {cat:'verb', en:'bury', ipa:'/ˈber.i/', bn:'কবর দেওয়া, পুঁতে রাখা', ex:'The dog buried a bone in the yard.', exBn:'কুকুরটা উঠানে একটা হাড় পুঁতে রেখেছিল।'},
+
+  {cat:'adjective', en:'able', ipa:'/ˈeɪ.bəl/', bn:'সক্ষম', ex:'She is able to solve the problem.', exBn:'সে সমস্যাটা সমাধান করতে সক্ষম।'},
+  {cat:'adjective', en:'absolute', ipa:'/ˈæb.sə.luːt/', bn:'নিখুঁত, পরম', ex:'That is absolute nonsense.', exBn:'ওটা একদম অর্থহীন কথা।'},
+  {cat:'adjective', en:'academic', ipa:'/ˌæk.əˈdem.ɪk/', bn:'শিক্ষাগত', ex:'She has a strong academic record.', exBn:'তার শিক্ষাগত রেকর্ড খুব ভালো।'},
+  {cat:'adjective', en:'active', ipa:'/ˈæk.tɪv/', bn:'সক্রিয়', ex:'My grandfather is still very active.', exBn:'আমার দাদা এখনও খুব সক্রিয়।'},
+  {cat:'adjective', en:'actual', ipa:'/ˈæk.tʃu.əl/', bn:'প্রকৃত, আসল', ex:'The actual cost was higher than expected.', exBn:'প্রকৃত খরচ প্রত্যাশার চেয়ে বেশি ছিল।'},
+  {cat:'adjective', en:'afraid', ipa:'/əˈfreɪd/', bn:'ভীত', ex:'She is afraid of the dark.', exBn:'সে অন্ধকারকে ভয় পায়।'},
+  {cat:'adjective', en:'alive', ipa:'/əˈlaɪv/', bn:'জীবিত', ex:'His grandmother is still alive.', exBn:'তার দাদী এখনও জীবিত আছেন।'},
+  {cat:'adjective', en:'alone', ipa:'/əˈləʊn/', bn:'একা', ex:'She lives alone in the city.', exBn:'সে শহরে একা থাকে।'},
+  {cat:'adjective', en:'amazing', ipa:'/əˈmeɪ.zɪŋ/', bn:'বিস্ময়কর', ex:'That was an amazing performance.', exBn:'ওটা একটা বিস্ময়কর পারফরম্যান্স ছিল।'},
+  {cat:'adjective', en:'ancient', ipa:'/ˈeɪn.ʃənt/', bn:'প্রাচীন', ex:'They visited an ancient temple.', exBn:'তারা একটা প্রাচীন মন্দির পরিদর্শন করেছিল।'},
+  {cat:'adjective', en:'angry', ipa:'/ˈæŋ.ɡri/', bn:'রাগান্বিত', ex:'He was angry about the delay.', exBn:'দেরির জন্য সে রাগান্বিত হয়েছিল।'},
+  {cat:'adjective', en:'annoyed', ipa:'/əˈnɔɪd/', bn:'বিরক্ত', ex:'She looked annoyed by the noise.', exBn:'শব্দে তাকে বিরক্ত দেখাচ্ছিল।'},
+  {cat:'adjective', en:'annual', ipa:'/ˈæn.ju.əl/', bn:'বার্ষিক', ex:'This is our annual meeting.', exBn:'এটা আমাদের বার্ষিক সভা।'},
+  {cat:'adjective', en:'anxious', ipa:'/ˈæŋk.ʃəs/', bn:'উদ্বিগ্ন', ex:'She felt anxious before the exam.', exBn:'পরীক্ষার আগে সে উদ্বিগ্ন বোধ করছিল।'},
+  {cat:'adjective', en:'artificial', ipa:'/ˌɑː.tɪˈfɪʃ.əl/', bn:'কৃত্রিম', ex:'This flower is artificial, not real.', exBn:'এই ফুলটা কৃত্রিম, আসল নয়।'},
+  {cat:'adjective', en:'ashamed', ipa:'/əˈʃeɪmd/', bn:'লজ্জিত', ex:'He felt ashamed of his behavior.', exBn:'সে তার আচরণের জন্য লজ্জিত বোধ করেছিল।'},
+  {cat:'adjective', en:'asleep', ipa:'/əˈsliːp/', bn:'ঘুমন্ত', ex:'The baby is fast asleep.', exBn:'শিশুটি গভীর ঘুমে আছে।'},
+  {cat:'adjective', en:'attractive', ipa:'/əˈtræk.tɪv/', bn:'আকর্ষণীয়', ex:'She has an attractive smile.', exBn:'তার হাসি খুব আকর্ষণীয়।'},
+  {cat:'adjective', en:'available', ipa:'/əˈveɪ.lə.bəl/', bn:'সহজলভ্য, পাওয়া যায়', ex:'The manager is not available today.', exBn:'ম্যানেজার আজ পাওয়া যাবে না।'},
+  {cat:'adjective', en:'awful', ipa:'/ˈɔː.fəl/', bn:'ভয়ানক, খারাপ', ex:'The weather was awful yesterday.', exBn:'গতকাল আবহাওয়া খুব খারাপ ছিল।'},
+  {cat:'adjective', en:'basic', ipa:'/ˈbeɪ.sɪk/', bn:'মৌলিক', ex:'These are the basic rules of the game.', exBn:'এগুলো খেলার মৌলিক নিয়ম।'},
+  {cat:'adjective', en:'beautiful', ipa:'/ˈbjuː.tɪ.fəl/', bn:'সুন্দর', ex:'What a beautiful view!', exBn:'কী সুন্দর দৃশ্য!'},
+  {cat:'adjective', en:'bitter', ipa:'/ˈbɪt.ər/', bn:'তেতো, তিক্ত', ex:'This coffee tastes very bitter.', exBn:'এই কফিটা খুব তেতো লাগছে।'},
+  {cat:'adjective', en:'blind', ipa:'/blaɪnd/', bn:'অন্ধ', ex:'He has been blind since birth.', exBn:'সে জন্ম থেকেই অন্ধ।'},
+  {cat:'adjective', en:'bored', ipa:'/bɔːd/', bn:'বিরক্ত, একঘেয়ে বোধ করা', ex:'The children looked bored during the lecture.', exBn:'বক্তৃতার সময় বাচ্চাদের একঘেয়ে লাগছিল।'},
+  {cat:'adjective', en:'boring', ipa:'/ˈbɔː.rɪŋ/', bn:'একঘেয়ে', ex:'This movie is really boring.', exBn:'এই সিনেমাটা সত্যিই একঘেয়ে।'},
+  {cat:'adjective', en:'brave', ipa:'/breɪv/', bn:'সাহসী', ex:'The firefighter was very brave.', exBn:'দমকলকর্মীটি খুব সাহসী ছিলেন।'},
+  {cat:'adjective', en:'bright', ipa:'/braɪt/', bn:'উজ্জ্বল', ex:'The room was full of bright light.', exBn:'ঘরটা উজ্জ্বল আলোয় ভরা ছিল।'},
+  {cat:'adjective', en:'brilliant', ipa:'/ˈbrɪl.jənt/', bn:'অসাধারণ, উজ্জ্বল', ex:'That was a brilliant idea.', exBn:'ওটা একটা অসাধারণ ধারণা ছিল।'},
+  {cat:'adjective', en:'broken', ipa:'/ˈbrəʊ.kən/', bn:'ভাঙা', ex:'The window glass is broken.', exBn:'জানালার কাচটা ভাঙা।'},
+
+  {cat:'adverb', en:'above', ipa:'/əˈbʌv/', bn:'উপরে', ex:'The plane flew above the clouds.', exBn:'বিমানটা মেঘের উপর দিয়ে উড়ে গেল।'},
+  {cat:'adverb', en:'abroad', ipa:'/əˈbrɔːd/', bn:'বিদেশে', ex:'She studied abroad for two years.', exBn:'সে দুই বছর বিদেশে পড়াশোনা করেছে।'},
+  {cat:'adverb', en:'absolutely', ipa:'/ˌæb.səˈluːt.li/', bn:'সম্পূর্ণভাবে', ex:'I absolutely agree with you.', exBn:'আমি তোমার সাথে সম্পূর্ণভাবে একমত।'},
+  {cat:'adverb', en:'actually', ipa:'/ˈæk.tʃu.ə.li/', bn:'আসলে', ex:'Actually, I don\u2019t like coffee.', exBn:'আসলে, আমি কফি পছন্দ করি না।'},
+  {cat:'adverb', en:'again', ipa:'/əˈɡen/', bn:'আবার', ex:'Please explain that again.', exBn:'অনুগ্রহ করে সেটা আবার ব্যাখ্যা করো।'},
+  {cat:'adverb', en:'ahead', ipa:'/əˈhed/', bn:'সামনে', ex:'Go straight ahead and turn left.', exBn:'সোজা সামনে গিয়ে বাঁয়ে ঘোরো।'},
+  {cat:'adverb', en:'almost', ipa:'/ˈɔːl.məʊst/', bn:'প্রায়', ex:'We are almost there.', exBn:'আমরা প্রায় পৌঁছে গেছি।'},
+  {cat:'adverb', en:'anymore', ipa:'/ˌen.iˈmɔːr/', bn:'আর নয়', ex:'She doesn\u2019t live here anymore.', exBn:'সে আর এখানে থাকে না।'},
+  {cat:'adverb', en:'anyway', ipa:'/ˈen.i.weɪ/', bn:'যাই হোক', ex:'Anyway, let\u2019s move on.', exBn:'যাই হোক, চলো এগিয়ে যাই।'},
+  {cat:'adverb', en:'apart', ipa:'/əˈpɑːt/', bn:'আলাদা, দূরে', ex:'The two towns are ten miles apart.', exBn:'শহর দুটি দশ মাইল দূরে দূরে অবস্থিত।'},
+  {cat:'adverb', en:'automatically', ipa:'/ˌɔː.təˈmæt.ɪ.kli/', bn:'স্বয়ংক্রিয়ভাবে', ex:'The door opens automatically.', exBn:'দরজাটা স্বয়ংক্রিয়ভাবে খোলে।'},
+  {cat:'adverb', en:'away', ipa:'/əˈweɪ/', bn:'দূরে', ex:'Stay away from the fire.', exBn:'আগুন থেকে দূরে থাকো।'},
+  {cat:'adverb', en:'badly', ipa:'/ˈbæd.li/', bn:'খারাপভাবে', ex:'The team played badly today.', exBn:'দলটা আজ খারাপভাবে খেলেছে।'},
+
+  {cat:'preposition', en:'across', ipa:'/əˈkrɒs/', bn:'অপর পাশে, জুড়ে', ex:'We walked across the bridge.', exBn:'আমরা সেতুর অপর পাশে হেঁটে গেলাম।'},
+  {cat:'preposition', en:'against', ipa:'/əˈɡenst/', bn:'বিরুদ্ধে', ex:'He leaned against the wall.', exBn:'সে দেয়ালে হেলান দিয়ে দাঁড়াল।'},
+  {cat:'preposition', en:'among', ipa:'/əˈmʌŋ/', bn:'মধ্যে', ex:'She is popular among students.', exBn:'শিক্ষার্থীদের মধ্যে সে খুব জনপ্রিয়।'},
+  {cat:'preposition', en:'around', ipa:'/əˈraʊnd/', bn:'চারপাশে', ex:'We walked around the park.', exBn:'আমরা পার্কের চারপাশে হাঁটলাম।'},
+  {cat:'preposition', en:'behind', ipa:'/bɪˈhaɪnd/', bn:'পিছনে', ex:'The car is parked behind the house.', exBn:'গাড়িটা বাড়ির পিছনে রাখা আছে।'},
+  {cat:'preposition', en:'below', ipa:'/bɪˈləʊ/', bn:'নিচে', ex:'The temperature is below zero.', exBn:'তাপমাত্রা শূন্যের নিচে।'},
+
+  {cat:'conjunction', en:'as', ipa:'/æz/', bn:'যেমন, যেহেতু', ex:'As it was raining, we stayed inside.', exBn:'যেহেতু বৃষ্টি হচ্ছিল, আমরা ভেতরে থেকে গেলাম।'},
+
+  {cat:'other', en:'a, an', ipa:'/eɪ, ə, ən/', bn:'একটি (অনির্দিষ্ট নিবন্ধক)', ex:'I saw a cat and an elephant.', exBn:'আমি একটা বিড়াল এবং একটা হাতি দেখেছি।'},
+  {cat:'other', en:'all', ipa:'/ɔːl/', bn:'সব', ex:'All the students passed the exam.', exBn:'সব শিক্ষার্থী পরীক্ষায় পাস করেছে।'},
+  {cat:'other', en:'another', ipa:'/əˈnʌð.ər/', bn:'আরেকটি', ex:'Can I have another cup of tea?', exBn:'আমি কি আরেক কাপ চা পেতে পারি?'},
+  {cat:'other', en:'any', ipa:'/ˈen.i/', bn:'কোনো', ex:'I don\u2019t have any money left.', exBn:'আমার কাছে আর কোনো টাকা নেই।'},
+  {cat:'other', en:'both', ipa:'/bəʊθ/', bn:'উভয়', ex:'Both of them agreed to come.', exBn:'তাদের উভয়েই আসতে রাজি হয়েছিল।'},
+  {cat:'other', en:'eight', ipa:'/eɪt/', bn:'আট', ex:'The train leaves at eight.', exBn:'ট্রেনটা আটটায় ছাড়ে।'},
+  {cat:'other', en:'nine', ipa:'/naɪn/', bn:'নয়', ex:'I have nine pens.', exBn:'আমার কাছে নয়টা কলম আছে।'},
+  {cat:'other', en:'ten', ipa:'/ten/', bn:'দশ', ex:'She has ten fingers.', exBn:'তার দশটি আঙুল আছে।'},
+];
+
+const posMap = Object.fromEntries(categories.filter(c=>c.abbr).map(c=>[c.key,c.abbr]));
+
+const tabsEl = document.getElementById('tabs');
+const entriesEl = document.getElementById('entries');
+const noResultsEl = document.getElementById('noResults');
+const searchEl = document.getElementById('search');
+const metaLineEl = document.getElementById('metaLine');
+
+let activeCat = 'all';
+let query = '';
+
+function counts(){
+  const c = {};
+  data.forEach(d => c[d.cat] = (c[d.cat]||0)+1);
+  return c;
+}
+const catCounts = counts();
+
+categories.forEach(c => {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (c.key === activeCat ? ' active' : '');
+  const n = c.key === 'all' ? data.length : (catCounts[c.key]||0);
+  btn.textContent = c.label + ' (' + n + ')';
+  btn.addEventListener('click', () => {
+    activeCat = c.key;
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    render();
+  });
+  tabsEl.appendChild(btn);
+});
+
+searchEl.addEventListener('input', (e) => {
+  query = e.target.value.trim().toLowerCase();
+  render();
+});
+
+function render(){
+  const filtered = data.filter(d => {
+    const matchesCat = activeCat === 'all' || d.cat === activeCat;
+    const matchesQuery = !query || d.en.toLowerCase().includes(query) || d.bn.includes(query);
+    return matchesCat && matchesQuery;
+  });
+
+  entriesEl.innerHTML = '';
+  noResultsEl.style.display = filtered.length ? 'none' : 'block';
+  metaLineEl.textContent = filtered.length + (filtered.length === 1 ? ' word' : ' words');
+
+  filtered.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'entry';
+    el.innerHTML = `
+      <div class="entry-head">
+        <span class="entry-word">${d.en}</span>
+        <span class="entry-pos">${posMap[d.cat] || ''}</span>
+      </div>
+      <p class="entry-ipa">${d.ipa}</p>
+      <p class="entry-bn bn">${d.bn}</p>
+      <p class="entry-example">
+        <span class="en">${d.ex}</span>
+        <span class="bnex bn">${d.exBn}</span>
+      </p>
+    `;
+    entriesEl.appendChild(el);
+  });
+}
+
+render();
+
+const backToTopBtn = document.getElementById('backToTop');
+const backToBottomBtn = document.getElementById('backToBottom');
+function updateScrollButtons(){
+  const nearBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 300;
+  backToTopBtn.classList.toggle('visible', window.scrollY > 400);
+  backToBottomBtn.classList.toggle('visible', !nearBottom);
+}
+window.addEventListener('scroll', updateScrollButtons);
+window.addEventListener('resize', updateScrollButtons);
+updateScrollButtons();
+
+backToTopBtn.addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+backToBottomBtn.addEventListener('click', () => {
+  window.scrollTo({ top: document.documentElement.scrollHeight, behavior: 'smooth' });
+});
+
+const scrollDownBtn = document.getElementById('scrollDown');
+scrollDownBtn.addEventListener('click', () => {
+  document.querySelector('.tabs-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+</script>
+
+</body>
+</html>
