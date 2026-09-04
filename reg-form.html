@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Registration Form</title>
+<style>
+  *{box-sizing:border-box;}
+
+  body{
+    margin:0;
+    background:#F2F4F7;
+    color:#1F2937;
+    font-family:Arial, Helvetica, sans-serif;
+    padding:40px 16px;
+  }
+
+  .card{
+    max-width:640px;
+    margin:0 auto;
+    background:#FFFFFF;
+    border:1px solid #D1D5DB;
+    border-radius:6px;
+    padding:32px 36px 36px;
+  }
+
+  h1{
+    font-size:1.5rem;
+    margin:0 0 6px;
+    color:#111827;
+  }
+
+  .subtitle{
+    margin:0 0 28px;
+    font-size:0.9rem;
+    color:#6B7280;
+  }
+
+  form{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+  }
+
+  .row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+  }
+
+  .field label{
+    display:block;
+    font-size:0.88rem;
+    font-weight:bold;
+    margin-bottom:6px;
+    color:#374151;
+  }
+
+  .field .optional{
+    font-weight:normal;
+    color:#9CA3AF;
+  }
+
+  .field input,
+  .field textarea{
+    width:100%;
+    padding:10px 12px;
+    font-size:0.95rem;
+    font-family:inherit;
+    color:#111827;
+    background:#FFFFFF;
+    border:1px solid #D1D5DB;
+    border-radius:4px;
+    outline:none;
+  }
+
+  .field textarea{
+    resize:vertical;
+    min-height:80px;
+    line-height:1.5;
+  }
+
+  .field input:focus,
+  .field textarea:focus{
+    border-color:#2563EB;
+    box-shadow:0 0 0 3px rgba(37,99,235,0.15);
+  }
+
+  .field small{
+    display:block;
+    margin-top:5px;
+    font-size:0.78rem;
+    color:#6B7280;
+  }
+
+  .field .error-text{
+    display:none;
+    margin-top:5px;
+    font-size:0.8rem;
+    color:#DC2626;
+  }
+
+  .field.invalid input,
+  .field.invalid textarea{
+    border-color:#DC2626;
+  }
+  .field.invalid .error-text{
+    display:block;
+  }
+
+  .desc-count{
+    text-align:right;
+    font-size:0.78rem;
+    color:#6B7280;
+    margin-top:-4px;
+  }
+  .desc-count.over{
+    color:#DC2626;
+  }
+
+  hr{
+    border:none;
+    border-top:1px solid #E5E7EB;
+    margin:8px 0;
+  }
+
+  .form-actions{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+  }
+
+  .form-actions p{
+    margin:0;
+    font-size:0.8rem;
+    color:#6B7280;
+  }
+
+  button{
+    background:#2563EB;
+    color:#FFFFFF;
+    border:none;
+    border-radius:4px;
+    padding:11px 24px;
+    font-size:0.95rem;
+    font-family:inherit;
+    cursor:pointer;
+  }
+  button:hover{background:#1D4ED8;}
+  button:disabled{background:#9CA3AF; cursor:not-allowed;}
+
+  .status{
+    display:none;
+    font-size:0.88rem;
+    padding:10px 12px;
+    border-radius:4px;
+  }
+  .status.show{display:block;}
+  .status.ok{background:#ECFDF3; color:#027A48; border:1px solid #A6F4C5;}
+  .status.fail{background:#FEF3F2; color:#B42318; border:1px solid #FDA29B;}
+
+  @media (max-width:560px){
+    .card{padding:24px 20px 28px;}
+    .row{grid-template-columns:1fr;}
+    .form-actions{flex-direction:column; align-items:stretch;}
+    button{width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>Registration Form</h1>
+  <p class="subtitle">Please complete all fields below.</p>
+
+  <form id="regForm" autocomplete="off">
+
+    <div class="field">
+      <label for="fullName">Full Name</label>
+      <input type="text" id="fullName" name="fullName" required>
+      <div class="error-text">Please enter your full name.</div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+        <div class="error-text">Please select your date of birth.</div>
+      </div>
+      <div class="field">
+        <label for="nationality">Nationality</label>
+        <input type="text" id="nationality" name="nationality" required>
+        <div class="error-text">Please enter your nationality.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="idNumber">NIE / DNI / Passport Number</label>
+      <input type="text" id="idNumber" name="idNumber" required>
+      <div class="error-text">Please enter your ID document number.</div>
+    </div>
+
+    <div class="row">
+      <div class="field">
+        <label for="phone">Contact Number</label>
+        <input type="tel" id="phone" name="phone" required>
+        <div class="error-text">Please enter a valid contact number.</div>
+      </div>
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" required>
+        <div class="error-text">Please enter a valid email.</div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="address">Full Address</label>
+      <textarea id="address" name="address" required></textarea>
+      <div class="error-text">Please enter your full address.</div>
+    </div>
+
+    <div class="field">
+      <label for="description">Short Description <span class="optional">(optional, max 150 words)</span></label>
+      <textarea id="description" name="description" maxlength="1200"></textarea>
+      <div class="error-text">Please keep this under 150 words.</div>
+      <div class="desc-count" id="descCount">0 / 150 words</div>
+    </div>
+
+    <hr>
+
+    <div class="form-actions">
+      <p>Your information is sent only to the form administrator.</p>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+
+    <div class="status" id="statusMsg"></div>
+  </form>
+</div>
+
+<script>
+  // Replace with your form backend endpoint (e.g. Formspree) to receive
+  // submissions by email. Example: https://formspree.io/f/xxxxabcd
+  const FORM_ENDPOINT = "https://formspree.io/f/YOUR_FORMSPREE_ID";
+
+  const form = document.getElementById('regForm');
+  const statusMsg = document.getElementById('statusMsg');
+  const submitBtn = document.getElementById('submitBtn');
+  const descField = document.getElementById('description');
+  const descCount = document.getElementById('descCount');
+
+  function wordCount(str){
+    const trimmed = str.trim();
+    return trimmed ? trimmed.split(/\s+/).length : 0;
+  }
+
+  descField.addEventListener('input', () => {
+    const count = wordCount(descField.value);
+    descCount.textContent = count + ' / 150 words';
+    descCount.classList.toggle('over', count > 150);
+    descField.closest('.field').classList.toggle('invalid', count > 150);
+  });
+
+  function validate(){
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(el => {
+      const fieldEl = el.closest('.field');
+      const empty = !el.value.trim();
+      let bad = empty;
+      if(el.type === 'email' && !empty){
+        bad = !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value);
+      }
+      fieldEl.classList.toggle('invalid', bad);
+      if(bad) valid = false;
+    });
+    if(wordCount(descField.value) > 150){
+      descField.closest('.field').classList.add('invalid');
+      valid = false;
+    }
+    return valid;
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    statusMsg.className = 'status';
+
+    if(!validate()){
+      statusMsg.textContent = 'Please fix the highlighted fields before submitting.';
+      statusMsg.classList.add('show', 'fail');
+      return;
+    }
+
+    if(FORM_ENDPOINT.includes('YOUR_FORMSPREE_ID')){
+      statusMsg.textContent = 'Form endpoint not connected yet. Add your form backend URL in the script to enable delivery.';
+      statusMsg.classList.add('show', 'fail');
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    const data = new FormData(form);
+
+    try{
+      const res = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if(res.ok){
+        statusMsg.textContent = 'Thank you, your details have been submitted.';
+        statusMsg.classList.add('show', 'ok');
+        form.reset();
+        descCount.textContent = '0 / 150 words';
+      } else {
+        statusMsg.textContent = 'Something went wrong. Please try again.';
+        statusMsg.classList.add('show', 'fail');
+      }
+    } catch(err){
+      statusMsg.textContent = 'Network error. Please check your connection and try again.';
+      statusMsg.classList.add('show', 'fail');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit';
+    }
+  });
+</script>
+
+</body>
+</html>
