@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1280">
+<title>Md Hasan Al Mahmud — Curriculum Vitae</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --eu-blue: #003399;
+    --eu-blue-deep: #002266;
+    --eu-blue-tint: #EBEFF9;
+    --eu-yellow: #FFCC00;
+    --ink: #1D1D1B;
+    --ink-soft: #55585C;
+    --line: #D6D9E0;
+    --paper: #FFFFFF;
+  }
+
+  *{ box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: #ECEEF3;
+    color: var(--ink);
+    font-family: 'Arimo', Arial, Helvetica, sans-serif;
+    font-size: 13.5px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page{
+    max-width: 980px;
+    margin: 0 auto;
+    background: var(--paper);
+  }
+
+  /* ---------------- Top identity bar ---------------- */
+
+  .euro-topbar{
+    background: var(--eu-blue);
+    height: 8px;
+    background-image: linear-gradient(90deg, var(--eu-blue) 0%, var(--eu-blue) 92%, var(--eu-yellow) 92%, var(--eu-yellow) 100%);
+  }
+
+  .euro-header{
+    display: flex;
+    gap: 28px;
+    padding: 34px 44px 26px;
+    border-bottom: 3px solid var(--eu-blue);
+    align-items: flex-start;
+  }
+
+  .euro-photo-frame{
+    width: 118px;
+    height: 140px;
+    flex: none;
+    border: 1px solid var(--line);
+    padding: 3px;
+    background: #fff;
+  }
+  .euro-photo-frame img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .euro-id{ flex: 1; padding-top: 4px; }
+
+  .euro-doctitle{
+    font-size: 1.40rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--eu-blue);
+    margin: 0 0 10px;
+  }
+
+  .euro-name{
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .euro-role{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin: 4px 0 18px;
+  }
+
+  .euro-idfields{
+    display: grid;
+    grid-template-columns: 130px 1fr;
+    row-gap: 6px;
+    column-gap: 14px;
+    font-size: 0.86rem;
+    max-width: 560px;
+  }
+  .euro-idfields dt{
+    color: var(--eu-blue);
+    font-weight: 700;
+    margin: 0;
+  }
+  .euro-idfields dd{
+    margin: 0;
+    color: var(--ink);
+  }
+  .euro-idfields a{ color: var(--ink); text-decoration: none; }
+  .euro-idfields a:hover{ text-decoration: underline; }
+
+  /* ---------------- Body layout ---------------- */
+
+  .euro-body{
+    padding: 0 44px 44px;
+  }
+
+  .euro-summary{
+    margin: 26px 0 0;
+    padding: 16px 18px;
+    background: var(--eu-blue-tint);
+    border-left: 4px solid var(--eu-blue);
+    font-size: 0.92rem;
+    color: var(--ink);
+  }
+
+  .euro-section-title{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--eu-blue);
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    padding: 8px 14px;
+    margin: 34px 0 0;
+  }
+  .euro-section-title .n{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    background: var(--eu-yellow);
+    color: var(--eu-blue-deep);
+    border-radius: 2px;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .euro-row{
+    display: flex;
+    gap: 22px;
+    padding: 16px 4px;
+    border-bottom: 1px solid var(--line);
+  }
+  .euro-row:last-child{ border-bottom: none; }
+
+  .euro-row-date{
+    width: 148px;
+    flex: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--eu-blue);
+    padding-top: 6px;
+  }
+
+  .euro-row-content{ flex: 1; min-width: 0; }
+
+  .euro-field-title{
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--ink);
+  }
+  .euro-field-sub{
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    margin: 2px 0 0;
+  }
+  .euro-field-note{
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin: 1px 0 8px;
+  }
+
+  .euro-row-content ul{
+    margin: 8px 0 0;
+    padding-left: 18px;
+  }
+  .euro-row-content li{
+    font-size: 0.88rem;
+    margin-bottom: 3px;
+  }
+
+  .euro-score{
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--eu-blue-deep);
+    background: var(--eu-blue-tint);
+    padding: 2px 9px;
+    border-radius: 2px;
+  }
+
+  /* ---------------- Skills / languages ---------------- */
+
+  .euro-skill-list{
+    margin: 14px 4px 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .euro-skill-list li{
+    font-size: 0.88rem;
+    padding-left: 16px;
+    position: relative;
+  }
+  .euro-skill-list li::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 6px;
+    background: var(--eu-yellow);
+    border: 1px solid var(--eu-blue);
+  }
+
+  .lang-table{
+    width: 100%;
+    margin: 14px 4px 0;
+    border-collapse: collapse;
+    font-size: 0.84rem;
+  }
+  .lang-table th{
+    background: var(--eu-blue-tint);
+    color: var(--eu-blue-deep);
+    text-align: left;
+    font-weight: 700;
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+  }
+  .lang-table td{
+    padding: 7px 10px;
+    border: 1px solid var(--line);
+  }
+  .lang-table td.level{
+    text-align: center;
+    font-weight: 700;
+    color: var(--eu-blue);
+  }
+
+  .euro-foot-note{
+    margin: 34px 4px 0;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+  }
+
+  @media print{
+    body{ background: #fff; }
+    .page{ max-width: 210mm; margin: 0 auto; }
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+  <div class="euro-topbar"></div>
+
+  <header class="euro-header">
+    <div class="euro-photo-frame">
+      <img src="https://i.ibb.co/cSV6HNwY/20260524-162741.jpg" alt="Hasan Al Mahmud">
+    </div>
+    <div class="euro-id">
+      <p class="euro-doctitle">Curriculum Vitae</p>
+      <h1 class="euro-name">Md Hasan Al Mahmud</h1>
+      <p class="euro-role">Reparto, Hostelería, Atención al Cliente, Multilingüe</p>
+
+      <dl class="euro-idfields">
+        <dt>Dirección</dt>
+        <dd>L'Hospitalet de Llobregat, 82, 2°1, 08904, Barcelona, España</dd>
+        <dt>Teléfono</dt>
+        <dd><a href="tel:+34602878761">+34 602 87 87 61</a></dd>
+        <dt>Correo electrónico</dt>
+        <dd><a href="mailto:hasanalmahmud@europe.com">hasanalmahmud@europe.com</a></dd>
+      </dl>
+    </div>
+  </header>
+
+  <div class="euro-body">
+
+    <p class="euro-summary">
+      Profesional con trayectoria en almacén, reparto y hostelería construida en Bangladés, Rumanía y España.
+      Acostumbrado a entornos de ritmo alto, coordinación de equipos y trato directo con el cliente,
+      actualmente centrado en el sector logístico y comercial en Barcelona.
+    </p>
+
+    <h2 class="euro-section-title"><span class="n">01</span> Experiencia laboral</h2>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Feb 2026 — May 2026</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Operario de Almacén</p>
+        <p class="euro-field-sub">Dia · Barcelona, España</p>
+        <p class="euro-field-note">Sector: Supermercado / Distribución</p>
+        <ul>
+          <li>Carga y descarga de mercancía</li>
+          <li>Ubicación y organización de productos en almacén</li>
+          <li>Limpieza y seguridad del espacio de trabajo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Oct 2024 — Ene 2026</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Repartidor</p>
+        <p class="euro-field-sub">Glovo / Uber Eats · España</p>
+        <p class="euro-field-note">Sector: Reparto y logística de última milla</p>
+        <ul>
+          <li>Recogida y entrega puntual de pedidos</li>
+          <li>Mantenimiento de la calidad de los alimentos durante el trayecto</li>
+          <li>Servicio al cliente excelente en cada entrega</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Dic 2023 — Oct 2024</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Camarero/a de Pisos</p>
+        <p class="euro-field-sub">Homey · Bucarest, Rumanía</p>
+        <p class="euro-field-note">Sector: Hotelero</p>
+        <ul>
+          <li>Limpieza y desinfección de habitaciones</li>
+          <li>Gestión de habitaciones y ropa de cama</li>
+          <li>Mantenimiento general y reporting de incidencias</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Dic 2022 — Jun 2023</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Supervisor de Limpieza</p>
+        <p class="euro-field-sub">Dhaka Regency Hotel &amp; Resort · Daca, Bangladés</p>
+        <p class="euro-field-note">Sector: Hotelero</p>
+        <ul>
+          <li>Inspección de las distintas zonas del hotel para garantizar los estándares de calidad</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Dic 2021 — May 2022</div>
+      <div class="euro-row-content">
+		<p class="euro-field-title">Camarero</p>
+        <p class="euro-field-sub">The Garden Kitchen Restaurante · Daca, Bangladés</p>
+        <p class="euro-field-note">Sector: Hotelero</p>
+         <ul>
+          <li>Toma de pedidos y atención a los comensales</li>
+          <li>Conocimiento completo del menú</li>
+          <li>Servicio de mesas</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="euro-section-title"><span class="n">02</span> Educación y formación</h2>
+
+    <div class="euro-row">
+      <div class="euro-row-date">2016 — 2019</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Licenciatura en Artes (B.A) </p>
+        <p class="euro-field-sub">Islamic Arabic University | Estudios Islámicos</p>
+        <span class="euro-score">Calificación: 3.83 / 5.00</span>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">2016</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Bachillerato (H.S.C. equivalente) </p>
+        <p class="euro-field-sub">Grupo: Ciencias</p>
+        <span class="euro-score">Calificación: 4.38 / 5.00</span>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">2014</div>
+      <div class="euro-row-content">
+        <p class="euro-field-title">Educación Secundaria (S.S.C. equivalente)</p>
+        <p class="euro-field-sub">Grupo: Ciencias</p>
+        <span class="euro-score">Calificación: 4.63 / 5.00</span>
+      </div>
+    </div>
+
+    <h2 class="euro-section-title"><span class="n">03</span> Competencias personales</h2>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Idiomas</div>
+      <div class="euro-row-content">
+        <table class="lang-table">
+          <thead>
+            <tr><th>Idioma</th><th>Nivel</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Inglés</td><td class="level">B1</td></tr>
+            <tr><td>Español</td><td class="level">Básico</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="euro-row">
+      <div class="euro-row-date">Competencias</div>
+      <div class="euro-row-content">
+        <ul class="euro-skill-list">
+          <li>Microsoft Office (nivel avanzado)</li>
+          <li>Herramientas digitales y de comunicación</li>
+          <li>Navegación e investigación en internet</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
