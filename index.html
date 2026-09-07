@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hasan Al Mahmud | Official Links</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+--bg: #070a12;
+--card-bg: rgba(255, 255, 255, 0.025);
+--card-border: rgba(255, 255, 255, 0.09);
+--text: #f8fafc;
+--text-muted: #94a3b8;
+--accent: #38bdf8;
+--accent-glow: rgba(56, 189, 248, 0.35);
+--glow-cyan: rgba(56, 189, 248, 0.22);
+--glow-purple: rgba(168, 85, 247, 0.18);
+--glow-indigo: rgba(99, 102, 241, 0.15);
+--glow-teal: rgba(20, 184, 166, 0.15);
+--lamp-gold: #fbbf24;
+--lamp-glow: rgba(251, 191, 36, 0.6);
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+background-color: var(--bg);
+color: var(--text);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+padding: 2.5rem 1rem 2rem 1rem;
+position: relative;
+overflow-x: hidden;
+user-select: none;
+-webkit-tap-highlight-color: transparent;
+transition: background-color 0.8s ease;
+}
+body.lamp-lit {
+background-color: #0b1120;
+}
+a {
+text-decoration: none;
+}
+#bg-canvas {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+z-index: 0;
+pointer-events: none;
+}
+/* Ambient Floating Orbs */
+.bg-orb {
+position: fixed;
+border-radius: 50%;
+filter: blur(80px);
+z-index: 0;
+pointer-events: none;
+opacity: 0.75;
+will-change: transform, opacity;
+transition: opacity 0.8s ease, filter 0.8s ease;
+}
+body.lamp-lit .bg-orb {
+opacity: 0.95;
+filter: blur(60px);
+}
+.orb-1 {
+top: -15%;
+left: 50%;
+transform: translateX(-50%);
+width: 650px;
+height: 650px;
+background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
+animation: orbFloat1 20s ease-in-out infinite alternate;
+}
+.orb-2 {
+bottom: -15%;
+right: -5%;
+width: 550px;
+height: 550px;
+background: radial-gradient(circle, var(--glow-purple) 0%, transparent 70%);
+animation: orbFloat2 24s ease-in-out infinite alternate;
+}
+.orb-3 {
+top: 30%;
+left: -10%;
+width: 500px;
+height: 500px;
+background: radial-gradient(circle, var(--glow-indigo) 0%, transparent 70%);
+animation: orbFloat3 22s ease-in-out infinite alternate;
+}
+.orb-4 {
+bottom: 25%;
+left: 60%;
+width: 450px;
+height: 450px;
+background: radial-gradient(circle, var(--glow-teal) 0%, transparent 70%);
+animation: orbFloat4 26s ease-in-out infinite alternate;
+}
+.bg-grid-overlay {
+position: fixed;
+inset: 0;
+background-image:
+linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+background-size: 40px 40px;
+z-index: 0;
+pointer-events: none;
+mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 85%);
+-webkit-mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 85%);
+animation: gridPulse 12s ease-in-out infinite alternate;
+}
+@keyframes orbFloat1 {
+0% { transform: translate(-50%, 0) scale(1) rotate(0deg); opacity: 0.6; }
+50% { transform: translate(-42%, 40px) scale(1.15) rotate(60deg); opacity: 0.9; }
+100% { transform: translate(-58%, -30px) scale(0.92) rotate(-40deg); opacity: 0.55; }
+}
+@keyframes orbFloat2 {
+0% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+50% { transform: translate(-50px, -40px) scale(1.2); opacity: 0.85; }
+100% { transform: translate(35px, 30px) scale(0.95); opacity: 0.5; }
+}
+@keyframes orbFloat3 {
+0% { transform: translate(0, 0) scale(0.9); opacity: 0.5; }
+50% { transform: translate(60px, -50px) scale(1.25); opacity: 0.8; }
+100% { transform: translate(-30px, 40px) scale(0.9); opacity: 0.45; }
+}
+@keyframes orbFloat4 {
+0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+50% { transform: translate(-40px, 50px) scale(1.18); opacity: 0.75; }
+100% { transform: translate(50px, -30px) scale(0.85); opacity: 0.35; }
+}
+@keyframes gridPulse {
+0% { opacity: 0.3; transform: scale(1); }
+100% { opacity: 0.65; transform: scale(1.02); }
+}
+/* Professional Floating Lamp Widget Component */
+.lamp-widget-wrapper {
+position: fixed;
+top: 0;
+right: 28px;
+z-index: 100;
+display: flex;
+flex-direction: column;
+align-items: center;
+cursor: pointer;
+user-select: none;
+}
+.lamp-cord {
+width: 2px;
+height: 60px;
+background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15), rgba(56, 189, 248, 0.6));
+transform-origin: top center;
+animation: cordSway 6s ease-in-out infinite alternate;
+transition: height 0.3s ease, background 0.5s ease;
+}
+body.lamp-lit .lamp-cord {
+background: linear-gradient(to bottom, rgba(251, 191, 36, 0.3), var(--lamp-gold));
+box-shadow: 0 0 8px rgba(251, 191, 36, 0.5);
+}
+.lamp-head {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+transform-origin: top center;
+animation: headSway 6s ease-in-out infinite alternate;
+transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.lamp-widget-wrapper:hover .lamp-head {
+transform: scale(1.08) translateY(2px);
+}
+.lamp-widget-wrapper:active .lamp-head {
+transform: scale(0.95) translateY(6px);
+}
+.lamp-shade {
+width: 42px;
+height: 22px;
+background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+border: 1px solid rgba(255, 255, 255, 0.2);
+border-bottom: none;
+border-radius: 14px 14px 3px 3px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+position: relative;
+z-index: 2;
+transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+body.lamp-lit .lamp-shade {
+border-color: rgba(251, 191, 36, 0.7);
+box-shadow: 0 0 15px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+.lamp-bulb {
+width: 26px;
+height: 26px;
+border-radius: 50%;
+background: radial-gradient(circle, #38bdf8 0%, #0284c7 100%);
+margin-top: -6px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #ffffff;
+font-size: 13px;
+box-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+position: relative;
+z-index: 1;
+animation: bulbPulse 3s ease-in-out infinite alternate;
+}
+body.lamp-lit .lamp-bulb {
+background: radial-gradient(circle, #fffbeb 0%, #fbbf24 60%, #f59e0b 100%);
+color: #78350f;
+box-shadow: 0 0 25px #fbbf24, 0 0 50px rgba(251, 191, 36, 0.8), 0 0 75px rgba(251, 191, 36, 0.5);
+animation: bulbLitGlow 1.5s ease-in-out infinite alternate;
+}
+.lamp-badge-tag {
+position: absolute;
+top: 92px;
+background: rgba(15, 23, 42, 0.85);
+border: 1px solid rgba(255, 255, 255, 0.15);
+color: #94a3b8;
+font-size: 10px;
+font-weight: 600;
+padding: 3px 8px;
+border-radius: 12px;
+letter-spacing: 0.3px;
+white-space: nowrap;
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+transition: all 0.3s ease;
+pointer-events: none;
+opacity: 0.85;
+}
+body.lamp-lit .lamp-badge-tag {
+color: #fbbf24;
+border-color: rgba(251, 191, 36, 0.4);
+background: rgba(15, 23, 42, 0.92);
+box-shadow: 0 0 12px rgba(251, 191, 36, 0.3);
+}
+@keyframes cordSway {
+0% { transform: rotate(-1.5deg); }
+100% { transform: rotate(1.5deg); }
+}
+@keyframes headSway {
+0% { transform: rotate(-1.5deg) translateX(-1px); }
+100% { transform: rotate(1.5deg) translateX(1px); }
+}
+@keyframes bulbPulse {
+0% { box-shadow: 0 0 8px rgba(56, 189, 248, 0.4); }
+100% { box-shadow: 0 0 16px rgba(56, 189, 248, 0.8); }
+}
+@keyframes bulbLitGlow {
+0% { box-shadow: 0 0 20px #fbbf24, 0 0 40px rgba(251, 191, 36, 0.7); }
+100% { box-shadow: 0 0 35px #fbbf24, 0 0 70px rgba(251, 191, 36, 0.9), 0 0 100px rgba(251, 191, 36, 0.6); }
+}
+/* Screen Light Rays ("Roaf") Overlay Container */
+.lamp-rays-overlay {
+position: fixed;
+inset: 0;
+pointer-events: none;
+z-index: 10;
+opacity: 0;
+transition: opacity 0.7s ease;
+overflow: hidden;
+}
+body.lamp-lit .lamp-rays-overlay {
+opacity: 1;
+}
+/* Volumetric Conical Light Beams */
+.ray-cone {
+position: absolute;
+top: 80px;
+right: 48px;
+width: 250vw;
+height: 250vh;
+transform: translate(50%, 0) rotate(25deg);
+background: conic-gradient(
+from 240deg at 0% 0%,
+transparent 0deg,
+rgba(251, 191, 36, 0.12) 15deg,
+rgba(255, 237, 213, 0.22) 28deg,
+rgba(56, 189, 248, 0.15) 42deg,
+rgba(251, 191, 36, 0.25) 58deg,
+rgba(168, 85, 247, 0.12) 72deg,
+transparent 90deg
+);
+mix-blend-mode: screen;
+filter: blur(20px);
+animation: raySweep 12s ease-in-out infinite alternate;
+transform-origin: top right;
+}
+.ray-cone-2 {
+position: absolute;
+top: 80px;
+right: 48px;
+width: 220vw;
+height: 220vh;
+transform: translate(50%, 0) rotate(-10deg);
+background: conic-gradient(
+from 200deg at 0% 0%,
+transparent 0deg,
+rgba(56, 189, 248, 0.18) 20deg,
+rgba(251, 191, 36, 0.28) 40deg,
+rgba(255, 255, 255, 0.2) 60deg,
+transparent 80deg
+);
+mix-blend-mode: screen;
+filter: blur(15px);
+animation: raySweep2 15s ease-in-out infinite alternate;
+transform-origin: top right;
+}
+@keyframes raySweep {
+0% { transform: translate(50%, 0) rotate(18deg) scale(0.95); opacity: 0.7; }
+50% { transform: translate(50%, 0) rotate(32deg) scale(1.1); opacity: 1; }
+100% { transform: translate(50%, 0) rotate(22deg) scale(1); opacity: 0.8; }
+}
+@keyframes raySweep2 {
+0% { transform: translate(50%, 0) rotate(-5deg) scale(1); opacity: 0.8; }
+50% { transform: translate(50%, 0) rotate(-20deg) scale(1.15); opacity: 1; }
+100% { transform: translate(50%, 0) rotate(-10deg) scale(0.92); opacity: 0.75; }
+}
+/* Screen Click Visual Effects */
+.click-ripple {
+position: fixed;
+border-radius: 50%;
+pointer-events: none;
+transform: translate(-50%, -50%) scale(0);
+background: radial-gradient(circle, rgba(56, 189, 248, 0.4) 0%, rgba(168, 85, 247, 0.15) 45%, transparent 75%);
+border: 1.5px solid rgba(56, 189, 248, 0.7);
+box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+animation: rippleExpand 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+z-index: 9999;
+}
+body.lamp-lit .click-ripple {
+background: radial-gradient(circle, rgba(251, 191, 36, 0.5) 0%, rgba(245, 158, 11, 0.2) 45%, transparent 75%);
+border-color: rgba(251, 191, 36, 0.85);
+box-shadow: 0 0 25px rgba(251, 191, 36, 0.5);
+}
+.click-ripple-ring {
+position: fixed;
+border-radius: 50%;
+pointer-events: none;
+transform: translate(-50%, -50%) scale(0);
+border: 1.5px dashed rgba(56, 189, 248, 0.85);
+animation: ringPulse 0.65s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+z-index: 9998;
+}
+body.lamp-lit .click-ripple-ring {
+border-color: rgba(251, 191, 36, 0.9);
+}
+.click-sparkle {
+position: fixed;
+pointer-events: none;
+width: 5px;
+height: 5px;
+border-radius: 50%;
+background: #38bdf8;
+box-shadow: 0 0 6px #38bdf8, 0 0 10px #a855f7;
+animation: sparkleFade 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+z-index: 10000;
+}
+body.lamp-lit .click-sparkle {
+background: #fbbf24;
+box-shadow: 0 0 8px #fbbf24, 0 0 12px #f59e0b;
+}
+.click-icon-burst {
+position: fixed;
+pointer-events: none;
+transform: translate(-50%, -50%) scale(0.5);
+color: #38bdf8;
+font-size: 18px;
+filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.85));
+animation: clickIconPop 0.55s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+z-index: 10000;
+}
+body.lamp-lit .click-icon-burst {
+color: #fbbf24;
+filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.9));
+}
+@keyframes clickIconPop {
+0% { transform: translate(-50%, -50%) scale(0.2) rotate(-15deg); opacity: 0; }
+50% { transform: translate(-50%, -65%) scale(1.1) rotate(8deg); opacity: 1; }
+100% { transform: translate(-50%, -80%) scale(0.6) rotate(20deg); opacity: 0; }
+}
+@keyframes rippleExpand {
+0% { width: 0px; height: 0px; opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+100% { width: 200px; height: 200px; opacity: 0; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes ringPulse {
+0% { width: 10px; height: 10px; opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+100% { width: 130px; height: 130px; opacity: 0; transform: translate(-50%, -50%) scale(1.1) rotate(90deg); }
+}
+@keyframes sparkleFade {
+0% { opacity: 1; transform: translate(0, 0) scale(1); }
+100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.1); }
+}
+.container {
+position: relative;
+z-index: 1;
+width: 100%;
+max-width: 480px;
+display: flex;
+flex-direction: column;
+gap: 16px;
+margin-top: 1rem;
+}
+/* Profile Header Section - Transparent Glassmorphic Frame */
+.profile {
+text-align: center;
+margin-bottom: 0.75rem;
+padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.025) 0%, rgba(255, 255, 255, 0.008) 100%);
+border: 1px solid rgba(255, 255, 255, 0.09);
+border-radius: 24px;
+backdrop-filter: blur(10px);
+-webkit-backdrop-filter: blur(10px);
+box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+display: flex;
+flex-direction: column;
+align-items: center;
+transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+}
+body.lamp-lit .profile {
+border-color: rgba(251, 191, 36, 0.3);
+box-shadow: 0 14px 35px rgba(0, 0, 0, 0.4), 0 0 25px rgba(251, 191, 36, 0.12);
+}
+.profile:hover {
+border-color: rgba(56, 189, 248, 0.3);
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.012) 100%);
+box-shadow: 0 14px 35px rgba(0, 0, 0, 0.35), 0 0 20px rgba(56, 189, 248, 0.12);
+}
+.profile-avatar-wrapper {
+position: relative;
+margin-bottom: 1rem;
+padding: 3px;
+border-radius: 50%;
+background: linear-gradient(135deg, rgba(56, 189, 248, 0.8) 0%, rgba(168, 85, 247, 0.8) 50%, rgba(20, 184, 166, 0.8) 100%);
+box-shadow: 0 0 18px rgba(56, 189, 248, 0.3);
+display: inline-block;
+transition: background 0.5s ease, box-shadow 0.5s ease;
+}
+body.lamp-lit .profile-avatar-wrapper {
+background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #38bdf8 100%);
+box-shadow: 0 0 25px rgba(251, 191, 36, 0.45);
+}
+.profile-img {
+width: 145px;
+height: 145px;
+border-radius: 50%;
+object-fit: cover;
+display: block;
+border: 2px solid var(--bg);
+background-color: rgba(15, 23, 42, 0.6);
+opacity: 0.96;
+transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+}
+.profile-avatar-wrapper:hover .profile-img {
+transform: scale(1.02);
+filter: brightness(1.06);
+opacity: 1;
+}
+.badge-verified {
+position: absolute;
+bottom: 6px;
+right: 6px;
+background: #38bdf8;
+color: #070a12;
+width: 26px;
+height: 26px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.85rem;
+border: 2.5px solid var(--bg);
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+transition: background 0.4s ease;
+}
+body.lamp-lit .badge-verified {
+background: #fbbf24;
+}
+.profile-name {
+font-size: 1.65rem;
+font-weight: 700;
+letter-spacing: -0.02em;
+margin-bottom: 0.25rem;
+background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+.profile-title {
+font-size: 0.95rem;
+color: var(--text-muted);
+margin-bottom: 0.4rem;
+font-weight: 400;
+line-height: 1.4;
+}
+/* Transparent Bio Box Area */
+.profile-bio {
+font-size: 0.88rem;
+color: rgba(248, 250, 252, 0.82);
+line-height: 1.55;
+max-width: 380px;
+margin-bottom: 1.25rem;
+padding: 0.75rem 1rem;
+border-radius: 14px;
+background: rgba(255, 255, 255, 0.02);
+border: 1px solid rgba(255, 255, 255, 0.05);
+backdrop-filter: blur(6px);
+-webkit-backdrop-filter: blur(6px);
+}
+/* Social Bar & Buttons */
+.social-grid {
+display: flex;
+gap: 0.7rem;
+justify-content: center;
+width: 100%;
+margin-top: 0.25rem;
+opacity: 1;
+visibility: visible;
+}
+.social-btn {
+width: 38px;
+height: 38px;
+border-radius: 10px;
+background: rgba(255, 255, 255, 0.025);
+border: 1px solid rgba(255, 255, 255, 0.08);
+color: var(--text-muted);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.05rem;
+backdrop-filter: blur(8px);
+-webkit-backdrop-filter: blur(8px);
+transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.social-btn:hover {
+color: var(--text);
+background: rgba(255, 255, 255, 0.08);
+border-color: rgba(255, 255, 255, 0.25);
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+.social-btn.youtube:hover { color: #ff0000; border-color: rgba(255, 0, 0, 0.5); box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
+.social-btn.facebook:hover { color: #1877f2; border-color: rgba(24, 119, 242, 0.5); box-shadow: 0 0 15px rgba(24, 119, 242, 0.2); }
+.social-btn.whatsapp:hover { color: #25d366; border-color: rgba(37, 211, 102, 0.5); box-shadow: 0 0 15px rgba(37, 211, 102, 0.2); }
+.social-btn.website:hover { color: #38bdf8; border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+.social-btn.email:hover { color: #ea4335; border-color: rgba(234, 67, 53, 0.5); box-shadow: 0 0 15px rgba(234, 67, 53, 0.2); }
+.cards-wrapper {
+display: flex;
+flex-direction: column;
+gap: 14px;
+width: 100%;
+}
+.card {
+position: relative;
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0%, rgba(255, 255, 255, 0.01) 100%);
+border: 1px solid var(--card-border);
+border-radius: 16px;
+padding: 16px 20px;
+display: flex;
+align-items: center;
+color: inherit;
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+overflow: hidden;
+}
+.card:hover {
+border-color: rgba(0, 183, 255, 0.4);
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+transform: translateY(-2px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(0, 183, 255, 0.15);
+}
+body.lamp-lit .card:hover {
+border-color: rgba(251, 191, 36, 0.5);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 18px rgba(251, 191, 36, 0.2);
+}
+.badge {
+position: absolute;
+top: 0;
+right: 0;
+background-color: #00b7ff;
+color: #051329;
+font-size: 10px;
+font-weight: 800;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+padding: 4px 10px;
+border-bottom-left-radius: 8px;
+transition: background-color 0.4s ease;
+}
+body.lamp-lit .badge {
+background-color: #fbbf24;
+color: #1e1b4b;
+}
+.icon-wrapper {
+width: 36px;
+height: 36px;
+background-color: rgba(0, 183, 255, 0.1);
+border-radius: 10px;
+display: flex;
+align-items: center;
+justify-content: center;
+margin-right: 14px;
+flex-shrink: 0;
+transition: background-color 0.4s ease;
+}
+body.lamp-lit .icon-wrapper {
+background-color: rgba(251, 191, 36, 0.15);
+}
+.icon-wrapper svg {
+width: 18px;
+height: 18px;
+fill: none;
+stroke: #00b7ff;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
+transition: stroke 0.4s ease;
+}
+body.lamp-lit .icon-wrapper svg {
+stroke: #fbbf24;
+}
+.content {
+flex: 1;
+display: flex;
+flex-direction: column;
+gap: 3px;
+}
+.title {
+font-size: 15px;
+font-weight: 600;
+color: #ffffff;
+}
+.description {
+font-size: 13px;
+color: #94a3b8;
+line-height: 1.35;
+}
+.arrow {
+color: #64748b;
+margin-left: 12px;
+display: flex;
+align-items: center;
+transition: color 0.2s ease, transform 0.2s ease;
+}
+.card:hover .arrow {
+color: #00b7ff;
+transform: translateX(4px);
+}
+body.lamp-lit .card:hover .arrow {
+color: #fbbf24;
+}
+.arrow svg {
+width: 18px;
+height: 18px;
+fill: none;
+stroke: currentColor;
+stroke-width: 2;
+stroke-linecap: round;
+stroke-linejoin: round;
+}
+/* Footer */
+.footer {
+margin-top: 1.5rem;
+font-size: 0.8rem;
+color: var(--text-muted);
+text-align: center;
+}
+</style>
+</head>
+<body>
+<!-- Full-Screen Volumetric Light Rays Overlay ("Roaf") -->
+<div class="lamp-rays-overlay" id="lampRaysOverlay">
+<div class="ray-cone"></div>
+<div class="ray-cone-2"></div>
+</div>
+<!-- Interactive Professional Animated Lamp -->
+<aside class="lamp-widget-wrapper" id="lampWidget" title="Click Lamp to toggle screen light rays">
+<div class="lamp-cord"></div>
+<div class="lamp-head">
+<div class="lamp-shade"></div>
+<div class="lamp-bulb"><i class="fa-solid fa-lightbulb"></i></div>
+</div>
+<div class="lamp-badge-tag" id="lampTag">Light Rays</div>
+</aside>
+<canvas id="bg-canvas"></canvas>
+<div class="bg-orb orb-1"></div>
+<div class="bg-orb orb-2"></div>
+<div class="bg-orb orb-3"></div>
+<div class="bg-orb orb-4"></div>
+<div class="bg-grid-overlay"></div>
+<div class="container">
+<!-- Profile Header Section -->
+<header class="profile">
+<div class="profile-avatar-wrapper">
+<img class="profile-img" src="https://i.ibb.co/PZjyTyJg/20260524-162827.jpg" alt="Hasan Al Mahmud" onerror="this.src='https://placehold.co/150x150/0f172a/38bdf8?text=HM'">
+<div class="badge-verified"><i class="fa-solid fa-check"></i></div>
+</div>
+<h1 class="profile-name">Md Hasan Al Mahmud</h1>
+<p class="profile-title" style="color: #00b7ff; font-weight: 600;" id="subTitleHeader">Author & Educator</p>
+<p class="profile-title" style="font-style: italic; opacity: 0.9;">You don't have to see the whole staircase,
+ just take the first step.</p>
+<p class="profile-bio">I create English and Spanish vocabulary and grammar resources to help learners improve with confidence. Explore my work and get in touch below. ↴</p>
+<nav class="social-grid">
+<a href="https://youtube.com/@HasanAlMahmud" class="social-btn youtube" aria-label="YouTube" target="_blank" rel="noopener"><i class="fa-brands fa-youtube"></i></a>
+<a href="https://facebook.com/HasanAlMahmudd" class="social-btn facebook" aria-label="Facebook" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a>
+<a href="https://wa.me/ImHasanAlMahmud" class="social-btn whatsapp" aria-label="WhatsApp" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i></a>
+<a href="https://bdham.blogspot.com" class="social-btn website" aria-label="Website" target="_blank" rel="noopener"><i class="fa-solid fa-globe"></i></a>
+<a href="mailto:hasanalmahmud@europe.com" class="social-btn email" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+</nav>
+</header>
+<main class="cards-wrapper">
+<!-- Card 1 -->
+<a href="about.html" class="card">
+<div class="badge">At a Glance</div>
+<div class="icon-wrapper">
+<svg viewBox="0 0 24 24">
+<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5C8 16 7 15 6 14c-1 0-2 1-1.5 2.5z"></path>
+<path d="M12 15l-3-3m5.5-2.5a6 6 0 1 0-8.5-8.5 6 6 0 0 0 8.5 8.5z"></path>
+<path d="M15 9l-2-2"></path>
+</svg>
+</div>
+<div class="content">
+<div class="title">About me</div>
+<div class="description">The Person Behind the Work</div>
+</div>
+<div class="arrow">
+<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</div>
+</a>
+<!-- Card 2 -->
+<a href="contact.html" class="card">
+<div class="icon-wrapper">
+<svg viewBox="0 0 24 24">
+<rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+<path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+</svg>
+</div>
+<div class="content">
+<div class="title">Get in touch</div>
+<div class="description">Connect & Collaborate</div>
+</div>
+<div class="arrow">
+<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</div>
+</a>
+<!-- Card 3 -->
+<a href="es-vocab.html" class="card">
+<div class="icon-wrapper">
+<svg viewBox="0 0 24 24">
+<path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+<path d="M7 7h10M7 11h10M7 15h6"></path>
+</svg>
+</div>
+<div class="content">
+<div class="title">Spanish Language</div>
+<div class="description">Vocabulario Esencial: Key words for everyday fluency</div>
+</div>
+<div class="arrow">
+<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</div>
+</a>
+<!-- Card 4 -->
+<a href="en-vocab.html" class="card">
+<div class="icon-wrapper">
+<svg viewBox="0 0 24 24">
+<path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+<path d="M7 7h10M7 11h10M7 15h6"></path>
+</svg>
+</div>
+<div class="content">
+<div class="title">English Language</div>
+<div class="description">The Oxford 3000™: Fundamental Vocabulary for Global Literacy</div>
+</div>
+<div class="arrow">
+<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</div>
+</a>
+<!-- Card 5 -->
+<a href="cv.html" class="card">
+<div class="icon-wrapper">
+<svg viewBox="0 0 24 24">
+<path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+</svg>
+</div>
+<div class="content">
+<div class="title">Curriculum Vitae</div>
+<div class="description">Professional Resume & History</div>
+</div>
+<div class="arrow">
+<svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+</div>
+</a>
+</main>
+<footer class="footer">
+<p>© 2026 <b><a href="/" style="color: #00b7ff" id="footerLink">Hasan Al Mahmud</a></b>. All rights reserved.</p>
+</footer>
+</div>
+<script>
+(function () {
+const canvas = document.getElementById('bg-canvas');
+const ctx = canvas.getContext('2d');
+let width = (canvas.width = window.innerWidth);
+let height = (canvas.height = window.innerHeight);
+// Handle window resizing
+window.addEventListener('resize', function () {
+width = canvas.width = window.innerWidth;
+height = canvas.height = window.innerHeight;
+});
+// Lamp State & Interaction
+const lampWidget = document.getElementById('lampWidget');
+const lampTag = document.getElementById('lampTag');
+const subTitleHeader = document.getElementById('subTitleHeader');
+const footerLink = document.getElementById('footerLink');
+let isLampLit = false;
+lampWidget.addEventListener('pointerdown', function (e) {
+e.stopPropagation(); // Prevent duplicate touch burst
+isLampLit = !isLampLit;
+if (isLampLit) {
+document.body.classList.add('lamp-lit');
+lampTag.textContent = "Rays On ✨";
+subTitleHeader.style.color = "#fbbf24";
+footerLink.style.color = "#fbbf24";
+createLampBurst(e.clientX, e.clientY);
+} else {
+document.body.classList.remove('lamp-lit');
+lampTag.textContent = "Light Rays";
+subTitleHeader.style.color = "#00b7ff";
+footerLink.style.color = "#00b7ff";
+}
+});
+function createLampBurst(x, y) {
+// Emit 25 bright photons outwards from lamp point
+for (let i = 0; i < 25; i++) {
+particles.push(new Particle(x, y, true));
+}
+}
+// Mouse & Touch Coordinates
+const mouse = { x: null, y: null, radius: 140 };
+window.addEventListener('mousemove', function (e) {
+mouse.x = e.clientX;
+mouse.y = e.clientY;
+});
+window.addEventListener('mouseleave', function () {
+mouse.x = null;
+mouse.y = null;
+});
+// Track drag vs tap
+let startX = 0, startY = 0;
+let isDragging = false;
+window.addEventListener('pointerdown', function (e) {
+startX = e.clientX;
+startY = e.clientY;
+isDragging = false;
+});
+window.addEventListener('pointermove', function (e) {
+if (Math.abs(e.clientX - startX) > 8 || Math.abs(e.clientY - startY) > 8) {
+isDragging = true;
+}
+});
+window.addEventListener('pointerup', function (e) {
+if (isDragging) return;
+createClickVisualEffect(e.clientX, e.clientY);
+});
+function createClickVisualEffect(x, y) {
+const icon = document.createElement('i');
+icon.className = isLampLit
+? 'fa-solid fa-sun click-icon-burst'
+: 'fa-solid fa-wand-magic-sparkles click-icon-burst';
+icon.style.left = x + 'px';
+icon.style.top = y + 'px';
+document.body.appendChild(icon);
+setTimeout(() => icon.remove(), 550);
+const ripple = document.createElement('div');
+ripple.className = 'click-ripple';
+ripple.style.left = x + 'px';
+ripple.style.top = y + 'px';
+document.body.appendChild(ripple);
+setTimeout(() => ripple.remove(), 750);
+const ring = document.createElement('div');
+ring.className = 'click-ripple-ring';
+ring.style.left = x + 'px';
+ring.style.top = y + 'px';
+document.body.appendChild(ring);
+setTimeout(() => ring.remove(), 650);
+const sparkleCount = 8;
+for (let i = 0; i < sparkleCount; i++) {
+const sparkle = document.createElement('div');
+sparkle.className = 'click-sparkle';
+sparkle.style.left = x + 'px';
+sparkle.style.top = y + 'px';
+const angle = (Math.PI * 2 * i) / sparkleCount;
+const distance = Math.random() * 35 + 15;
+const dx = Math.cos(angle) * distance;
+const dy = Math.sin(angle) * distance;
+sparkle.style.setProperty('--dx', dx + 'px');
+sparkle.style.setProperty('--dy', dy + 'px');
+document.body.appendChild(sparkle);
+setTimeout(() => sparkle.remove(), 600);
+}
+for (let i = 0; i < 6; i++) {
+particles.push(new Particle(x, y, true));
+}
+}
+class Particle {
+constructor(x, y, isBurst = false) {
+this.x = x !== undefined ? x : Math.random() * width;
+this.y = y !== undefined ? y : Math.random() * height;
+this.size = isBurst ? Math.random() * 3.5 + 2 : Math.random() * 2 + 0.8;
+this.vx = (Math.random() - 0.5) * (isBurst ? 4.5 : 0.6);
+this.vy = (Math.random() - 0.5) * (isBurst ? 4.5 : 0.6);
+this.baseAlpha = Math.random() * 0.45 + 0.25;
+this.alpha = this.baseAlpha;
+this.isBurst = isBurst;
+this.life = isBurst ? 100 : Infinity;
+}
+update() {
+this.x += this.vx;
+this.y += this.vy;
+if (this.isBurst) {
+this.life--;
+this.alpha = (this.life / 100) * this.baseAlpha;
+}
+if (this.x < 0) this.x = width;
+if (this.x > width) this.x = 0;
+if (this.y < 0) this.y = height;
+if (this.y > height) this.y = 0;
+if (mouse.x !== null && mouse.y !== null) {
+let dx = mouse.x - this.x;
+let dy = mouse.y - this.y;
+let dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < mouse.radius) {
+let force = (mouse.radius - dist) / mouse.radius;
+this.x -= (dx / dist) * force * 2;
+this.y -= (dy / dist) * force * 2;
+}
+}
+}
+draw() {
+ctx.beginPath();
+ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+ctx.fillStyle = isLampLit
+? ⁠rgba(251, 191, 36, ${this.alpha})⁠
+: ⁠rgba(56, 189, 248, ${this.alpha})⁠;
+ctx.fill();
+}
+}
+const particleCount = Math.min(Math.floor((width * height) / 16000), 65);
+const particles = [];
+for (let i = 0; i < particleCount; i++) {
+particles.push(new Particle());
+}
+function animate() {
+ctx.clearRect(0, 0, width, height);
+for (let i = particles.length - 1; i >= 0; i--) {
+const p = particles[i];
+p.update();
+p.draw();
+if (p.isBurst && p.life <= 0) {
+particles.splice(i, 1);
+continue;
+}
+for (let j = i + 1; j < particles.length; j++) {
+const p2 = particles[j];
+let dx = p.x - p2.x;
+let dy = p.y - p2.y;
+let dist = Math.sqrt(dx * dx + dy * dy);
+if (dist < 110) {
+let lineAlpha = (1 - dist / 110) * 0.15;
+ctx.beginPath();
+ctx.moveTo(p.x, p.y);
+ctx.lineTo(p2.x, p2.y);
+ctx.strokeStyle = isLampLit
+? ⁠rgba(251, 191, 36, ${lineAlpha})⁠
+: ⁠rgba(56, 189, 248, ${lineAlpha})⁠;
+ctx.lineWidth = 0.8;
+ctx.stroke();
+}
+}
+}
+requestAnimationFrame(animate);
+}
+animate();
+})();
+</script>
+</body>
+</html>
