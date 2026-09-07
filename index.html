@@ -5,16 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hasan Al Mahmud | Official Links</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <style>
     :root {
-      --bg: #090d16;
-      --card-bg: rgba(255, 255, 255, 0.03);
-      --card-border: rgba(255, 255, 255, 0.08);
+      --bg: #070a12;
+      --card-bg: rgba(255, 255, 255, 0.035);
+      --card-border: rgba(255, 255, 255, 0.12);
       --text: #f8fafc;
       --text-muted: #94a3b8;
       --accent: #38bdf8;
-      --glow-1: rgba(56, 189, 248, 0.15);
-      --glow-2: rgba(168, 85, 247, 0.15);
+      --accent-glow: rgba(56, 189, 248, 0.4);
+      --glow-cyan: rgba(56, 189, 248, 0.22);
+      --glow-purple: rgba(168, 85, 247, 0.18);
+      --glow-indigo: rgba(99, 102, 241, 0.15);
+      --glow-teal: rgba(20, 184, 166, 0.15);
     }
 
     * {
@@ -31,36 +35,170 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 3rem 1rem;
+      padding: 2rem 1rem;
       position: relative;
       overflow-x: hidden;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Ambient background glow effects */
-    .bg-glow-1 {
+    a {
+      text-decoration: none;
+    }
+
+    #bg-canvas {
       position: fixed;
-      top: -10%;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.75;
+      will-change: transform, opacity;
+    }
+
+    .orb-1 {
+      top: -15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
-      z-index: 0;
-      pointer-events: none;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%);
+      animation: orbFloat1 20s ease-in-out infinite alternate;
     }
 
-    .bg-glow-2 {
-      position: fixed;
-      bottom: -10%;
-      right: 10%;
+    .orb-2 {
+      bottom: -15%;
+      right: -5%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, var(--glow-purple) 0%, transparent 70%);
+      animation: orbFloat2 24s ease-in-out infinite alternate;
+    }
+
+    .orb-3 {
+      top: 30%;
+      left: -10%;
       width: 500px;
       height: 500px;
-      background: radial-gradient(circle, var(--glow-2) 0%, transparent 70%);
-      z-index: 0;
-      pointer-events: none;
+      background: radial-gradient(circle, var(--glow-indigo) 0%, transparent 70%);
+      animation: orbFloat3 22s ease-in-out infinite alternate;
     }
 
-   .container {
+    .orb-4 {
+      bottom: 25%;
+      left: 60%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, var(--glow-teal) 0%, transparent 70%);
+      animation: orbFloat4 26s ease-in-out infinite alternate;
+    }
+
+    .bg-grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+      pointer-events: none;
+      mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 85%);
+      -webkit-mask-image: radial-gradient(circle at 50% 50%, black 20%, transparent 85%);
+      animation: gridPulse 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes orbFloat1 {
+      0% { transform: translate(-50%, 0) scale(1) rotate(0deg); opacity: 0.6; }
+      50% { transform: translate(-42%, 40px) scale(1.15) rotate(60deg); opacity: 0.9; }
+      100% { transform: translate(-58%, -30px) scale(0.92) rotate(-40deg); opacity: 0.55; }
+    }
+
+    @keyframes orbFloat2 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.65; }
+      50% { transform: translate(-50px, -40px) scale(1.2); opacity: 0.85; }
+      100% { transform: translate(35px, 30px) scale(0.95); opacity: 0.5; }
+    }
+
+    @keyframes orbFloat3 {
+      0% { transform: translate(0, 0) scale(0.9); opacity: 0.5; }
+      50% { transform: translate(60px, -50px) scale(1.25); opacity: 0.8; }
+      100% { transform: translate(-30px, 40px) scale(0.9); opacity: 0.45; }
+    }
+
+    @keyframes orbFloat4 {
+      0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+      50% { transform: translate(-40px, 50px) scale(1.18); opacity: 0.75; }
+      100% { transform: translate(50px, -30px) scale(0.85); opacity: 0.35; }
+    }
+
+    @keyframes gridPulse {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 0.65; transform: scale(1.02); }
+    }
+
+    .click-ripple {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.45) 0%, rgba(168, 85, 247, 0.2) 45%, transparent 75%);
+      border: 1.5px solid rgba(56, 189, 248, 0.8);
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.5), inset 0 0 15px rgba(168, 85, 247, 0.3);
+      animation: rippleExpand 0.75s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 9999;
+    }
+
+    .click-ripple-ring {
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: translate(-50%, -50%) scale(0);
+      border: 2px dashed rgba(56, 189, 248, 0.9);
+      animation: ringPulse 0.65s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
+      z-index: 9998;
+    }
+
+    .click-sparkle {
+      position: fixed;
+      pointer-events: none;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8, 0 0 12px #a855f7;
+      animation: sparkleFade 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      z-index: 10000;
+    }
+
+    @keyframes rippleExpand {
+      0% { width: 0px; height: 0px; opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+      50% { opacity: 0.8; }
+      100% { width: 380px; height: 380px; opacity: 0; transform: translate(-50%, -50%) scale(1); }
+    }
+
+    @keyframes ringPulse {
+      0% { width: 10px; height: 10px; opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+      100% { width: 220px; height: 220px; opacity: 0; transform: translate(-50%, -50%) scale(1.3) rotate(90deg); }
+    }
+
+    @keyframes sparkleFade {
+      0% { opacity: 1; transform: translate(0, 0) scale(1); }
+      100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(0.1); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
       width: 100%;
       max-width: 480px;
       display: flex;
@@ -68,17 +206,153 @@
       gap: 16px;
     }
 
+    /* Profile Header Section - Tightened & Snug Border Frame */
+    .profile {
+      text-align: center;
+      margin-bottom: 0.75rem;
+      padding: 1.5rem 1.25rem 1.25rem 1.25rem;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .profile:hover {
+      border-color: rgba(56, 189, 248, 0.35);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+      margin-bottom: 1rem;
+      padding: 3px; /* Tight padding to keep image super close to outer border */
+      border-radius: 50%;
+      background: linear-gradient(135deg, #38bdf8 0%, #a855f7 50%, #14b8a6 100%);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+      display: inline-block;
+    }
+
+    .profile-img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%; /* Perfect circular shape tightly bounded */
+      object-fit: cover;
+      display: block;
+      border: 2px solid var(--bg); /* Crisp offset separator */
+      background-color: #0f172a;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .profile-avatar-wrapper:hover .profile-img {
+      transform: scale(1.02);
+      filter: brightness(1.05);
+    }
+
+    .badge-verified {
+      position: absolute;
+      bottom: 6px;
+      right: 6px;
+      background: #38bdf8;
+      color: #070a12;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      border: 2.5px solid var(--bg);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-name {
+      font-size: 1.65rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .profile-title {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+      font-weight: 400;
+      line-height: 1.4;
+    }
+
+    .profile-bio {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      max-width: 380px;
+      margin-bottom: 1.25rem;
+    }
+
+    .social-grid {
+      display: flex;
+      gap: 0.85rem;
+      justify-content: center;
+      width: 100%;
+      margin-top: 0.25rem;
+    }
+
+    .social-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .social-btn:hover {
+      color: var(--text);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .social-btn.youtube:hover { color: #ff0000; border-color: rgba(255, 0, 0, 0.5); box-shadow: 0 0 15px rgba(255, 0, 0, 0.2); }
+    .social-btn.facebook:hover { color: #1877f2; border-color: rgba(24, 119, 242, 0.5); box-shadow: 0 0 15px rgba(24, 119, 242, 0.2); }
+    .social-btn.whatsapp:hover { color: #25d366; border-color: rgba(37, 211, 102, 0.5); box-shadow: 0 0 15px rgba(37, 211, 102, 0.2); }
+    .social-btn.website:hover { color: #38bdf8; border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 0 15px rgba(56, 189, 248, 0.2); }
+    .social-btn.email:hover { color: #ea4335; border-color: rgba(234, 67, 53, 0.5); box-shadow: 0 0 15px rgba(234, 67, 53, 0.2); }
+
+    .cards-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      width: 100%;
+    }
+
     .card {
       position: relative;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 18px 20px;
+      padding: 16px 20px;
       display: flex;
       align-items: center;
-      text-decoration: none;
       color: inherit;
-      transition: all 0.2s ease;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       overflow: hidden;
     }
 
@@ -86,9 +360,9 @@
       border-color: rgba(0, 183, 255, 0.4);
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
       transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35), 0 0 15px rgba(0, 183, 255, 0.15);
     }
 
-    /* Badge */
     .badge {
       position: absolute;
       top: 0;
@@ -103,7 +377,6 @@
       border-bottom-left-radius: 8px;
     }
 
-    /* Icon Styling */
     .icon-wrapper {
       width: 44px;
       height: 44px;
@@ -126,16 +399,15 @@
       stroke-linejoin: round;
     }
 
-    /* Content */
     .content {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
     }
 
     .title {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600;
       color: #ffffff;
     }
@@ -143,10 +415,9 @@
     .description {
       font-size: 13px;
       color: #94a3b8;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
-    /* Arrow */
     .arrow {
       color: #64748b;
       margin-left: 12px;
@@ -157,7 +428,7 @@
 
     .card:hover .arrow {
       color: #00b7ff;
-      transform: translateX(3px);
+      transform: translateX(4px);
     }
 
     .arrow svg {
@@ -170,216 +441,9 @@
       stroke-linejoin: round;
     }
 
-
-    /* Profile Header */
-    .profile {
-      text-align: center;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .profile-avatar-wrapper {
-      position: relative;
-      margin-bottom: 1.25rem;
-    }
-
-    .profile-img {
-      width: 160px;
-      height: 160px;
-      border-radius: 60%;
-      object-fit: cover;
-      border: 3px solid rgba(255, 255, 255, 0.2);
-      display: block;
-    }
-
-    .badge-verified {
-      position: absolute;
-      bottom: 0px;
-      right: 0px;
-      background: var(--accent);
-      color: var(--bg);
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.20rem;
-      border: 2px solid var(--bg);
-    }
-
-    .profile-name {
-      font-size: 1.65rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.35rem;
-    }
-
-    .profile-title {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin-bottom: 0.75rem;
-      font-weight: 400;
-    }
-
-    .profile-bio {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-      max-width: 380px;
-      margin-bottom: 1.5rem;
-    }
-
-    /* Social Icons Row */
-    .social-grid {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 2rem;
-    }
-
-    .social-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      text-decoration: none;
-      backdrop-filter: blur(12px);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .social-btn:hover {
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.3);
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Specific brand hover accent colors */
-    .social-btn.youtube:hover { color: #ff0000; border-color: #ff0000; }
-    .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; }
-    .social-btn.whatsapp:hover { color: #25d366; border-color: #25d366; }
-    .social-btn.website:hover { color: #38bdf8; border-color: #38bdf8; }
-    .social-btn.email:hover { color: #ea4335; border-color: #ea4335; }
-
-    /* Links Section */
-    .links {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.125rem;
-    }
-
-    /* Standard Card */
-    .link-card {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.125rem 1.35rem;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      color: var(--text);
-      text-decoration: none;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-      overflow: hidden;
-    }
-
-    .link-card:hover {
-      background: rgba(255, 255, 255, 0.06);
-      border-color: rgba(255, 255, 255, 0.25);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    /* Featured Link Card Unique Glow Treatment */
-    .link-card.featured {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(168, 85, 247, 0.12));
-      border: 1px solid rgba(56, 189, 248, 0.3);
-    }
-
-    .link-card.featured:hover {
-      background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(168, 85, 247, 0.2));
-      border-color: rgba(56, 189, 248, 0.5);
-    }
-
-    .featured-badge {
-      position: absolute;
-      top: 0;
-      right: 1.5rem;
-      background: var(--accent);
-      color: var(--bg);
-      font-size: 0.65rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      padding: 2px 8px;
-      border-bottom-left-radius: 6px;
-      border-bottom-right-radius: 6px;
-    }
-
-    .link-left {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .icon-box {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255, 255, 255, 0.05);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1rem;
-      color: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .link-details {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .link-title {
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-    }
-
-    .link-subtitle {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .arrow-icon {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      transition: transform 0.25s ease, color 0.25s ease;
-    }
-
-    .link-card:hover .arrow-icon {
-      color: var(--text);
-      transform: translateX(4px);
-    }
-
     /* Footer */
     .footer {
-      margin-top: 3rem;
+      margin-top: 1.5rem;
       font-size: 0.8rem;
       color: var(--text-muted);
       text-align: center;
@@ -388,20 +452,26 @@
 </head>
 <body>
 
-  <div class="bg-glow-1"></div>
-  <div class="bg-glow-2"></div>
+  <canvas id="bg-canvas"></canvas>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+  <div class="bg-orb orb-4"></div>
+  <div class="bg-grid-overlay"></div>
 
   <div class="container">
+    <!-- Profile Header Section (Enclosed in tight glowing card frame) -->
     <header class="profile">
+      <!-- Avatar with tight, close fitting border -->
       <div class="profile-avatar-wrapper">
-        <img class="profile-img" src="https://i.ibb.co/PZjyTyJg/20260524-162827.jpg" alt="Hasan Al Mahmud">
+        <img class="profile-img" src="https://i.ibb.co/PZjyTyJg/20260524-162827.jpg" alt="Hasan Al Mahmud" onerror="this.src='https://placehold.co/150x150/0f172a/38bdf8?text=HM'">
         <div class="badge-verified"><i class="fa-solid fa-check"></i></div>
       </div>
+      
       <h1 class="profile-name">Md Hasan Al Mahmud</h1>
-     <p class="profile-title" style="color: #00b7ff">Author &amp; Educator </p>
-	  <p class="profile-title">You don't have to see the whole staircase,<br> just take the first step.</p>
-    
-
+      <p class="profile-title" style="color: #00b7ff; font-weight: 600;">Author &amp; Educator</p>
+      <p class="profile-title" style="font-style: italic; opacity: 0.9;">You don't have to see the whole staircase,<br> just take the first step.</p>
+      
       <p class="profile-bio">I create English and Spanish vocabulary and grammar resources to help learners improve with confidence. Explore my work and get in touch below. ↴</p>
 
       <nav class="social-grid">
@@ -413,108 +483,271 @@
       </nav>
     </header>
 
- <div class="container">
+    <main class="cards-wrapper">
+      <!-- Card 1 -->
+      <a href="about.html" class="card">
+        <div class="badge">At a Glance</div>
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5C8 16 7 15 6 14c-1 0-2 1-1.5 2.5z"></path>
+            <path d="M12 15l-3-3m5.5-2.5a6 6 0 1 0-8.5-8.5 6 6 0 0 0 8.5 8.5z"></path>
+            <path d="M15 9l-2-2"></path>
+          </svg>
+        </div>
+        <div class="content">
+          <div class="title">About me</div>
+          <div class="description">The Person Behind the Work</div>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
 
-    <!-- Card 1 -->
-    <a href="about.html" class="card">
-      <div class="badge">At a Glance</div>
-      <div class="icon-wrapper">
-        <svg viewBox="0 0 24 24">
-          <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.71 1.26-1.5 1.5-2.5C8 16 7 15 6 14c-1 0-2 1-1.5 2.5z"></path>
-          <path d="M12 15l-3-3m5.5-2.5a6 6 0 1 0-8.5-8.5 6 6 0 0 0 8.5 8.5z"></path>
-          <path d="M15 9l-2-2"></path>
-        </svg>
-      </div>
-      <div class="content">
-        <div class="title">About me</div>
-        <div class="description">The Person Behind the Work</div>
-      </div>
-      <div class="arrow">
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </div>
-    </a>
+      <!-- Card 2 -->
+      <a href="contact.html" class="card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <div class="content">
+          <div class="title">Get in touch</div>
+          <div class="description">Connect &amp; Collaborate</div>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
 
-    <!-- Card 2 -->
-    <a href="contact.html" class="card">
-      <div class="icon-wrapper">
-        <svg viewBox="0 0 24 24">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
-        </svg>
-      </div>
-      <div class="content">
-        <div class="title">Get in touch</div>
-        <div class="description">Connect & Collaborate</div>
-      </div>
-      <div class="arrow">
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </div>
-    </a>
+      <!-- Card 3 -->
+      <a href="es-vocab.html" class="card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+            <path d="M7 7h10M7 11h10M7 15h6"></path>
+          </svg>
+        </div>
+        <div class="content">
+          <div class="title">Spanish Language</div>
+          <div class="description">Vocabulario Esencial: Key words for everyday fluency</div>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
 
-    <!-- Card 3 -->
-    <a href="es-vocab.html" class="card">
-      <div class="icon-wrapper">
-        <svg viewBox="0 0 24 24">
-          <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
-          <path d="M7 7h10M7 11h10M7 15h6"></path>
-        </svg>
-      </div>
-      <div class="content">
-        <div class="title">Spanish Language</div>
-        <div class="description">Vocabulario Esencial: Key words for everyday fluency</div>
-      </div>
-      <div class="arrow">
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </div>
-    </a>
+      <!-- Card 4 -->
+      <a href="en-vocab.html" class="card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
+            <path d="M7 7h10M7 11h10M7 15h6"></path>
+          </svg>
+        </div>
+        <div class="content">
+          <div class="title">English Language</div>
+          <div class="description">The Oxford 3000™: Fundamental Vocabulary for Global Literacy</div>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
 
-
-<!-- Card 4 -->
-    <a href="en-vocab.html" class="card">
-      <div class="icon-wrapper">
-        <svg viewBox="0 0 24 24">
-          <path d="M19 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2z"></path>
-          <path d="M7 7h10M7 11h10M7 15h6"></path>
-        </svg>
-      </div>
-      <div class="content">
-        <div class="title">English Language</div>
-        <div class="description">The Oxford 3000™: Fundamental Vocabulary for Global Literacy</div>
-      </div>
-      <div class="arrow">
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </div>
-    </a>
-    
-
-    <!-- Card 5 -->
-    <a href="cv.html" class="card">
-      <div class="icon-wrapper">
-        <svg viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg>
-      </div>
-      <div class="content">
-        <div class="title">Curriculum Vitae</div>
-        <div class="description">Professional Resume & History</div>
-      </div>
-      <div class="arrow">
-        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
-      </div>
-    </a>
+      <!-- Card 5 -->
+      <a href="cv.html" class="card">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </div>
+        <div class="content">
+          <div class="title">Curriculum Vitae</div>
+          <div class="description">Professional Resume &amp; History</div>
+        </div>
+        <div class="arrow">
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+        </div>
+      </a>
+    </main>
 
     <footer class="footer">
-      <p>&copy; 2026
-		 <b> <a href="/" style="color: #00b7ff" style="text-decoration: none;"> Hasan Al Mahmud</a></b>. All rights reserved.</p>
-   <style>
-        a {
-            text-decoration: none;
-        }
-    </style>
-	 </footer>
+      <p>&copy; 2026 <b><a href="/" style="color: #00b7ff">Hasan Al Mahmud</a></b>. All rights reserved.</p>
+    </footer>
   </div>
 
+  <script>
+    (function () {
+      const canvas = document.getElementById('bg-canvas');
+      const ctx = canvas.getContext('2d');
 
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      // Handle window resizing
+      window.addEventListener('resize', function () {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      // Mouse & Touch Coordinates
+      const mouse = { x: null, y: null, radius: 140 };
+
+      window.addEventListener('mousemove', function (e) {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener('mouseleave', function () {
+        mouse.x = null;
+        mouse.y = null;
+      });
+
+      function createClickVisualEffect(x, y) {
+        // 1. Radial Energy Wave Ripple
+        const ripple = document.createElement('div');
+        ripple.className = 'click-ripple';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        document.body.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 800);
+
+        // 2. Dashed Pulse Ring
+        const ring = document.createElement('div');
+        ring.className = 'click-ripple-ring';
+        ring.style.left = x + 'px';
+        ring.style.top = y + 'px';
+        document.body.appendChild(ring);
+        setTimeout(() => ring.remove(), 700);
+
+        // 3. Floating Sparkle Burst Particles
+        const sparkleCount = 12;
+        for (let i = 0; i < sparkleCount; i++) {
+          const sparkle = document.createElement('div');
+          sparkle.className = 'click-sparkle';
+          sparkle.style.left = x + 'px';
+          sparkle.style.top = y + 'px';
+          
+          const angle = (Math.PI * 2 * i) / sparkleCount;
+          const distance = Math.random() * 80 + 40;
+          const dx = Math.cos(angle) * distance;
+          const dy = Math.sin(angle) * distance;
+
+          sparkle.style.setProperty('--dx', dx + 'px');
+          sparkle.style.setProperty('--dy', dy + 'px');
+
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 600);
+        }
+
+        // 4. Canvas Particle Burst
+        for (let i = 0; i < 12; i++) {
+          particles.push(new Particle(x, y, true));
+        }
+      }
+
+      // Handle both Click and Touch screen events
+      window.addEventListener('pointerdown', function (e) {
+        createClickVisualEffect(e.clientX, e.clientY);
+      });
+
+      class Particle {
+        constructor(x, y, isBurst = false) {
+          this.x = x !== undefined ? x : Math.random() * width;
+          this.y = y !== undefined ? y : Math.random() * height;
+          this.size = isBurst ? Math.random() * 3 + 2 : Math.random() * 2 + 0.8;
+          this.vx = (Math.random() - 0.5) * (isBurst ? 3.5 : 0.6);
+          this.vy = (Math.random() - 0.5) * (isBurst ? 3.5 : 0.6);
+          this.baseAlpha = Math.random() * 0.4 + 0.2;
+          this.alpha = this.baseAlpha;
+          this.isBurst = isBurst;
+          this.life = isBurst ? 100 : Infinity;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.isBurst) {
+            this.life--;
+            this.alpha = (this.life / 100) * this.baseAlpha;
+          }
+
+          // Screen wrap
+          if (this.x < 0) this.x = width;
+          if (this.x > width) this.x = 0;
+          if (this.y < 0) this.y = height;
+          if (this.y > height) this.y = 0;
+
+          // Mouse proximity force
+          if (mouse.x !== null && mouse.y !== null) {
+            let dx = mouse.x - this.x;
+            let dy = mouse.y - this.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < mouse.radius) {
+              let force = (mouse.radius - dist) / mouse.radius;
+              this.x -= (dx / dist) * force * 2;
+              this.y -= (dy / dist) * force * 2;
+            }
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(56, 189, 248, ${this.alpha})`;
+          ctx.fill();
+        }
+      }
+
+      // Initialize Particles
+      const particleCount = Math.min(Math.floor((width * height) / 16000), 65);
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Particle());
+      }
+
+      // Main Animation Loop
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        // Update and draw particles
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.update();
+          p.draw();
+
+          if (p.isBurst && p.life <= 0) {
+            particles.splice(i, 1);
+            continue;
+          }
+
+          // Draw faint connecting lines between nearby particles
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            let dx = p.x - p2.x;
+            let dy = p.y - p2.y;
+            let dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 110) {
+              let lineAlpha = (1 - dist / 110) * 0.15;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(56, 189, 248, ${lineAlpha})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
+    })();
+  </script>
 </body>
 </html>
-
