@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>A Letter for Morium Tabassum | From Md Hasan Al Mahmud</title>
+
+  <!-- Tailwind CSS & Google Fonts CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['Cormorant Garamond', 'serif'],
+            display: ['Cinzel', 'serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          },
+          colors: {
+            roseGold: {
+              200: '#fbe2dc',
+              300: '#f6d5ce',
+              400: '#ebada2',
+              500: '#e08574',
+            },
+            midnight: {
+              800: '#131826',
+              900: '#0b0e17',
+              950: '#05070c',
+            },
+            burgundy: {
+              700: '#6b1827',
+              800: '#4a0e19',
+              900: '#2d080f',
+            },
+            gold: {
+              300: '#f3d09a',
+              400: '#d4af37',
+              500: '#aa820a',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom paper texture and luxury glow shadows */
+    .paper-texture {
+      background-color: #fcf9f2;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(240, 230, 210, 0.5) 0%, transparent 100%),
+        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    }
+
+    .gold-border {
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      box-shadow: inset 0 0 20px rgba(212, 175, 55, 0.08);
+    }
+
+    .wax-seal-shadow {
+      filter: drop-shadow(0px 10px 20px rgba(45, 8, 15, 0.55));
+    }
+
+    .shimmer-gold {
+      background: linear-gradient(135deg, #f3d09a 0%, #d4af37 50%, #aa820a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Ambient pulse */
+    @keyframes pulseGlow {
+      0%, 100% { opacity: 0.35; transform: scale(1); }
+      50% { opacity: 0.65; transform: scale(1.08); }
+    }
+    .ambient-glow {
+      animation: pulseGlow 7s ease-in-out infinite;
+    }
+
+    /* Floating Heart Animation */
+    @keyframes floatUp {
+      0% { opacity: 1; transform: translateY(0) scale(0.8) rotate(0deg); }
+      100% { opacity: 0; transform: translateY(-140px) scale(1.4) rotate(25deg); }
+    }
+    .floating-heart {
+      position: absolute;
+      pointer-events: none;
+      animation: floatUp 2.2s ease-out forwards;
+      z-index: 60;
+    }
+
+    /* Print styles for physical paper keepsake */
+    @media print {
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      header, footer, #envelopeStage, .no-print {
+        display: none !important;
+      }
+      #letterStage {
+        display: block !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+      .paper-texture {
+        background: white !important;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-midnight-950 text-slate-200 font-sans min-h-screen relative flex flex-col justify-center items-center overflow-x-hidden selection:bg-roseGold-400 selection:text-midnight-950">
+
+  <!-- Interactive Canvas background for floating romantic particles -->
+  <canvas id="particleCanvas" class="fixed inset-0 pointer-events-none z-0 opacity-70"></canvas>
+
+  <!-- Ambient Light Glow Orbs -->
+  <div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] bg-rose-900/20 blur-[150px] rounded-full pointer-events-none ambient-glow z-0"></div>
+  <div class="fixed bottom-10 right-10 w-[450px] h-[450px] bg-amber-700/10 blur-[130px] rounded-full pointer-events-none z-0"></div>
+
+  <!-- Top Header Navigation (Positioned Fixed to avoid pushing content off-center) -->
+  <header class="fixed top-0 left-0 right-0 z-20 w-full max-w-5xl mx-auto px-6 py-6 flex justify-between items-center pointer-events-none">
+    <div class="flex items-center space-x-3 pointer-events-auto">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-amber-600 via-rose-500 to-amber-300 p-[1px] flex items-center justify-center shadow-lg">
+        <div class="w-full h-full bg-midnight-900 rounded-full flex items-center justify-center">
+          <span class="font-display text-amber-300 font-bold text-xs tracking-wider">MT</span>
+        </div>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-display tracking-widest text-[11px] text-amber-200/80 uppercase">Private Correspondence</span>
+        <span class="text-[10px] text-slate-400 font-sans">For Morium Tabassum</span>
+      </div>
+    </div>
+
+    <!-- Controls & Theme Toggle -->
+    <div class="flex items-center space-x-3 no-print pointer-events-auto">
+      <button id="audioToggleBtn" title="Toggle Music" class="px-3.5 py-2 rounded-full bg-slate-900/80 border border-slate-700/60 hover:border-amber-500/50 text-slate-300 hover:text-amber-300 transition-all text-xs flex items-center gap-2 backdrop-blur-md">
+        <svg id="audioIcon" class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"/>
+        </svg>
+        <span id="audioLabel" class="hidden sm:inline text-xs">Ambient Music</span>
+      </button>
+
+      <button id="themeToggleBtn" title="Change Mood Palette" class="p-2.5 rounded-full bg-slate-900/80 border border-slate-700/60 hover:border-amber-500/50 text-slate-300 hover:text-amber-300 transition-all text-xs backdrop-blur-md">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-23"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER (Middle-Centered Layout) -->
+  <main class="relative z-10 min-h-screen w-full flex items-center justify-center px-4 py-20">
+    
+    <!-- ENVELOPE STAGE (Initial Sealed View) -->
+    <div id="envelopeStage" class="w-full max-w-lg transition-all duration-700 ease-out transform my-auto">
+      <div class="relative bg-gradient-to-b from-midnight-800 via-midnight-900 to-midnight-950 p-8 sm:p-12 rounded-2xl border border-amber-500/25 shadow-2xl shadow-black/90 text-center flex flex-col items-center group cursor-pointer" id="waxSealCard">
+        
+        <!-- Luxury Gold Framing -->
+        <div class="absolute inset-3 border border-amber-500/10 rounded-xl pointer-events-none"></div>
+        <div class="absolute inset-4 border border-amber-400/20 rounded-lg pointer-events-none"></div>
+
+        <span class="text-amber-400/90 text-xs font-display tracking-[0.3em] uppercase mb-3">Exclusively Dedicated To</span>
+        
+        <h1 class="font-display text-2xl sm:text-3xl text-amber-100 font-semibold tracking-wider mb-2">
+          Morium Tabassum
+        </h1>
+        <p class="font-serif italic text-roseGold-300/80 text-base mb-8">
+          A timeless keepsake written from the heart
+        </p>
+
+        <!-- WAX SEAL INTERACTIVE BUTTON -->
+        <div class="relative my-4" id="waxSealContainer">
+          <button id="openLetterBtn" aria-label="Break Wax Seal to open letter" class="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-burgundy-900 via-burgundy-700 to-rose-900 wax-seal-shadow border-2 border-amber-400/40 flex items-center justify-center transform group-hover:scale-105 transition-all duration-300 active:scale-95">
+            <div class="w-20 h-20 rounded-full border border-amber-300/30 flex items-center justify-center bg-burgundy-900/70 shadow-inner">
+              <span class="font-display text-2xl font-bold shimmer-gold">M</span>
+            </div>
+          </button>
+          
+          <!-- Pulsing effect -->
+          <div class="absolute inset-0 -m-2 rounded-full border border-amber-400/30 animate-ping pointer-events-none opacity-40"></div>
+        </div>
+
+        <div class="mt-6 flex flex-col items-center space-y-1">
+          <p class="text-xs text-amber-300/90 font-sans tracking-widest uppercase group-hover:text-amber-200 transition-colors">
+            ✦ Break Seal to Open ✦
+          </p>
+          <span class="text-[11px] text-slate-400 font-serif italic">From Md Hasan Al Mahmud</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- UNFOLDED LETTER STAGE (Initially Hidden) -->
+    <div id="letterStage" class="hidden w-full max-w-2xl transition-all duration-1000 opacity-0 translate-y-8">
+      
+      <div class="paper-texture rounded-xl p-8 sm:p-14 text-slate-900 shadow-2xl shadow-black/95 relative gold-border">
+        
+        <!-- Delicate Inner Accent Frame -->
+        <div class="absolute inset-4 sm:inset-6 border border-amber-900/10 pointer-events-none rounded"></div>
+        
+        <!-- Letter Decorative Header -->
+        <div class="flex justify-between items-start border-b border-amber-900/15 pb-6 mb-8">
+          <div>
+            <span class="font-display text-xs text-amber-900/70 tracking-widest uppercase block">Personal Correspondence</span>
+            <span class="font-serif italic text-xs text-burgundy-800">To My Dearest Morium</span>
+          </div>
+          <div class="text-right">
+            <span class="font-display text-xs text-amber-900/70 tracking-widest uppercase block">Date</span>
+            <span class="font-serif italic text-xs text-slate-700" id="currentDateText">Forever & Always</span>
+          </div>
+        </div>
+
+        <!-- Letter Body Content -->
+        <article class="font-serif text-lg sm:text-xl leading-relaxed text-slate-800 space-y-6">
+          <p class="font-display text-2xl sm:text-3xl text-burgundy-900 font-semibold mb-6 italic">
+            Dearest Morium Tabassum,
+          </p>
+
+          <p class="first-letter:text-5xl first-letter:font-display first-letter:font-bold first-letter:text-burgundy-800 first-letter:float-left first-letter:mr-3 first-letter:leading-none">
+            From the very moment you walked into my life, every ordinary second transformed into something extraordinary—something deeply worth holding onto. In a world that often moves in loud, chaotic rushes, you remain my calm sanctuary, a radiant light that brightens every corner of my thoughts.
+          </p>
+
+          <p>
+            Your name carries the sweetness of a blooming flower, and <span class="italic font-semibold text-burgundy-900">Tabassum</span>—your captivating, effortless smile—has a unique magic all its own. It has the power to uplift the heaviest day and turn a simple afternoon into an unforgettable memory. Your warmth, grace, and kindness inspire me every single day.
+          </p>
+
+          <p>
+            Thank you for being my anchor, my confidante, and my greatest happiness. With you, conversations flow seamlessly into the night, and even quiet silences feel completely peaceful and complete. You bring out the absolute best in me just by being your genuine, beautiful self.
+          </p>
+
+          <p>
+            No matter where time leads us or how many tomorrows we share, please know this with certainty: my admiration, devotion, and love for you will remain steadfast and true.
+          </p>
+
+          <!-- Signature Block -->
+          <div class="pt-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-6">
+            <div>
+              <p class="text-xs font-sans tracking-widest text-slate-500 uppercase">Ever Devotedly Yours,</p>
+              <p class="font-display text-2xl sm:text-3xl text-burgundy-900 font-bold mt-1 tracking-wide">
+                Md Hasan Al Mahmud
+              </p>
+            </div>
+            
+            <div id="heartTriggerBtn" class="cursor-pointer group p-3 rounded-full hover:bg-rose-100/60 transition-all flex items-center gap-2 self-end" title="Send Love to Morium">
+              <span class="text-xs font-sans text-burgundy-800 opacity-0 group-hover:opacity-100 transition-opacity">Send Hearts</span>
+              <svg class="w-8 h-8 text-rose-600 transform group-hover:scale-125 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+              </svg>
+            </div>
+          </div>
+        </article>
+
+        <!-- Letter Action Toolbar -->
+        <div class="mt-12 pt-6 border-t border-amber-900/15 flex flex-wrap gap-4 items-center justify-between text-xs font-sans no-print">
+          <div class="flex items-center space-x-2"> 
+            <button id="copyLetterBtn" class="px-4 py-2 rounded-lg bg-amber-900/5 hover:bg-amber-900/10 text-amber-900 font-medium transition-colors flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              Copy Text
+            </button>
+            
+          </div>
+
+          <!-- Ultra-Modern Glassmorphic Reseal Button -->
+          
+		<button id="resealBtn" class="group relative inline-flex items-center justify-center gap-2.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-burgundy-900 via-burgundy-800 to-rose-950 text-amber-100 text-xs font-semibold tracking-wider uppercase shadow-lg shadow-burgundy-950/40 hover:shadow-amber-500/20 border border-amber-400/30 hover:border-amber-300/60 transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] overflow-hidden">
+            <span class="absolute inset-0 bg-gradient-to-r from-amber-400/0 via-amber-300/20 to-amber-400/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 -translate-x-full group-hover:translate-x-full ease-in-out pointer-events-none"></span>
+            <svg class="w-4 h-4 text-amber-300 transition-transform duration-500 group-hover:rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 08-8 0v4h8z"/>
+            </svg>
+            <span class="relative z-10 font-display tracking-widest text-[14px]">Close & Seal Keepsake</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer (Fixed at Bottom) -->
+  <footer class="fixed bottom-0 left-0 right-0 z-20 py-4 text-center text-xs text-slate-500 font-sans pointer-events-none no-print">
+    <p class="pointer-events-auto">Crafted with love by <span class="text-amber-300 font-medium">Md Hasan Al Mahmud</span> for <span class="text-roseGold-300 font-medium">Morium Tabassum</span></p>
+  </footer>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-amber-200 text-xs px-4 py-3 rounded-xl border border-amber-500/30 shadow-2xl opacity-0 pointer-events-none transition-all duration-300">
+    Message copied to clipboard!
+  </div>
+
+  <script>
+    /* ============================================================
+       1. CANVAS AMBIENT PARTICLES
+       ============================================================ */
+    const canvas = document.getElementById('particleCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2.2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.25;
+        this.speedY = -Math.random() * 0.35 - 0.1;
+        this.opacity = Math.random() * 0.5 + 0.2;
+        this.color = Math.random() > 0.4 ? '#f6d5ce' : '#d4af37';
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.y < 0 || this.x < 0 || this.x > canvas.width) {
+          this.reset();
+          this.y = canvas.height + 10;
+        }
+      }
+      draw() {
+        ctx.save();
+        ctx.globalAlpha = this.opacity;
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.min(Math.floor(window.innerWidth / 16), 65);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+    initParticles();
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+    animateParticles();
+
+
+    /* ============================================================
+       2. WEB AUDIO SYNTH & SOUND EFFECTS
+       ============================================================ */
+    let audioCtx = null;
+    let isPlayingAudio = false;
+    let audioNodes = [];
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioContext();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    // Gentle chord soundscape using Web Audio API
+    function toggleAmbientMusic() {
+      initAudio();
+      const audioLabel = document.getElementById('audioLabel');
+
+      if (isPlayingAudio) {
+        audioNodes.forEach(n => {
+          try { n.stop(); } catch(e){}
+        });
+        audioNodes = [];
+        isPlayingAudio = false;
+        audioLabel.textContent = "Ambient Music";
+        return;
+      }
+
+      // Warm ambient harmonic drone frequencies (C major 7th / Am9 sound)
+      const freqs = [130.81, 164.81, 196.00, 246.94, 329.63]; 
+      const masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.07, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        // Slow LFO for organic swelling texture
+        const lfo = audioCtx.createOscillator();
+        const lfoGain = audioCtx.createGain();
+        lfo.frequency.setValueAtTime(0.08 + idx * 0.02, audioCtx.currentTime);
+        lfoGain.gain.setValueAtTime(0.02, audioCtx.currentTime);
+        lfo.connect(gain.gain);
+        lfo.start();
+
+        gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+        osc.connect(gain);
+        gain.connect(masterGain);
+        osc.start();
+
+        audioNodes.push(osc, lfo);
+      });
+
+      isPlayingAudio = true;
+      audioLabel.textContent = "Playing Soothing Sound";
+    }
+
+    // Wax seal crack effect
+    function playWaxSealSound() {
+      initAudio();
+      const now = audioCtx.currentTime;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(130, now);
+      osc.frequency.exponentialRampToValueAtTime(35, now + 0.35);
+
+      gain.gain.setValueAtTime(0.25, now);
+      gain.gain.exponentialRampToValueAtTime(0.01, now + 0.35);
+
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start(now);
+      osc.stop(now + 0.35);
+    }
+
+    // Modern Reseal / Lock Sound Effect
+    function playResealSound() {
+      initAudio();
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+
+      // Soft metallic lock tone
+      const osc1 = audioCtx.createOscillator();
+      const osc2 = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+
+      osc1.type = 'sine';
+      osc2.type = 'triangle';
+
+      osc1.frequency.setValueAtTime(320, now);
+      osc1.frequency.exponentialRampToValueAtTime(180, now + 0.25);
+
+      osc2.frequency.setValueAtTime(520, now);
+      osc2.frequency.exponentialRampToValueAtTime(220, now + 0.25);
+
+      gain.gain.setValueAtTime(0.18, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+      osc1.connect(gain);
+      osc2.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + 0.28);
+      osc2.stop(now + 0.28);
+    }
+
+
+    /* ============================================================
+       3. STAGE TRANSITIONS & UI CONTROLS
+       ============================================================ */
+    const openLetterBtn = document.getElementById('openLetterBtn');
+    const envelopeStage = document.getElementById('envelopeStage');
+    const letterStage = document.getElementById('letterStage');
+    const resealBtn = document.getElementById('resealBtn');
+    const copyLetterBtn = document.getElementById('copyLetterBtn');
+    const printBtn = document.getElementById('printBtn');
+    const heartTriggerBtn = document.getElementById('heartTriggerBtn');
+    const toast = document.getElementById('toast');
+
+    // Display formatted date
+    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    document.getElementById('currentDateText').textContent = new Date().toLocaleDateString('en-US', dateOptions);
+
+    function openLetter() {
+      playWaxSealSound();
+
+      envelopeStage.classList.add('scale-90', 'opacity-0', 'pointer-events-none');
+      
+      setTimeout(() => {
+        envelopeStage.classList.add('hidden');
+        letterStage.classList.remove('hidden');
+
+        void letterStage.offsetWidth; // Force layout recalculation for transition
+
+        letterStage.classList.remove('opacity-0', 'translate-y-8');
+        letterStage.classList.add('opacity-100', 'translate-y-0');
+
+        createHeartBurst();
+      }, 500);
+    }
+
+    function closeLetter() {
+      playResealSound();
+
+      letterStage.classList.remove('opacity-100', 'translate-y-0');
+      letterStage.classList.add('opacity-0', 'translate-y-8');
+      
+      setTimeout(() => {
+        letterStage.classList.add('hidden');
+        envelopeStage.classList.remove('hidden');
+
+        void envelopeStage.offsetWidth;
+
+        envelopeStage.classList.remove('scale-90', 'opacity-0', 'pointer-events-none');
+        envelopeStage.classList.add('scale-100', 'opacity-100');
+
+        showToast("✦ Envelope Safely Resealed & Preserved ✦");
+      }, 500);
+    }
+
+    function closeLetter() {
+      letterStage.classList.add('opacity-0', 'translate-y-8');
+      
+      setTimeout(() => {
+        letterStage.classList.add('hidden');
+        envelopeStage.classList.remove('hidden');
+
+        void envelopeStage.offsetWidth;
+
+        envelopeStage.classList.remove('scale-90', 'opacity-0', 'pointer-events-none');
+        envelopeStage.classList.add('scale-100', 'opacity-100');
+      }, 500);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.remove('opacity-0', 'pointer-events-none');
+      setTimeout(() => {
+        toast.classList.add('opacity-0', 'pointer-events-none');
+      }, 3000);
+    }
+
+    function createHeartBurst() {
+      for (let i = 0; i < 14; i++) {
+        setTimeout(() => {
+          const heart = document.createElement('div');
+          heart.className = 'floating-heart text-rose-500';
+          heart.innerHTML = '❤️';
+          heart.style.left = (45 + (Math.random() * 24 - 12)) + '%';
+          heart.style.top = '50%';
+          heart.style.fontSize = (16 + Math.random() * 22) + 'px';
+          document.body.appendChild(heart);
+
+          setTimeout(() => heart.remove(), 2200);
+        }, i * 90);
+      }
+    }
+
+
+    /* ============================================================
+       4. EVENT LISTENERS & THEMES
+       ============================================================ */
+    openLetterBtn.addEventListener('click', openLetter);
+    resealBtn.addEventListener('click', closeLetter);
+    document.getElementById('audioToggleBtn').addEventListener('click', toggleAmbientMusic);
+
+    heartTriggerBtn.addEventListener('click', () => {
+      createHeartBurst();
+      showToast("Sent hearts to Morium! ❤️");
+    });
+
+    copyLetterBtn.addEventListener('click', () => {
+      const letterText = `Dearest Morium Tabassum,\n\nFrom the very moment you walked into my life, every ordinary second transformed into something extraordinary—something deeply worth holding onto. In a world that often moves in loud, chaotic rushes, you remain my calm sanctuary, a radiant light that brightens every corner of my thoughts.\n\nYour name carries the sweetness of a blooming flower, and Tabassum—your captivating, effortless smile—has a unique magic all its own. It has the power to uplift the heaviest day and turn a simple afternoon into an unforgettable memory. Your warmth, grace, and kindness inspire me every single day.\n\nThank you for being my anchor, my confidante, and my greatest happiness.\n\nEver Devotedly Yours,\nMd Hasan Al Mahmud`;
+      
+      // Fallback reliable copy mechanism
+      const textarea = document.createElement('textarea');
+      textarea.value = letterText;
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast("Love letter copied to clipboard!");
+      } catch (err) {
+        showToast("Unable to copy text");
+      }
+      document.body.removeChild(textarea);
+    });
+
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Atmospheric palette toggler
+    let currentTheme = 'midnight';
+    document.getElementById('themeToggleBtn').addEventListener('click', () => {
+      if (currentTheme === 'midnight') {
+        document.body.classList.remove('bg-midnight-950');
+        document.body.classList.add('bg-slate-900');
+        currentTheme = 'twilight';
+        showToast("Theme updated: Twilight Slate");
+      } else {
+        document.body.classList.remove('bg-slate-900');
+        document.body.classList.add('bg-midnight-950');
+        currentTheme = 'midnight';
+        showToast("Theme updated: Midnight Velvet");
+      }
+    });
+  </script>
+</body>
+</html>
