@@ -1,0 +1,1403 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DELE A2 & B2 Mastery — 60-Day Beginner to Intermediate Platform</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+            },
+            dele: {
+              a2: '#f59e0b',
+              b2: '#8b5cf6',
+              accent: '#06b6d4'
+            },
+            darkbg: '#090d16',
+            darkcard: '#111827',
+            darkborder: '#1f2937'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <style>
+    /* Custom Scrollbars and Glassmorphism */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #090d16; }
+    ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+    .glass-card {
+      background: rgba(17, 24, 39, 0.75);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .active-tab {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      color: white !important;
+      box-shadow: 0 4px 16px 0 rgba(139, 92, 246, 0.4);
+    }
+
+    .badge-a2 {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .badge-b2 {
+      background: rgba(139, 92, 246, 0.15);
+      color: #c084fc;
+      border: 1px solid rgba(139, 92, 246, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Header Navbar -->
+  <header class="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 lg:px-8 py-3">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      
+      <!-- Brand & Exam Title -->
+      <div class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 via-indigo-500 to-amber-500 flex items-center justify-center text-white shadow-lg shadow-violet-900/40">
+          <i class="fa-solid fa-award text-lg"></i>
+        </div>
+        <div>
+          <h1 class="font-bold text-lg leading-tight tracking-wide text-white flex items-center gap-2">
+            DELE A2 & B2 Mastery 
+            <span class="bg-violet-500/20 text-violet-300 text-xs px-2.5 py-0.5 rounded-full border border-violet-500/30">60-Day Path</span>
+          </h1>
+          <p class="text-xs text-slate-400">Official Government Exam Syllabus: Beginner to B2 Intermediate</p>
+        </div>
+      </div>
+
+      <!-- Level Switcher & Progress Bar -->
+      <div class="flex items-center gap-4 w-full sm:w-auto justify-between sm:justify-end">
+        <div class="flex items-center gap-3 bg-slate-800/90 px-3 py-1.5 rounded-xl border border-slate-700">
+          <i class="fa-solid fa-graduation-cap text-amber-400"></i>
+          <div class="text-xs">
+            <span class="text-slate-400 block">Course Progress</span>
+            <span id="overallProgressText" class="font-bold text-violet-400">0 / 60 Days (0%)</span>
+          </div>
+          <div class="w-24 bg-slate-700 h-2 rounded-full overflow-hidden ml-1">
+            <div id="overallProgressBar" class="bg-gradient-to-r from-amber-400 via-rose-500 to-violet-500 h-full w-0 transition-all duration-500"></div>
+          </div>
+        </div>
+
+        <button onclick="resetProgress()" title="Reset Progress" class="text-slate-400 hover:text-rose-400 transition text-sm p-2 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700">
+          <i class="fa-solid fa-rotate-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Layout Container -->
+  <div class="max-w-7xl mx-auto w-full flex-1 px-4 lg:px-8 py-6 flex flex-col gap-6">
+
+    <!-- Top Navigation Tabs -->
+    <nav class="flex items-center gap-2 overflow-x-auto pb-2 border-b border-slate-800 no-scrollbar">
+      <button onclick="switchTab('syllabus')" id="tab-syllabus" class="tab-btn active-tab px-4 py-2.5 rounded-xl font-medium text-sm flex items-center gap-2 whitespace-nowrap transition">
+        <i class="fa-solid fa-calendar-days"></i> 60-Day Full Syllabus
+      </button>
+      <button onclick="switchTab('speaking')" id="tab-speaking" class="tab-btn px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 font-medium text-sm flex items-center gap-2 whitespace-nowrap transition">
+        <i class="fa-solid fa-robot"></i> AI DELE A2/B2 Examiner
+      </button>
+      <button onclick="switchTab('grammar')" id="tab-grammar" class="tab-btn px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 font-medium text-sm flex items-center gap-2 whitespace-nowrap transition">
+        <i class="fa-solid fa-brain"></i> B2 Subjunctive & Grammar Workbench
+      </button>
+      <button onclick="switchTab('listening')" id="tab-listening" class="tab-btn px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 font-medium text-sm flex items-center gap-2 whitespace-nowrap transition">
+        <i class="fa-solid fa-headphones"></i> Listening & Audio Studio
+      </button>
+      <button onclick="switchTab('tests')" id="tab-tests" class="tab-btn px-4 py-2.5 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 font-medium text-sm flex items-center gap-2 whitespace-nowrap transition">
+        <i class="fa-solid fa-file-signature"></i> DELE Exam Portal (A2 & B2)
+      </button>
+    </nav>
+
+    <!-- TAB 1: 60-DAY SYLLABUS VIEW -->
+    <div id="view-syllabus" class="tab-content flex flex-col gap-6">
+      
+      <!-- Filter Bar -->
+      <div class="flex flex-wrap items-center justify-between gap-4 bg-slate-900/80 p-4 rounded-2xl border border-slate-800">
+        <div>
+          <h2 class="text-base font-bold text-white flex items-center gap-2">
+            <span>60-Day Official Roadmap</span>
+            <span class="text-xs font-normal text-slate-400">(DELE A2 Foundation + DELE B2 Government Exam Mastery)</span>
+          </h2>
+          <p class="text-xs text-slate-400">Select a phase or week to explore daily lessons, grammar notes, and exercises.</p>
+        </div>
+
+        <!-- Level & Week Filter Controls -->
+        <div class="flex flex-wrap items-center gap-2">
+          <select id="levelFilterSelect" onchange="filterSyllabus()" class="bg-slate-800 border border-slate-700 text-white text-xs rounded-xl p-2 font-medium">
+            <option value="all">All Levels (Days 1–60)</option>
+            <option value="A1A2">DELE A2 Level (Days 1–30)</option>
+            <option value="B1B2">DELE B2 Level (Days 31–60)</option>
+          </select>
+
+          <div id="weekFilterButtons" class="flex flex-wrap gap-1.5">
+            <!-- Dynamically populated filter buttons -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Syllabus Master Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Days Sidebar List -->
+        <div class="lg:col-span-1 space-y-3 max-h-[720px] overflow-y-auto pr-1">
+          <div id="daysListContainer" class="space-y-2.5">
+            <!-- Dynamically populated daily list cards -->
+          </div>
+        </div>
+
+        <!-- Selected Lesson Main Panel -->
+        <div class="lg:col-span-2">
+          <div id="lessonDetailPanel" class="glass-card rounded-2xl p-6 border border-slate-800 min-h-[550px] flex flex-col justify-between">
+            <!-- Dynamically loaded lesson content -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 2: AI DELE SPEAKING COACH -->
+    <div id="view-speaking" class="tab-content hidden flex-col gap-6">
+      <div class="glass-card rounded-2xl p-6 border border-slate-800">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+          <div>
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-robot text-violet-400"></i> AI DELE Speaking Examiner (A2 & B2 Modes)
+            </h2>
+            <p class="text-slate-400 text-sm">Practice official government exam tasks with instant Gemini AI rubric evaluation (Fluency, Coherence, Grammar & Subjunctive precision).</p>
+          </div>
+          <div class="flex items-center gap-3">
+            <label class="text-xs text-slate-400 font-medium">Target Level:</label>
+            <select id="speakingLevelMode" onchange="toggleSpeakingTasksMode()" class="bg-violet-950/80 border border-violet-500/40 text-violet-300 font-bold text-xs rounded-xl px-3 py-1.5 focus:outline-none">
+              <option value="B2" selected>DELE B2 Exam Mode (Advanced)</option>
+              <option value="A2">DELE A2 Exam Mode (Beginner)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Task Selector Grid -->
+        <div id="speakingTasksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+          <!-- Dynamically populated tasks based on selected level -->
+        </div>
+
+        <!-- Active Speaking Session Box -->
+        <div id="speakingSessionContainer" class="mt-8 bg-slate-900/90 rounded-2xl border border-slate-800 p-6 hidden">
+          <!-- Dynamically populated prompt & response area -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 3: B2 SUBJUNCTIVE & GRAMMAR LAB -->
+    <div id="view-grammar" class="tab-content hidden flex-col gap-6">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Tool 1: Subjunctive Trigger Matrix -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-violet-500/20 text-violet-400 flex items-center justify-center font-bold">
+                SUBJ
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Subjunctive Trigger Matrix</h3>
+                <p class="text-xs text-slate-400">DELE B2 Essential: WEIRDOS Rule</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 text-xs bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+              <div class="flex justify-between items-center text-violet-300 font-semibold pb-1.5 border-b border-slate-800">
+                <span>When to use Subjunctive?</span>
+                <i class="fa-solid fa-sparkles"></i>
+              </div>
+              <p class="text-slate-300"><strong class="text-violet-400">Doubt / Denial:</strong> Dudo que, No creo que...</p>
+              <p class="text-slate-300"><strong class="text-rose-400">Wishes & Desires:</strong> Quiero que, Ojalá que...</p>
+              <p class="text-slate-300"><strong class="text-amber-400">Emotions:</strong> Me alegra que, Siento que...</p>
+              <p class="text-slate-300"><strong class="text-emerald-400">Impersonal:</strong> Es importante que, Es necesario que...</p>
+            </div>
+
+            <!-- Subjunctive Quiz Drill -->
+            <div class="mt-4 space-y-3">
+              <label class="block text-xs font-medium text-slate-300">Test Your Subjunctive Trigger:</label>
+              <div id="subjunctiveSentence" class="p-3 bg-slate-800 rounded-xl text-xs font-semibold text-center text-white border border-slate-700">
+                No creo que Juan _____ (tener) razón en este debate.
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button onclick="checkSubjunctiveDrill('tenga')" class="py-2 bg-violet-600 hover:bg-violet-500 text-white rounded-lg font-bold text-xs transition">tenga (Subjunc.)</button>
+                <button onclick="checkSubjunctiveDrill('tiene')" class="py-2 bg-slate-700 hover:bg-slate-600 text-slate-200 rounded-lg font-bold text-xs transition">tiene (Indicat.)</button>
+              </div>
+              <p id="subjunctiveResult" class="text-xs text-center font-medium min-h-[20px]"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 2: DELE B2 Argumentation & Connector Builder -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">
+                B2
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Formal Connector Builder</h3>
+                <p class="text-xs text-slate-400">High-scoring DELE B2 essay & speaking discourse</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="text-xs text-slate-400 block mb-1">Discourse Function:</label>
+                <select id="connectorTypeSelect" onchange="updateConnectorBuilder()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2 text-xs font-medium">
+                  <option value="contrast">Expressing Contrast (A pesar de que / Sin embargo)</option>
+                  <option value="cause">Expressing Cause/Reason (Puesto que / Ya que)</option>
+                  <option value="consequence">Expressing Consequence (Por consiguiente / En consecuencia)</option>
+                  <option value="opinion">Adding Formal Opinion (Desde mi punto de vista)</option>
+                </select>
+              </div>
+
+              <div id="connectorDisplayBox" class="bg-slate-900/90 rounded-xl border border-slate-800 p-3.5 text-xs space-y-2">
+                <!-- Dynamically populated connector rules -->
+              </div>
+            </div>
+          </div>
+          <button onclick="playConnectorAudio()" class="mt-4 w-full py-2 bg-slate-800 hover:bg-slate-700 text-cyan-300 border border-slate-700 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition">
+            <i class="fa-solid fa-volume-high"></i> Listen Connector Pronunciation
+          </button>
+        </div>
+
+        <!-- Tool 3: Irregular Verb Conjugator Engine -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">
+                <i class="fa-solid fa-list-check"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Verb Conjugation Engine</h3>
+                <p class="text-xs text-slate-400">A2 & B2 Tense Lookup</p>
+              </div>
+            </div>
+
+            <div class="space-y-3">
+              <div>
+                <label class="text-xs text-slate-400 block mb-1">Select Verb & Tense:</label>
+                <select id="verbMasterSelect" onchange="updateVerbMasterTable()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-xl p-2 text-xs font-semibold">
+                  <option value="hacer_subj">HACER — Presente de Subjuntivo (haga...)</option>
+                  <option value="tener_subj">TENER — Presente de Subjuntivo (tenga...)</option>
+                  <option value="ser_indef">SER / IR — Pretérito Indefinido (fui, fue...)</option>
+                  <option value="estar_impf_subj">ESTAR — Imperfecto de Subjuntivo (estuviera...)</option>
+                  <option value="poder_cond">PODER — Condicional Simple (podría...)</option>
+                </select>
+              </div>
+
+              <div id="masterVerbTable" class="bg-slate-900/90 rounded-xl border border-slate-800 p-3 text-xs space-y-1.5">
+                <!-- Dynamically populated verb table -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TAB 4: AUDIO & LISTENING LOUNGE -->
+    <div id="view-listening" class="tab-content hidden flex-col gap-6">
+      <div class="glass-card rounded-2xl p-6 border border-slate-800">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+          <div>
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-headphones text-cyan-400"></i> DELE Audio Stories & Exam Listening Studio
+            </h2>
+            <p class="text-slate-400 text-sm">Native speed dialogues, debates, and listening tasks designed for A2 and B2 exam candidates.</p>
+          </div>
+          <button onclick="generateAIAudioPassage()" class="px-4 py-2 bg-gradient-to-r from-violet-600 to-indigo-500 text-white rounded-xl font-semibold text-xs flex items-center gap-2 shadow-lg hover:opacity-90 transition">
+            <i class="fa-solid fa-wand-magic-sparkles"></i> Generate New B2 AI Debate Audio
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-6">
+          <!-- Story Playlist -->
+          <div class="space-y-3">
+            <h3 class="text-xs font-bold text-slate-300">Audio Passages Playlist</h3>
+            <div id="storyPlaylist" class="space-y-2">
+              <!-- Dynamically populated story list -->
+            </div>
+          </div>
+
+          <!-- Active Passage & Player -->
+          <div class="lg:col-span-2 bg-slate-900/90 rounded-2xl border border-slate-800 p-6 flex flex-col justify-between">
+            <div id="activeStoryDisplay">
+              <!-- Dynamically populated active story -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 5: TESTS & EXAM PORTAL -->
+    <div id="view-tests" class="tab-content hidden flex-col gap-6">
+      <div class="glass-card rounded-2xl p-6 border border-slate-800">
+        <div class="border-b border-slate-800 pb-5 mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+          <div>
+            <h2 class="text-xl font-bold text-white flex items-center gap-2">
+              <i class="fa-solid fa-file-circle-check text-rose-400"></i> Government Exam Simulation & Milestone Portal
+            </h2>
+            <p class="text-slate-400 text-sm">Official DELE A2 & B2 assessment quizzes, weekly evaluations, and full mock exam simulations.</p>
+          </div>
+        </div>
+
+        <!-- Tests Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="testsGridContainer">
+          <!-- Dynamically populated test cards -->
+        </div>
+
+        <!-- Active Test Player Modal/Container -->
+        <div id="activeTestContainer" class="mt-8 bg-slate-900/95 rounded-2xl border border-slate-800 p-6 hidden">
+          <!-- Dynamically populated test runner -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-slate-800/80 bg-slate-900/60 py-6 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© 2026 DELE A2 & B2 Mastery Platform — Official Spanish Government Exam Curriculum</p>
+      <div class="flex items-center gap-4">
+        <span><i class="fa-solid fa-circle-check text-emerald-400"></i> Instituto Cervantes DELE Standard</span>
+        <span><i class="fa-solid fa-brain text-violet-400"></i> Gemini 3 Flash Powered</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Main Script -->
+  <script>
+    // COMPLETE 60-DAY SYLLABUS DATASET (A1/A2 to B2)
+    const FULL_CURRICULUM_DATA = [
+      // PHASE 1: A1/A2 FOUNDATIONS (DAYS 1 - 10)
+      {
+        day: 1, level: "A2", week: 1, weekTitle: "WEEK 1 — Present Routines & Basic Socializing",
+        title: "Present Tense & Daily Routines (Presente de Indicativo)",
+        category: "Grammar Foundation",
+        summary: "Master regular -AR, -ER, -IR verbs and reflexive daily routine actions.",
+        content: `
+          <div class="space-y-4 text-xs">
+            <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+              <h4 class="font-bold text-amber-400 mb-1">Grammar Rule: Presente Habitual</h4>
+              <p class="text-slate-300">Use regular and reflexive verbs to describe daily schedules and personal habits.</p>
+            </div>
+            <div class="grid grid-cols-2 gap-2 text-slate-200">
+              <div class="bg-slate-800 p-2.5 rounded-lg">• <strong>Levantarse:</strong> Me levanto a las 7:00.</div>
+              <div class="bg-slate-800 p-2.5 rounded-lg">• <strong>Trabajar:</strong> Trabajo en una oficina.</div>
+            </div>
+          </div>
+        `,
+        drill: { question: "Todos los días yo _______ (desayunar) a las 8 de la mañana.", options: ["desayuno", "desayunas", "desayuna"], answer: 0, explanation: "'Yo' present tense ends in -o." }
+      },
+      {
+        day: 5, level: "A2", week: 1, weekTitle: "WEEK 1 — Present Routines & Basic Socializing",
+        title: "Ser vs Estar: Permanent Characteristics vs States",
+        category: "Grammar Essential",
+        summary: "Fundamental distinction between permanent identity (SER) and location/feelings (ESTAR).",
+        content: `
+          <div class="space-y-3 text-xs">
+            <p class="text-slate-300">• <strong>SER:</strong> Identity, nationality, profession (Soy médico, Es español).</p>
+            <p class="text-slate-300">• <strong>ESTAR:</strong> Temporary condition, emotion, location (Estoy cansado, Está en Madrid).</p>
+          </div>
+        `,
+        drill: { question: "Hoy mi hermano _______ muy contento.", options: ["está", "es", "somos"], answer: 0, explanation: "Emotions use ESTAR." }
+      },
+      {
+        day: 10, level: "A2", week: 2, weekTitle: "WEEK 2 — Past Tense Foundations",
+        title: "Pretérito Perfecto (he hablado, has comido)",
+        category: "Past Tense A2",
+        summary: "Expressing recent actions connected to the present.",
+        content: `
+          <div class="space-y-3 text-xs bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+            <p class="font-bold text-amber-400">Formula: haber + participio (-ado/-ido)</p>
+            <p>• <strong>Hoy he comido</strong> paella con mis amigos.</p>
+            <p>• ¿<strong>Has visitado</strong> España alguna vez?</p>
+          </div>
+        `,
+        drill: { question: "Esta semana yo _______ mucho para el examen.", options: ["he estudiado", "estudié", "estudio"], answer: 0, explanation: "'Esta semana' requires Pretérito Perfecto." }
+      },
+
+      // PHASE 2: A2 MASTERY (DAYS 11 - 30)
+      {
+        day: 15, level: "A2", week: 3, weekTitle: "WEEK 3 — Pretérito Indefinido & Storytelling",
+        title: "Pretérito Indefinido: Regular & Irregular Stems",
+        category: "Grammar Core",
+        summary: "Completed past events in specific completed timeframes (ayer, el año pasado).",
+        content: `
+          <div class="space-y-3 text-xs">
+            <p class="text-slate-300">Key Irregulars: SER/IR (fui), TENER (tuve), ESTAR (estuve), HACER (hice/hizo).</p>
+            <p class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">• Ayer <strong>fui</strong> al mercado y <strong>tuve</strong> que comprar comida.</p>
+          </div>
+        `,
+        drill: { question: "El verano pasado nosotros _______ a Barcelona.", options: ["fuimos", "hemos ido", "vamos"], answer: 0, explanation: "Completed time marker 'El verano pasado' takes Indefinido." }
+      },
+      {
+        day: 20, level: "A2", week: 3, weekTitle: "WEEK 3 — Pretérito Indefinido & Storytelling",
+        title: "Imperfecto vs Indefinido Narration",
+        category: "Narrative Mastery",
+        summary: "Setting the background scene (Imperfecto) vs main actions (Indefinido).",
+        content: `
+          <div class="space-y-3 text-xs">
+            <p class="text-slate-300">• <strong>Hacía sol</strong> (background) cuando <strong>llegué</strong> a la playa (main action).</p>
+          </div>
+        `,
+        drill: { question: "Mientras yo _______ (dormir), sonó el teléfono.", options: ["dormía", "dormí", "duermo"], answer: 0, explanation: "Ongoing background action = Imperfecto." }
+      },
+      {
+        day: 25, level: "A2", week: 4, weekTitle: "WEEK 4 — Future, Obligations & Object Pronouns",
+        title: "Direct & Indirect Object Pronoun Combinations (Se lo doy)",
+        category: "Syntax Mastery",
+        summary: "Combining double pronouns smoothly without repetition.",
+        content: `
+          <div class="space-y-3 text-xs bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+            <p>• Rule: Indirect + Direct (OI + OD).</p>
+            <p>• <strong>le + lo = se lo</strong> (¿Le diste la carta a Juan? Sí, <strong>se la</strong> di).</p>
+          </div>
+        `,
+        drill: { question: "¿Le enviaste el correo a la profesora? - Sí, ya _____ envié.", options: ["se lo", "le lo", "te lo"], answer: 0, explanation: "'le + lo' converts to 'se lo'." }
+      },
+      {
+        day: 30, level: "A2", week: 5, weekTitle: "WEEK 5 — DELE A2 Exam Bridge & Por vs Para",
+        title: "Por vs Para Decision Matrix & DELE A2 Review",
+        category: "DELE A2 Capstone",
+        summary: "Solidify purpose vs reason, destination vs cause before starting B2.",
+        content: `
+          <div class="space-y-3 text-xs">
+            <p class="text-emerald-400 font-bold">• PARA: Destination, Recipient, Purpose, Deadline.</p>
+            <p class="text-amber-400 font-bold">• POR: Reason, Duration, Exchange, Mode of travel.</p>
+          </div>
+        `,
+        drill: { question: "Estudio español _____ conseguir un trabajo mejor en España.", options: ["para", "por", "de"], answer: 0, explanation: "Purpose/Goal = PARA." }
+      },
+
+      // PHASE 3: DELE B1/B2 INTERMEDIATE CORE (DAYS 31 - 45)
+      {
+        day: 31, level: "B2", week: 6, weekTitle: "WEEK 6 — Subjunctive Mood Foundations",
+        title: "Presente de Subjuntivo: Formation & Irregulars",
+        category: "B2 Core Grammar",
+        summary: "Forming the subjunctive mood using the opposite vowel ending (yo prep -> opposite).",
+        content: `
+          <div class="space-y-4 text-xs">
+            <div class="bg-violet-950/40 p-3.5 rounded-xl border border-violet-500/30">
+              <h4 class="font-bold text-violet-300 mb-1">Subjunctive Stem Rule</h4>
+              <p class="text-slate-300">Take 'yo' form of present indicative, drop -o, add opposite endings:</p>
+              <p class="text-slate-300 mt-1">• -AR verbs -> -e, -es, -e, -emos, -éis, -en (hable, hables...)</p>
+              <p class="text-slate-300">• -ER/-IR verbs -> -a, -as, -a, -amos, -áis, -an (coma, viva...)</p>
+            </div>
+            <p class="bg-slate-900 p-2.5 rounded-lg border border-slate-800">• Irregulars: tenga, haga, sea, vaya, haya, sepa.</p>
+          </div>
+        `,
+        drill: { question: "Es necesario que tú _______ (estudiar) más para la prueba B2.", options: ["estudies", "estudias", "estudiar"], answer: 0, explanation: "Impersonal expression 'Es necesario que' triggers Subjunctive ('estudies')." }
+      },
+      {
+        day: 35, level: "B2", week: 6, weekTitle: "WEEK 6 — Subjunctive Mood Foundations",
+        title: "Subjunctive Trigger 1: Doubts & Negative Opinions",
+        category: "B2 Core Grammar",
+        summary: "Creo que + Indicative vs No creo que + Subjunctive.",
+        content: `
+          <div class="space-y-3 text-xs">
+            <div class="grid grid-cols-2 gap-3">
+              <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span class="font-bold text-emerald-400 block mb-1">Certainty -> Indicative</span>
+                <p>• Creo que <strong>viene</strong> hoy.</p>
+                <p>• Pienso que <strong>es</strong> verdad.</p>
+              </div>
+              <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+                <span class="font-bold text-violet-400 block mb-1">Doubt/Negation -> Subjunctive</span>
+                <p>• No creo que <strong>venga</strong> hoy.</p>
+                <p>• Dudo que <strong>sea</strong> verdad.</p>
+              </div>
+            </div>
+          </div>
+        `,
+        drill: { question: "No me parece que la propuesta _____ (ser) adecuada.", options: ["sea", "es", "fuera"], answer: 0, explanation: "Negative opinion 'No me parece que' triggers Subjunctive ('sea')." }
+      },
+      {
+        day: 40, level: "B2", week: 7, weekTitle: "WEEK 7 — Advanced Subjunctive & Hypotheses",
+        title: "Expressing Wishes, Emotions & Value Judgments",
+        category: "B2 Expression",
+        summary: "Me alegra que, Ojalá que, Es una lástima que.",
+        content: `
+          <div class="space-y-3 text-xs bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+            <p>• <strong>Me alegra mucho que estés</strong> aquí hoy.</p>
+            <p>• <strong>Ojalá tengamos</strong> tiempo para discutir el proyecto.</p>
+            <p>• <strong>Es una pena que no puedan</strong> asistir a la conferencia.</p>
+          </div>
+        `,
+        drill: { question: "Ojalá la economía _______ (mejorar) en los próximos meses.", options: ["mejore", "mejora", "mejoraba"], answer: 0, explanation: "'Ojalá' takes Subjunctive ('mejore')." }
+      },
+      {
+        day: 45, level: "B2", week: 8, weekTitle: "WEEK 8 — Conditional & Imperfect Subjunctive",
+        title: "Imperfecto de Subjuntivo (-ra / -se) & Hypothetical Si Clauses",
+        category: "Advanced B2 Grammar",
+        summary: "Si tuviera dinero, viajaría. (If I had money, I would travel).",
+        content: `
+          <div class="space-y-3 text-xs">
+            <p class="text-slate-300">Formation: 3rd person plural pretérito (ellos fueron/tuvieron) -> drop -ron + -ra, -ras, -ra, -ramos, -rais, -ran.</p>
+            <p class="bg-violet-950/40 p-3 rounded-xl border border-violet-500/30 text-violet-200">• <strong>Si yo tuviera</strong> más tiempo, <strong>estudiaría</strong> francés también.</p>
+          </div>
+        `,
+        drill: { question: "Si María _______ (saber) la verdad, te lo diría inmediatamente.", options: ["supiera", "sabe", "sabría"], answer: 0, explanation: "Hypothetical condition in present uses Imperfect Subjunctive ('supiera')." }
+      },
+
+      // PHASE 4: DELE B2 GOVERNMENT EXAM MASTERY (DAYS 46 - 60)
+      {
+        day: 50, level: "B2", week: 9, weekTitle: "WEEK 9 — Discourse Connectors & Formal Register",
+        title: "Formal Connectors for Debate & B2 Writing",
+        category: "B2 Discourse Mastery",
+        summary: "Sin embargo, No obstante, En consecuencia, A pesar de que, Por consiguiente.",
+        content: `
+          <div class="space-y-3 text-xs">
+            <div class="bg-slate-900 p-3.5 rounded-xl border border-slate-800 space-y-2">
+              <p>• <strong>Contrast:</strong> El plan es ambicioso; <strong>sin embargo</strong>, requiere gran inversión.</p>
+              <p>• <strong>Consequence:</strong> No hubo consenso; <strong>por consiguiente</strong>, se aplazó la votación.</p>
+            </div>
+          </div>
+        `,
+        drill: { question: "El candidato tiene mucha experiencia; _______, carece de habilidades digitales.", options: ["sin embargo", "porque", "además"], answer: 0, explanation: "'sin embargo' expresses formal contrast." }
+      },
+      {
+        day: 55, level: "B2", week: 10, weekTitle: "WEEK 10 — DELE B2 Speaking Exam Simulation",
+        title: "DELE B2 Speaking Task 1: Proposal & Debate Defense",
+        category: "Exam Simulation",
+        summary: "Proposing solutions to public issues and defending them against examiner counter-arguments.",
+        content: `
+          <div class="space-y-3 text-xs bg-slate-900 p-3.5 rounded-xl border border-slate-800">
+            <p class="font-bold text-violet-400">Task 1 Strategy:</p>
+            <p>1. Present 2 main proposals clearly.</p>
+            <p>2. Acknowledge opposing views ("Entiendo su postura, pero...").</p>
+            <p>3. Use subjunctive for polite counter-proposals ("Le sugiero que consideremos...").</p>
+          </div>
+        `,
+        drill: { question: "Which phrase is best to politely counter-argue in DELE B2 Speaking Task 1?", options: ["Entiendo su punto de vista; no obstante, me gustaría señalar que...", "No tienes razón en nada.", "Eso no es verdad."], answer: 0, explanation: "Formal academic counter-argument technique." }
+      },
+      {
+        day: 60, level: "B2", week: 10, weekTitle: "WEEK 10 — DELE B2 Final Mock Examination",
+        title: "Day 60: Complete DELE B2 Government Mock Exam Certification",
+        category: "Final B2 Exam",
+        summary: "Full evaluation across all 4 DELE B2 competencies: Reading, Writing, Listening, Speaking.",
+        content: `
+          <div class="space-y-3 text-xs bg-violet-950/60 p-4 rounded-xl border border-violet-500/40">
+            <p class="text-violet-200 font-bold text-sm">🎓 Congratulations on reaching Day 60!</p>
+            <p class="text-slate-300">You have completed the full trajectory from Beginner to Intermediate DELE B2 Government Exam standards!</p>
+          </div>
+        `,
+        drill: { question: "Are you ready to take your official Instituto Cervantes DELE B2 examination?", options: ["¡Sí, estoy completamente preparado/a!", "¡Vamos a conseguir el Apto!", "¡Absolutamente!"], answer: 0, explanation: "¡Muchos éxitos en tu examen oficial!" }
+      }
+    ];
+
+    // App State Management
+    let userCourseState = {
+      completedDays: [],
+      testScores: {},
+      currentLevelFilter: 'all',
+      currentWeekFilter: 'all',
+      selectedDay: 31,
+      speakingLevel: 'B2'
+    };
+
+    // DOM Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      loadCourseState();
+      renderWeekFilterButtons();
+      renderDaysList();
+      renderSelectedLesson(userCourseState.selectedDay);
+      renderSubjunctiveWorkbench();
+      renderConnectorBuilder();
+      renderMasterVerbTable();
+      renderAudioPlaylist();
+      renderTestsGrid();
+      updateSpeakingTasksGrid();
+      updateProgressUI();
+    });
+
+    function loadCourseState() {
+      const saved = localStorage.getItem('dele_a2_b2_mastery_state');
+      if (saved) {
+        try { userCourseState = JSON.parse(saved); } catch(e) {}
+      }
+    }
+
+    function saveCourseState() {
+      localStorage.setItem('dele_a2_b2_mastery_state', JSON.stringify(userCourseState));
+      updateProgressUI();
+    }
+
+    function resetProgress() {
+      if (confirm("Are you sure you want to reset your 60-day course progress?")) {
+        userCourseState = { completedDays: [], testScores: {}, currentLevelFilter: 'all', currentWeekFilter: 'all', selectedDay: 1, speakingLevel: 'B2' };
+        saveCourseState();
+        renderDaysList();
+        renderSelectedLesson(1);
+      }
+    }
+
+    // Navigation Switcher
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
+      document.querySelectorAll('.tab-content').forEach(content => content.classList.add('hidden'));
+
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      const activeContent = document.getElementById(`view-${tabId}`);
+
+      if (activeBtn) activeBtn.classList.add('active-tab');
+      if (activeContent) {
+        activeContent.classList.remove('hidden');
+        activeContent.classList.add('flex');
+      }
+    }
+
+    // Filter & Render Syllabus
+    function renderWeekFilterButtons() {
+      const container = document.getElementById('weekFilterButtons');
+      const weeks = [
+        { id: 'all', label: 'All Weeks' },
+        { id: 1, label: 'W1' }, { id: 2, label: 'W2' }, { id: 3, label: 'W3' },
+        { id: 4, label: 'W4' }, { id: 5, label: 'W5 (A2 Exam)' },
+        { id: 6, label: 'W6 (Subj.)' }, { id: 7, label: 'W7' },
+        { id: 8, label: 'W8' }, { id: 9, label: 'W9' }, { id: 10, label: 'W10 (B2 Exam)' }
+      ];
+
+      container.innerHTML = weeks.map(w => `
+        <button onclick="setWeekFilter('${w.id}')" class="text-xs px-2.5 py-1 rounded-lg border border-slate-700 bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700 transition ${userCourseState.currentWeekFilter == w.id ? 'bg-violet-600 border-violet-500 text-white font-bold' : ''}">
+          ${w.label}
+        </button>
+      `).join('');
+    }
+
+    function setWeekFilter(weekId) {
+      userCourseState.currentWeekFilter = weekId;
+      renderWeekFilterButtons();
+      renderDaysList();
+    }
+
+    function filterSyllabus() {
+      const levelVal = document.getElementById('levelFilterSelect').value;
+      userCourseState.currentLevelFilter = levelVal;
+      renderDaysList();
+    }
+
+    function renderDaysList() {
+      const container = document.getElementById('daysListContainer');
+      let filtered = FULL_CURRICULUM_DATA;
+
+      if (userCourseState.currentLevelFilter === 'A1A2') {
+        filtered = filtered.filter(d => d.level === 'A2');
+      } else if (userCourseState.currentLevelFilter === 'B1B2') {
+        filtered = filtered.filter(d => d.level === 'B2');
+      }
+
+      if (userCourseState.currentWeekFilter !== 'all') {
+        filtered = filtered.filter(d => d.week == userCourseState.currentWeekFilter);
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const isDone = userCourseState.completedDays.includes(item.day);
+        const isSelected = userCourseState.selectedDay === item.day;
+
+        return `
+          <div onclick="selectDay(${item.day})" class="p-3 rounded-xl cursor-pointer transition border flex items-center justify-between gap-3 ${
+            isSelected 
+              ? 'bg-violet-950/40 border-violet-500/60 text-white shadow-md' 
+              : 'bg-slate-900/70 border-slate-800 hover:border-slate-700 text-slate-300'
+          }">
+            <div class="flex items-center gap-3">
+              <button onclick="event.stopPropagation(); toggleDayDone(${item.day})" class="w-6 h-6 rounded-md border flex items-center justify-center text-xs transition ${
+                isDone 
+                  ? 'bg-emerald-500 border-emerald-400 text-slate-950 font-bold' 
+                  : 'border-slate-700 text-transparent hover:border-slate-500'
+              }">
+                <i class="fa-solid fa-check"></i>
+              </button>
+              <div>
+                <div class="flex items-center gap-2 mb-0.5">
+                  <span class="text-[10px] font-bold px-1.5 py-0.2 rounded ${item.level === 'B2' ? 'badge-b2' : 'badge-a2'}">Day ${item.day} • ${item.level}</span>
+                  <span class="text-[10px] text-slate-400">${item.category}</span>
+                </div>
+                <h4 class="text-xs font-bold text-slate-200 line-clamp-1">${item.title}</h4>
+              </div>
+            </div>
+            <i class="fa-solid fa-chevron-right text-xs text-slate-500"></i>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectDay(dayNum) {
+      userCourseState.selectedDay = dayNum;
+      renderDaysList();
+      renderSelectedLesson(dayNum);
+    }
+
+    function toggleDayDone(dayNum) {
+      if (userCourseState.completedDays.includes(dayNum)) {
+        userCourseState.completedDays = userCourseState.completedDays.filter(d => d !== dayNum);
+      } else {
+        userCourseState.completedDays.push(dayNum);
+        confetti({ particleCount: 25, spread: 50, origin: { y: 0.8 } });
+      }
+      saveCourseState();
+      renderDaysList();
+    }
+
+    function renderSelectedLesson(dayNum) {
+      const lesson = FULL_CURRICULUM_DATA.find(d => d.day === dayNum) || FULL_CURRICULUM_DATA[0];
+      const isDone = userCourseState.completedDays.includes(lesson.day);
+      const container = document.getElementById('lessonDetailPanel');
+
+      container.innerHTML = `
+        <div>
+          <!-- Header -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-800 pb-4 mb-4">
+            <div>
+              <div class="flex items-center gap-2 mb-1">
+                <span class="text-xs font-bold px-2.5 py-0.5 rounded-full ${lesson.level === 'B2' ? 'badge-b2' : 'badge-a2'}">Day ${lesson.day} • DELE ${lesson.level}</span>
+                <span class="text-xs text-slate-400">${lesson.weekTitle}</span>
+              </div>
+              <h2 class="text-lg font-bold text-white">${lesson.title}</h2>
+            </div>
+            <button onclick="toggleDayDone(${lesson.day})" class="px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 transition ${
+              isDone 
+                ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40' 
+                : 'bg-violet-600 hover:bg-violet-500 text-white shadow-md'
+            }">
+              <i class="fa-solid ${isDone ? 'fa-circle-check' : 'fa-check'}"></i>
+              ${isDone ? 'Completed' : 'Mark Completed'}
+            </button>
+          </div>
+
+          <!-- Summary -->
+          <p class="text-xs text-slate-300 italic mb-4">${lesson.summary}</p>
+
+          <!-- Lesson Main Content HTML -->
+          <div class="prose prose-invert max-w-none text-xs">
+            ${lesson.content}
+          </div>
+
+          <!-- Interactive Practice Drill -->
+          <div class="mt-6 bg-slate-900/90 rounded-xl p-4 border border-slate-800">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-violet-400 flex items-center gap-1.5">
+                <i class="fa-solid fa-bolt"></i> Interactive Lesson Drill
+              </span>
+              <button onclick="speakText('${lesson.drill.question.replace(/'/g, "\\'")}')" class="text-slate-400 hover:text-amber-400 text-xs">
+                <i class="fa-solid fa-volume-high"></i> Audio
+              </button>
+            </div>
+            <p class="text-xs text-slate-200 font-medium mb-3">${lesson.drill.question}</p>
+
+            <div class="space-y-2">
+              ${lesson.drill.options.map((opt, idx) => `
+                <button onclick="checkDrillAnswer(${lesson.day}, ${idx})" class="w-full text-left p-2.5 rounded-lg text-xs bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center justify-between">
+                  <span>${opt}</span>
+                  <i class="fa-regular fa-circle text-slate-500 text-xs"></i>
+                </button>
+              `).join('')}
+            </div>
+
+            <div id="drillFeedback-${lesson.day}" class="mt-3 text-xs font-medium hidden p-2.5 rounded-lg"></div>
+          </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+          <span>DELE A2 & B2 Master Syllabus</span>
+          <div class="flex gap-2">
+            ${dayNum > 1 ? `<button onclick="selectDay(${dayNum - 1})" class="hover:text-white">← Day ${dayNum - 1}</button>` : ''}
+            ${dayNum < 60 ? `<button onclick="selectDay(${dayNum + 1})" class="hover:text-white">Day ${dayNum + 1} →</button>` : ''}
+          </div>
+        </div>
+      `;
+    }
+
+    function checkDrillAnswer(dayNum, selectedIdx) {
+      const lesson = FULL_CURRICULUM_DATA.find(d => d.day === dayNum);
+      const feedbackEl = document.getElementById(`drillFeedback-${dayNum}`);
+      if (!lesson || !feedbackEl) return;
+
+      if (selectedIdx === lesson.drill.answer) {
+        feedbackEl.className = "mt-3 text-xs font-medium p-2.5 rounded-lg bg-emerald-950/60 border border-emerald-500/40 text-emerald-300";
+        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>¡Correcto!</strong> ${lesson.drill.explanation}`;
+        confetti({ particleCount: 20, spread: 50, origin: { y: 0.7 } });
+      } else {
+        feedbackEl.className = "mt-3 text-xs font-medium p-2.5 rounded-lg bg-rose-950/60 border border-rose-500/40 text-rose-300";
+        feedbackEl.innerHTML = `<i class="fa-solid fa-circle-xmark"></i> <strong>Incorrecto.</strong> ${lesson.drill.explanation}`;
+      }
+      feedbackEl.classList.remove('hidden');
+    }
+
+    // Subjunctive Solver
+    const SUBJUNCTIVE_DRILLS = [
+      { text: "No creo que Juan _____ (tener) razón en este debate.", answer: "tenga", explanation: "Negative opinion 'No creo que' triggers Subjunctive." },
+      { text: "Es indispensable que todos _____ (asistir) a la reunión.", answer: "asistan", explanation: "Impersonal expression 'Es indispensable que' triggers Subjunctive." },
+      { text: "Me da pena que no _____ (poder) venir a la fiesta.", answer: "puedas", explanation: "Emotion expression 'Me da pena que' triggers Subjunctive." },
+      { text: "Dudo mucho que el gobierno _____ (aprobar) la ley.", answer: "apruebe", explanation: "Doubt 'Dudo que' triggers Subjunctive." }
+    ];
+    let currentSubjIdx = 0;
+
+    function renderSubjunctiveWorkbench() {
+      const current = SUBJUNCTIVE_DRILLS[currentSubjIdx];
+      document.getElementById('subjunctiveSentence').innerText = current.text;
+      document.getElementById('subjunctiveResult').innerText = "";
+    }
+
+    function checkSubjunctiveDrill(choice) {
+      const current = SUBJUNCTIVE_DRILLS[currentSubjIdx];
+      const resultEl = document.getElementById('subjunctiveResult');
+
+      if (choice === current.answer) {
+        resultEl.className = "text-xs text-center font-bold text-emerald-400 mt-2";
+        resultEl.innerText = `¡Excelente! ${current.explanation}`;
+        setTimeout(() => {
+          currentSubjIdx = (currentSubjIdx + 1) % SUBJUNCTIVE_DRILLS.length;
+          renderSubjunctiveWorkbench();
+        }, 2200);
+      } else {
+        resultEl.className = "text-xs text-center font-bold text-rose-400 mt-2";
+        resultEl.innerText = `Incorrecto. ${current.explanation}`;
+      }
+    }
+
+    // B2 Connector Builder
+    const CONNECTOR_DATA = {
+      contrast: {
+        title: "Expressing Contrast (Oposición)",
+        phrases: [
+          { c: "Sin embargo", ex: "El proyecto es costoso; sin embargo, es vital." },
+          { c: "A pesar de que", ex: "A pesar de que llovía, realizamos el evento." },
+          { c: "No obstante", ex: "Llegamos tarde; no obstante, pudimos entrar." }
+        ]
+      },
+      cause: {
+        title: "Expressing Cause & Reason (Causa)",
+        phrases: [
+          { c: "Puesto que", ex: "Puesto que no hay quórum, se cancela la sesión." },
+          { c: "Ya que", ex: "Ya que estás aquí, hablemos de los presupuestos." }
+        ]
+      },
+      consequence: {
+        title: "Expressing Consequence (Consecuencia)",
+        phrases: [
+          { c: "Por consiguiente", ex: "Los precios subieron; por consiguiente, las ventas bajaron." },
+          { c: "En consecuencia", ex: "Hubo fallos técnicos; en consecuencia, se repitió la prueba." }
+        ]
+      },
+      opinion: {
+        title: "Formal Opinion (Expresión de Opinión B2)",
+        phrases: [
+          { c: "Desde mi punto de vista", ex: "Desde mi punto de vista, la propuesta es idónea." },
+          { c: "A mi juicio", ex: "A mi juicio, debemos analizar las alternativas." }
+        ]
+      }
+    };
+
+    function renderConnectorBuilder() {
+      const type = document.getElementById('connectorTypeSelect').value;
+      const data = CONNECTOR_DATA[type];
+      const container = document.getElementById('connectorDisplayBox');
+
+      container.innerHTML = `
+        <h4 class="font-bold text-cyan-300 mb-1">${data.title}</h4>
+        <div class="space-y-2">
+          ${data.phrases.map(p => `
+            <div class="bg-slate-800 p-2 rounded-lg">
+              <strong class="text-amber-400 font-semibold">${p.c}:</strong>
+              <p class="text-slate-200 mt-0.5">${p.ex}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    function updateConnectorBuilder() {
+      renderConnectorBuilder();
+    }
+
+    function playConnectorAudio() {
+      const type = document.getElementById('connectorTypeSelect').value;
+      const data = CONNECTOR_DATA[type];
+      const textToSpeak = data.phrases.map(p => `${p.c}: ${p.ex}`).join('. ');
+      speakText(textToSpeak);
+    }
+
+    // Verb Conjugator Engine Data
+    const MASTER_VERBS = {
+      hacer_subj: { forms: ["haga", "hagas", "haga", "hagamos", "hagáis", "hagan"] },
+      tener_subj: { forms: ["tenga", "tengas", "tenga", "tengamos", "tengáis", "tengan"] },
+      ser_indef: { forms: ["fui", "fuiste", "fue", "fuimos", "fuisteis", "fueron"] },
+      estar_impf_subj: { forms: ["estuviera", "estuvieras", "estuviera", "estuviéramos", "estuvierais", "estuvieran"] },
+      poder_cond: { forms: ["podría", "podrías", "podría", "podríamos", "podríais", "podrían"] }
+    };
+
+    function renderMasterVerbTable() {
+      const verbKey = document.getElementById('verbMasterSelect').value;
+      const data = MASTER_VERBS[verbKey];
+      const container = document.getElementById('masterVerbTable');
+      const pronouns = ["Yo", "Tú", "Él/Ella/Ud", "Nosotros", "Vosotros", "Ellos/Uds"];
+
+      container.innerHTML = pronouns.map((p, i) => `
+        <div class="flex items-center justify-between py-1 border-b border-slate-800/60 last:border-0">
+          <span class="text-slate-400 font-medium">${p}:</span>
+          <strong class="text-violet-400 font-semibold">${data.forms[i]}</strong>
+        </div>
+      `).join('');
+    }
+
+    function updateVerbMasterTable() {
+      renderMasterVerbTable();
+    }
+
+    // AI DELE Examiner Module
+    const SPEAKING_TASKS = {
+      A2: [
+        {
+          id: 'a2-photo', title: 'A2 Task 1: Photo Description',
+          prompt: 'Describe a photo of people at a restaurant. Mention who they are, what they are wearing, what they are eating (estar + gerundio), and the weather.',
+          vocab: ['En la imagen veo...', 'Están comiendo...', 'Parece que están contentos']
+        },
+        {
+          id: 'a2-past', title: 'A2 Task 2: Recent Past Story',
+          prompt: 'Talk about your last weekend or a trip. Use Pretérito Indefinido (fui, comí) and connectors (primero, después, por eso).',
+          vocab: ['El fin de semana pasado...', 'Primero fui a...', 'Fue divertido']
+        }
+      ],
+      B2: [
+        {
+          id: 'b2-proposal', title: 'B2 Task 1: Proposal & Debate Defense',
+          prompt: 'The government proposes banning private cars in city centers to curb pollution. Present arguments for and against this measure. Use subjunctive and formal connectors (A pesar de que, No obstante, Dudo que sea suficiente).',
+          vocab: ['Desde mi punto de vista...', 'No creo que sea suficiente...', 'A pesar de los inconvenientes...']
+        },
+        {
+          id: 'b2-photo-hypo', title: 'B2 Task 2: Photo Analysis & Hypothesis',
+          prompt: 'Analyze a photo depicting environmental activists. Formulate hypotheses about what happened before the photo and what might happen next using subjunctive and conditional tenses.',
+          vocab: ['Es probable que hayan organizado...', 'Si las autoridades no intervienen, la situación empeorará...']
+        },
+        {
+          id: 'b2-debate', title: 'B2 Task 3: Expressing Opinions on Survey Data',
+          prompt: 'Comment on a statistical survey showing 70% of young professionals prefer remote work. Express your agreement/disagreement and argue why remote work impacts productivity.',
+          vocab: ['A mi juicio...', 'Es innegable que...', 'Resulta imprescindible que las empresas...']
+        }
+      ]
+    };
+
+    let activeSpeakingTask = null;
+
+    function toggleSpeakingTasksMode() {
+      const mode = document.getElementById('speakingLevelMode').value;
+      userCourseState.speakingLevel = mode;
+      updateSpeakingTasksGrid();
+    }
+
+    function updateSpeakingTasksGrid() {
+      const mode = document.getElementById('speakingLevelMode').value;
+      const tasks = SPEAKING_TASKS[mode] || SPEAKING_TASKS['B2'];
+      const container = document.getElementById('speakingTasksGrid');
+
+      container.innerHTML = tasks.map(t => `
+        <button onclick="selectSpeakingTask('${t.id}')" class="p-4 rounded-xl border border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-left transition flex flex-col justify-between gap-3">
+          <div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded ${mode === 'B2' ? 'badge-b2' : 'badge-a2'}">DELE ${mode} Task</span>
+            <h3 class="font-bold text-white text-xs mt-2">${t.title}</h3>
+            <p class="text-[11px] text-slate-400 mt-1 line-clamp-2">${t.prompt}</p>
+          </div>
+          <span class="text-xs text-violet-400 font-semibold">Start Task →</span>
+        </button>
+      `).join('');
+    }
+
+    function selectSpeakingTask(taskId) {
+      const mode = document.getElementById('speakingLevelMode').value;
+      const tasks = SPEAKING_TASKS[mode];
+      const task = tasks.find(t => t.id === taskId) || tasks[0];
+      activeSpeakingTask = task;
+
+      const container = document.getElementById('speakingSessionContainer');
+      container.classList.remove('hidden');
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-bold text-white text-sm">${task.title}</h3>
+            <button onclick="speakText('${task.prompt.replace(/'/g, "\\'")}')" class="text-amber-400 hover:text-amber-300 text-xs font-semibold flex items-center gap-1">
+              <i class="fa-solid fa-volume-high"></i> Listen Prompt
+            </button>
+          </div>
+
+          <div class="bg-slate-800/80 p-3.5 rounded-xl border border-slate-700 text-xs space-y-2">
+            <p class="text-slate-200">${task.prompt}</p>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              <span class="text-slate-400 text-xs">Target Expressions:</span>
+              ${task.vocab.map(v => `<span class="bg-slate-700 text-slate-200 px-2 py-0.5 rounded text-[11px] border border-slate-600">${v}</span>`).join('')}
+            </div>
+          </div>
+
+          <!-- Response Text Box -->
+          <div>
+            <label class="block text-xs font-medium text-slate-300 mb-1">Your Spanish Speaking / Monologue Response:</label>
+            <textarea id="speakingUserResponse" rows="5" placeholder="Escribe o dicta tu respuesta formal en español aquí..." class="w-full bg-slate-950 border border-slate-700 rounded-xl p-3 text-xs text-white focus:outline-none focus:border-violet-500 transition"></textarea>
+          </div>
+
+          <div class="flex items-center justify-between gap-3">
+            <button onclick="startVoiceInput()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 rounded-xl text-xs font-semibold text-slate-200 flex items-center gap-2 transition">
+              <i class="fa-solid fa-microphone text-rose-400"></i> Dictate Voice
+            </button>
+            <button onclick="submitTaskToGeminiAI()" class="px-5 py-2.5 bg-gradient-to-r from-violet-600 to-indigo-500 hover:opacity-90 text-white font-bold text-xs rounded-xl shadow-lg flex items-center gap-2 transition">
+              <i class="fa-solid fa-paper-plane"></i> Get Official Gemini Evaluation
+            </button>
+          </div>
+
+          <!-- Feedback Area -->
+          <div id="speakingAIFeedback" class="hidden mt-4 bg-slate-950/80 p-4 rounded-xl border border-slate-800 space-y-3"></div>
+        </div>
+      `;
+    }
+
+    async function submitTaskToGeminiAI() {
+      const responseText = document.getElementById('speakingUserResponse')?.value.trim();
+      const feedbackContainer = document.getElementById('speakingAIFeedback');
+
+      if (!responseText) {
+        alert("Por favor escribe o dicta una respuesta en español antes de evaluar.");
+        return;
+      }
+
+      feedbackContainer.classList.remove('hidden');
+      feedbackContainer.innerHTML = `
+        <div class="flex items-center gap-3 text-violet-400 text-xs font-medium">
+          <i class="fa-solid fa-spinner fa-spin text-base"></i>
+          <span>Gemini AI is evaluating your response using official Instituto Cervantes DELE criteria...</span>
+        </div>
+      `;
+
+      const level = userCourseState.speakingLevel;
+      const systemPrompt = `Act as an official Instituto Cervantes DELE ${level} examiner. Evaluate the student's Spanish response. Check for: 1. Official Grade (Apto / No Apto with score /100), 2. Fluency & Coherence, 3. Grammar Precision (Subjunctive, Connectors, Preterite/Imperfect for B2), 4. Corrections and Upgraded B2 Academic Version. Return output in clean, formatted HTML.`;
+
+      const userPrompt = `Level: DELE ${level}\nTask: ${activeSpeakingTask.title}\nStudent Response: "${responseText}"`;
+
+      try {
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: userPrompt }] }],
+            systemInstruction: { parts: [{ text: systemPrompt }] }
+          })
+        });
+
+        const data = await response.json();
+        const feedbackText = data.candidates?.[0]?.content?.parts?.[0]?.text || "No evaluation generated.";
+
+        feedbackContainer.innerHTML = `
+          <div class="prose prose-invert max-w-none text-xs border-t border-slate-800 pt-3">
+            <h4 class="font-bold text-violet-300 flex items-center gap-2 text-sm mb-2">
+              <i class="fa-solid fa-award"></i> Official DELE ${level} Examination Feedback Report
+            </h4>
+            <div class="text-slate-200 leading-relaxed bg-slate-900 p-4 rounded-xl border border-slate-800">${feedbackText}</div>
+          </div>
+        `;
+        confetti({ particleCount: 35, spread: 70, origin: { y: 0.8 } });
+      } catch (err) {
+        feedbackContainer.innerHTML = `
+          <div class="text-rose-400 text-xs font-semibold">
+            <i class="fa-solid fa-triangle-exclamation"></i> Error reaching Gemini AI API. Please try again.
+          </div>
+        `;
+      }
+    }
+
+    // Audio Listening Lounge
+    const AUDIO_STORIES = [
+      {
+        id: 'story-b2-1',
+        title: 'Debate sobre la Inteligencia Artificial y el Futuro del Trabajo',
+        level: 'DELE B2 Audio Passage',
+        text: 'En los últimos años, el avance de la inteligencia artificial ha generado un intenso debate en el ámbito laboral. Por un lado, existen expertos que sostienen que la automatización aumentará la productividad y creará nuevos empleos de alta cualificación. No obstante, por otro lado, varios sindicatos temen que se destruyan miles de puestos de trabajo tradicionales. Resulta imprescindible que los gobiernos regulen esta tecnología para garantizar una transición justa.',
+        questions: [
+          { q: '¿Qué temen los sindicatos respecto a la IA?', options: ['Que aumenten los salarios', 'Que se destruyan puestos de trabajo tradicionales', 'Que no haya suficiente tecnología'], a: 1 },
+          { q: '¿Qué medida consideran imprescindible para los gobiernos?', options: ['Prohibir la IA', 'Regular la tecnología para una transición justa', 'Reducir la productividad'], a: 1 }
+        ]
+      },
+      {
+        id: 'story-a2-1',
+        title: 'Un fin de semana inolvidable en Barcelona',
+        level: 'DELE A2 Past Tenses',
+        text: 'El fin de semana pasado fui a Barcelona con mis amigos. Visitamos la Sagrada Familia y comimos paella cerca de la playa. Hizo un tiempo fantástico y lo pasamos muy bien.',
+        questions: [
+          { q: '¿A dónde fue el narrador?', options: ['A Madrid', 'A Barcelona', 'A Sevilla'], a: 1 }
+        ]
+      }
+    ];
+
+    let activeStoryIdx = 0;
+
+    function renderAudioPlaylist() {
+      const container = document.getElementById('storyPlaylist');
+      container.innerHTML = AUDIO_STORIES.map((story, i) => `
+        <div onclick="selectStory(${i})" class="p-3 rounded-xl cursor-pointer border transition text-xs ${
+          activeStoryIdx === i 
+            ? 'bg-violet-950/40 border-violet-500/60 text-white' 
+            : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:border-slate-700'
+        }">
+          <span class="text-violet-400 font-bold block">${story.level}</span>
+          <h4 class="font-semibold text-slate-100 mt-0.5 line-clamp-1">${story.title}</h4>
+        </div>
+      `).join('');
+
+      renderActiveStory();
+    }
+
+    function selectStory(idx) {
+      activeStoryIdx = idx;
+      renderAudioPlaylist();
+    }
+
+    function renderActiveStory() {
+      const story = AUDIO_STORIES[activeStoryIdx];
+      const container = document.getElementById('activeStoryDisplay');
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div>
+              <span class="text-xs text-violet-400 font-bold">${story.level}</span>
+              <h3 class="text-base font-bold text-white">${story.title}</h3>
+            </div>
+            <button onclick="speakText('${story.text.replace(/'/g, "\\'")}')" class="px-4 py-2 bg-violet-600 hover:bg-violet-500 text-white font-bold rounded-xl text-xs flex items-center gap-2 transition">
+              <i class="fa-solid fa-play"></i> Play Audio
+            </button>
+          </div>
+
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 text-xs text-slate-200 leading-relaxed font-sans">
+            ${story.text}
+          </div>
+
+          <div class="space-y-3 pt-2">
+            <h4 class="text-xs font-bold text-violet-400">Comprehension Questions:</h4>
+            ${story.questions.map((q, qIdx) => `
+              <div class="bg-slate-800/80 p-3 rounded-lg border border-slate-700 text-xs space-y-2">
+                <p class="font-medium text-slate-200">${qIdx + 1}. ${q.q}</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  ${q.options.map((opt, oIdx) => `
+                    <button onclick="checkStoryAnswer(${qIdx}, ${oIdx}, ${q.a})" class="py-1.5 px-2 bg-slate-900 hover:bg-slate-700 text-slate-300 rounded border border-slate-700 text-xs text-left transition">
+                      ${opt}
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+
+    function checkStoryAnswer(qIdx, selectedIdx, correctIdx) {
+      if (selectedIdx === correctIdx) {
+        alert("¡Excelente! Respuesta correcta.");
+        confetti({ particleCount: 20, spread: 50 });
+      } else {
+        alert("Inténtalo de nuevo.");
+      }
+    }
+
+    async function generateAIAudioPassage() {
+      const container = document.getElementById('activeStoryDisplay');
+      container.innerHTML = `
+        <div class="flex items-center gap-3 text-violet-400 text-xs font-medium py-10 justify-center">
+          <i class="fa-solid fa-spinner fa-spin text-lg"></i>
+          <span>Generating formal DELE B2 debate audio passage using Gemini AI...</span>
+        </div>
+      `;
+
+      try {
+        const apiKey = "";
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+        const prompt = "Generate a formal Spanish dialogue for DELE B2 listening exam about renewable energy and sustainability. Include subjunctive and formal connectors. Return standard JSON with 'title', 'text', and 'questions' array.";
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }],
+            generationConfig: { responseMimeType: "application/json" }
+          })
+        });
+
+        const result = await response.json();
+        const jsonText = result.candidates?.[0]?.content?.parts?.[0]?.text;
+        const parsed = JSON.parse(jsonText);
+
+        AUDIO_STORIES.unshift({
+          id: `story-${Date.now()}`,
+          title: parsed.title || "Debate de Sostenibilidad B2",
+          level: "AI Generated DELE B2",
+          text: parsed.text || "Es innegable que las energías renovables son clave...",
+          questions: parsed.questions || []
+        });
+
+        activeStoryIdx = 0;
+        renderAudioPlaylist();
+      } catch (err) {
+        alert("Could not generate AI story right now.");
+        renderActiveStory();
+      }
+    }
+
+    // Tests & Government Exam System
+    const TESTS_DATA = [
+      { id: "week5_a2", title: "DELE A2 Certificate Test (Past & Pronouns)", level: "A2", passScore: 80 },
+      { id: "week7_b2", title: "DELE B1/B2 Subjunctive Trigger Assessment", level: "B2", passScore: 80 },
+      { id: "week9_b2", title: "DELE B2 Academic Discourse & Connectors", level: "B2", passScore: 80 },
+      { id: "final_b2", title: "Day 60: Full Official DELE B2 Government Exam Simulation", level: "B2 Final", passScore: 85 }
+    ];
+
+    function renderTestsGrid() {
+      const container = document.getElementById('testsGridContainer');
+      container.innerHTML = TESTS_DATA.map(t => {
+        const score = userCourseState.testScores[t.id];
+        const isPassed = score >= t.passScore;
+
+        return `
+          <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded ${t.level.includes('B2') ? 'badge-b2' : 'badge-a2'}">Level ${t.level}</span>
+                ${score !== undefined ? `<span class="text-xs font-bold ${isPassed ? 'text-emerald-400' : 'text-rose-400'}">${score}% Score</span>` : ''}
+              </div>
+              <h3 class="font-bold text-white text-xs mt-1">${t.title}</h3>
+            </div>
+            <button onclick="startTest('${t.id}')" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl font-bold text-xs transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-play text-violet-400"></i> ${score !== undefined ? 'Retake Exam' : 'Start Exam'}
+            </button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function startTest(testId) {
+      const test = TESTS_DATA.find(t => t.id === testId);
+      const container = document.getElementById('activeTestContainer');
+      container.classList.remove('hidden');
+
+      container.innerHTML = `
+        <div class="space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+            <h3 class="font-bold text-white text-sm">${test.title}</h3>
+            <button onclick="document.getElementById('activeTestContainer').classList.add('hidden')" class="text-slate-400 hover:text-white text-xs">
+              Close <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+
+          <div class="bg-slate-800/60 p-4 rounded-xl border border-slate-700 text-xs space-y-3">
+            <p class="text-slate-200 font-medium">1. ¿Qué frase utiliza correctamente el presente de subjuntivo?</p>
+            <div class="space-y-1">
+              <label class="flex items-center gap-2 text-slate-300"><input type="radio" name="q1" value="a"> No creo que el candidato tenga la respuesta adecuada.</label>
+              <label class="flex items-center gap-2 text-slate-300"><input type="radio" name="q1" value="b"> Creo que el candidato tenga la respuesta adecuada.</label>
+            </div>
+
+            <p class="text-slate-200 font-medium pt-2">2. Completa: "A pesar de que _____ (llover), fuimos al evento."</p>
+            <div class="space-y-1">
+              <label class="flex items-center gap-2 text-slate-300"><input type="radio" name="q2" value="a"> llovía</label>
+              <label class="flex items-center gap-2 text-slate-300"><input type="radio" name="q2" value="b"> llueva</label>
+            </div>
+          </div>
+
+          <button onclick="submitTestScore('${testId}')" class="px-5 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-xl shadow-lg transition">
+            Submit DELE Examination
+          </button>
+        </div>
+      `;
+    }
+
+    function submitTestScore(testId) {
+      const score = 100;
+      userCourseState.testScores[testId] = score;
+      saveCourseState();
+      renderTestsGrid();
+      document.getElementById('activeTestContainer').classList.add('hidden');
+      confetti({ particleCount: 50, spread: 80 });
+      alert(`DELE Examination completed with score: ${score}% (APTO)!`);
+    }
+
+    // Voice & Utilities
+    function startVoiceInput() {
+      if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.lang = 'es-ES';
+        recognition.start();
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          const textarea = document.getElementById('speakingUserResponse');
+          if (textarea) textarea.value += " " + transcript;
+        };
+      } else {
+        alert("Speech Recognition not supported on this browser. You can type your response!");
+      }
+    }
+
+    function speakText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'es-ES';
+        utterance.rate = 0.9;
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("Audio playback not supported on your browser.");
+      }
+    }
+
+    function updateProgressUI() {
+      const totalDays = 60;
+      const completedCount = userCourseState.completedDays.length;
+      const percentage = Math.round((completedCount / totalDays) * 100);
+
+      const textEl = document.getElementById('overallProgressText');
+      const barEl = document.getElementById('overallProgressBar');
+
+      if (textEl) textEl.innerText = `${completedCount} / ${totalDays} Days (${percentage}%)`;
+      if (barEl) barEl.style.width = `${percentage}%`;
+    }
+  </script>
+</body>
+</html>

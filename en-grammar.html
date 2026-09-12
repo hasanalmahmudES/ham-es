@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrammarPro | Modern Basic English Grammar Guide</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Inter & Plus Jakarta Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            800: '#3730a3',
+                            900: '#312e81',
+                        },
+                        emerald: {
+                            500: '#10b981',
+                            600: '#059669',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0,0,0,0.03);
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.3);
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.6);
+        }
+        .highlight-passive {
+            background-color: rgba(245, 158, 11, 0.25);
+            border-bottom: 2px solid #f59e0b;
+            padding: 0 3px;
+            border-radius: 4px;
+        }
+        .highlight-verb {
+            background-color: rgba(16, 185, 129, 0.2);
+            border-bottom: 2px solid #10b981;
+            padding: 0 3px;
+            border-radius: 4px;
+        }
+        .highlight-adverb {
+            background-color: rgba(244, 63, 94, 0.2);
+            border-bottom: 2px solid #f43f5e;
+            padding: 0 3px;
+            border-radius: 4px;
+        }
+        .highlight-wordy {
+            background-color: rgba(168, 85, 247, 0.2);
+            border-bottom: 2px solid #a855f7;
+            padding: 0 3px;
+            border-radius: 4px;
+        }
+        .glass-card {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.75);
+        }
+        .dark .glass-card {
+            background: rgba(15, 23, 42, 0.75);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col justify-between selection:bg-brand-500 selection:text-white">
+
+    <!-- TOP NAVIGATION -->
+    <header class="sticky top-0 z-40 w-full backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-md shadow-brand-500/20">
+                        <i class="fa-solid fa-graduation-cap text-lg"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-tight bg-gradient-to-r from-brand-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">GrammarPro</span>
+                        <span class="text-[10px] uppercase tracking-widest text-slate-400 font-bold block -mt-1">Basic English</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Items -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-3 font-semibold text-xs lg:text-sm">
+                    <a href="#foundations" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:bg-slate-800/60 transition-all">Foundations</a>
+                    <a href="#tense-explorer" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:bg-slate-800/60 transition-all">Tense Explorer</a>
+                    <a href="#analyzer" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:bg-slate-800/60 transition-all flex items-center gap-1.5">
+                        <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> Text Inspector
+                    </a>
+                    <a href="#verbs-matrix" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:bg-slate-800/60 transition-all">Irregular Verbs</a>
+                    <a href="#punctuation" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-slate-100/60 dark:text-slate-300 dark:hover:text-brand-400 dark:hover:bg-slate-800/60 transition-all">Style & Rules</a>
+                </nav>
+
+                <!-- Action Controls -->
+                <div class="flex items-center space-x-2 sm:space-x-3">
+                    <!-- Quick Search Trigger -->
+                    <button onclick="toggleSearchModal()" class="p-2.5 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center gap-2 text-xs font-semibold bg-slate-100/50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700" title="Search topics (Ctrl+K)">
+                        <i class="fa-solid fa-magnifying-glass text-sm"></i>
+                        <span class="hidden sm:inline-block">Search</span>
+                        <kbd class="hidden sm:inline-block px-1.5 py-0.5 text-[10px] bg-slate-200 dark:bg-slate-700 rounded text-slate-500 dark:text-slate-300">Ctrl+K</kbd>
+                    </button>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" onclick="toggleDarkMode()" class="p-2.5 text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-amber-400 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" title="Toggle Theme">
+                        <i id="theme-toggle-icon" class="fa-solid fa-moon text-lg"></i>
+                    </button>
+
+                    <!-- Mobile Menu Button -->
+                    <button onclick="toggleMobileNav()" class="md:hidden p-2 text-slate-600 dark:text-slate-300 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 px-4 pt-3 pb-5 space-y-2">
+            <a href="#foundations" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Foundations</a>
+            <a href="#tense-explorer" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Tense Explorer</a>
+            <a href="#analyzer" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Text Inspector Tool</a>
+            <a href="#verbs-matrix" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Irregular Verbs Table</a>
+            <a href="#punctuation" onclick="toggleMobileNav()" class="block px-3 py-2 rounded-lg text-base font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800">Punctuation & Style Rules</a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION WITH INTERACTIVE SENTENCE PARSER -->
+    <section class="relative py-12 lg:py-20 bg-gradient-to-b from-indigo-50/60 via-slate-50 to-slate-50 dark:from-slate-900/80 dark:via-slate-950 dark:to-slate-950 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-100/80 dark:bg-brand-950/80 border border-brand-200 dark:border-brand-800 text-brand-700 dark:text-brand-300 text-xs font-bold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                        Essential Basic English Grammar
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+                        Speak and Write with <span class="bg-gradient-to-r from-brand-600 via-indigo-500 to-purple-600 bg-clip-text text-transparent">Total Confidence</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl font-normal leading-relaxed">
+                        Master fundamental grammar rules, sentence patterns, verb tenses, and punctuation through intuitive visual breakdowns and real-time text analysis.
+                    </p>
+
+                    <!-- Quick Hero Search Bar -->
+                    <div class="relative max-w-xl mx-auto lg:mx-0 pt-2">
+                        <div class="relative flex items-center">
+                            <i class="fa-solid fa-magnifying-glass absolute left-4 text-slate-400"></i>
+                            <input type="text" id="hero-search-input" onkeyup="filterTopicsByHeroSearch()" placeholder="Search basic grammar rules e.g., 'Prepositions', 'Past Tense'..." class="w-full pl-11 pr-28 py-3.5 sm:py-4 rounded-2xl border border-slate-300/80 dark:border-slate-700/80 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-slate-100 shadow-lg shadow-slate-200/50 dark:shadow-none focus:outline-none focus:ring-2 focus:ring-brand-500 text-sm">
+                            <button onclick="scrollToSection('foundations')" class="absolute right-2 px-4 py-2 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold transition-colors shadow-sm">
+                                Explore
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Metrics -->
+                    <div class="pt-2 flex flex-wrap justify-center lg:justify-start gap-6 text-slate-500 dark:text-slate-400 text-xs sm:text-sm font-semibold">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Essential Parts of Speech
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Interactive Tenses
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Real-time Inspector
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Content: Interactive Sentence Breakdown -->
+                <div class="lg:col-span-6">
+                    <div class="bg-white/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-8 shadow-2xl relative overflow-hidden backdrop-blur-md">
+                        <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+                            <div class="flex items-center gap-2.5">
+                                <span class="p-2 bg-brand-100 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 rounded-xl text-xs font-bold">
+                                    <i class="fa-solid fa-layer-group"></i>
+                                </span>
+                                <div>
+                                    <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">Sentence Syntax Visualizer</h3>
+                                    <p class="text-[11px] text-slate-400">Click any word below to see its grammar role!</p>
+                                </div>
+                            </div>
+                            <span class="text-[11px] bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1 rounded-full font-bold">Interactive</span>
+                        </div>
+
+                        <!-- Interactive Interactive Sentence Words -->
+                        <div class="py-6 flex flex-wrap gap-2 text-base sm:text-lg font-semibold leading-relaxed" id="sentence-interactive-container">
+                            <!-- Injected dynamically via JavaScript -->
+                        </div>
+
+                        <!-- Info Card Box for Selected Word -->
+                        <div id="word-detail-box" class="p-4 bg-slate-50 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl transition-all">
+                            <div class="flex items-center justify-between">
+                                <span class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400" id="selected-word-role">Click a word above</span>
+                                <span class="text-[10px] px-2 py-0.5 rounded bg-brand-50 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 font-bold" id="selected-word-tag">Parts of Speech</span>
+                            </div>
+                            <h4 class="text-base font-extrabold text-slate-900 dark:text-white mt-1" id="selected-word-text">Select any word</h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 mt-1 leading-relaxed" id="selected-word-desc">
+                                Interactive sentence analysis highlights how nouns, adjectives, verbs, and prepositions assemble to form complete thoughts.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CORE GRAMMAR CURRICULUM -->
+    <section id="foundations" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
+                <div>
+                    <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Structured Syllabus</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">Core Grammar Curriculum</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-1 text-sm sm:text-base">Master these basic modules to build fluently structured English sentences.</p>
+                </div>
+                
+                <!-- Category Filter Tabs -->
+                <div class="flex flex-wrap gap-2 p-1.5 bg-slate-100 dark:bg-slate-800 rounded-2xl text-xs font-bold">
+                    <button onclick="filterTopics('all')" class="topic-tab-btn active px-4 py-2 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm transition-all" data-category="all">All Modules</button>
+                    <button onclick="filterTopics('foundations')" class="topic-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-category="foundations">8 Parts of Speech</button>
+                    <button onclick="filterTopics('syntax')" class="topic-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-category="syntax">Sentence Syntax</button>
+                    <button onclick="filterTopics('advanced')" class="topic-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-category="advanced">Modals & Style</button>
+                    <button onclick="filterTopics('errors')" class="topic-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all" data-category="errors">Crucial Mistakes</button>
+                </div>
+            </div>
+
+            <!-- Topics Grid Container -->
+            <div id="topics-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Injected via JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE VERB TENSE TIMELINE EXPLORER -->
+    <section id="tense-explorer" class="py-16 bg-slate-100/70 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="px-3.5 py-1.5 text-xs font-bold rounded-full bg-brand-100 text-brand-700 dark:bg-brand-950/80 dark:text-brand-300 uppercase tracking-wider">Visual Guide</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">Interactive Tense Explorer</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base">Select a tense aspect below to view formula structures, visual timing, and usage examples.</p>
+            </div>
+
+            <!-- Tense Controls Header -->
+            <div class="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800/80 shadow-md space-y-6">
+                <!-- Time Horizon Selection -->
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="switchTenseTime('past')" id="tense-time-past" class="tense-time-btn px-6 py-2.5 rounded-xl text-sm font-bold border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-backward text-xs"></i> Past Tense
+                    </button>
+                    <button onclick="switchTenseTime('present')" id="tense-time-present" class="tense-time-btn active px-6 py-2.5 rounded-xl text-sm font-bold bg-brand-600 text-white shadow-md shadow-brand-500/20 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-play text-xs"></i> Present Tense
+                    </button>
+                    <button onclick="switchTenseTime('future')" id="tense-time-future" class="tense-time-btn px-6 py-2.5 rounded-xl text-sm font-bold border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-forward text-xs"></i> Future Tense
+                    </button>
+                </div>
+
+                <!-- Aspect Selector Tabs -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+                    <button onclick="switchTenseAspect('simple')" id="tense-aspect-simple" class="tense-aspect-btn active p-3 rounded-2xl bg-indigo-50 dark:bg-brand-950/50 border border-brand-300 dark:border-brand-700 text-brand-700 dark:text-brand-300 font-bold text-xs sm:text-sm">
+                        Simple Aspect
+                    </button>
+                    <button onclick="switchTenseAspect('continuous')" id="tense-aspect-continuous" class="tense-aspect-btn p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-xs sm:text-sm">
+                        Continuous (Progressive)
+                    </button>
+                    <button onclick="switchTenseAspect('perfect')" id="tense-aspect-perfect" class="tense-aspect-btn p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-xs sm:text-sm">
+                        Perfect Aspect
+                    </button>
+                    <button onclick="switchTenseAspect('perfect-continuous')" id="tense-aspect-perfect-continuous" class="tense-aspect-btn p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-xs sm:text-sm">
+                        Perfect Continuous
+                    </button>
+                </div>
+
+                <!-- Active Tense Detail Display -->
+                <div id="tense-display-card" class="p-6 bg-slate-50 dark:bg-slate-800/40 rounded-2xl border border-slate-200/80 dark:border-slate-800/80 space-y-4">
+                    <!-- Dynamic Content -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE SENTENCE INSPECTOR -->
+    <section id="analyzer" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="px-3.5 py-1.5 text-xs font-bold rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-950/80 dark:text-emerald-300 uppercase tracking-wider">Real-Time Assistant</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">Interactive Sentence Inspector</h2>
+                <p class="text-slate-500 dark:text-slate-400 mt-2 text-sm sm:text-base">Paste or type text to inspect passive voice, sentence lengths, readability score, and verb usage.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Input Area -->
+                <div class="lg:col-span-7 space-y-4">
+                    <div class="bg-slate-50 dark:bg-slate-950 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-5 shadow-sm">
+                        <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-800 mb-3">
+                            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Input Text</span>
+                            <div class="flex items-center space-x-3 text-xs">
+                                <button onclick="loadSampleText()" class="text-brand-600 dark:text-brand-400 hover:underline font-bold">Load Sample</button>
+                                <span class="text-slate-300">|</span>
+                                <button onclick="clearText()" class="text-slate-400 hover:text-rose-500 font-bold">Clear</button>
+                            </div>
+                        </div>
+                        <textarea id="analyzer-input" oninput="analyzeText()" rows="8" placeholder="Type or paste basic sentences here..." class="w-full bg-transparent border-0 focus:ring-0 text-slate-800 dark:text-slate-100 text-sm sm:text-base resize-none focus:outline-none custom-scrollbar leading-relaxed">The homework was finished by the student yesterday. Because the assignment was very easy, he quickly wrote all answers without any difficulties.</textarea>
+                    </div>
+
+                    <!-- Highlight Legend -->
+                    <div class="flex flex-wrap items-center justify-between gap-3 px-5 py-3.5 bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl text-xs font-semibold">
+                        <span class="text-slate-400">Highlights Key:</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-amber-400/50 border border-amber-500"></span> Passive Voice</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-emerald-400/50 border border-emerald-500"></span> Action Verbs</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-rose-400/50 border border-rose-500"></span> Adverbs (-ly)</span>
+                        <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded bg-purple-400/50 border border-purple-500"></span> Wordy Expressions</span>
+                    </div>
+                </div>
+
+                <!-- Analysis Dashboard Output -->
+                <div class="lg:col-span-5 space-y-4">
+                    <!-- Metrics Card -->
+                    <div class="bg-slate-50 dark:bg-slate-950 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 p-6 shadow-sm space-y-5">
+                        <h3 class="font-bold text-slate-900 dark:text-white text-base flex items-center justify-between">
+                            <span>Live Metrics</span>
+                            <span class="text-xs font-normal text-slate-400">Calculated live</span>
+                        </h3>
+
+                        <div class="grid grid-cols-2 gap-3">
+                            <div class="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 text-center">
+                                <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-words">0</span>
+                                <span class="text-xs text-slate-500 font-semibold">Words</span>
+                            </div>
+                            <div class="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 text-center">
+                                <span class="block text-2xl font-extrabold text-brand-600 dark:text-brand-400" id="stat-sentences">0</span>
+                                <span class="text-xs text-slate-500 font-semibold">Sentences</span>
+                            </div>
+                            <div class="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 text-center">
+                                <span class="block text-2xl font-extrabold text-amber-500" id="stat-passive">0</span>
+                                <span class="text-xs text-slate-500 font-semibold">Passive Verbs</span>
+                            </div>
+                            <div class="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 text-center">
+                                <span class="block text-2xl font-extrabold text-emerald-500" id="stat-readability">0</span>
+                                <span class="text-xs text-slate-500 font-semibold">Clarity Score</span>
+                            </div>
+                        </div>
+
+                        <!-- Highlighted Output Preview -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Inspected Output</label>
+                            <div id="analyzer-output" class="p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl min-h-[100px] text-sm leading-relaxed text-slate-800 dark:text-slate-200">
+                                
+                            </div>
+                        </div>
+
+                        <!-- Suggestions Panel -->
+                        <div class="space-y-2">
+                            <label class="text-xs font-bold text-slate-500 uppercase tracking-wider">Grammar Tips</label>
+                            <div id="analyzer-suggestions" class="space-y-2 text-xs">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IRREGULAR VERBS REFERENCE MATRIX -->
+    <section id="verbs-matrix" class="py-16 bg-slate-100/70 dark:bg-slate-950 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <span class="text-xs font-bold text-brand-600 dark:text-brand-400 uppercase tracking-widest">Verb Dictionary</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-1">Irregular Verbs Table</h2>
+                    <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-1">Instant searchable reference for Base (V1), Past Simple (V2), and Past Participle (V3).</p>
+                </div>
+
+                <!-- Search Input -->
+                <div class="relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-3.5 text-slate-400 text-sm"></i>
+                    <input type="text" id="verb-search-input" onkeyup="filterVerbs()" placeholder="Search verb e.g. 'go', 'write'..." class="pl-10 pr-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-300/80 dark:border-slate-700/80 rounded-2xl text-sm text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-500 w-full sm:w-72 shadow-sm">
+                </div>
+            </div>
+
+            <!-- Table Card -->
+            <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl overflow-hidden shadow-sm">
+                <div class="overflow-x-auto custom-scrollbar max-h-96">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead class="sticky top-0 bg-slate-100/90 dark:bg-slate-800/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-700 text-xs uppercase font-extrabold text-slate-500 dark:text-slate-400 tracking-wider">
+                            <tr>
+                                <th class="py-4 px-6">Base Form (V1)</th>
+                                <th class="py-4 px-6">Past Simple (V2)</th>
+                                <th class="py-4 px-6">Past Participle (V3)</th>
+                                <th class="py-4 px-6">Example Usage</th>
+                            </tr>
+                        </thead>
+                        <tbody id="verbs-table-body" class="divide-y divide-slate-100 dark:divide-slate-800/60 font-medium text-slate-700 dark:text-slate-300">
+                            <!-- Injected via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-6 py-3.5 bg-slate-50 dark:bg-slate-800/50 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 font-semibold flex justify-between items-center">
+                    <span id="verb-count-label">Showing 0 irregular verbs</span>
+                    <span>Tip: Regular verbs form past tense by adding <strong>-ed</strong>.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUNCTUATION & COMMON MISTAKES GUIDE -->
+    <section id="punctuation" class="py-16 bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="px-3 py-1 text-xs font-bold rounded-full bg-purple-100 text-purple-700 dark:bg-purple-950/80 dark:text-purple-300 uppercase tracking-wider">Style Matrix</span>
+                <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight mt-3">Punctuation & Core Rules</h2>
+                <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base mt-1">Essential rules to make your English clear, elegant, and error-free.</p>
+            </div>
+
+            <!-- Card Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="punctuation-grid">
+                <!-- Cards injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- TOPIC LESSON DETAIL MODAL -->
+    <div id="topic-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" role="dialog" aria-modal="true">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity" onclick="closeTopicModal()"></div>
+
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div class="inline-block align-bottom bg-white dark:bg-slate-900 rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl lg:max-w-4xl sm:w-full border border-slate-200 dark:border-slate-800">
+                <div class="p-6 sm:p-8 space-y-6">
+                    <!-- Modal Header -->
+                    <div class="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <div>
+                            <span id="modal-category" class="text-xs font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">Category</span>
+                            <h2 id="modal-title" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Topic Title</h2>
+                        </div>
+                        <button onclick="closeTopicModal()" class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800">
+                            <i class="fa-solid fa-xmark text-xl"></i>
+                        </button>
+                    </div>
+
+                    <!-- Modal Content Body -->
+                    <div id="modal-body" class="space-y-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed max-h-[72vh] overflow-y-auto custom-scrollbar pr-2 sm:pr-4">
+                        <!-- Dynamic lesson content -->
+                    </div>
+
+                    <!-- Modal Footer -->
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+                        <span class="text-xs text-slate-400 font-medium"><i class="fa-solid fa-graduation-cap text-brand-500 mr-1"></i> GrammarPro Complete Master Lesson</span>
+                        <button onclick="closeTopicModal()" class="px-6 py-2.5 bg-brand-600 hover:bg-brand-700 text-white rounded-xl text-xs font-bold shadow-sm transition-all">
+                            Complete Lesson
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK SEARCH OVERLAY MODAL -->
+    <div id="search-modal" class="fixed inset-0 z-50 overflow-y-auto hidden" role="dialog" aria-modal="true">
+        <div class="flex items-start justify-center min-h-screen pt-16 px-4 pb-20 text-center">
+            <div class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm transition-opacity" onclick="toggleSearchModal()"></div>
+            <div class="inline-block bg-white dark:bg-slate-900 rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all w-full max-w-xl border border-slate-200 dark:border-slate-800 relative z-10">
+                <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                    <input type="text" id="global-search-input" onkeyup="handleGlobalSearch()" placeholder="Search any basic grammar topic, verb, or rule..." class="w-full bg-transparent text-slate-900 dark:text-white focus:outline-none text-base font-medium">
+                    <button onclick="toggleSearchModal()" class="text-xs bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-lg font-bold text-slate-500">ESC</button>
+                </div>
+                <div id="global-search-results" class="p-4 space-y-2 max-h-80 overflow-y-auto custom-scrollbar">
+                    <p class="text-xs text-slate-400 text-center py-6">Type to search grammar rules...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200/80 dark:border-slate-800/80 py-12 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-100 dark:border-slate-800">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-8 h-8 rounded-xl bg-brand-600 text-white flex items-center justify-center font-bold text-sm">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="font-extrabold text-base text-slate-900 dark:text-white">GrammarPro</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed">
+                        A clean, modern platform designed for English learners to build fundamental grammar skills.
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider mb-3">Quick Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#foundations" class="hover:text-brand-600 transition-colors">8 Parts of Speech</a></li>
+                        <li><a href="#tense-explorer" class="hover:text-brand-600 transition-colors">Tense Explorer</a></li>
+                        <li><a href="#analyzer" class="hover:text-brand-600 transition-colors">Sentence Inspector</a></li>
+                        <li><a href="#verbs-matrix" class="hover:text-brand-600 transition-colors">Irregular Verbs</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider mb-3">Core Modules</h4>
+                    <ul class="space-y-2 font-medium">
+                        <li><a href="#foundations" onclick="filterTopics('foundations')" class="hover:text-brand-600 transition-colors">Foundational Parts</a></li>
+                        <li><a href="#foundations" onclick="filterTopics('syntax')" class="hover:text-brand-600 transition-colors">Sentence Syntax</a></li>
+                        <li><a href="#foundations" onclick="filterTopics('advanced')" class="hover:text-brand-600 transition-colors">Modals & Style</a></li>
+                        <li><a href="#foundations" onclick="filterTopics('errors')" class="hover:text-brand-600 transition-colors">Everyday Mistakes</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-slate-900 dark:text-white text-xs uppercase tracking-wider mb-3">Grammar Updates</h4>
+                    <p class="text-xs mb-3">Get basic grammar tips directly in your inbox.</p>
+                    <form onsubmit="event.preventDefault(); showToast('Subscribed to daily tips!');" class="flex gap-2">
+                        <input type="email" placeholder="Email address" required class="px-3.5 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs w-full focus:outline-none focus:ring-1 focus:ring-brand-500">
+                        <button type="submit" class="px-3 py-2 bg-brand-600 hover:bg-brand-700 text-white font-bold rounded-xl text-xs shrink-0">Join</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <p>&copy; 2026 GrammarPro Academy. Essential Basic English Grammar.</p>
+                <div class="flex items-center space-x-4 text-slate-400 text-base">
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="hover:text-slate-600 dark:hover:text-slate-200 transition-colors"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-3 text-xs sm:text-sm font-semibold border border-slate-700 dark:border-slate-300">
+        <i class="fa-solid fa-circle-check text-emerald-400 dark:text-emerald-600 text-base" id="toast-icon"></i>
+        <span id="toast-message">Notification message</span>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let activeTenseTime = 'present';
+        let activeTenseAspect = 'simple';
+
+        // INTERACTIVE HERO SENTENCE BREAKDOWN DATA
+        const heroSentenceWords = [
+            { word: "The", role: "Article / Determiner", tag: "Grammar Modifier", desc: "Definite article specifying a particular noun ('fox')." },
+            { word: "quick", role: "Adjective", tag: "Descriptive", desc: "Describes or modifies the noun 'fox'." },
+            { word: "brown", role: "Adjective", tag: "Descriptive", desc: "Adds color description to the noun 'fox'." },
+            { word: "fox", role: "Subject Noun", tag: "Noun", desc: "The main person, animal, or thing performing the action." },
+            { word: "jumps", role: "Action Verb", tag: "Verb", desc: "Present simple tense verb indicating what the fox does." },
+            { word: "over", role: "Preposition", tag: "Relation", desc: "Shows spatial relationship between the verb and object." },
+            { word: "the", role: "Article", tag: "Grammar Modifier", desc: "Definite article specifying the dog." },
+            { word: "lazy", role: "Adjective", tag: "Descriptive", desc: "Describes the quality of the dog." },
+            { word: "dog.", role: "Object Noun", tag: "Noun", desc: "The noun receiving the prepositions action." }
+        ];
+
+        // BASIC GRAMMAR TOPICS DATASET
+        const grammarTopics = [
+            {
+                id: 'parts-of-speech',
+                title: 'The 8 Parts of Speech (Complete Masterclass)',
+                category: 'foundations',
+                categoryName: '8 Parts of Speech',
+                readTime: '8 min full lesson',
+                summary: 'The core foundations of English grammar: Nouns, Pronouns, Verbs, Adjectives, Adverbs, Prepositions, Conjunctions, and Interjections.',
+                icon: 'fa-cubes',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">Every word in the English language performs a specific job when placed in a sentence. Understanding the <strong>8 Parts of Speech</strong> is the single most important step in mastering English grammar.</p>
+                        
+                        <div class="p-4 bg-brand-50/70 dark:bg-brand-950/40 rounded-2xl border border-brand-200 dark:border-brand-800">
+                            <h4 class="font-extrabold text-brand-900 dark:text-brand-200 text-base mb-1">Key Concept</h4>
+                            <p class="text-xs sm:text-sm text-brand-800 dark:text-brand-300">A single word can be different parts of speech depending on context. For example: <em>"We took a fast train"</em> (Adjective) vs. <em>"He ran fast"</em> (Adverb) vs. <em>"They fast during Ramadan"</em> (Verb).</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">1. Nouns (The Naming Words)</h3>
+                        <p>Nouns identify people, places, things, or abstract concepts.</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/60 rounded-xl">
+                                <strong>Proper Nouns:</strong> Specific names (Capitalized).<br><em>Examples: Sarah, London, Microsoft, Tuesday.</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/60 rounded-xl">
+                                <strong>Common Nouns:</strong> General names of things.<br><em>Examples: city, teacher, computer, dog.</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/60 rounded-xl">
+                                <strong>Abstract Nouns:</strong> Ideas, emotions, states.<br><em>Examples: freedom, love, bravery, time.</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/60 rounded-xl">
+                                <strong>Countable vs Uncountable:</strong><br><em>Countable: chairs, apples. Uncountable: water, advice.</em>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">2. Pronouns (The Replacements)</h3>
+                        <p>Pronouns replace nouns to avoid awkward repetition in sentences.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-xs sm:text-sm">
+                            <li><strong>Personal Pronouns:</strong> I, you, he, she, it, we, they (Subject) / me, him, her, us, them (Object).</li>
+                            <li><strong>Possessive Pronouns:</strong> mine, yours, his, hers, ours, theirs.</li>
+                            <li><strong>Reflexive Pronouns:</strong> myself, yourself, himself, themselves.</li>
+                            <li><strong>Relative Pronouns:</strong> who, whom, which, that, whose.</li>
+                        </ul>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">3. Verbs (The Engine of Sentences)</h3>
+                        <p>Verbs convey physical actions, mental states, or states of being. No sentence can exist without a verb!</p>
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2 text-xs sm:text-sm">
+                            <p><strong>Action Verbs:</strong> Express physical/mental actions. <em>"She <u>runs</u> five miles daily."</em></p>
+                            <p><strong>Linking Verbs:</strong> Connect subject to a description (be, seem, look, feel). <em>"The soup <u>smells</u> delicious."</em></p>
+                            <p><strong>Auxiliary (Helping) Verbs:</strong> Help form tenses (be, do, have). <em>"They <u>have</u> finished writing."</em></p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">4. Adjectives (Noun Modifiers)</h3>
+                        <p>Adjectives describe or give more detail about a noun or pronoun (What kind? Which one? How many?).</p>
+                        <p class="text-xs sm:text-sm italic">Example: "The <u>ancient</u>, <u>wooden</u> desk held <u>three</u> heavy books."</p>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">5. Adverbs (Verb, Adjective & Adverb Modifiers)</h3>
+                        <p>Adverbs tell us <em>how, when, where, how often, or to what extent</em> an action takes place. Many end in <strong>-ly</strong>.</p>
+                        <ul class="list-disc pl-5 space-y-1 text-xs sm:text-sm">
+                            <li><strong>Manner (How):</strong> walked <em>slowly</em>, spoke <em>clearly</em>.</li>
+                            <li><strong>Frequency (How often):</strong> <em>always</em> arrives, <em>never</em> forgets.</li>
+                            <li><strong>Degree (To what extent):</strong> <em>very</em> happy, <em>extremely</em> hot.</li>
+                        </ul>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">6. Prepositions (Relational Connectors)</h3>
+                        <p>Prepositions show relationships in time, space, or position between nouns and other words.</p>
+                        <div class="p-3 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 rounded-xl text-xs sm:text-sm text-emerald-900 dark:text-emerald-200">
+                            <strong>Common Prepositions:</strong> in, on, at, under, behind, through, between, during, before, after, with, without.<br>
+                            <em>Example: "The cat slept <u>under</u> the table <u>during</u> the storm."</em>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">7. Conjunctions (Sentence Joiners)</h3>
+                        <p>Conjunctions link words, phrases, or entire clauses together.</p>
+                        <ul class="list-disc pl-5 space-y-2 text-xs sm:text-sm">
+                            <li><strong>Coordinating Conjunctions (FANBOYS):</strong> For, And, Nor, But, Or, Yet, So.</li>
+                            <li><strong>Subordinating Conjunctions:</strong> because, although, since, unless, while, if.</li>
+                        </ul>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">8. Interjections (Emotion Expressions)</h3>
+                        <p>Short exclamations used to convey immediate feelings or reactions.</p>
+                        <p class="text-xs sm:text-sm"><em>Examples: "<u>Wow!</u> That was an amazing presentation." / "<u>Ouch!</u> That hurt."</em></p>
+                    </div>
+                `
+            },
+            {
+                id: 'subject-verb-agreement',
+                title: 'Subject-Verb Agreement (Rules & Traps)',
+                category: 'syntax',
+                categoryName: 'Sentence Syntax',
+                readTime: '7 min full lesson',
+                summary: 'Master the rules of matching singular subjects to singular verbs and plural subjects to plural verbs without falling for common traps.',
+                icon: 'fa-scale-balanced',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">The golden rule of English sentence syntax is simple: <strong>A singular subject requires a singular verb, and a plural subject requires a plural verb.</strong> However, intervening words and tricky pronouns often confuse writers.</p>
+
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-3">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">The Golden Basics</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <span class="text-emerald-600 font-bold block">Singular Subject + Singular Verb</span>
+                                    <em>The student <u>speaks</u> English.</em> (Note the <strong>-s</strong> on singular verb)
+                                </div>
+                                <div class="p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-700">
+                                    <span class="text-emerald-600 font-bold block">Plural Subject + Plural Verb</span>
+                                    <em>The students <u>speak</u> English.</em> (No <strong>-s</strong> on plural verb)
+                                </div>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Rule 1: Ignore Intervening Phrases</h3>
+                        <p class="text-xs sm:text-sm">Do not let words that come between the subject and the verb confuse you! Always locate the true subject.</p>
+                        <div class="p-3.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 rounded-2xl text-xs sm:text-sm space-y-1">
+                            <p class="text-rose-700 dark:text-rose-300"><strong>Incorrect:</strong> The box of chocolates <u>are</u> on the table.</p>
+                            <p class="text-emerald-700 dark:text-emerald-400"><strong>Correct:</strong> The box <span class="text-slate-400">(of chocolates)</span> <u>is</u> on the table.</p>
+                            <p class="text-slate-500 text-[11px] mt-1">Reason: "Box" is singular. "of chocolates" is a modifying prepositional phrase.</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Rule 2: Compound Subjects ('And' vs 'Or / Nor')</h3>
+                        <ul class="list-disc pl-5 space-y-2 text-xs sm:text-sm">
+                            <li>Subjects joined by <strong>AND</strong> take a plural verb: <em>"John <u>and</u> Mary <u>are</u> attending."</em></li>
+                            <li>Subjects joined by <strong>OR / NOR</strong> agree with the subject <em>closest to the verb</em>:
+                                <br><span class="text-slate-500 font-mono text-[11px]">- Neither the manager nor the <u>employees were</u> informed.</span>
+                                <br><span class="text-slate-500 font-mono text-[11px]">- Neither the employees nor the <u>manager was</u> informed.</span>
+                            </li>
+                        </ul>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Rule 3: Indefinite Pronouns are Singular</h3>
+                        <p class="text-xs sm:text-sm">Words ending in <em>-one, -body, -thing</em> as well as <em>each, every, neither, either</em> are strictly singular!</p>
+                        <div class="p-4 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-2xl text-xs sm:text-sm text-amber-900 dark:text-amber-200 space-y-1">
+                            <p><strong>Correct:</strong> "Everyone <u>has</u> submitted their report." (Not "Everyone have")</p>
+                            <p><strong>Correct:</strong> "Each of the answers <u>is</u> correct." (Not "is correct")</p>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Rule 4: Collective Nouns</h3>
+                        <p class="text-xs sm:text-sm">Nouns like <em>team, family, committee, class, audience</em> take singular verbs when acting as a single unified group.</p>
+                        <p class="text-xs sm:text-sm italic">Example: "The committee <u>meets</u> every Thursday afternoon."</p>
+                    </div>
+                `
+            },
+            {
+                id: 'verb-tenses-basic',
+                title: 'Mastering All 12 English Verb Tenses',
+                category: 'syntax',
+                categoryName: 'Sentence Syntax',
+                readTime: '10 min full lesson',
+                summary: 'Comprehensive breakdown of how Past, Present, and Future tenses locate actions across time with clear signal keywords.',
+                icon: 'fa-clock',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">Verb tenses specify the exact timing and state of completion of an action. English features 3 Time frames (Past, Present, Future) across 4 Aspects (Simple, Continuous, Perfect, Perfect Continuous).</p>
+
+                        <!-- Present Tenses -->
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-3">
+                            <h3 class="text-lg font-bold text-brand-600 dark:text-brand-400">1. Present Tenses</h3>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Present Simple:</strong> Habitual actions, general truths.
+                                    <br><span class="text-slate-500">Formula: Subject + Base Verb (+ s/es)</span>
+                                    <br><em>"He reads newspapers every morning."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Present Continuous:</strong> Actions happening right now.
+                                    <br><span class="text-slate-500">Formula: Subject + am/is/are + Verb-ing</span>
+                                    <br><em>"They are writing their exam right now."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Present Perfect:</strong> Past actions with present relevance or duration up to now.
+                                    <br><span class="text-slate-500">Formula: Subject + have/has + V3 (Past Participle)</span>
+                                    <br><em>"She has lived in Tokyo for five years."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Present Perfect Continuous:</strong> Ongoing duration starting in past up to current moment.
+                                    <br><span class="text-slate-500">Formula: Subject + have/has been + Verb-ing</span>
+                                    <br><em>"It has been raining since early morning."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Past Tenses -->
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-3">
+                            <h3 class="text-lg font-bold text-indigo-600 dark:text-indigo-400">2. Past Tenses</h3>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Past Simple:</strong> Finished action at a specified past time.
+                                    <br><span class="text-slate-500">Formula: Subject + V2 (Past Form)</span>
+                                    <br><em>"I bought a laptop yesterday."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Past Continuous:</strong> Action in progress in the past when another event occurred.
+                                    <br><span class="text-slate-500">Formula: Subject + was/were + Verb-ing</span>
+                                    <br><em>"I was studying when the power went out."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Past Perfect:</strong> Action completed BEFORE another past action.
+                                    <br><span class="text-slate-500">Formula: Subject + had + V3</span>
+                                    <br><em>"The train had left before we reached the station."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Past Perfect Continuous:</strong> Duration of action before a past milestone.
+                                    <br><span class="text-slate-500">Formula: Subject + had been + Verb-ing</span>
+                                    <br><em>"They had been waiting for two hours before the bus arrived."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Future Tenses -->
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-2xl p-4 space-y-3">
+                            <h3 class="text-lg font-bold text-purple-600 dark:text-purple-400">3. Future Tenses</h3>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Future Simple:</strong> Predictions, promises, spontaneous decisions.
+                                    <br><span class="text-slate-500">Formula: Subject + will + Base Verb</span>
+                                    <br><em>"We will start the meeting at 9 AM."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Future Continuous:</strong> Action that will be in progress at a specific future moment.
+                                    <br><span class="text-slate-500">Formula: Subject + will be + Verb-ing</span>
+                                    <br><em>"This time tomorrow, I will be flying to London."</em>
+                                </div>
+                                <div class="p-2.5 bg-slate-50 dark:bg-slate-800/50 rounded-xl">
+                                    <strong>Future Perfect:</strong> Action that will be completed BEFORE a future deadline.
+                                    <br><span class="text-slate-500">Formula: Subject + will have + V3</span>
+                                    <br><em>"By next month, she will have completed her master degree."</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'sentence-structures',
+                title: 'Sentence Syntax & Clause Types',
+                category: 'syntax',
+                categoryName: 'Sentence Syntax',
+                readTime: '6 min full lesson',
+                summary: 'Learn S-V-O word order, independent vs. dependent clauses, and simple, compound, and complex sentence structures.',
+                icon: 'fa-diagram-project',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">Understanding sentence building blocks helps you write clear, varied, and sophisticated sentences while eliminating fragments and run-on sentences.</p>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">The Basic Building Block: S - V - O</h3>
+                        <p class="text-xs sm:text-sm">English relies on strict word order: <strong>Subject + Verb + Object</strong>.</p>
+                        <div class="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl text-xs sm:text-sm font-mono">
+                            <span class="text-brand-600 font-bold">[Subject]</span> Alex + <span class="text-emerald-600 font-bold">[Verb]</span> built + <span class="text-purple-600 font-bold">[Object]</span> a wooden cabinet.
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Clauses: Independent vs. Dependent</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <strong>Independent Clause:</strong> Contains subject + verb and forms a complete thought.<br><em>Example: "She loves classical music."</em>
+                            </div>
+                            <div class="p-3 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700">
+                                <strong>Dependent Clause:</strong> Contains subject + verb but begins with a subordinating conjunction (cannot stand alone).<br><em>Example: "Because she loves classical music..."</em>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">The 4 Sentence Structures</h3>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl">
+                                <strong>1. Simple Sentence:</strong> 1 Independent Clause.<br><em>"The dog barked loudly."</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl">
+                                <strong>2. Compound Sentence:</strong> 2 Independent Clauses connected by a comma + FANBOYS (for, and, nor, but, or, yet, so).<br><em>"The dog barked loudly, <u>but</u> the mailman ignored it."</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl">
+                                <strong>3. Complex Sentence:</strong> 1 Independent Clause + 1 (or more) Dependent Clauses.<br><em>"<u>Although it was raining heavily</u>, we decided to walk to the park."</em>
+                            </div>
+                            <div class="p-3 bg-slate-100 dark:bg-slate-800/80 rounded-xl">
+                                <strong>4. Compound-Complex Sentence:</strong> At least 2 Independent Clauses + 1 Dependent Clause.<br><em>"<u>Because the weather was pleasant</u>, we sat outside, and we ate our lunch."</em>
+                            </div>
+                        </div>
+
+                        <div class="p-4 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900 rounded-2xl space-y-2 text-xs sm:text-sm text-rose-900 dark:text-rose-200">
+                            <h4 class="font-extrabold text-rose-800 dark:text-rose-300">Common Mistakes to Avoid</h4>
+                            <p><strong>Comma Splice:</strong> Joining two independent clauses with only a comma without a conjunction.<br><em>Incorrect: "I love reading, I go to the library daily."</em><br><em>Correct: "I love reading, <u>so</u> I go to the library daily."</em></p>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'modals-basic',
+                title: 'Modal Auxiliary Verbs (Can, Could, Must & Should)',
+                category: 'advanced',
+                categoryName: 'Modals & Style',
+                readTime: '6 min full lesson',
+                summary: 'Use auxiliary modal verbs to express ability, permission, advice, possibility, and obligation with nuance.',
+                icon: 'fa-sliders',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">Modal verbs are special helping verbs that alter the meaning of main verbs to convey attitudes, possibilities, permissions, or rules.</p>
+
+                        <div class="p-3 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800 rounded-xl text-xs sm:text-sm text-amber-900 dark:text-amber-200 font-semibold">
+                            Rule: Modal verbs are ALWAYS followed by the bare base infinitive form of a verb without "to" (except ought to / have to). Never add -s, -ed, or -ing to modals!
+                        </div>
+
+                        <h3 class="text-xl font-extrabold text-slate-900 dark:text-white border-b border-slate-200 dark:border-slate-800 pb-2">Primary Modal Categories</h3>
+                        <div class="space-y-3 text-xs sm:text-sm">
+                            <div class="p-3.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+                                <span class="font-bold text-brand-600 block text-sm">1. Ability & Possibility (Can / Could)</span>
+                                <li><strong>Can:</strong> Present ability or general possibility. <em>"She can speak four languages."</em></li>
+                                <li><strong>Could:</strong> Past ability or polite request. <em>"Could you please pass the salt?"</em></li>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+                                <span class="font-bold text-brand-600 block text-sm">2. Advice & Recommendations (Should / Ought to)</span>
+                                <li><strong>Should:</strong> Expresses strong suggestion or duty. <em>"You should get at least seven hours of sleep."</em></li>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+                                <span class="font-bold text-brand-600 block text-sm">3. Obligation & Strong Necessity (Must / Have to)</span>
+                                <li><strong>Must:</strong> Rules, laws, or personal obligations. <em>"Drivers must stop at red signals."</em></li>
+                                <li><strong>Must not (Prohibition):</strong> <em>"You must not smoke in the office."</em></li>
+                            </div>
+
+                            <div class="p-3.5 bg-slate-100 dark:bg-slate-800/80 rounded-2xl">
+                                <span class="font-bold text-brand-600 block text-sm">4. Probability & Logical Deduction (Must be / Might / May)</span>
+                                <li><strong>Must be (90%+ certain):</strong> <em>"He has been working for 12 hours; he must be exhausted."</em></li>
+                                <li><strong>Might / May (50% chance):</strong> <em>"It might rain later today."</em></li>
+                            </div>
+                        </div>
+                    </div>
+                `
+            },
+            {
+                id: 'common-homophones',
+                title: 'Everyday Common Mistakes & Misused Words',
+                category: 'errors',
+                categoryName: 'Crucial Mistakes',
+                readTime: '7 min full lesson',
+                summary: 'Master confusing sound-alike pairs: Your vs. You’re, Their/There/They’re, Its vs. It’s, Affect vs. Effect, and Than vs. Then.',
+                icon: 'fa-spell-check',
+                content: `
+                    <div class="space-y-6">
+                        <p class="text-base leading-relaxed">Homophones are words that sound identical when spoken but have completely different spellings and meanings. Eliminating these errors instantly upgrades your writing credibility!</p>
+
+                        <!-- Pair 1 -->
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">1. Your vs. You're</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Your (Possessive):</strong> Belongs to you.<br><em>"Is this <u>your</u> jacket?"</em>
+                                </div>
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>You're (Contraction):</strong> Short for "You are".<br><em>"<u>You're</u> going to love this meal."</em>
+                                </div>
+                            </div>
+                            <p class="text-[11px] text-amber-600 dark:text-amber-400 font-medium">Memory Trick: If you can substitute "you are", use <em>you're</em>!</p>
+                        </div>
+
+                        <!-- Pair 2 -->
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">2. There vs. Their vs. They're</h4>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <div class="p-2 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>There:</strong> Refers to a place or existence. <em>"Put the bag over <u>there</u>." / "<u>There</u> is a solution."</em>
+                                </div>
+                                <div class="p-2 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Their:</strong> Possessive form of they. <em>"The students presented <u>their</u> project."</em>
+                                </div>
+                                <div class="p-2 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>They're:</strong> Contraction for "they are". <em>"<u>They're</u> arriving at 6 PM."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pair 3 -->
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">3. Its vs. It's</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Its (Possessive):</strong> Belongs to it.<br><em>"The dog wags <u>its</u> tail."</em>
+                                </div>
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>It's (Contraction):</strong> Short for "It is" or "It has".<br><em>"<u>It's</u> a sunny day outside."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pair 4 -->
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">4. Affect vs. Effect</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Affect (Verb):</strong> To influence.<br><em>"Lack of sleep will <u>affect</u> your focus."</em>
+                                </div>
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Effect (Noun):</strong> The result or outcome.<br><em>"The drug had no side <u>effects</u>."</em>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pair 5 -->
+                        <div class="p-4 bg-slate-100 dark:bg-slate-800/80 rounded-2xl space-y-2">
+                            <h4 class="font-extrabold text-slate-900 dark:text-white text-base">5. Then vs. Than</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Then (Time / Sequence):</strong> Next or at that time.<br><em>"We ate dinner, <u>then</u> went home."</em>
+                                </div>
+                                <div class="p-2.5 bg-white dark:bg-slate-900 rounded-xl">
+                                    <strong>Than (Comparison):</strong> Used when comparing items.<br><em>"She is taller <u>than</u> her brother."</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `
+            }
+        ];
+
+        // TENSE EXPLORER MATRIX DATA
+        const tenseData = {
+            present: {
+                simple: { name: "Present Simple", formula: "Subject + Base Verb (s/es)", example: "I study English every day.", usage: "Used for general truths, routines, habits, and permanent situations." },
+                continuous: { name: "Present Continuous", formula: "Subject + am/is/are + Verb-ing", example: "I am studying English right now.", usage: "Used for actions happening exactly at the present moment." },
+                perfect: { name: "Present Perfect", formula: "Subject + have/has + Past Participle (V3)", example: "I have studied English for three years.", usage: "Connects past actions to the present time or life experiences." },
+                'perfect-continuous': { name: "Present Perfect Continuous", formula: "Subject + have/has been + Verb-ing", example: "I have been studying English since morning.", usage: "Emphasizes the duration of an action starting in past up to now." }
+            },
+            past: {
+                simple: { name: "Past Simple", formula: "Subject + Past Simple (V2)", example: "I studied English yesterday.", usage: "Completed actions at a specific time in the past." },
+                continuous: { name: "Past Continuous", formula: "Subject + was/were + Verb-ing", example: "I was studying when you called.", usage: "Ongoing actions interrupted by another past action." },
+                perfect: { name: "Past Perfect", formula: "Subject + had + Past Participle (V3)", example: "I had studied English before I moved to London.", usage: "An action completed before another past action." },
+                'perfect-continuous': { name: "Past Perfect Continuous", formula: "Subject + had been + Verb-ing", example: "I had been studying for hours before the exam.", usage: "Duration of an action leading up to a past point in time." }
+            },
+            future: {
+                simple: { name: "Future Simple", formula: "Subject + will + Base Verb", example: "I will study English tomorrow.", usage: "Spontaneous decisions, predictions, or promises." },
+                continuous: { name: "Future Continuous", formula: "Subject + will be + Verb-ing", example: "I will be studying tomorrow at 5 PM.", usage: "Actions that will be in progress at a specific future time." },
+                perfect: { name: "Future Perfect", formula: "Subject + will have + Past Participle (V3)", example: "I will have studied all lessons by next week.", usage: "Actions that will be completed before a future deadline." },
+                'perfect-continuous': { name: "Future Perfect Continuous", formula: "Subject + will have been + Verb-ing", example: "By next month, I will have been studying for 2 years.", usage: "Duration of action up to a specific future point." }
+            }
+        };
+
+        // IRREGULAR VERBS DATASET
+        const irregularVerbs = [
+            { base: 'be', past: 'was / were', participle: 'been', example: 'They were happy yesterday.' },
+            { base: 'begin', past: 'began', participle: 'begun', example: 'The lesson began ten minutes ago.' },
+            { base: 'break', past: 'broke', participle: 'broken', example: 'She broke the vase by accident.' },
+            { base: 'bring', past: 'brought', participle: 'brought', example: 'He brought coffee to the meeting.' },
+            { base: 'buy', past: 'bought', participle: 'bought', example: 'We bought a new apartment last month.' },
+            { base: 'choose', past: 'chose', participle: 'chosen', example: 'He chose the blue jacket.' },
+            { base: 'come', past: 'came', participle: 'come', example: 'They came home late last night.' },
+            { base: 'do', past: 'did', participle: 'done', example: 'She did her homework quickly.' },
+            { base: 'drink', past: 'drank', participle: 'drunk', example: 'He drank a bottle of water.' },
+            { base: 'eat', past: 'ate', participle: 'eaten', example: 'We ate delicious pizza.' },
+            { base: 'fall', past: 'fell', participle: 'fallen', example: 'The leaves fell from the tree.' },
+            { base: 'find', past: 'found', participle: 'found', example: 'I found my missing keys.' },
+            { base: 'go', past: 'went', participle: 'gone', example: 'She went to Paris last summer.' },
+            { base: 'have', past: 'had', participle: 'had', example: 'We had a fantastic trip.' },
+            { base: 'know', past: 'knew', participle: 'known', example: 'He knew the answer immediately.' },
+            { base: 'make', past: 'made', participle: 'made', example: 'She made a delicious cake.' },
+            { base: 'see', past: 'saw', participle: 'seen', example: 'I saw a movie yesterday.' },
+            { base: 'speak', past: 'spoke', participle: 'spoken', example: 'He spoke English fluently.' },
+            { base: 'take', past: 'took', participle: 'taken', example: 'She took notes during class.' },
+            { base: 'write', past: 'wrote', participle: 'written', example: 'He wrote a letter to his friend.' }
+        ];
+
+        // PUNCTUATION & STYLE RULES
+        const punctuationRules = [
+            {
+                title: 'The Comma ( , )',
+                icon: 'fa-quote-left',
+                rule: 'Use commas to separate items in a list, after introductory clauses, and before coordinating conjunctions (and, but, so).',
+                exampleGood: 'I bought apples, oranges, and bananas.',
+                exampleBad: 'I bought apples oranges and bananas.',
+                tip: 'Pause naturally where you put a comma.'
+            },
+            {
+                title: 'Apostrophes for Possession ( \' )',
+                icon: 'fa-asterisk',
+                rule: 'Add \'s for singular noun possession. Add just an apostrophe after regular plural nouns ending in -s.',
+                exampleGood: 'The student\'s bag. / The students\' bags.',
+                exampleBad: 'The students bag. (Missing apostrophe)',
+                tip: 'Do not use apostrophes for simple plural nouns (e.g. 2 cats, not 2 cat\'s).'
+            },
+            {
+                title: 'Capital Letters',
+                icon: 'fa-font',
+                rule: 'Capitalize the first word of a sentence, the pronoun "I", and proper nouns (names, days, months, countries).',
+                exampleGood: 'Every Monday, John visits Spain.',
+                exampleBad: 'every monday, john visits spain.',
+                tip: 'Days and months always take capital letters in English.'
+            },
+            {
+                title: 'Quotation Marks ( " " )',
+                icon: 'fa-quote-right',
+                rule: 'Enclose exact spoken words or quotes inside double quotation marks.',
+                exampleGood: 'She said, "English is easy to learn."',
+                exampleBad: 'She said that "English was easy".',
+                tip: 'Commas and periods usually go inside quotation marks.'
+            }
+        ];
+
+        // INITIALIZATION ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            renderHeroSentenceDemo();
+            renderTopicsGrid();
+            renderTenseDisplay();
+            renderVerbsTable();
+            renderPunctuationGrid();
+            analyzeText();
+        });
+
+        /* RENDER HERO INTERACTIVE SENTENCE */
+        function renderHeroSentenceDemo() {
+            const container = document.getElementById('sentence-interactive-container');
+            container.innerHTML = '';
+
+            heroSentenceWords.forEach((item, index) => {
+                const wordSpan = document.createElement('span');
+                wordSpan.className = `cursor-pointer px-2.5 py-1 rounded-xl transition-all border ${index === 3 ? 'bg-brand-600 text-white border-brand-600 shadow-md' : 'bg-slate-100 hover:bg-brand-100 dark:bg-slate-800 dark:hover:bg-brand-950/70 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200'}`;
+                wordSpan.innerText = item.word;
+                wordSpan.onclick = () => selectHeroWord(index, wordSpan);
+                container.appendChild(wordSpan);
+            });
+
+            // Select 4th word ("fox") as default
+            selectHeroWord(3, container.children[3]);
+        }
+
+        function selectHeroWord(index, element) {
+            const container = document.getElementById('sentence-interactive-container');
+            Array.from(container.children).forEach(child => {
+                child.className = 'cursor-pointer px-2.5 py-1 rounded-xl transition-all border bg-slate-100 hover:bg-brand-100 dark:bg-slate-800 dark:hover:bg-brand-950/70 border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200';
+            });
+            element.className = 'cursor-pointer px-2.5 py-1 rounded-xl transition-all border bg-brand-600 text-white border-brand-600 shadow-md scale-105';
+
+            const item = heroSentenceWords[index];
+            document.getElementById('selected-word-role').innerText = item.role;
+            document.getElementById('selected-word-tag').innerText = item.tag;
+            document.getElementById('selected-word-text').innerText = `"${item.word}"`;
+            document.getElementById('selected-word-desc').innerText = item.desc;
+        }
+
+        /* TENSE EXPLORER FUNCTIONS */
+        function switchTenseTime(time) {
+            activeTenseTime = time;
+            document.querySelectorAll('.tense-time-btn').forEach(btn => {
+                btn.className = 'tense-time-btn px-6 py-2.5 rounded-xl text-sm font-bold border border-slate-200 dark:border-slate-700 transition-all flex items-center gap-2 text-slate-600 dark:text-slate-300';
+            });
+            const activeBtn = document.getElementById(`tense-time-${time}`);
+            activeBtn.className = 'tense-time-btn active px-6 py-2.5 rounded-xl text-sm font-bold bg-brand-600 text-white shadow-md shadow-brand-500/20 transition-all flex items-center gap-2';
+            
+            renderTenseDisplay();
+        }
+
+        function switchTenseAspect(aspect) {
+            activeTenseAspect = aspect;
+            document.querySelectorAll('.tense-aspect-btn').forEach(btn => {
+                btn.className = 'tense-aspect-btn p-3 rounded-2xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 font-bold text-xs sm:text-sm';
+            });
+            const activeBtn = document.getElementById(`tense-aspect-${aspect}`);
+            activeBtn.className = 'tense-aspect-btn active p-3 rounded-2xl bg-indigo-50 dark:bg-brand-950/50 border border-brand-300 dark:border-brand-700 text-brand-700 dark:text-brand-300 font-bold text-xs sm:text-sm';
+            
+            renderTenseDisplay();
+        }
+
+        function renderTenseDisplay() {
+            const data = tenseData[activeTenseTime][activeTenseAspect];
+            const container = document.getElementById('tense-display-card');
+            
+            container.innerHTML = `
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200/60 dark:border-slate-700/60">
+                    <h3 class="text-xl font-extrabold text-slate-900 dark:text-white">${data.name}</h3>
+                    <span class="text-xs px-3 py-1 rounded-full bg-brand-100 dark:bg-brand-900/60 text-brand-700 dark:text-brand-300 font-bold">${activeTenseTime.toUpperCase()} / ${activeTenseAspect.toUpperCase()}</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+                    <div class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Grammar Structure Formula</span>
+                        <code class="text-brand-600 dark:text-brand-400 font-bold text-sm sm:text-base">${data.formula}</code>
+                    </div>
+
+                    <div class="p-3.5 bg-white dark:bg-slate-900 rounded-xl border border-slate-200/80 dark:border-slate-800/80 space-y-1">
+                        <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Primary Usage</span>
+                        <p class="text-slate-700 dark:text-slate-300 font-medium">${data.usage}</p>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200/80 dark:border-emerald-900/80 rounded-xl">
+                    <span class="text-[11px] font-bold text-emerald-700 dark:text-emerald-400 uppercase tracking-wider block mb-1">Practical Example</span>
+                    <p class="text-emerald-900 dark:text-emerald-200 font-bold text-base">"${data.example}"</p>
+                </div>
+            `;
+        }
+
+        /* RENDER TOPICS GRID */
+        function renderTopicsGrid(filter = 'all') {
+            const container = document.getElementById('topics-grid');
+            container.innerHTML = '';
+
+            const filtered = filter === 'all' ? grammarTopics : grammarTopics.filter(t => t.category === filter);
+
+            filtered.forEach(topic => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group';
+                
+                card.innerHTML = `
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="p-3 bg-brand-50 dark:bg-brand-950/60 text-brand-600 dark:text-brand-400 rounded-2xl text-base">
+                                <i class="fa-solid ${topic.icon}"></i>
+                            </span>
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200/60 dark:border-slate-700/60">${topic.categoryName}</span>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-lg text-slate-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">${topic.title}</h3>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1.5 leading-relaxed">${topic.summary}</p>
+                        </div>
+                    </div>
+
+                    <div class="pt-5 mt-4 border-t border-slate-200/60 dark:border-slate-800/60 flex items-center justify-between text-xs font-bold">
+                        <span class="text-slate-400"><i class="fa-regular fa-clock mr-1"></i> ${topic.readTime}</span>
+                        <button onclick="openTopicModal('${topic.id}')" class="text-brand-600 dark:text-brand-400 hover:text-brand-700 flex items-center gap-1">
+                            Read Lesson &rarr;
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function filterTopics(category) {
+            document.querySelectorAll('.topic-tab-btn').forEach(btn => {
+                if (btn.dataset.category === category) {
+                    btn.className = 'topic-tab-btn active px-4 py-2 rounded-xl bg-white dark:bg-slate-700 text-slate-900 dark:text-white shadow-sm transition-all';
+                } else {
+                    btn.className = 'topic-tab-btn px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all';
+                }
+            });
+            renderTopicsGrid(category);
+        }
+
+        function filterTopicsByHeroSearch() {
+            const query = document.getElementById('hero-search-input').value.toLowerCase();
+            const filtered = grammarTopics.filter(t => t.title.toLowerCase().includes(query) || t.summary.toLowerCase().includes(query));
+            
+            const container = document.getElementById('topics-grid');
+            container.innerHTML = '';
+            
+            if (filtered.length === 0) {
+                container.innerHTML = `<div class="col-span-full text-center py-8 text-slate-400 text-sm">No grammar rules match your search query.</div>`;
+                return;
+            }
+
+            filtered.forEach(topic => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 shadow-sm';
+                card.innerHTML = `
+                    <h3 class="font-bold text-lg text-slate-900 dark:text-white">${topic.title}</h3>
+                    <p class="text-xs text-slate-500 mt-1">${topic.summary}</p>
+                    <button onclick="openTopicModal('${topic.id}')" class="mt-4 text-xs font-bold text-brand-600">Read Lesson &rarr;</button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* TEXT INSPECTOR & GRAMMAR ANALYZER LOGIC */
+        function analyzeText() {
+            const text = document.getElementById('analyzer-input').value;
+            const outputDiv = document.getElementById('analyzer-output');
+            const suggestionsDiv = document.getElementById('analyzer-suggestions');
+
+            if (!text.trim()) {
+                document.getElementById('stat-words').innerText = '0';
+                document.getElementById('stat-sentences').innerText = '0';
+                document.getElementById('stat-passive').innerText = '0';
+                document.getElementById('stat-readability').innerText = '0';
+                outputDiv.innerHTML = '<span class="text-slate-400 italic">Live analysis will display here...</span>';
+                suggestionsDiv.innerHTML = '<p class="text-slate-400">Write sentences above to receive style recommendations.</p>';
+                return;
+            }
+
+            const words = text.trim().split(/\s+/).filter(w => w.length > 0);
+            const wordCount = words.length;
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            const sentenceCount = sentences.length || 1;
+
+            const avgWordsPerSentence = wordCount / sentenceCount;
+            const readabilityScore = Math.max(0, Math.min(100, Math.round(206.835 - (1.015 * avgWordsPerSentence) - 10)));
+
+            const passiveRegex = /\b(am|is|are|was|were|be|been|being)\s+([a-z]+ed|written|done|seen|made|taken|given|found|built|chosen)\b/gi;
+            const adverbRegex = /\b([a-z]{3,}ly)\b/gi;
+            const wordyRegex = /\b(in order to|due to the fact that|at this point in time)\b/gi;
+            const actionVerbRegex = /\b(conducted|inspected|analyzed|achieved|created|executed|wrote|studied)\b/gi;
+
+            let passiveMatches = text.match(passiveRegex) || [];
+
+            let highlightedText = text
+                .replace(passiveRegex, '<span class="highlight-passive" title="Passive Voice">$&</span>')
+                .replace(adverbRegex, '<span class="highlight-adverb" title="Adverb">$&</span>')
+                .replace(wordyRegex, '<span class="highlight-wordy" title="Wordy Phrase">$&</span>')
+                .replace(actionVerbRegex, '<span class="highlight-verb" title="Action Verb">$&</span>');
+
+            document.getElementById('stat-words').innerText = wordCount;
+            document.getElementById('stat-sentences').innerText = sentenceCount;
+            document.getElementById('stat-passive').innerText = passiveMatches.length;
+            document.getElementById('stat-readability').innerText = `${readabilityScore}%`;
+
+            outputDiv.innerHTML = highlightedText;
+
+            let suggestionsHTML = '';
+            if (passiveMatches.length > 0) {
+                suggestionsHTML += `<div class="p-2.5 bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-xl text-amber-800 dark:text-amber-300 font-medium">
+                    <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Detected <strong>${passiveMatches.length} passive phrase(s)</strong>. Try rephrasing into active voice for directness.
+                </div>`;
+            }
+            if (avgWordsPerSentence > 20) {
+                suggestionsHTML += `<div class="p-2.5 bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-900 rounded-xl text-purple-800 dark:text-purple-300 font-medium">
+                    <i class="fa-solid fa-circle-info mr-1.5"></i> Sentences are relatively long (avg ${Math.round(avgWordsPerSentence)} words). Shorten sentences for easier reading.
+                </div>`;
+            }
+            if (!suggestionsHTML) {
+                suggestionsHTML = `<div class="p-2.5 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-900 rounded-xl text-emerald-800 dark:text-emerald-300 font-medium">
+                    <i class="fa-solid fa-circle-check mr-1.5"></i> Great readability! Concise sentence structures detected.
+                </div>`;
+            }
+
+            suggestionsDiv.innerHTML = suggestionsHTML;
+        }
+
+        function loadSampleText() {
+            document.getElementById('analyzer-input').value = "The proposal was written by the teacher yesterday. Because the lesson was very easy, the students quickly learned all rules.";
+            analyzeText();
+        }
+
+        function clearText() {
+            document.getElementById('analyzer-input').value = "";
+            analyzeText();
+        }
+
+        /* RENDER IRREGULAR VERBS TABLE */
+        function renderVerbsTable(data = irregularVerbs) {
+            const tbody = document.getElementById('verbs-table-body');
+            tbody.innerHTML = '';
+
+            data.forEach(v => {
+                const row = document.createElement('tr');
+                row.className = 'hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors';
+                row.innerHTML = `
+                    <td class="py-3.5 px-6 font-bold text-brand-600 dark:text-brand-400">${v.base}</td>
+                    <td class="py-3.5 px-6 font-semibold">${v.past}</td>
+                    <td class="py-3.5 px-6 font-semibold">${v.participle}</td>
+                    <td class="py-3.5 px-6 text-xs text-slate-500 dark:text-slate-400 italic font-normal">"${v.example}"</td>
+                `;
+                tbody.appendChild(row);
+            });
+
+            document.getElementById('verb-count-label').innerText = `Showing ${data.length} irregular verbs`;
+        }
+
+        function filterVerbs() {
+            const query = document.getElementById('verb-search-input').value.toLowerCase();
+            const filtered = irregularVerbs.filter(v => 
+                v.base.toLowerCase().includes(query) || 
+                v.past.toLowerCase().includes(query) || 
+                v.participle.toLowerCase().includes(query)
+            );
+            renderVerbsTable(filtered);
+        }
+
+        /* RENDER PUNCTUATION GRID */
+        function renderPunctuationGrid() {
+            const container = document.getElementById('punctuation-grid');
+            container.innerHTML = '';
+
+            punctuationRules.forEach(rule => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-50 dark:bg-slate-950 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 space-y-4';
+                card.innerHTML = `
+                    <div class="flex items-center gap-3">
+                        <span class="p-3 bg-purple-100 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 rounded-2xl text-sm">
+                            <i class="fa-solid ${rule.icon}"></i>
+                        </span>
+                        <h3 class="font-bold text-lg text-slate-900 dark:text-white">${rule.title}</h3>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">${rule.rule}</p>
+                    
+                    <div class="p-3.5 bg-white dark:bg-slate-900 rounded-2xl border border-slate-200/60 dark:border-slate-800/60 space-y-1.5 text-xs font-medium">
+                        <p class="text-emerald-600 dark:text-emerald-400"><i class="fa-solid fa-check mr-1.5"></i> ${rule.exampleGood}</p>
+                        <p class="text-rose-500 dark:text-rose-400"><i class="fa-solid fa-xmark mr-1.5"></i> ${rule.exampleBad}</p>
+                    </div>
+                    
+                    <p class="text-xs text-slate-400 italic"><i class="fa-solid fa-lightbulb text-amber-500 mr-1"></i> ${rule.tip}</p>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /* MODAL LESSON DETAILS */
+        function openTopicModal(topicId) {
+            const topic = grammarTopics.find(t => t.id === topicId);
+            if (!topic) return;
+
+            document.getElementById('modal-category').innerText = topic.categoryName;
+            document.getElementById('modal-title').innerText = topic.title;
+            document.getElementById('modal-body').innerHTML = topic.content;
+
+            document.getElementById('topic-modal').classList.remove('hidden');
+        }
+
+        function closeTopicModal() {
+            document.getElementById('topic-modal').classList.add('hidden');
+        }
+
+        /* GLOBAL OVERLAY SEARCH */
+        function toggleSearchModal() {
+            const modal = document.getElementById('search-modal');
+            modal.classList.toggle('hidden');
+            if (!modal.classList.contains('hidden')) {
+                document.getElementById('global-search-input').focus();
+            }
+        }
+
+        function handleGlobalSearch() {
+            const query = document.getElementById('global-search-input').value.toLowerCase();
+            const resultsContainer = document.getElementById('global-search-results');
+            resultsContainer.innerHTML = '';
+
+            if (!query.trim()) {
+                resultsContainer.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">Type to search grammar guides...</p>';
+                return;
+            }
+
+            const matchedTopics = grammarTopics.filter(t => t.title.toLowerCase().includes(query) || t.summary.toLowerCase().includes(query));
+            const matchedVerbs = irregularVerbs.filter(v => v.base.toLowerCase().includes(query));
+
+            if (matchedTopics.length === 0 && matchedVerbs.length === 0) {
+                resultsContainer.innerHTML = '<p class="text-xs text-slate-400 text-center py-6">No matching topics found.</p>';
+                return;
+            }
+
+            matchedTopics.forEach(t => {
+                const div = document.createElement('div');
+                div.className = 'p-3 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl cursor-pointer flex justify-between items-center';
+                div.onclick = () => { openTopicModal(t.id); toggleSearchModal(); };
+                div.innerHTML = `
+                    <div>
+                        <h5 class="text-sm font-bold text-slate-900 dark:text-white">${t.title}</h5>
+                        <p class="text-xs text-slate-400">${t.summary}</p>
+                    </div>
+                    <span class="text-xs font-bold text-brand-600">Lesson &rarr;</span>
+                `;
+                resultsContainer.appendChild(div);
+            });
+        }
+
+        // Global Shortcuts
+        window.addEventListener('keydown', (e) => {
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                toggleSearchModal();
+            }
+            if (e.key === 'Escape') {
+                document.getElementById('search-modal').classList.add('hidden');
+                document.getElementById('topic-modal').classList.add('hidden');
+            }
+        });
+
+        /* MOBILE NAV & THEME TOGGLES */
+        function toggleMobileNav() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('theme-toggle-icon');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun text-amber-400 text-lg';
+            } else {
+                icon.className = 'fa-solid fa-moon text-lg';
+            }
+        }
+
+        function scrollToSection(id) {
+            const target = document.getElementById(id);
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-message').innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
