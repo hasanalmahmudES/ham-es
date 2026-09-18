@@ -1,0 +1,1530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic English Grammar (Spoken & Written) - Learning Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#16a34a',
+                            600: '#15803d',
+                            700: '#166534',
+                            800: '#14532d',
+                            900: '#134e2a',
+                        },
+                        accent: {
+                            50: '#eff6ff',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+                        bengali: ['Hind Siliguri', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .bengali-text {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+        .tab-active {
+            border-bottom: 3px solid #16a34a;
+            color: #15803d;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header Navbar -->
+    <header class="bg-emerald-800 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Title & Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-600 flex items-center justify-center text-white text-xl font-bold shadow">
+                        <i class="fa-solid fa-book-open-reader"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold tracking-tight leading-tight">Basic English Grammar</h1>
+                        <p class="text-xs text-emerald-200 font-medium bengali-text">Spoken & Written • Md. Hasan - Al - Mahmud</p>
+                    </div>
+                </div>
+
+                <!-- Global Search & Actions -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative hidden md:block w-64">
+                        <input type="text" id="globalSearch" placeholder="Search rules, verbs, topics..." 
+                            class="w-full bg-emerald-900/60 text-white placeholder-emerald-300 text-sm rounded-lg pl-9 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-400 border border-emerald-700"
+                            onkeyup="handleGlobalSearch(event)">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-emerald-300 text-xs"></i>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-emerald-100 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                    <button onclick="switchTab('quiz-hub')" class="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-white text-xs font-semibold rounded-lg shadow transition">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>Grammar Quiz</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-full md:w-72 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 shrink-0 self-start md:sticky md:top-20 max-h-[calc(100vh-6rem)] flex flex-col">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Course Index</span>
+                <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">21 Topics</span>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="relative mb-3 md:hidden">
+                <input type="text" id="mobileSearch" placeholder="Search topics & rules..." 
+                    class="w-full bg-slate-100 text-slate-800 text-sm rounded-lg pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500"
+                    onkeyup="handleGlobalSearch(event)">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+            </div>
+
+            <!-- Topic Navigation Items -->
+            <nav class="space-y-1 overflow-y-auto custom-scrollbar flex-1 pr-1 text-sm font-medium" id="topicNav">
+                <button onclick="switchTopic('overview')" class="topic-btn active w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-3 bg-emerald-50 text-emerald-700">
+                    <i class="fa-solid fa-house w-5 text-center"></i>
+                    <span>Overview & Info</span>
+                </button>
+
+                <div class="pt-2 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Module 1: Foundations</div>
+                <button onclick="switchTopic('alphabets-words')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-font w-5 text-center text-slate-400"></i>
+                        <span>01-02. Alphabets & Words</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('number-gender')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-list-ol w-5 text-center text-slate-400"></i>
+                        <span>03, 10. Number & Gender</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('person-pos')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-shapes w-5 text-center text-slate-400"></i>
+                        <span>04-05. Person & Parts of Speech</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Module 2: Grammar Core</div>
+                <button onclick="switchTopic('verbs-degrees')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-bolt w-5 text-center text-slate-400"></i>
+                        <span>Verbs & Degrees</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('prepositions')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-location-dot w-5 text-center text-slate-400"></i>
+                        <span>Prepositions (Visual Diagram)</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('phrases-clauses')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-cubes w-5 text-center text-slate-400"></i>
+                        <span>06-07. Phrase & Clause</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Module 3: Sentences & Tenses</div>
+                <button onclick="switchTopic('sentence-master')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-paragraph w-5 text-center text-slate-400"></i>
+                        <span>08. Sentence Types & Structure</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('tense-matrix')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-clock-rotate-left w-5 text-center text-slate-400"></i>
+                        <span>11. 12 Tenses & Spoken Practice</span>
+                    </div>
+                    <span class="text-[10px] bg-amber-100 text-amber-800 font-bold px-1.5 py-0.5 rounded">Core</span>
+                </button>
+                <button onclick="switchTopic('conditionals')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-code-branch w-5 text-center text-slate-400"></i>
+                        <span>12. Conditionals (0, 1st, 2nd, 3rd)</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Module 4: Advanced Rules</div>
+                <button onclick="switchTopic('right-forms')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-check-double w-5 text-center text-slate-400"></i>
+                        <span>13. Right Forms of Verbs</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('subject-verb')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-scale-balanced w-5 text-center text-slate-400"></i>
+                        <span>14. Subject-Verb Agreement</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('voice-narration')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-comments w-5 text-center text-slate-400"></i>
+                        <span>15-17. Voice & Narration & Tags</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('intro-it-there')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-arrow-right-to-bracket w-5 text-center text-slate-400"></i>
+                        <span>18. Introductory It & There</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Module 5: Vocabulary & Tools</div>
+                <button onclick="switchTopic('phrasal-opposites')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-retweet w-5 text-center text-slate-400"></i>
+                        <span>19. Phrasal Verbs & Opposites</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('verb-list')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-table-list w-5 text-center text-slate-400"></i>
+                        <span>20. Verb List (V1, V2, V3)</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('oxford-3000')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50 hover:text-slate-900">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-book-bookmark w-5 text-center text-slate-400"></i>
+                        <span>21. The Oxford 3000™</span>
+                    </div>
+                    <span class="text-[10px] bg-blue-100 text-blue-800 font-bold px-1.5 py-0.5 rounded">3000 Words</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Display Panel -->
+        <main class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 min-h-[600px] flex flex-col">
+
+            <!-- PANEL: OVERVIEW -->
+            <div id="panel-overview" class="content-panel">
+                <div class="bg-gradient-to-br from-emerald-800 to-teal-900 text-white rounded-xl p-6 sm:p-8 mb-6 shadow-md relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="bg-emerald-700/80 text-emerald-200 text-xs font-semibold px-3 py-1 rounded-full border border-emerald-500/30 uppercase tracking-wider mb-3 inline-block">Complete Learning Companion</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Basic English Grammar (Spoken & Written)</h2>
+                        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-4 bengali-text">
+                            সহজ বাংলায় ইংরেজি ব্যাকরণ ও স্পোকেন ইংলিশ শেখার পূর্ণাঙ্গ ডিজিটাল প্ল্যাটফর্ম। লেখক: মোঃ হাসান আল মাহমুদ (Md. Hasan - Al - Mahmud)।
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="switchTopic('tense-matrix')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold rounded-lg shadow transition flex items-center space-x-2">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Start 12 Tense Matrix</span>
+                            </button>
+                            <button onclick="switchTopic('oxford-3000')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-lg border border-white/20 transition flex items-center space-x-2">
+                                <i class="fa-solid fa-spell-check"></i>
+                                <span>Browse Oxford 3000</span>
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none"></i>
+                </div>
+
+                <!-- Book Chapters Grid -->
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group text-emerald-600"></i>
+                    <span>Grammar Topics Quick Access</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="overview-grid">
+                    <!-- Dynamic Grid Cards -->
+                </div>
+            </div>
+
+            <!-- PANEL: ALPHABETS & WORDS -->
+            <div id="panel-alphabets-words" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">01. Alphabets & 02. Words (বর্ণমালা ও শব্দ)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">ইংরেজি ভাষার বর্ণমালা, স্বরবর্ণ (Vowel), ব্যঞ্জনবর্ণ (Consonant) এবং শব্দ গঠনের নিয়মাবলী।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Alphabets Card -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-emerald-800 text-lg mb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-font"></i>
+                            <span>The English Alphabets (26 Letters)</span>
+                        </h3>
+                        <p class="text-sm text-slate-600 mb-4 bengali-text">কোন ভাষার বর্ণ বা সংকেতকে Alphabets বলা হয়।</p>
+
+                        <div class="space-y-3">
+                            <div class="bg-white p-3 rounded-lg border border-slate-200">
+                                <span class="text-xs font-semibold text-emerald-600 uppercase block mb-1">Vowels (৫টি)</span>
+                                <div class="flex space-x-2 text-lg font-extrabold text-emerald-700">
+                                    <span class="px-2 py-1 bg-emerald-100 rounded">A</span>
+                                    <span class="px-2 py-1 bg-emerald-100 rounded">E</span>
+                                    <span class="px-2 py-1 bg-emerald-100 rounded">I</span>
+                                    <span class="px-2 py-1 bg-emerald-100 rounded">O</span>
+                                    <span class="px-2 py-1 bg-emerald-100 rounded">U</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-slate-200">
+                                <span class="text-xs font-semibold text-slate-500 uppercase block mb-1">Consonants (২১টি)</span>
+                                <p class="text-xs font-mono text-slate-700 tracking-widest">B C D F G H J K L M N P Q R S T V W X Y Z</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Word Category Quick Drill -->
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200">
+                        <h3 class="font-bold text-slate-800 text-lg mb-2 flex items-center space-x-2">
+                            <i class="fa-solid fa-shapes"></i>
+                            <span>Word Classification (শব্দ)</span>
+                        </h3>
+                        <p class="text-sm text-slate-600 mb-3 bengali-text">কতগুলো alphabet একসাথে মিলিত হয়ে নির্দিষ্ট অর্থ প্রকাশ করলে তাকে Word বলে।</p>
+                        
+                        <div class="space-y-2">
+                            <details class="bg-white p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+                                <summary class="font-semibold text-xs text-slate-700">2-Letter Words (in, at, an, as, by, no, am, we...)</summary>
+                                <p class="text-xs text-slate-600 pt-2 border-t mt-2">In, at, an, as, by, no, am, we, or, do, so, go, he, hi, it, me, my, be, on, of, to, us, up, is, if.</p>
+                            </details>
+                            <details class="bg-white p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+                                <summary class="font-semibold text-xs text-slate-700">3-Letter Words (air, and, bag, bat, bed, big...)</summary>
+                                <p class="text-xs text-slate-600 pt-2 border-t mt-2">Apt, air, age, and, pet, gum, bag, bat, bed, big, jam, ice, cap, joy, cup, car, dry, fan, fog, God, hot, hut, ill, ink, run, key, kid, leg, law, low, man, mug, not, now, owl, put, old, rub, sat, sky, tap, toy, use, win, yes, zoo, you.</p>
+                            </details>
+                            <details class="bg-white p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+                                <summary class="font-semibold text-xs text-slate-700">4-Letter Words (army, baby, ball, bank, care...)</summary>
+                                <p class="text-xs text-slate-600 pt-2 border-t mt-2">Ache, acme, also, army, arid, baby, ball, bank, bath, cake, care, coin, draw, deep, desk, fill, film, fame, idea, poem, quiz, rich, soil, yard, kick, want, wood, word, lame, suit, ride, rain, safe, send, news, name.</p>
+                            </details>
+                            <details class="bg-white p-2.5 rounded-lg border border-slate-200 cursor-pointer">
+                                <summary class="font-semibold text-xs text-slate-700">5-Letter Words (admit, beach, bread, carry...)</summary>
+                                <p class="text-xs text-slate-600 pt-2 border-t mt-2">Abhor, adapt, abide, adjust, admire, arrest, aloud, amass, adult, abuse, beach, bread, image, candy, carry, knock, daily, equal, elder, diary, dream, fancy, state, noise, false, float, giant, jelly, laugh, leave, ready, offer, round, money, paint, peace, reach, rough, scare, strive, shade, shift, smoke, tasty, value, youth.</p>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Days, Months, Seasons Card -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-xl">
+                        <h4 class="font-bold text-emerald-800 text-sm mb-2"><i class="fa-solid fa-calendar-day mr-1.5"></i> 7 Days (৭ দিনের নাম)</h4>
+                        <ul class="text-xs text-emerald-900 space-y-1 font-medium">
+                            <li>Saturday, Sunday, Monday, Tuesday, Wednesday, Thursday, Friday.</li>
+                        </ul>
+                    </div>
+                    <div class="bg-blue-50 border border-blue-200 p-4 rounded-xl">
+                        <h4 class="font-bold text-blue-800 text-sm mb-2"><i class="fa-solid fa-calendar-days mr-1.5"></i> 12 Months (১২ মাসের নাম)</h4>
+                        <p class="text-xs text-blue-900 leading-relaxed">January, February, March, April, May, June, July, August, September, October, November, December.</p>
+                    </div>
+                    <div class="bg-amber-50 border border-amber-200 p-4 rounded-xl">
+                        <h4 class="font-bold text-amber-800 text-sm mb-2"><i class="fa-solid fa-sun-plant-wilt mr-1.5"></i> 6 Seasons (৬ ঋতুর নাম)</h4>
+                        <p class="text-xs text-amber-900 leading-relaxed">Summer, Rainy, Autumn, Late Autumn, Winter, Spring.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: NUMBER & GENDER -->
+            <div id="panel-number-gender" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">03. Number & 10. Gender (সংখ্যা ও লিঙ্গ)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Noun ও Pronoun-এর সংখ্যা রূপান্তর এবং লিঙ্গ পরিবর্তনের প্রয়োজনীয় নিয়মানাবলী।</p>
+                </div>
+
+                <!-- Tabs inside Number & Gender -->
+                <div class="flex border-b border-slate-200 space-x-6 text-sm">
+                    <button onclick="toggleSubTab('num-tab', 'gen-tab')" id="num-tab-btn" class="py-2 px-1 border-b-2 border-emerald-600 font-bold text-emerald-700">Number Rules & Irregulars</button>
+                    <button onclick="toggleSubTab('gen-tab', 'num-tab')" id="gen-tab-btn" class="py-2 px-1 text-slate-500 hover:text-slate-800 font-medium">Gender Classification & List</button>
+                </div>
+
+                <!-- SUB TAB: NUMBER -->
+                <div id="num-tab" class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2 bengali-text">বিশেষ নিয়মাবলী (Special Number Notes):</h4>
+                            <ul class="text-xs space-y-2 text-slate-700 bengali-text">
+                                <li class="bg-white p-2 rounded border border-slate-200"><strong>Note 1:</strong> কিছু Noun-এর ভিন্নার্থক Plural ২টি হয় (Brother -> Brothers/Brethren, Beef -> Beefs/Beeves).</li>
+                                <li class="bg-white p-2 rounded border border-slate-200"><strong>Note 2 (শুধু Singular):</strong> Furniture, Scenery, Information, Poetry, Machinery, Issue, Bread.</li>
+                                <li class="bg-white p-2 rounded border border-slate-200"><strong>Note 3 (দেখতে Singular কিন্তু Plural):</strong> Aristocracy, Gentry, Nobility, Peasantry, Poultry, Majority, People, Clergy.</li>
+                                <li class="bg-white p-2 rounded border border-slate-200"><strong>Note 4 (দেখতে Plural কিন্তু Singular):</strong> Mathematics, Physics, Politics, Economics, News, Ethics, Innings, Wages.</li>
+                            </ul>
+                        </div>
+
+                        <!-- Irregular Foreign Singular-Plural -->
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-slate-800 text-sm mb-2">Important Foreign Plurals (গুরুত্বপূর্ণ রূপান্তর):</h4>
+                            <div class="max-h-60 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                                <table class="w-full text-left">
+                                    <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                        <tr>
+                                            <th class="p-2 border-b">Singular</th>
+                                            <th class="p-2 border-b">Plural</th>
+                                            <th class="p-2 border-b">Bangla</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100" id="foreign-plural-table">
+                                        <!-- Javascript Populated -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SUB TAB: GENDER -->
+                <div id="gen-tab" class="hidden space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-3 text-center">
+                        <div class="bg-blue-50 p-3 rounded-xl border border-blue-200">
+                            <span class="text-xs font-semibold text-blue-600">1. Masculine</span>
+                            <p class="text-xs text-blue-900 mt-1 font-bold">Father, Son, Lion</p>
+                        </div>
+                        <div class="bg-pink-50 p-3 rounded-xl border border-pink-200">
+                            <span class="text-xs font-semibold text-pink-600">2. Feminine</span>
+                            <p class="text-xs text-pink-900 mt-1 font-bold">Mother, Daughter, Lioness</p>
+                        </div>
+                        <div class="bg-purple-50 p-3 rounded-xl border border-purple-200">
+                            <span class="text-xs font-semibold text-purple-600">3. Common</span>
+                            <p class="text-xs text-purple-900 mt-1 font-bold">They, Teacher, Baby</p>
+                        </div>
+                        <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+                            <span class="text-xs font-semibold text-emerald-600">4. Neuter</span>
+                            <p class="text-xs text-emerald-900 mt-1 font-bold">Book, Computer, Pen</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="font-bold text-slate-800 text-sm">Masculine & Feminine Word List</h4>
+                            <input type="text" id="genderSearch" onkeyup="filterGender()" placeholder="Search gender..." class="text-xs px-2.5 py-1.5 border border-slate-300 rounded-lg w-48 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        </div>
+                        <div class="max-h-64 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                    <tr>
+                                        <th class="p-2.5 border-b">Masculine</th>
+                                        <th class="p-2.5 border-b">Feminine</th>
+                                        <th class="p-2.5 border-b">Bangla Meaning</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="gender-table-body">
+                                    <!-- Populated via JS -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PERSON & PARTS OF SPEECH -->
+            <div id="panel-person-pos" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">04. Person & 05. Parts of Speech</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Sentence-এ Verb-এর বিষয়বস্তু ও ৮ প্রকার Parts of Speech-এর পূর্ণাঙ্গ আলোচনা।</p>
+                </div>
+
+                <!-- 8 Parts of Speech Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+                    <div class="p-3 bg-emerald-50 border border-emerald-200 rounded-xl">
+                        <span class="text-xs font-bold text-emerald-800 uppercase block">1. Noun (বিশেষ্য)</span>
+                        <p class="text-xs text-emerald-700 mt-1 bengali-text">কোন কিছুর নাম। (Dhaka, Gold, Honesty)</p>
+                    </div>
+                    <div class="p-3 bg-blue-50 border border-blue-200 rounded-xl">
+                        <span class="text-xs font-bold text-blue-800 uppercase block">2. Pronoun (সর্বনাম)</span>
+                        <p class="text-xs text-blue-700 mt-1 bengali-text">Noun-এর পরিবর্তে যা বসে। (He, She, They)</p>
+                    </div>
+                    <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl">
+                        <span class="text-xs font-bold text-amber-800 uppercase block">3. Adjective (বিশেষণ)</span>
+                        <p class="text-xs text-amber-700 mt-1 bengali-text">দোষ, গুণ, অবস্থা, সংখ্যা। (Good, Rich, 4)</p>
+                    </div>
+                    <div class="p-3 bg-indigo-50 border border-indigo-200 rounded-xl">
+                        <span class="text-xs font-bold text-indigo-800 uppercase block">4. Verb (ক্রিয়া)</span>
+                        <p class="text-xs text-indigo-700 mt-1 bengali-text">কাজ করা বা হওয়া। (Go, Read, Sing)</p>
+                    </div>
+                    <div class="p-3 bg-purple-50 border border-purple-200 rounded-xl">
+                        <span class="text-xs font-bold text-purple-800 uppercase block">5. Adverb (ভাব বিশেষণ)</span>
+                        <p class="text-xs text-purple-700 mt-1 bengali-text">Verb/Adj-কে modify করে। (Slowly, Very)</p>
+                    </div>
+                    <div class="p-3 bg-teal-50 border border-teal-200 rounded-xl">
+                        <span class="text-xs font-bold text-teal-800 uppercase block">6. Preposition (অব্যয়)</span>
+                        <p class="text-xs text-teal-700 mt-1 bengali-text">শব্দের মধ্যে সম্পর্ক। (In, On, At, To)</p>
+                    </div>
+                    <div class="p-3 bg-rose-50 border border-rose-200 rounded-xl">
+                        <span class="text-xs font-bold text-rose-800 uppercase block">7. Conjunction (সংযোজক)</span>
+                        <p class="text-xs text-rose-700 mt-1 bengali-text">বাক্য বা শব্দ যুক্ত করে। (And, But, Or)</p>
+                    </div>
+                    <div class="p-3 bg-orange-50 border border-orange-200 rounded-xl">
+                        <span class="text-xs font-bold text-orange-800 uppercase block">8. Interjection (আবেগ)</span>
+                        <p class="text-xs text-orange-700 mt-1 bengali-text">মনের আকস্মিক আবেগ। (Hurrah!, Alas!)</p>
+                    </div>
+                </div>
+
+                <!-- Noun Types Breakdown -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <h3 class="font-bold text-slate-800 text-sm mb-3">Classification of Noun (Noun-এর শ্রেণিবিভাগ):</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2 text-xs">
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-slate-800 block">Proper Noun</span>
+                            <span class="text-slate-500 bengali-text">নির্দিষ্ট নাম (Dhaka, Nazrul)</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-slate-800 block">Common Noun</span>
+                            <span class="text-slate-500 bengali-text">একজাতীয় সাধারণ নাম (Girl, Student)</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-slate-800 block">Collective Noun</span>
+                            <span class="text-slate-500 bengali-text">সমষ্টিবাচক নাম (Team, Army, Jury)</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-slate-800 block">Material Noun</span>
+                            <span class="text-slate-500 bengali-text">পদার্থবাচক (Water, Gold, Milk)</span>
+                        </div>
+                        <div class="bg-white p-2.5 rounded border border-slate-200">
+                            <span class="font-bold text-slate-800 block">Abstract Noun</span>
+                            <span class="text-slate-500 bengali-text">গুণবাচক (Honesty, Kindness)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PREPOSITIONS -->
+            <div id="panel-prepositions" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">05. Preposition Master & Visual Diagram</h2>
+                    <p class="text-sm text-slate-500 bengali-text">স্থান, সময় ও গতি নির্দেশক Preposition-এর চিত্রসহ ব্যাখ্যা ও Appropriate Preposition তালিকা।</p>
+                </div>
+
+                <!-- Interactive Spatial Diagram -->
+                <div class="bg-gradient-to-b from-sky-50 to-slate-100 p-6 rounded-2xl border border-sky-200 shadow-inner text-center relative overflow-hidden">
+                    <h3 class="text-sm font-bold text-sky-900 uppercase tracking-wider mb-4">Spatial Preposition Map (স্থান নির্দেশক প্রি পজিশন)</h3>
+
+                    <!-- Visual Box Representation -->
+                    <div class="max-w-xl mx-auto relative h-64 bg-white rounded-xl border-2 border-dashed border-sky-400 flex items-center justify-center shadow-sm p-4">
+
+                        <!-- Above / Over -->
+                        <div class="absolute -top-7 left-1/2 -translate-x-1/2 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                            above (stop) / over (motion)
+                        </div>
+
+                        <!-- On Top -->
+                        <div class="absolute top-2 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-xs font-bold px-3 py-0.5 rounded shadow">
+                            on (touching top)
+                        </div>
+
+                        <!-- Into Arrow -->
+                        <div class="absolute left-3 top-1/2 -translate-y-1/2 flex items-center space-x-1 text-purple-700 text-xs font-bold">
+                            <span>into</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </div>
+
+                        <!-- Inside / In -->
+                        <div class="w-32 h-20 bg-emerald-100 border-2 border-emerald-500 rounded-lg flex items-center justify-center text-emerald-800 font-extrabold text-sm shadow-inner">
+                            in / inside
+                        </div>
+
+                        <!-- Through Arrow -->
+                        <div class="absolute bottom-6 left-12 right-12 flex items-center justify-between text-indigo-600 text-xs font-bold">
+                            <span>through</span>
+                            <div class="h-0.5 bg-indigo-500 flex-1 mx-2 relative">
+                                <i class="fa-solid fa-chevron-right absolute -right-1 -top-1.5"></i>
+                            </div>
+                        </div>
+
+                        <!-- Out of Arrow -->
+                        <div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center space-x-1 text-rose-600 text-xs font-bold">
+                            <i class="fa-solid fa-arrow-right"></i>
+                            <span>out of</span>
+                        </div>
+
+                        <!-- Beside -->
+                        <div class="absolute right-14 top-4 bg-teal-100 text-teal-800 text-xs font-bold px-2 py-1 rounded border border-teal-300">
+                            beside / next to
+                        </div>
+
+                        <!-- Under / Below / Beneath -->
+                        <div class="absolute -bottom-7 left-1/2 -translate-x-1/2 bg-slate-700 text-white text-xs font-bold px-3 py-1 rounded-full shadow">
+                            under / below / beneath
+                        </div>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-8 bengali-text">উপরের ডায়াগ্রাম থেকে সহজে প্রিপজিশনের স্থানিক প্রয়োগ অনুধাবন করুন।</p>
+                </div>
+
+                <!-- Appropriate Prepositions Lookup -->
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-slate-800 text-sm">Appropriate Prepositions Search (প্রয়োজনীয় প্রিপজিশন তালিকা)</h4>
+                        <input type="text" id="prepSearch" onkeyup="filterPrep()" placeholder="Search word or prep..." class="text-xs px-3 py-1.5 border border-slate-300 rounded-lg w-52 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                    </div>
+                    <div class="max-h-64 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                <tr>
+                                    <th class="p-2.5 border-b">Word & Preposition</th>
+                                    <th class="p-2.5 border-b">Bangla Meaning</th>
+                                    <th class="p-2.5 border-b">Example Sentence</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100" id="prep-table-body">
+                                <!-- JS Populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: 12 TENSES MATRIX -->
+            <div id="panel-tense-matrix" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">11. 12 Tenses & Spoken Practice Matrix</h2>
+                            <p class="text-sm text-slate-500 bengali-text">ইংরেজি কথা বলা ও লেখার সবচেয়ে গুরুত্বপূর্ণ ১২টি Tense-এর সম্পূর্ণ ফর্মুলা ও স্পোকেন গ্রিড।</p>
+                        </div>
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full">Interactive Grid</span>
+                    </div>
+                </div>
+
+                <!-- Interactive Tense Pattern Generator -->
+                <div class="bg-gradient-to-r from-emerald-900 to-teal-900 text-white p-5 rounded-2xl shadow-lg">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-emerald-300 mb-3"><i class="fa-solid fa-wand-magic-sparkles mr-2"></i> Interactive Spoken Sentence Drill Builder</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 mb-4">
+                        <div>
+                            <label class="block text-xs font-medium text-emerald-200 mb-1">Subject (কর্তা)</label>
+                            <select id="tense-sub" onchange="generateTenseMatrix()" class="w-full bg-emerald-800 text-white text-xs rounded-lg p-2 border border-emerald-600 focus:outline-none">
+                                <option value="I">I (আমি)</option>
+                                <option value="We">We (আমরা)</option>
+                                <option value="You">You (তুমি)</option>
+                                <option value="He">He (সে)</option>
+                                <option value="She">She (সে)</option>
+                                <option value="They">They (তারা)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-emerald-200 mb-1">Action Verb (ক্রিয়া)</label>
+                            <select id="tense-verb" onchange="generateTenseMatrix()" class="w-full bg-emerald-800 text-white text-xs rounded-lg p-2 border border-emerald-600 focus:outline-none">
+                                <option value="do">do (করা)</option>
+                                <option value="love">love (ভালোবাসা)</option>
+                                <option value="read">read (পড়া)</option>
+                                <option value="play">play (খেলা)</option>
+                                <option value="write">write (লেখা)</option>
+                                <option value="learn">learn (শেখা)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-emerald-200 mb-1">Tense Category</label>
+                            <select id="tense-cat" onchange="generateTenseMatrix()" class="w-full bg-emerald-800 text-white text-xs rounded-lg p-2 border border-emerald-600 focus:outline-none">
+                                <option value="all">All 12 Tenses</option>
+                                <option value="present">Present Tenses (4)</option>
+                                <option value="past">Past Tenses (4)</option>
+                                <option value="future">Future Tenses (4)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="generateTenseMatrix()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-xs py-2 px-3 rounded-lg shadow transition">
+                                <i class="fa-solid fa-rotate mr-1"></i> Regenerate Drill
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Spoken Matrix Result Table -->
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-white/10 max-h-80 overflow-y-auto custom-scrollbar">
+                        <table class="w-full text-left text-xs">
+                            <thead class="text-emerald-300 font-bold border-b border-emerald-700/50">
+                                <tr>
+                                    <th class="p-2">Tense Name</th>
+                                    <th class="p-2">Positive (+)</th>
+                                    <th class="p-2">Negative (-)</th>
+                                    <th class="p-2">Interrogative (?)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tense-matrix-body" class="divide-y divide-emerald-800/40 text-emerald-50">
+                                <!-- Populated dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Tense Formula Reference Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="tense-formula-cards">
+                    <!-- Javascript Populated -->
+                </div>
+            </div>
+
+            <!-- PANEL: RIGHT FORMS & SUBJECT-VERB AGREEMENT -->
+            <div id="panel-right-forms" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">13. Right Forms of the Verbs (নিয়মাবলী)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">পরীক্ষায় ও প্রাত্যহিক লেখায় Verb-এর সঠিক রূপ ব্যবহারের প্রধান ৩৬টি নিয়ম ও অনুশীলন।</p>
+                </div>
+
+                <div class="space-y-3" id="right-forms-rules-container">
+                    <!-- JS populated rules -->
+                </div>
+            </div>
+
+            <div id="panel-subject-verb" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">14. Subject-Verb Agreement</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Subject-এর Number ও Person অনুযায়ী Verb-এর সঠিক রূপ নির্ধারণের নিয়ম।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="sva-rules-container">
+                    <!-- Populated via JS -->
+                </div>
+
+                <!-- Interactive Practice Quiz Drill for SVA -->
+                <div class="bg-amber-50 p-5 rounded-xl border border-amber-200">
+                    <h3 class="font-bold text-amber-900 text-sm mb-3"><i class="fa-solid fa-pen-to-square mr-2"></i> Practice Drill: Choose the Correct Verb</h3>
+                    <div id="sva-quiz-list" class="space-y-3 text-xs">
+                        <!-- Populated by JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: VOICE & NARRATION -->
+            <div id="panel-voice-narration" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">15. Voice Change, 16. Tag Questions & 17. Narration</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Active/Passive Voice রূপান্তর, Tag Question যুক্ত করা এবং Direct/Indirect Speech পরিবর্তন।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Voice Rules Card -->
+                    <div class="bg-emerald-50 p-4 rounded-xl border border-emerald-200">
+                        <h4 class="font-bold text-emerald-900 text-sm mb-2"><i class="fa-solid fa-arrows-rotate mr-1.5"></i> Voice Change Steps</h4>
+                        <ol class="text-xs text-emerald-800 space-y-2 list-decimal list-inside bengali-text">
+                            <li>Active-এর Object-টি Passive-এ Subject হবে।</li>
+                            <li>Tense ও Person অনুযায়ী Auxiliary Verb হবে।</li>
+                            <li>Main Verb-এর Past Participle (V3) হবে।</li>
+                            <li>Preposition (by / to / at / with / in) বসবে।</li>
+                            <li>Active-এর Subject-টি Object হবে।</li>
+                        </ol>
+                    </div>
+
+                    <!-- Tag Question Card -->
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200">
+                        <h4 class="font-bold text-blue-900 text-sm mb-2"><i class="fa-solid fa-question mr-1.5"></i> Tag Question Rules</h4>
+                        <ul class="text-xs text-blue-800 space-y-2 list-disc list-inside bengali-text">
+                            <li>Statement Affirmative হলে Tag Negative হবে।</li>
+                            <li>Statement Negative হলে Tag Positive হবে।</li>
+                            <li>Imperative sentence (Let's) -> <strong>shall we?</strong></li>
+                            <li>Main verb থাকলে -> do / does / did ব্যবহার করতে হবে।</li>
+                        </ul>
+                    </div>
+
+                    <!-- Narration Distance Card -->
+                    <div class="bg-purple-50 p-4 rounded-xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 text-sm mb-2"><i class="fa-solid fa-comments mr-1.5"></i> Narration Words Shift</h4>
+                        <div class="text-xs text-purple-900 grid grid-cols-2 gap-1 font-mono">
+                            <span>This -> That</span>
+                            <span>These -> Those</span>
+                            <span>Now -> Then</span>
+                            <span>Here -> There</span>
+                            <span>Today -> That day</span>
+                            <span>Ago -> Before</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-conditionals" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">12. Conditionals (শর্তযুক্ত বাক্য)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Zero, 1st, 2nd এবং 3rd Conditionals-এর গঠন ও উদাহরণ।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <span class="text-xs font-bold text-emerald-600 block mb-1">Zero Conditional (V1 + V1)</span>
+                        <p class="text-xs text-slate-700 font-mono mb-2">If + Present Simple, Present Simple</p>
+                        <p class="text-xs text-slate-600 italic">Example: If you heat ice, it melts.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <span class="text-xs font-bold text-blue-600 block mb-1">1st Conditional (V1 + Will+V1)</span>
+                        <p class="text-xs text-slate-700 font-mono mb-2">If + Present Simple, Will + V1</p>
+                        <p class="text-xs text-slate-600 italic">Example: If you come, I will go.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <span class="text-xs font-bold text-amber-600 block mb-1">2nd Conditional (V2 + Would+V1)</span>
+                        <p class="text-xs text-slate-700 font-mono mb-2">If + Past Simple, Would/Could + V1</p>
+                        <p class="text-xs text-slate-600 italic">Example: If you came, I could go.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <span class="text-xs font-bold text-purple-600 block mb-1">3rd Conditional (Had+V3 + Would have+V3)</span>
+                        <p class="text-xs text-slate-700 font-mono mb-2">If + Past Perfect, Would have + V3</p>
+                        <p class="text-xs text-slate-600 italic">Example: If you had come, I would have gone.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-sentence-master" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">08. Sentence Classification (বাক্য)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">অর্থভেদে ৫ প্রকার এবং গঠনভেদে ৩ প্রকার বাক্যর গঠন ও উদাহরণ।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-5 gap-3 text-xs">
+                    <div class="p-3 bg-emerald-50 rounded-lg border border-emerald-200">
+                        <span class="font-bold text-emerald-800 block">1. Assertive</span>
+                        <span class="text-emerald-700">বিবৃতিমূলক বাক্য</span>
+                    </div>
+                    <div class="p-3 bg-blue-50 rounded-lg border border-blue-200">
+                        <span class="font-bold text-blue-800 block">2. Interrogative</span>
+                        <span class="text-blue-700">প্রশ্নবোধক বাক্য</span>
+                    </div>
+                    <div class="p-3 bg-amber-50 rounded-lg border border-amber-200">
+                        <span class="font-bold text-amber-800 block">3. Imperative</span>
+                        <span class="text-amber-700">আদেশ/অনুরোধ</span>
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-lg border border-purple-200">
+                        <span class="font-bold text-purple-800 block">4. Optative</span>
+                        <span class="text-purple-700">ইচ্ছাবোধক বাক্য</span>
+                    </div>
+                    <div class="p-3 bg-rose-50 rounded-lg border border-rose-200">
+                        <span class="font-bold text-rose-800 block">5. Exclamatory</span>
+                        <span class="text-rose-700">আবেগসূচক বাক্য</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-phrases-clauses" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">06. Phrase & 07. Clause (শব্দগুচ্ছ ও বাক্যাংশ)</h2>
+                </div>
+                <p class="text-xs text-slate-600 leading-relaxed bengali-text">Phrase হল একাধিক শব্দগুচ্ছ যেখানে Subject এবং Finite Verb থাকে না। Clause হল একাধিক শব্দগুচ্ছ যেখানে একটি Subject এবং Finite Verb অবশ্যই থাকে।</p>
+            </div>
+
+            <div id="panel-intro-it-there" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">18. Introductory "It" & "There"</h2>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+                    <p class="font-semibold text-slate-800">Use of Introductory There:</p>
+                    <p class="text-slate-600">There is a school in my village. / There were 20 students in the classroom.</p>
+                </div>
+            </div>
+
+            <!-- PANEL: PHRASAL VERBS & OPPOSITES -->
+            <div id="panel-phrasal-opposites" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">19. Phrasal Verbs & Opposite Words</h2>
+                    <p class="text-sm text-slate-500 bengali-text">উপসর্গভিত্তিক (dis-, in-, il-, im-, un-) বিপরীত শব্দ ও গুরুত্বপূর্ণ Phrasal Verbs।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <!-- Phrasal Verbs Table -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">Important Phrasal Verbs</h4>
+                        <div class="max-h-64 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                    <tr>
+                                        <th class="p-2 border-b">Phrasal Verb</th>
+                                        <th class="p-2 border-b">Bangla Meaning</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="phrasal-verb-body">
+                                    <!-- JS populated -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Opposite Words Table -->
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <h4 class="font-bold text-slate-800 text-sm mb-3">Opposite Words List</h4>
+                        <div class="max-h-64 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                            <table class="w-full text-left">
+                                <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                    <tr>
+                                        <th class="p-2 border-b">Main Word</th>
+                                        <th class="p-2 border-b">Opposite Word</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100" id="opposite-word-body">
+                                    <!-- JS populated -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: VERB LIST V1 V2 V3 -->
+            <div id="panel-verb-list" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">20. Most Important Verb List (V1, V2, V3)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Strong Verbs, Irregular Verbs & Weak Verbs-এর রূপান্তর তালিকা।</p>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                    <div class="flex items-center justify-between mb-3">
+                        <h4 class="font-bold text-slate-800 text-sm">Verb Conjugation Finder</h4>
+                        <input type="text" id="verbListSearch" onkeyup="filterVerbList()" placeholder="Search verb..." class="text-xs px-3 py-1.5 border border-slate-300 rounded-lg w-48 focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                    </div>
+                    <div class="max-h-80 overflow-y-auto custom-scrollbar bg-white rounded-lg border border-slate-200 text-xs">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                                <tr>
+                                    <th class="p-2.5 border-b">Base Form (V1)</th>
+                                    <th class="p-2.5 border-b">Bangla Meaning</th>
+                                    <th class="p-2.5 border-b">Past Form (V2)</th>
+                                    <th class="p-2.5 border-b">Past Participle (V3)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100" id="verb-list-body">
+                                <!-- JS Populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: THE OXFORD 3000 -->
+            <div id="panel-oxford-3000" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">21. The Oxford 3000™ Vocabulary Hub</h2>
+                            <p class="text-sm text-slate-500 bengali-text">ইংরেজি শেখার জন্য সর্বাধিক প্রয়োজনীয় ৩০০০টি শব্দের বাংলা অর্থ ও Parts of Speechসহ ডিকশনারি।</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="toggleOxfordView('list')" id="ox-view-list" class="px-3 py-1 bg-emerald-700 text-white text-xs font-semibold rounded-lg">List View</button>
+                            <button onclick="toggleOxfordView('flashcard')" id="ox-view-card" class="px-3 py-1 bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg">Flashcards Mode</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Oxford Search & Filter -->
+                <div class="flex flex-wrap items-center justify-between gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="relative flex-1 min-w-[200px]">
+                        <input type="text" id="oxfordSearch" onkeyup="filterOxford()" placeholder="Search Oxford 3000 word or meaning..." class="w-full text-xs pl-8 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-emerald-500">
+                        <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
+                    </div>
+                    <!-- A-Z Letter Filter Bar -->
+                    <div class="flex flex-wrap gap-1 text-[11px]" id="alphabet-filter-bar">
+                        <!-- JS populated A-Z buttons -->
+                    </div>
+                </div>
+
+                <!-- LIST VIEW -->
+                <div id="oxford-list-view" class="max-h-96 overflow-y-auto custom-scrollbar bg-white rounded-xl border border-slate-200 text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                            <tr>
+                                <th class="p-2.5 border-b">Word</th>
+                                <th class="p-2.5 border-b">Part of Speech</th>
+                                <th class="p-2.5 border-b">Bangla Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="oxford-table-body">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FLASHCARD MODE -->
+                <div id="oxford-flashcard-view" class="hidden flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-900 to-emerald-950 text-white rounded-2xl min-h-[250px] relative text-center">
+                    <span class="text-xs font-bold text-emerald-400 uppercase tracking-widest mb-2" id="flash-pos">Part of Speech</span>
+                    <h3 class="text-3xl font-extrabold mb-4" id="flash-word">Word</h3>
+                    <div id="flash-meaning-container" class="cursor-pointer bg-white/10 hover:bg-white/20 px-6 py-3 rounded-xl border border-white/20 transition mb-6" onclick="toggleFlashMeaning()">
+                        <span text-sm font-semibold text-emerald-200" id="flash-meaning">Click to reveal Bengali meaning</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button onclick="nextFlashcard()" class="px-5 py-2 bg-emerald-500 hover:bg-emerald-600 text-slate-900 font-bold text-xs rounded-lg transition">Next Flashcard <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: QUIZ HUB -->
+            <div id="panel-quiz-hub" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">Comprehensive Grammar Practice Quiz</h2>
+                    <p class="text-sm text-slate-500 bengali-text">বইটির প্রধান প্রধান টপিক থেকে আপনার ইংরেজি দক্ষতার মূল্যায়ন করুন।</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-2xl mx-auto space-y-6" id="quiz-card-container">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <span class="text-xs font-bold text-emerald-700" id="quiz-progress-text">Question 1 of 5</span>
+                        <span class="text-xs font-semibold text-amber-600 bg-amber-100 px-2.5 py-1 rounded-full" id="quiz-score-badge">Score: 0</span>
+                    </div>
+
+                    <div id="quiz-question-box">
+                        <h3 class="text-base font-bold text-slate-800 mb-4" id="quiz-question">Question text here...</h3>
+                        <div class="space-y-2.5" id="quiz-options">
+                            <!-- JS options -->
+                        </div>
+                    </div>
+
+                    <div class="flex justify-end pt-2">
+                        <button onclick="submitQuizNext()" id="quiz-next-btn" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-lg shadow transition hidden">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const overviewTopics = [
+            { id: 'alphabets-words', title: '01-02. Alphabets & Words', desc: 'বর্ণমালা, স্বরবর্ণ, ব্যঞ্জনবর্ণ ও শব্দ গঠন' },
+            { id: 'number-gender', title: '03, 10. Number & Gender', desc: 'সংখ্যা (Singular/Plural) ও লিঙ্গ পরিবর্তন' },
+            { id: 'person-pos', title: '04-05. Person & Parts of Speech', desc: '৮ প্রকার Parts of Speech ও Person' },
+            { id: 'verbs-degrees', title: 'Verbs & Degrees of Comparison', desc: 'ক্রিয়া পদ ও Adjective-এর তারতম্য' },
+            { id: 'prepositions', title: '05. Prepositions (Visual Diagram)', desc: 'চিত্রসহ Preposition ও Appropriate Prepositions' },
+            { id: 'phrases-clauses', title: '06-07. Phrase & Clause', desc: 'শব্দগুচ্ছ ও বাক্যাংশ-এর শ্রেণিবিভাগ' },
+            { id: 'sentence-master', title: '08. Sentence Types & Structure', desc: 'অর্থ ও গঠন অনুসারে বাক্য' },
+            { id: 'tense-matrix', title: '11. 12 Tenses & Spoken Matrix', desc: '১২টি Tense-এর সম্পূর্ণ ফর্মুলা ও স্পোকেন ড্রিল' },
+            { id: 'conditionals', title: '12. Conditionals (0, 1st, 2nd, 3rd)', desc: 'শর্তযুক্ত বাক্যের নিয়ম ও উদাহরণ' },
+            { id: 'right-forms', title: '13. Right Forms of Verbs', desc: '৩৬টি প্রধান নিয়ম ও অনুশীলন' },
+            { id: 'subject-verb', title: '14. Subject-Verb Agreement', desc: 'Subject ও Verb-এর সামঞ্জস্যতার নিয়ম' },
+            { id: 'voice-narration', title: '15-17. Voice & Narration & Tags', desc: 'Active/Passive, Direct/Indirect & Tag Questions' },
+            { id: 'intro-it-there', title: '18. Introductory It & There', desc: 'It ও There-এর সূচনাধর্মী প্রয়োগ' },
+            { id: 'phrasal-opposites', title: '19. Phrasal Verbs & Opposites', desc: 'উপসর্গভিত্তিক বিপরীত শব্দ ও ফ্রেজাল ভার্ব' },
+            { id: 'verb-list', title: '20. Verb List (V1, V2, V3)', desc: 'Strong & Weak Verbs-এর পূর্ণাঙ্গ রূপান্তর' },
+            { id: 'oxford-3000', title: '21. The Oxford 3000™', desc: 'ইংরেজি শেখার ৩০০০টি শব্দের অভিধান' }
+        ];
+
+        const foreignPlurals = [
+            { s: 'Agendum', p: 'Agenda', b: 'আলোচ্য বিষয়' },
+            { s: 'Analysis', p: 'Analyses', b: 'বিশ্লেষণ' },
+            { s: 'Axis', p: 'Axes', b: 'অক্ষ' },
+            { s: 'Alumnus', p: 'Alumni', b: 'প্রাক্তন ছাত্র' },
+            { s: 'Crisis', p: 'Crises', b: 'সংকট' },
+            { s: 'Datum', p: 'Data', b: 'তথ্য' },
+            { s: 'Focus', p: 'Foci', b: 'কেন্দ্র' },
+            { s: 'Formula', p: 'Formulae / Formulas', b: 'সূত্র' },
+            { s: 'Hypothesis', p: 'Hypotheses', b: 'অনুসিদ্ধান্ত' },
+            { s: 'Medium', p: 'Media', b: 'মাধ্যম' },
+            { s: 'Oasis', p: 'Oases', b: 'মরূদ্যান' },
+            { s: 'Thesis', p: 'Theses', b: 'গবেষণামূলক নিবন্ধ' }
+        ];
+
+        const genderList = [
+            { m: 'Boy', f: 'Girl', b: 'বালক / বালিকা' },
+            { m: 'Father', f: 'Mother', b: 'পিতা / মাতা' },
+            { m: 'Brother', f: 'Sister', b: 'ভাই / বোন' },
+            { m: 'Bull', f: 'Cow', b: 'ষাঁড় / গাভী' },
+            { m: 'Bridegroom', f: 'Bride', b: 'বর / কনে' },
+            { m: 'Cock', f: 'Hen', b: 'মোরগ / মুরগী' },
+            { m: 'Dog', f: 'Bitch', b: 'কুকুর / কুকুরী' },
+            { m: 'Gentleman', f: 'Gentlewoman', b: 'ভদ্রলোক / ভদ্রমহিলা' },
+            { m: 'Hero', f: 'Heroine', b: 'বীর / নায়িকা' },
+            { m: 'Husband', f: 'Wife', b: 'স্বামী / স্ত্রী' },
+            { m: 'King', f: 'Queen', b: 'রাজা / রানী' },
+            { m: 'Man', f: 'Woman', b: 'পুরুষ / নারী' },
+            { m: 'Male', f: 'Female', b: 'পুরুষ / স্ত্রী' },
+            { m: 'Master', f: 'Mistress', b: 'শিক্ষক / শিক্ষয়িত্রী' },
+            { m: 'Actor', f: 'Actress', b: 'অভিনেতা / অভিনেত্রী' }
+        ];
+
+        const appropriatePreps = [
+            { w: 'Accused of', b: 'অভিযুক্ত', e: 'He was accused of robbery.' },
+            { w: 'Addicted to', b: 'আসক্ত', e: 'He is addicted to drugs.' },
+            { w: 'Afraid of', b: 'ভীত', e: 'She is afraid of mice.' },
+            { w: 'Agree with', b: 'সম্মত হওয়া', e: 'He doesn\'t agree with you.' },
+            { w: 'Apologize for', b: 'ক্ষমা চাওয়া', e: 'He apologizes for the mistake.' },
+            { w: 'Apply to / for', b: 'আবেদন করা', e: 'You applied to the Principal for leave.' },
+            { w: 'Arrive in / at', b: 'পৌঁছানো', e: 'She arrived in Dhaka last week.' },
+            { w: 'Believe in', b: 'বিশ্বাস করা', e: 'He does not believe in ghosts.' },
+            { w: 'Fond of', b: 'পছন্দ করা', e: 'Bushra is fond of sweets.' },
+            { w: 'Good at', b: 'দক্ষ', e: 'He is good at Mathematics.' },
+            { w: 'Look forward to', b: 'অধীর আগ্রহে অপেক্ষা করা', e: 'I look forward to hearing from you.' },
+            { w: 'Proud of', b: 'গর্বিত', e: 'We are proud of our country.' }
+        ];
+
+        const verbConjugations = [
+            { v1: 'Arise', b: 'ওঠা', v2: 'Arose', v3: 'Arisen' },
+            { v1: 'Begin', b: 'শুরু করা', v2: 'Began', v3: 'Begun' },
+            { v1: 'Bite', b: 'কামড়ানো', v2: 'Bit', v3: 'Bitten' },
+            { v1: 'Break', b: 'ভাঙা', v2: 'Broke', v3: 'Broken' },
+            { v1: 'Bring', b: 'আনা', v2: 'Brought', v3: 'Brought' },
+            { v1: 'Build', b: 'নির্মাণ করা', v2: 'Built', v3: 'Built' },
+            { v1: 'Buy', b: 'ক্রয় করা', v2: 'Bought', v3: 'Bought' },
+            { v1: 'Choose', b: 'পছন্দ করা', v2: 'Chose', v3: 'Chosen' },
+            { v1: 'Come', b: 'আসা', v2: 'Came', v3: 'Come' },
+            { v1: 'Do', b: 'করা', v2: 'Did', v3: 'Done' },
+            { v1: 'Drive', b: 'চালানো', v2: 'Drove', v3: 'Driven' },
+            { v1: 'Eat', b: 'খাওয়া', v2: 'Ate', v3: 'Eaten' },
+            { v1: 'Fall', b: 'পড়ে যাওয়া', v2: 'Fell', v3: 'Fallen' },
+            { v1: 'Fly', b: 'উড়া', v2: 'Flew', v3: 'Flown' },
+            { v1: 'Go', b: 'যাওয়া', v2: 'Went', v3: 'Gone' },
+            { v1: 'Know', b: 'জানা', v2: 'Knew', v3: 'Known' },
+            { v1: 'See', b: 'দেখা', v2: 'Saw', v3: 'Seen' },
+            { v1: 'Write', b: 'লেখা', v2: 'Wrote', v3: 'Written' }
+        ];
+
+        const phrasalVerbs = [
+            { v: 'Bear off', b: 'জয়লাভ করা' },
+            { v: 'Break down', b: 'ভেঙে পড়া / বিকল হওয়া' },
+            { v: 'Bring up', b: 'লালনপালন করা' },
+            { v: 'Call off', b: 'বাতিল / প্রত্যাহার করা' },
+            { v: 'Carry on', b: 'চালিয়ে যাওয়া (Continue)' },
+            { v: 'Give up', b: 'ত্যাগ করা (Abandon)' },
+            { v: 'Look after', b: 'দেখাশুনা করা' },
+            { v: 'Put off', b: 'স্থগিত রাখা / খুলে ফেলা' }
+        ];
+
+        const oppositeWords = [
+            { m: 'Active', o: 'Inactive' },
+            { m: 'Advantage', o: 'Disadvantage' },
+            { m: 'Agree', o: 'Disagree' },
+            { m: 'Honest', o: 'Dishonest' },
+            { m: 'Legal', o: 'Illegal' },
+            { m: 'Moral', o: 'Immoral' },
+            { m: 'Possible', o: 'Impossible' },
+            { m: 'Regular', o: 'Irregular' }
+        ];
+
+        const oxford3000Sample = [
+            { w: 'Abandon', pos: 'verb', b: 'পরিত্যাগ করা' },
+            { w: 'Ability', pos: 'noun', b: 'সামর্থ্য / ক্ষমতা' },
+            { w: 'Able', pos: 'adjective', b: 'সক্ষম' },
+            { w: 'About', pos: 'prep/adv', b: 'সম্পর্কে / প্রায়' },
+            { w: 'Above', pos: 'prep/adv', b: 'উপরে' },
+            { w: 'Abroad', pos: 'adverb', b: 'বিদেশে' },
+            { w: 'Absolute', pos: 'adjective', b: 'পরম / সম্পূর্ণ' },
+            { w: 'Accept', pos: 'verb', b: 'গ্রহণ করা' },
+            { w: 'Accident', pos: 'noun', b: 'দুর্ঘটনা' },
+            { w: 'Achieve', pos: 'verb', b: 'অর্জন করা' },
+            { w: 'Action', pos: 'noun', b: 'কর্ম / কাজ' },
+            { w: 'Active', pos: 'adjective', b: 'সক্রিয়' },
+            { w: 'Beautiful', pos: 'adjective', b: 'সুন্দর' },
+            { w: 'Believe', pos: 'verb', b: 'বিশ্বাস করা' },
+            { w: 'Challenge', pos: 'noun/verb', b: 'আহ্বান / চ্যালেঞ্জ' },
+            { w: 'Develop', pos: 'verb', b: 'উন্নত করা' },
+            { w: 'Education', pos: 'noun', b: 'শিক্ষা' },
+            { w: 'Freedom', pos: 'noun', b: 'স্বাধীনতা' },
+            { w: 'Generate', pos: 'verb', b: 'উৎপন্ন করা' },
+            { w: 'Honesty', pos: 'noun', b: 'সততা' }
+        ];
+
+        const rightFormsRules = [
+            { r: '1. Subject Third Person Singular হলে Present Indefinite Tense-এ Verb-এর সাথে s/es যোগ হয়।', e: 'The baby cries. / She reads the holy Quran.' },
+            { r: '2. Before-এর আগের অংশ Past Perfect এবং পরের অংশ Past Indefinite Tense হয়।', e: 'The patient had died before the doctor came.' },
+            { r: '3. After-এর আগের অংশ Past Indefinite এবং পরের অংশ Past Perfect Tense হয়।', e: 'The patient died after the doctor had come.' },
+            { r: '4. Modal Auxiliary (can, could, may, might, should, would, must)-এর পর Verb-এর Present Form হয়।', e: 'He can do it easily. / You must learn English.' },
+            { r: '5. It is high time / It is time-এর পর Subject থাকলে Verb-এর Past form হয়।', e: 'It is high time you finished the course.' }
+        ];
+
+        const svaPracticeList = [
+            { q: '1. The taste of the mangoes _____ sour.', options: ['is', 'are'], ans: 'is', exp: 'Subject "taste" singular, তাই is হবে।' },
+            { q: '2. One of the eggs _____ broken.', options: ['is', 'are'], ans: 'is', exp: 'One of + plural noun-এর পর singular verb "is" বসে।' },
+            { q: '3. Neither Bob nor his friends _____ leaving.', options: ['is', 'are'], ans: 'are', exp: 'Nor-এর পরের subject (his friends) plural, তাই are হবে।' },
+            { q: '4. Mathematics _____ an easy subject for some people.', options: ['is', 'are'], ans: 'is', exp: 'Mathematics দেখতে plural হলেও আসলে singular।' }
+        ];
+
+        const quizQuestions = [
+            { q: '1. Choose the correct Plural form of "Analysis":', opts: ['Analysises', 'Analyses', 'Analysis', 'Analysia'], ans: 1 },
+            { q: '2. "Gold of Arabia is pure." What is the error here?', opts: ['Add "The" before Gold', 'Use "are" instead of "is"', 'Change Arabia', 'No error'], ans: 0 },
+            { q: '3. Which Conditional is "If you heat ice, it melts"?', opts: ['1st Conditional', '2nd Conditional', 'Zero Conditional', '3rd Conditional'], ans: 2 },
+            { q: '4. Fill in the blank: "He is fond _____ sweets."', opts: ['at', 'of', 'to', 'in'], ans: 1 },
+            { q: '5. Passive form of "Do it at once":', opts: ['Let it be done at once', 'Let it do at once', 'It is done at once', 'Let done it'], ans: 0 }
+        ];
+
+        let currentFlashIndex = 0;
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+
+        window.onload = function() {
+            renderOverviewGrid();
+            renderForeignPlurals();
+            renderGenderTable();
+            renderPrepTable();
+            renderVerbListTable();
+            renderPhrasalAndOpposites();
+            renderOxfordTable();
+            renderRightForms();
+            renderSvaQuiz();
+            renderAlphabetBar();
+            generateTenseMatrix();
+            loadQuizQuestion();
+        };
+
+        function switchTopic(topicId) {
+            // Hide all panels
+            document.querySelectorAll('.content-panel').forEach(p => p.classList.add('hidden'));
+            
+            // Show selected panel
+            const selectedPanel = document.getElementById(`panel-${topicId}`);
+            if (selectedPanel) selectedPanel.classList.remove('hidden');
+
+            // Update active state in sidebar
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-50', 'text-emerald-700', 'font-bold');
+                btn.classList.add('text-slate-600');
+            });
+
+            // Scroll to top of main
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchTab(tabId) {
+            switchTopic(tabId);
+        }
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function toggleSubTab(showId, hideId) {
+            document.getElementById(showId).classList.remove('hidden');
+            document.getElementById(hideId).classList.add('hidden');
+            
+            document.getElementById(`${showId}-btn`).classList.add('border-b-2', 'border-emerald-600', 'font-bold', 'text-emerald-700');
+            document.getElementById(`${showId}-btn`).classList.remove('text-slate-500');
+
+            document.getElementById(`${hideId}-btn`).classList.remove('border-b-2', 'border-emerald-600', 'font-bold', 'text-emerald-700');
+            document.getElementById(`${hideId}-btn`).classList.add('text-slate-500');
+        }
+
+        function renderOverviewGrid() {
+            const container = document.getElementById('overview-grid');
+            container.innerHTML = overviewTopics.map((t, idx) => `
+                <div onclick="switchTopic('${t.id}')" class="bg-white hover:bg-emerald-50/60 border border-slate-200 hover:border-emerald-300 p-4 rounded-xl shadow-xs transition cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-emerald-600 tracking-wider">Topic ${idx + 1}</span>
+                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-emerald-800 transition mt-0.5">${t.title}</h4>
+                        <p class="text-xs text-slate-500 mt-1 bengali-text">${t.desc}</p>
+                    </div>
+                    <div class="mt-3 flex items-center text-xs font-semibold text-emerald-600 group-hover:translate-x-1 transition">
+                        <span>Open Module</span>
+                        <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderForeignPlurals() {
+            const tbody = document.getElementById('foreign-plural-table');
+            tbody.innerHTML = foreignPlurals.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2 font-semibold text-slate-800">${item.s}</td>
+                    <td class="p-2 font-bold text-emerald-700">${item.p}</td>
+                    <td class="p-2 text-slate-600 bengali-text">${item.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderGenderTable() {
+            const tbody = document.getElementById('gender-table-body');
+            tbody.innerHTML = genderList.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-semibold text-blue-700">${item.m}</td>
+                    <td class="p-2.5 font-bold text-pink-700">${item.f}</td>
+                    <td class="p-2.5 text-slate-600 bengali-text">${item.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterGender() {
+            const query = document.getElementById('genderSearch').value.toLowerCase();
+            const rows = document.querySelectorAll('#gender-table-body tr');
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+            });
+        }
+
+        function renderPrepTable() {
+            const tbody = document.getElementById('prep-table-body');
+            tbody.innerHTML = appropriatePreps.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-bold text-emerald-800">${item.w}</td>
+                    <td class="p-2.5 text-slate-700 bengali-text">${item.b}</td>
+                    <td class="p-2.5 text-slate-500 italic">${item.e}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterPrep() {
+            const query = document.getElementById('prepSearch').value.toLowerCase();
+            const rows = document.querySelectorAll('#prep-table-body tr');
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+            });
+        }
+
+        function renderVerbListTable() {
+            const tbody = document.getElementById('verb-list-body');
+            tbody.innerHTML = verbConjugations.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-bold text-emerald-700">${item.v1}</td>
+                    <td class="p-2.5 text-slate-600 bengali-text">${item.b}</td>
+                    <td class="p-2.5 font-semibold text-slate-800">${item.v2}</td>
+                    <td class="p-2.5 font-semibold text-slate-800">${item.v3}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterVerbList() {
+            const query = document.getElementById('verbListSearch').value.toLowerCase();
+            const rows = document.querySelectorAll('#verb-list-body tr');
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(query) ? '' : 'none';
+            });
+        }
+
+        function renderPhrasalAndOpposites() {
+            document.getElementById('phrasal-verb-body').innerHTML = phrasalVerbs.map(p => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2 font-bold text-emerald-800">${p.v}</td>
+                    <td class="p-2 text-slate-700 bengali-text">${p.b}</td>
+                </tr>
+            `).join('');
+
+            document.getElementById('opposite-word-body').innerHTML = oppositeWords.map(o => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2 font-semibold text-slate-700">${o.m}</td>
+                    <td class="p-2 font-bold text-rose-700">${o.o}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderRightForms() {
+            const container = document.getElementById('right-forms-rules-container');
+            container.innerHTML = rightFormsRules.map(item => `
+                <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl">
+                    <p class="text-xs font-bold text-slate-800 bengali-text mb-1">${item.r}</p>
+                    <p class="text-xs text-emerald-700 font-mono italic">Example: ${item.e}</p>
+                </div>
+            `).join('');
+        }
+
+        function renderSvaQuiz() {
+            const container = document.getElementById('sva-quiz-list');
+            container.innerHTML = svaPracticeList.map((item, idx) => `
+                <div class="bg-white p-3 rounded-lg border border-amber-200">
+                    <p class="font-semibold text-slate-800 mb-2">${item.q}</p>
+                    <div class="flex space-x-2">
+                        ${item.options.map(opt => `
+                            <button onclick="checkSvaAns(this, '${opt}', '${item.ans}', 'sva-exp-${idx}')" class="px-3 py-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold rounded">
+                                ${opt}
+                            </button>
+                        `).join('')}
+                    </div>
+                    <p id="sva-exp-${idx}" class="text-[11px] text-emerald-700 mt-2 hidden bengali-text"><strong>Correct!</strong> ${item.exp}</p>
+                </div>
+            `).join('');
+        }
+
+        function checkSvaAns(btn, selected, correct, expId) {
+            const exp = document.getElementById(expId);
+            if (selected === correct) {
+                btn.classList.add('bg-emerald-600', 'text-white');
+                exp.classList.remove('hidden');
+            } else {
+                btn.classList.add('bg-rose-500', 'text-white');
+            }
+        }
+
+        function generateTenseMatrix() {
+            const sub = document.getElementById('tense-sub').value;
+            const verb = document.getElementById('tense-verb').value;
+            const cat = document.getElementById('tense-cat').value;
+
+            // Verb Conjugations map
+            const verbMap = {
+                'do': { v1: 'do', v1s: 'does', v2: 'did', v3: 'done', ing: 'doing' },
+                'love': { v1: 'love', v1s: 'loves', v2: 'loved', v3: 'loved', ing: 'loving' },
+                'read': { v1: 'read', v1s: 'reads', v2: 'read', v3: 'read', ing: 'reading' },
+                'play': { v1: 'play', v1s: 'plays', v2: 'played', v3: 'played', ing: 'playing' },
+                'write': { v1: 'write', v1s: 'writes', v2: 'wrote', v3: 'written', ing: 'writing' },
+                'learn': { v1: 'learn', v1s: 'learns', v2: 'learned', v3: 'learned', ing: 'learning' }
+            };
+
+            const vm = verbMap[verb] || verbMap['do'];
+            const is3rdSingular = (sub === 'He' || sub === 'She');
+
+            const tenses = [
+                // Present
+                { type: 'present', name: 'Present Simple', pos: `${sub} ${is3rdSingular ? vm.v1s : vm.v1}`, neg: `${sub} ${is3rdSingular ? "doesn't" : "don't"} ${vm.v1}`, int: `${is3rdSingular ? "Does" : "Do"} ${sub} ${vm.v1}?` },
+                { type: 'present', name: 'Present Continuous', pos: `${sub} ${sub==='I'?'am':is3rdSingular?'is':'are'} ${vm.ing}`, neg: `${sub} ${sub==='I'?'am not':is3rdSingular?"isn't":"aren't"} ${vm.ing}`, int: `${sub==='I'?'Am':is3rdSingular?'Is':'Are'} ${sub} ${vm.ing}?` },
+                { type: 'present', name: 'Present Perfect', pos: `${sub} ${is3rdSingular?'has':'have'} ${vm.v3}`, neg: `${sub} ${is3rdSingular?"hasn't":"haven't"} ${vm.v3}`, int: `${is3rdSingular?'Has':'Have'} ${sub} ${vm.v3}?` },
+                { type: 'present', name: 'Present Perf. Cont.', pos: `${sub} ${is3rdSingular?'has':'have'} been ${vm.ing}`, neg: `${sub} ${is3rdSingular?"hasn't":"haven't"} been ${vm.ing}`, int: `${is3rdSingular?'Has':'Have'} ${sub} been ${vm.ing}?` },
+                
+                // Past
+                { type: 'past', name: 'Past Simple', pos: `${sub} ${vm.v2}`, neg: `${sub} didn't ${vm.v1}`, int: `Did ${sub} ${vm.v1}?` },
+                { type: 'past', name: 'Past Continuous', pos: `${sub} ${(sub==='I'||is3rdSingular)?'was':'were'} ${vm.ing}`, neg: `${sub} ${(sub==='I'||is3rdSingular)?"wasn't":"weren't"} ${vm.ing}`, int: `${(sub==='I'||is3rdSingular)?'Was':'Were'} ${sub} ${vm.ing}?` },
+                { type: 'past', name: 'Past Perfect', pos: `${sub} had ${vm.v3}`, neg: `${sub} hadn't ${vm.v3}`, int: `Had ${sub} ${vm.v3}?` },
+                { type: 'past', name: 'Past Perf. Cont.', pos: `${sub} had been ${vm.ing}`, neg: `${sub} hadn't been ${vm.ing}`, int: `Had ${sub} been ${vm.ing}?` },
+
+                // Future
+                { type: 'future', name: 'Future Simple', pos: `${sub} will ${vm.v1}`, neg: `${sub} won't ${vm.v1}`, int: `Will ${sub} ${vm.v1}?` },
+                { type: 'future', name: 'Future Continuous', pos: `${sub} will be ${vm.ing}`, neg: `${sub} won't be ${vm.ing}`, int: `Will ${sub} be ${vm.ing}?` },
+                { type: 'future', name: 'Future Perfect', pos: `${sub} will have ${vm.v3}`, neg: `${sub} won't have ${vm.v3}`, int: `Will ${sub} have ${vm.v3}?` },
+                { type: 'future', name: 'Future Perf. Cont.', pos: `${sub} will have been ${vm.ing}`, neg: `${sub} won't have been ${vm.ing}`, int: `Will ${sub} have been ${vm.ing}?` }
+            ];
+
+            const filtered = cat === 'all' ? tenses : tenses.filter(t => t.type === cat);
+
+            document.getElementById('tense-matrix-body').innerHTML = filtered.map(t => `
+                <tr class="hover:bg-white/5">
+                    <td class="p-2 font-semibold text-emerald-300">${t.name}</td>
+                    <td class="p-2 font-mono text-white">${t.pos}</td>
+                    <td class="p-2 font-mono text-rose-300">${t.neg}</td>
+                    <td class="p-2 font-mono text-amber-300">${t.int}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderAlphabetBar() {
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+            const container = document.getElementById('alphabet-filter-bar');
+            container.innerHTML = `<button onclick="filterOxfordByLetter('')" class="px-2 py-0.5 bg-emerald-600 text-white font-bold rounded">All</button>` +
+                letters.map(l => `<button onclick="filterOxfordByLetter('${l}')" class="px-1.5 py-0.5 bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold rounded">${l}</button>`).join('');
+        }
+
+        function renderOxfordTable(data = oxford3000Sample) {
+            document.getElementById('oxford-table-body').innerHTML = data.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-bold text-slate-800">${item.w}</td>
+                    <td class="p-2.5 text-xs text-slate-500 italic">${item.pos}</td>
+                    <td class="p-2.5 text-slate-700 font-medium bengali-text">${item.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterOxford() {
+            const query = document.getElementById('oxfordSearch').value.toLowerCase();
+            const filtered = oxford3000Sample.filter(item => 
+                item.w.toLowerCase().includes(query) || item.b.includes(query)
+            );
+            renderOxfordTable(filtered);
+        }
+
+        function filterOxfordByLetter(letter) {
+            if (!letter) {
+                renderOxfordTable(oxford3000Sample);
+                return;
+            }
+            const filtered = oxford3000Sample.filter(item => item.w.toUpperCase().startsWith(letter));
+            renderOxfordTable(filtered);
+        }
+
+        function toggleOxfordView(mode) {
+            const listV = document.getElementById('oxford-list-view');
+            const cardV = document.getElementById('oxford-flashcard-view');
+            if (mode === 'flashcard') {
+                listV.classList.add('hidden');
+                cardV.classList.remove('hidden');
+                updateFlashcard();
+            } else {
+                listV.classList.remove('hidden');
+                cardV.classList.add('hidden');
+            }
+        }
+
+        function updateFlashcard() {
+            const item = oxford3000Sample[currentFlashIndex];
+            document.getElementById('flash-word').innerText = item.w;
+            document.getElementById('flash-pos').innerText = item.pos;
+            document.getElementById('flash-meaning').innerText = 'Click to reveal Bengali meaning';
+        }
+
+        function toggleFlashMeaning() {
+            const item = oxford3000Sample[currentFlashIndex];
+            document.getElementById('flash-meaning').innerText = item.b;
+        }
+
+        function nextFlashcard() {
+            currentFlashIndex = (currentFlashIndex + 1) % oxford3000Sample.length;
+            updateFlashcard();
+        }
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[quizCurrentIndex];
+            document.getElementById('quiz-progress-text').innerText = `Question ${quizCurrentIndex + 1} of ${quizQuestions.length}`;
+            document.getElementById('quiz-question').innerText = q.q;
+
+            const optsBox = document.getElementById('quiz-options');
+            optsBox.innerHTML = q.opts.map((opt, idx) => `
+                <button onclick="handleQuizAnswer(this, ${idx}, ${q.ans})" class="w-full text-left p-3 rounded-lg border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-xs font-semibold text-slate-700 transition">
+                    ${opt}
+                </button>
+            `).join('');
+
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+        }
+
+        function handleQuizAnswer(btn, selectedIdx, correctIdx) {
+            const buttons = document.querySelectorAll('#quiz-options button');
+            buttons.forEach(b => b.disabled = true);
+
+            if (selectedIdx === correctIdx) {
+                btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                quizScore += 10;
+                document.getElementById('quiz-score-badge').innerText = `Score: ${quizScore}`;
+            } else {
+                btn.classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+                buttons[correctIdx].classList.add('bg-emerald-600', 'text-white');
+            }
+
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function submitQuizNext() {
+            if (quizCurrentIndex < quizQuestions.length - 1) {
+                quizCurrentIndex++;
+                loadQuizQuestion();
+            } else {
+                document.getElementById('quiz-card-container').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-trophy text-5xl text-amber-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-900">Quiz Completed!</h3>
+                        <p class="text-sm text-slate-600 my-2">Your final score is: <strong class="text-emerald-700 text-lg">${quizScore}</strong> points.</p>
+                        <button onclick="resetQuiz()" class="mt-4 px-5 py-2 bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs rounded-lg shadow">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score-badge').innerText = `Score: 0`;
+            loadQuizQuestion();
+        }
+
+        function handleGlobalSearch(e) {
+            const q = e.target.value.toLowerCase();
+            if (!q) return;
+            // Filter topics by title
+            const matching = overviewTopics.find(t => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q));
+            if (matching) {
+                switchTopic(matching.id);
+            }
+        }
+    </script>
+</body>
+</html>
