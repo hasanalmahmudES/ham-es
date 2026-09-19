@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic to Advanced English Grammar (Spoken & Written) Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#16a34a',
+                            600: '#15803d',
+                            700: '#166534',
+                            800: '#14532d',
+                            900: '#134e2a',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+                        bengali: ['Hind Siliguri', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .bengali-text {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <header class="bg-emerald-900 text-white shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white text-xl font-bold shadow">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold tracking-tight">English Grammar Hub</h1>
+                        <p class="text-xs text-emerald-200 font-medium bengali-text">Beginner to Advanced • Spoken & Written</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center space-x-3">
+                    <div class="relative hidden md:block w-72">
+                        <input type="text" id="globalSearch" placeholder="Search rules, tenses, advanced topics..." 
+                            class="w-full bg-emerald-950/70 text-white placeholder-emerald-300 text-xs rounded-xl pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 border border-emerald-700"
+                            onkeyup="handleGlobalSearch(event)">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-emerald-300 text-xs"></i>
+                    </div>
+                    <button onclick="switchTopic('quiz-hub')" class="flex items-center space-x-1.5 px-3 py-1.5 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow transition">
+                        <i class="fa-solid fa-trophy"></i>
+                        <span>Quiz Hub</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-emerald-100 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-full md:w-72 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 shrink-0 self-start md:sticky md:top-20 max-h-[calc(100vh-6rem)] flex flex-col">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Curriculum Index</span>
+                <span class="text-xs font-semibold bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded-full">Levels 1-3</span>
+            </div>
+
+            <nav class="space-y-1 overflow-y-auto custom-scrollbar flex-1 pr-1 text-sm font-medium" id="topicNav">
+                <button onclick="switchTopic('overview')" class="topic-btn active w-full text-left px-3 py-2.5 rounded-xl flex items-center space-x-3 bg-emerald-50 text-emerald-700 font-bold">
+                    <i class="fa-solid fa-house w-5 text-center"></i>
+                    <span>Overview & Guide</span>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-extrabold text-emerald-800 uppercase tracking-wider px-3">Level 1: Beginner Foundations</div>
+                <button onclick="switchTopic('lvl1-basics')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-seedling w-5 text-center text-slate-400"></i>
+                        <span>Alphabets, Words & Parts of Speech</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl1-number-gender')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-list-ol w-5 text-center text-slate-400"></i>
+                        <span>Number, Gender & Person</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl1-tenses')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-clock-rotate-left w-5 text-center text-slate-400"></i>
+                        <span>The 12 Tenses Master Grid</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-extrabold text-blue-800 uppercase tracking-wider px-3">Level 2: Intermediate Core</div>
+                <button onclick="switchTopic('lvl2-sentences')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-paragraph w-5 text-center text-slate-400"></i>
+                        <span>Sentence Structure & Clauses</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl2-prepositions')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-location-dot w-5 text-center text-slate-400"></i>
+                        <span>Prepositions & Appropriate Preps</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl2-right-forms')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-check-double w-5 text-center text-slate-400"></i>
+                        <span>Right Forms of Verbs & SVA</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-extrabold text-purple-800 uppercase tracking-wider px-3">Level 3: Advanced Mastery</div>
+                <button onclick="switchTopic('lvl3-voice-narration')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-comments w-5 text-center text-slate-400"></i>
+                        <span>Voice Change & Narration</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl3-conditionals')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-code-branch w-5 text-center text-slate-400"></i>
+                        <span>Conditionals & Subjunctives</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('lvl3-advanced-syntax')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-atom w-5 text-center text-slate-400"></i>
+                        <span>Inversion & Advanced Modifiers</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('oxford-hub')" class="topic-btn w-full text-left px-3 py-2 rounded-xl flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-book-bookmark w-5 text-center text-slate-400"></i>
+                        <span>The Oxford 3000™ Vocab Hub</span>
+                    </div>
+                </button>
+            </nav>
+        </aside>
+
+        <main class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 min-h-[650px] flex flex-col">
+
+            <!-- OVERVIEW PANEL -->
+            <div id="panel-overview" class="content-panel space-y-6">
+                <div class="bg-gradient-to-br from-emerald-900 to-teal-950 text-white rounded-2xl p-6 sm:p-8 shadow-md relative overflow-hidden">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="bg-emerald-700/80 text-emerald-200 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 inline-block">Complete Learning Portal</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Master English Grammar: Beginner to Advanced</h2>
+                        <p class="text-emerald-100 text-sm sm:text-base leading-relaxed mb-4 bengali-text">
+                            প্রাথমিক বর্ণমালা থেকে শুরু করে উচ্চতর সিনট্যাক্স, ভয়েস, ন্যারেশন এবং স্পোকেন ইংলিশের পূর্ণাঙ্গ গাইড।
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="switchTopic('lvl1-tenses')" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs rounded-xl shadow transition flex items-center space-x-2">
+                                <i class="fa-solid fa-play"></i>
+                                <span>Start 12 Tenses Matrix</span>
+                            </button>
+                            <button onclick="switchTopic('lvl3-advanced-syntax')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white font-bold text-xs rounded-xl border border-white/20 transition flex items-center space-x-2">
+                                <i class="fa-solid fa-atom"></i>
+                                <span>Explore Advanced Syntax</span>
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-graduation-cap absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none"></i>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div onclick="switchTopic('lvl1-basics')" class="p-5 bg-emerald-50 rounded-2xl border border-emerald-200 cursor-pointer hover:shadow-md transition">
+                        <span class="text-xs font-bold text-emerald-800 uppercase block mb-1">Level 1 (Beginner)</span>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Foundations & Tenses</h3>
+                        <p class="text-xs text-slate-600 bengali-text">বর্ণমালা, Parts of speech, এবং ১২টি Tense-এর গঠন।</p>
+                    </div>
+                    <div onclick="switchTopic('lvl2-prepositions')" class="p-5 bg-blue-50 rounded-2xl border border-blue-200 cursor-pointer hover:shadow-md transition">
+                        <span class="text-xs font-bold text-blue-800 uppercase block mb-1">Level 2 (Intermediate)</span>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Sentences & Core Rules</h3>
+                        <p class="text-xs text-slate-600 bengali-text">Prepositions, Right forms of verbs, ও SVA নিয়মাবলী।</p>
+                    </div>
+                    <div onclick="switchTopic('lvl3-voice-narration')" class="p-5 bg-purple-50 rounded-2xl border border-purple-200 cursor-pointer hover:shadow-md transition">
+                        <span class="text-xs font-bold text-purple-800 uppercase block mb-1">Level 3 (Advanced)</span>
+                        <h3 class="font-bold text-slate-900 text-base mb-1">Voice, Narration & Inversion</h3>
+                        <p class="text-xs text-slate-600 bengali-text">উচ্চতর ন্যারেশন, কন্ডিশনাল এবং সিনট্যাক্স অ্যানালাইসিস।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 1: BASICS PANEL -->
+            <div id="panel-lvl1-basics" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Level 1 • Module 1</span>
+                    <h2 class="text-xl font-bold text-slate-900">Alphabets, Words & Parts of Speech</h2>
+                    <p class="text-sm text-slate-500 bengali-text">ইংরেজি ভাষার মৌলিক উপাদান এবং ৮ প্রকার পার্টস অফ স্পিচ।</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-sm mb-2"><i class="fa-solid fa-font text-emerald-600 mr-2"></i> Alphabet & Vowel/Consonant</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed bengali-text">
+                            ইংরেজি বর্ণমালায় মোট ২৬টি বর্ণ (Letters) রয়েছে। এদের মধ্যে ৫টি Vowel (A, E, I, O, U) এবং ২১টি Consonant। শব্দ গঠনে Vowel অপরিহার্য।
+                        </p>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h3 class="font-bold text-slate-900 text-sm mb-2"><i class="fa-solid fa-shapes text-emerald-600 mr-2"></i> 8 Parts of Speech</h3>
+                        <ul class="text-xs space-y-1.5 text-slate-700 bengali-text">
+                            <li><strong>1. Noun:</strong> কোন কিছুর নাম (Dhaka, Honesty)</li>
+                            <li><strong>2. Pronoun:</strong> Noun-এর পরিবর্তে (He, She, They)</li>
+                            <li><strong>3. Adjective:</strong> দোষ-গুণ প্রকাশ করে (Good, Brave)</li>
+                            <li><strong>4. Verb:</strong> কাজ করা বোঝায় (Run, Write)</li>
+                            <li><strong>5. Adverb:</strong> Verb/Adj কে modify করে (Slowly)</li>
+                            <li><strong>6. Preposition:</strong> সম্বন্ধ স্থাপন করে (In, On, At)</li>
+                            <li><strong>7. Conjunction:</strong> যুক্ত করে (And, But)</li>
+                            <li><strong>8. Interjection:</strong> আবেগ প্রকাশ করে (Alas!, Hurrah!)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 1: NUMBER & GENDER -->
+            <div id="panel-lvl1-number-gender" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Level 1 • Module 2</span>
+                    <h2 class="text-xl font-bold text-slate-900">Number, Gender & Person</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                        <h4 class="font-bold text-emerald-900 mb-2">Number (বচন)</h4>
+                        <p class="text-emerald-800 bengali-text">Singular (একবচন) ও Plural (বহুবচন)। যেমন: Boy -> Boys, Ox -> Oxen.</p>
+                    </div>
+                    <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
+                        <h4 class="font-bold text-blue-900 mb-2">Gender (লিঙ্গ)</h4>
+                        <p class="text-blue-800 bengali-text">Masculine, Feminine, Common, এবং Neuter Gender।</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2">Person (পুরুষ)</h4>
+                        <p class="text-purple-800 bengali-text">First Person (I, We), Second Person (You), Third Person (He, She, It, They).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 1: TENSES MASTER GRID -->
+            <div id="panel-lvl1-tenses" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-emerald-700 uppercase tracking-wider">Level 1 • Module 3</span>
+                    <h2 class="text-xl font-bold text-slate-900">The 12 Tenses Master Grid</h2>
+                    <p class="text-sm text-slate-500 bengali-text">ইংরেজি ব্যাকরণের সবচেয়ে গুরুত্বপূর্ণ ১২টি Tense-এর ইন্টারেক্টিভ ড্রিল।</p>
+                </div>
+
+                <div class="bg-gradient-to-r from-emerald-900 to-teal-950 text-white p-5 rounded-2xl shadow-md">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
+                        <div>
+                            <label class="block text-xs font-medium text-emerald-200 mb-1">Subject</label>
+                            <select id="t-sub" onchange="renderTenses()" class="w-full bg-emerald-900 text-white text-xs rounded-xl p-2.5 border border-emerald-700 focus:outline-none">
+                                <option value="I">I</option>
+                                <option value="We">We</option>
+                                <option value="You">You</option>
+                                <option value="He">He</option>
+                                <option value="She">She</option>
+                                <option value="They">They</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-emerald-200 mb-1">Action Verb</label>
+                            <select id="t-verb" onchange="renderTenses()" class="w-full bg-emerald-900 text-white text-xs rounded-xl p-2.5 border border-emerald-700 focus:outline-none">
+                                <option value="learn">learn (শেখা)</option>
+                                <option value="write">write (লেখা)</option>
+                                <option value="read">read (পড়া)</option>
+                                <option value="speak">speak (বলা)</option>
+                                <option value="do">do (করা)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="renderTenses()" class="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs py-2.5 px-3 rounded-xl shadow transition">
+                                <i class="fa-solid fa-rotate mr-1"></i> Refresh Grid
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-white/10 max-h-80 overflow-y-auto custom-scrollbar text-xs">
+                        <table class="w-full text-left">
+                            <thead class="text-emerald-300 font-bold border-b border-emerald-800">
+                                <tr>
+                                    <th class="p-2">Tense Category</th>
+                                    <th class="p-2">Positive (+)</th>
+                                    <th class="p-2">Negative (-)</th>
+                                    <th class="p-2">Interrogative (?)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tenses-tbody" class="divide-y divide-emerald-800/40 text-emerald-50 font-mono">
+                                <!-- JS Populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 2: SENTENCES & CLAUSES -->
+            <div id="panel-lvl2-sentences" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Level 2 • Module 1</span>
+                    <h2 class="text-xl font-bold text-slate-900">Sentence Structure & Clauses</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 mb-2">Structure-wise Sentences</h4>
+                        <ul class="space-y-1 text-slate-700 bengali-text">
+                            <li><strong>Simple Sentence:</strong> একটি মাত্র Independent Clause থাকে।</li>
+                            <li><strong>Compound Sentence:</strong> একাধিক Main Clause (and, but, or দ্বারা যুক্ত)।</li>
+                            <li><strong>Complex Sentence:</strong> একটি Principal Clause ও এক বা একাধিক Subordinate Clause।</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 mb-2">Clauses Breakdown</h4>
+                        <p class="text-slate-700 bengali-text">Clause হলো বাক्याংশ যাতে Subject ও Finite Verb থাকে। Clauses প্রধানত 3 প্রকার: Noun Clause, Adjective Clause, এবং Adverbial Clause.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 2: PREPOSITIONS -->
+            <div id="panel-lvl2-prepositions" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Level 2 • Module 2</span>
+                    <h2 class="text-xl font-bold text-slate-900">Prepositions & Appropriate Preps</h2>
+                </div>
+
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-900 text-sm mb-3">Appropriate Prepositions Quick Lookup</h4>
+                    <div class="max-h-60 overflow-y-auto custom-scrollbar bg-white rounded-xl border border-slate-200 text-xs">
+                        <table class="w-full text-left">
+                            <thead class="bg-slate-100 font-bold text-slate-700 sticky top-0">
+                                <tr>
+                                    <th class="p-2.5">Word & Prep</th>
+                                    <th class="p-2.5">Bangla Meaning</th>
+                                    <th class="p-2.5">Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100" id="prep-tbody">
+                                <!-- JS populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 2: RIGHT FORMS & SVA -->
+            <div id="panel-lvl2-right-forms" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-blue-700 uppercase tracking-wider">Level 2 • Module 3</span>
+                    <h2 class="text-xl font-bold text-slate-900">Right Forms of Verbs & Subject-Verb Agreement</h2>
+                </div>
+                <div class="space-y-3 text-xs">
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 mb-1">Rule 1: Habitual Fact & Universal Truth</h4>
+                        <p class="text-emerald-700 font-mono">Always Present Indefinite: "The sun rises in the east."</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <h4 class="font-bold text-slate-900 mb-1">Rule 2: Subject-Verb Agreement</h4>
+                        <p class="text-emerald-700 font-mono">"Neither of the boys was present." (Singular verb with neither of).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 3: VOICE & NARRATION -->
+            <div id="panel-lvl3-voice-narration" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-purple-700 uppercase tracking-wider">Level 3 • Module 1</span>
+                    <h2 class="text-xl font-bold text-slate-900">Advanced Voice Change & Narration</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2">Voice Transformation Rules</h4>
+                        <p class="text-purple-800 bengali-text">Active থেকে Passive করার সময় Object কে Subject বানাতে হয়, Tense অনুযায়ী Auxiliary Verb এবং V3 ফর্ম ব্যবহার করতে হয়।</p>
+                    </div>
+                    <div class="bg-purple-50 p-4 rounded-2xl border border-purple-200">
+                        <h4 class="font-bold text-purple-900 mb-2">Narration (Direct to Indirect)</h4>
+                        <p class="text-purple-800 bengali-text">Reporting Verb Past Tense হলে Inverted comma উঠে that/if বসবে এবং tense ও pronoun পরিবর্তিত হবে।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 3: CONDITIONALS -->
+            <div id="panel-lvl3-conditionals" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-purple-700 uppercase tracking-wider">Level 3 • Module 2</span>
+                    <h2 class="text-xl font-bold text-slate-900">Conditionals & Subjunctives</h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <span class="font-bold text-emerald-700 block mb-1">2nd Conditional</span>
+                        <p class="font-mono text-slate-800 mb-1">If + Past Simple, Would + V1</p>
+                        <p class="text-slate-600 italic">"If I were a bird, I would fly."</p>
+                    </div>
+                    <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                        <span class="font-bold text-purple-700 block mb-1">3rd Conditional</span>
+                        <p class="font-mono text-slate-800 mb-1">If + Past Perfect, Would have + V3</p>
+                        <p class="text-slate-600 italic">"If you had studied, you would have passed."</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- LEVEL 3: ADVANCED SYNTAX -->
+            <div id="panel-lvl3-advanced-syntax" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <span class="text-xs font-bold text-purple-700 uppercase tracking-wider">Level 3 • Module 3</span>
+                    <h2 class="text-xl font-bold text-slate-900">Inversion & Advanced Modifiers</h2>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 text-xs space-y-3">
+                    <h4 class="font-bold text-slate-900">Negative Inversion Structure</h4>
+                    <p class="text-slate-700 bengali-text">নেগেটিভ শব্দ (Hardly, Scarcely, Seldom) দিয়ে বাক্য শুরু হলে Subject-এর আগে auxiliary verb বসে।</p>
+                    <p class="font-mono text-purple-700 bg-white p-3 rounded-xl border border-slate-200">"Hardly had I reached the station when the train left."</p>
+                </div>
+            </div>
+
+            <!-- OXFORD 3000 VOCAB HUB -->
+            <div id="panel-oxford-hub" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">The Oxford 3000™ Vocabulary Hub</h2>
+                    <p class="text-sm text-slate-500 bengali-text">সর্বাধিক প্রয়োজনীয় ৩০০০ শব্দের বাংলা অর্থ ও অংশবিশেষ।</p>
+                </div>
+                <div class="max-h-96 overflow-y-auto custom-scrollbar bg-white rounded-2xl border border-slate-200 text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 font-bold text-slate-700 sticky top-0">
+                            <tr>
+                                <th class="p-3">Word</th>
+                                <th class="p-3">Part of Speech</th>
+                                <th class="p-3">Bangla Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="oxford-tbody">
+                            <!-- JS Populated -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- QUIZ HUB -->
+            <div id="panel-quiz-hub" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">Grammar Mastery Quiz Hub</h2>
+                    <p class="text-sm text-slate-500 bengali-text">আপনার ব্যাকরণ জ্ঞান যাচাই করুন।</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-xl mx-auto space-y-6" id="quiz-container">
+                    <div class="flex justify-between items-center border-b border-slate-200 pb-3 text-xs font-bold text-emerald-700">
+                        <span id="q-progress">Question 1 of 4</span>
+                        <span class="bg-amber-100 text-amber-800 px-3 py-1 rounded-full" id="q-score">Score: 0</span>
+                    </div>
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 mb-4" id="q-text">Question goes here</h3>
+                        <div class="space-y-2.5" id="q-options"></div>
+                    </div>
+                    <div class="flex justify-end">
+                        <button onclick="nextQuiz()" id="q-next-btn" class="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow transition hidden">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="bg-emerald-950 text-emerald-200 py-6 mt-auto border-t border-emerald-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs space-y-3 sm:space-y-0">
+            <div class="flex items-center space-x-2">
+                <i class="fa-solid fa-graduation-cap text-emerald-400"></i>
+                <span class="font-bold text-white">English Grammar Hub (Beginner to Advanced)</span>
+            </div>
+            <div class="text-center font-medium">
+                Copyright © 2026 • Developed by <span class="text-white font-bold">Hasan Al Mahmud</span>
+            </div>
+            <div class="text-emerald-400">
+                All Rights Reserved
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const appropriatePreps = [
+            { w: 'Accused of', b: 'অভিযুক্ত', e: 'He was accused of theft.' },
+            { w: 'Addicted to', b: 'আসক্ত', e: 'He is addicted to smoking.' },
+            { w: 'Afraid of', b: 'ভীত', e: 'She is afraid of dogs.' },
+            { w: 'Agree with', b: 'সম্মত হওয়া', e: 'I agree with your proposal.' },
+            { w: 'Blind to', b: 'অন্ধ (দোষে)', e: 'Parents are blind to their child\'s faults.' },
+            { w: 'Confident of', b: 'নিশ্চিত', e: 'He is confident of success.' },
+            { w: 'Fond of', b: 'পছন্দ করা', e: 'She is fond of music.' },
+            { w: 'Good at', b: 'দক্ষ', e: 'He is good at mathematics.' }
+        ];
+
+        const oxfordData = [
+            { w: 'Abandon', pos: 'verb', b: 'পরিত্যাগ করা' },
+            { w: 'Ability', pos: 'noun', b: 'সামর্থ্য' },
+            { w: 'Benevolent', pos: 'adjective', b: 'পरोपकारी' },
+            { w: 'Candid', pos: 'adjective', b: 'অকপট' },
+            { w: 'Diligent', pos: 'adjective', b: 'পরিশ্রমী' },
+            { w: 'Eradicate', pos: 'verb', b: 'উচ্ছেদ করা' },
+            { w: 'Fluctuate', pos: 'verb', b: ' ওঠানামা করা' }
+        ];
+
+        const quizList = [
+            { q: '1. Choose the correct plural of "Analysis":', opts: ['Analyses', 'Analysises', 'Analysia', 'Analysis'], ans: 0 },
+            { q: '2. "Neither of the boys _____ present." Choose correct verb:', opts: ['were', 'was', 'have', 'are'], ans: 1 },
+            { q: '3. Identify 2nd Conditional sentence:', opts: ['If you come, I will go.', 'If I were a bird, I would fly.', 'If you had come, I would have gone.', 'Ice melts if heated.'], ans: 1 },
+            { q: '4. Choose the appropriate preposition: "He is good _____ math."', opts: ['in', 'at', 'on', 'with'], ans: 1 }
+        ];
+
+        let qIndex = 0;
+        let score = 0;
+
+        window.onload = function() {
+            renderTenses();
+            renderPreps();
+            renderOxford();
+            loadQuiz();
+        };
+
+        function switchTopic(topicId) {
+            document.querySelectorAll('.content-panel').forEach(p => p.classList.add('hidden'));
+            const target = document.getElementById(`panel-${topicId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('bg-emerald-50', 'text-emerald-700', 'font-bold');
+                btn.classList.add('text-slate-600');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function renderTenses() {
+            const sub = document.getElementById('t-sub').value;
+            const verb = document.getElementById('t-verb').value;
+            const vMap = {
+                'learn': { v1: 'learn', v3: 'learned', ing: 'learning' },
+                'write': { v1: 'write', v3: 'written', ing: 'writing' },
+                'read': { v1: 'read', v3: 'read', ing: 'reading' },
+                'speak': { v1: 'speak', v3: 'spoken', ing: 'speaking' },
+                'do': { v1: 'do', v3: 'done', ing: 'doing' }
+            };
+            const vm = vMap[verb] || vMap['learn'];
+            const is3rd = (sub === 'He' || sub === 'She');
+
+            const data = [
+                { name: 'Present Simple', pos: `${sub} ${is3rd?vm.v1+'s':vm.v1}`, neg: `${sub} ${is3rd?"doesn't":"don't"} ${vm.v1}`, int: `${is3rd?"Does":"Do"} ${sub} ${vm.v1}?` },
+                { name: 'Present Continuous', pos: `${sub} ${sub==='I'?'am':is3rd?'is':'are'} ${vm.ing}`, neg: `${sub} ${sub==='I'?'am not':is3rd?"isn't":"aren't"} ${vm.ing}`, int: `${sub==='I'?'Am':is3rd?'Is':'Are'} ${sub} ${vm.ing}?` },
+                { name: 'Past Simple', pos: `${sub} ${vm.v1}ed`, neg: `${sub} didn't ${vm.v1}`, int: `Did ${sub} ${vm.v1}?` },
+                { name: 'Future Simple', pos: `${sub} will ${vm.v1}`, neg: `${sub} won't ${vm.v1}`, int: `Will ${sub} ${vm.v1}?` }
+            ];
+
+            document.getElementById('tenses-tbody').innerHTML = data.map(d => `
+                <tr class="hover:bg-white/5">
+                    <td class="p-2 font-bold text-emerald-300">${d.name}</td>
+                    <td class="p-2 text-white">${d.pos}</td>
+                    <td class="p-2 text-rose-300">${d.neg}</td>
+                    <td class="p-2 text-amber-300">${d.int}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderPreps() {
+            document.getElementById('prep-tbody').innerHTML = appropriatePreps.map(p => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-bold text-emerald-800">${p.w}</td>
+                    <td class="p-2.5 text-slate-700 bengali-text">${p.b}</td>
+                    <td class="p-2.5 text-slate-500 italic">${p.e}</td>
+                </tr>
+            `).join('');
+        }
+
+        function renderOxford() {
+            document.getElementById('oxford-tbody').innerHTML = oxfordData.map(o => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-3 font-bold text-slate-900">${o.w}</td>
+                    <td class="p-3 text-slate-500 italic">${o.pos}</td>
+                    <td class="p-3 text-slate-700 bengali-text">${o.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function loadQuiz() {
+            if (qIndex >= quizList.length) {
+                document.getElementById('quiz-container').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-trophy text-5xl text-amber-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-900">Quiz Complete!</h3>
+                        <p class="text-sm text-slate-600 mt-2">Your final score: <strong class="text-emerald-700 text-lg">${score}</strong> / ${quizList.length * 10}</p>
+                        <button onclick="resetQuiz()" class="mt-4 px-5 py-2 bg-emerald-700 text-white font-bold text-xs rounded-xl shadow">Try Again</button>
+                    </div>
+                `;
+                return;
+            }
+            const q = quizList[qIndex];
+            document.getElementById('q-progress').innerText = `Question ${qIndex + 1} of ${quizList.length}`;
+            document.getElementById('q-text').innerText = q.q;
+            document.getElementById('q-options').innerHTML = q.opts.map((opt, idx) => `
+                <button onclick="checkAnswer(this, ${idx}, ${q.ans})" class="w-full text-left p-3 rounded-xl border border-slate-200 hover:border-emerald-500 hover:bg-emerald-50 text-xs font-semibold text-slate-700 transition">${opt}</button>
+            `).join('');
+            document.getElementById('q-next-btn').classList.add('hidden');
+        }
+
+        function checkAnswer(btn, selected, correct) {
+            const btns = document.querySelectorAll('#q-options button');
+            btns.forEach(b => b.disabled = true);
+            if (selected === correct) {
+                btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-600');
+                score += 10;
+                document.getElementById('q-score').innerText = `Score: ${score}`;
+            } else {
+                btn.classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+                btns[correct].classList.add('bg-emerald-600', 'text-white');
+            }
+            document.getElementById('q-next-btn').classList.remove('hidden');
+        }
+
+        function nextQuiz() {
+            qIndex++;
+            loadQuiz();
+        }
+
+        function resetQuiz() {
+            qIndex = 0;
+            score = 0;
+            document.getElementById('q-score').innerText = `Score: 0`;
+            loadQuiz();
+        }
+
+        function handleGlobalSearch(e) {
+            const q = e.target.value.toLowerCase();
+            if (!q) return;
+            if (q.includes('tense')) switchTopic('lvl1-tenses');
+            else if (q.includes('prep')) switchTopic('lvl2-prepositions');
+            else if (q.includes('voice') || q.includes('narration')) switchTopic('lvl3-voice-narration');
+        }
+    </script>
+</body>
+</html>

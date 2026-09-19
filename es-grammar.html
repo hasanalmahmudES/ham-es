@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Language Grammar (Beginner to DELE B2) - Learning Portal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        spanishRed: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        },
+                        spanishYellow: {
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Hind Siliguri', 'sans-serif'],
+                        bengali: ['Hind Siliguri', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 9999px;
+        }
+        .bengali-text {
+            font-family: 'Hind Siliguri', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- Header Navbar -->
+    <header class="bg-red-900 text-white shadow-md sticky top-0 z-50 border-b-4 border-yellow-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Title & Logo -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 rounded-lg bg-yellow-500 flex items-center justify-center text-red-950 text-xl font-extrabold shadow">
+                        <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg sm:text-xl font-bold tracking-tight leading-tight">Spanish Grammar (A1 - B2)</h1>
+                        <p class="text-xs text-yellow-200 font-medium bengali-text">শূন্য থেকে DELE B2 পর্যন্ত স্প্যানিশ ব্যাকরণ ও কথন পোর্টাল</p>
+                    </div>
+                </div>
+
+                <!-- Search & Navigation Buttons -->
+                <div class="flex items-center space-x-3">
+                    <div class="relative hidden md:block w-64">
+                        <input type="text" id="globalSearch" placeholder="Search verbs, rules, vocabulary..." 
+                            class="w-full bg-red-950/60 text-white placeholder-red-200 text-sm rounded-lg pl-9 pr-4 py-1.5 focus:outline-none focus:ring-2 focus:ring-yellow-400 border border-red-700"
+                            onkeyup="handleGlobalSearch(event)">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-yellow-300 text-xs"></i>
+                    </div>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-yellow-200 hover:text-white p-2">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                    <button onclick="switchTab('ai-mentor')" class="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-yellow-500 hover:bg-yellow-600 text-red-950 font-bold text-xs rounded-lg shadow transition">
+                        <i class="fa-solid fa-robot"></i>
+                        <span>AI Spanish Mentor</span>
+                    </button>
+                    <button onclick="switchTab('quiz-hub')" class="hidden sm:flex items-center space-x-1 px-3 py-1.5 bg-red-700 hover:bg-red-800 text-white font-semibold text-xs rounded-lg shadow transition border border-red-600">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <span>DELE B2 Quiz</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row gap-6">
+
+        <!-- Sidebar Navigation -->
+        <aside id="sidebar" class="w-full md:w-80 bg-white rounded-2xl shadow-sm border border-slate-200 p-4 shrink-0 self-start md:sticky md:top-20 max-h-[calc(100vh-6rem)] flex flex-col">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-400">Complete Syllabus (A1 - B2)</span>
+                <span class="text-xs font-semibold bg-red-100 text-red-800 px-2 py-0.5 rounded-full">18 Modules</span>
+            </div>
+
+            <!-- Mobile Search -->
+            <div class="relative mb-3 md:hidden">
+                <input type="text" id="mobileSearch" placeholder="Search topics & rules..." 
+                    class="w-full bg-slate-100 text-slate-800 text-sm rounded-lg pl-9 pr-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-500"
+                    onkeyup="handleGlobalSearch(event)">
+                <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-slate-400 text-xs"></i>
+            </div>
+
+            <!-- Topic Navigation Items -->
+            <nav class="space-y-1 overflow-y-auto custom-scrollbar flex-1 pr-1 text-sm font-medium" id="topicNav">
+                <button onclick="switchTopic('overview')" class="topic-btn active w-full text-left px-3 py-2.5 rounded-lg flex items-center space-x-3 bg-red-50 text-red-700">
+                    <i class="fa-solid fa-house w-5 text-center"></i>
+                    <span>Overview & Introduction</span>
+                </button>
+
+                <div class="pt-2 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Level A1-A2: Foundations</div>
+                <button onclick="switchTopic('alphabet-pronunciation')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-font w-5 text-center text-slate-400"></i>
+                        <span>01. Alphabet & Phonetics</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('articles-gender')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-venus-mars w-5 text-center text-slate-400"></i>
+                        <span>02. Gender & Articles (El/La)</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('pronouns')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-user-group w-5 text-center text-slate-400"></i>
+                        <span>03. Subject & Object Pronouns</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('ser-estar')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-circle-question w-5 text-center text-slate-400"></i>
+                        <span>04. Ser vs. Estar Mastery</span>
+                    </div>
+                    <span class="text-[10px] bg-yellow-100 text-yellow-800 font-bold px-1.5 py-0.5 rounded">Core</span>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Level A2-B1: Core Verbs & Past</div>
+                <button onclick="switchTopic('verb-conjugations')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-bolt w-5 text-center text-slate-400"></i>
+                        <span>05. Present & Irregular Verbs</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('stem-changing')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-code-branch w-5 text-center text-slate-400"></i>
+                        <span>06. Stem-Changing & Reflexive Verbs</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('past-tenses')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-clock-rotate-left w-5 text-center text-slate-400"></i>
+                        <span>07. Past Tenses (Indefinido vs Imperfecto)</span>
+                    </div>
+                    <span class="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded">B1</span>
+                </button>
+                <button onclick="switchTopic('future-conditional')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-forward w-5 text-center text-slate-400"></i>
+                        <span>08. Future & Conditional Moods</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Level B1-B2: Advanced Mastery</div>
+                <button onclick="switchTopic('subjunctive-present')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-wand-magic-sparkles w-5 text-center text-slate-400"></i>
+                        <span>09. Subjuntivo Presente (ভাবার্থক বর্তমান)</span>
+                    </div>
+                    <span class="text-[10px] bg-red-200 text-red-900 font-bold px-1.5 py-0.5 rounded">B2</span>
+                </button>
+                <button onclick="switchTopic('subjunctive-past')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-hat-wizard w-5 text-center text-slate-400"></i>
+                        <span>10. Subjuntivo Imperfecto & Conditional Sentences</span>
+                    </div>
+                    <span class="text-[10px] bg-red-200 text-red-900 font-bold px-1.5 py-0.5 rounded">B2</span>
+                </button>
+                <button onclick="switchTopic('passive-impersonal')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-shield-halved w-5 text-center text-slate-400"></i>
+                        <span>11. Passive Voice & Impersonal 'Se'</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('relative-clauses')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-link w-5 text-center text-slate-400"></i>
+                        <span>12. Relative Pronouns & Clauses</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Syntax, Prepositions & Idioms</div>
+                <button onclick="switchTopic('prepositions-spatial')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-location-dot w-5 text-center text-slate-400"></i>
+                        <span>13. Por vs. Para & Advanced Prepositions</span>
+                    </div>
+                </button>
+                <button onclick="switchTopic('connectors-discourse')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-comments w-5 text-center text-slate-400"></i>
+                        <span>14. Discourse Connectors & B2 Connectors</span>
+                    </div>
+                </button>
+
+                <div class="pt-3 pb-1 text-[11px] font-bold text-slate-400 uppercase tracking-wider px-3">Vocab & Spoken Tools</div>
+                <button onclick="switchTopic('spanish-vocab')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-slate-600 hover:bg-slate-50">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-book-bookmark w-5 text-center text-slate-400"></i>
+                        <span>15. B2 Advanced Vocabulary Hub</span>
+                    </div>
+                    <span class="text-[10px] bg-red-100 text-red-800 font-bold px-1.5 py-0.5 rounded">Vocab</span>
+                </button>
+                <button onclick="switchTopic('ai-mentor')" class="topic-btn w-full text-left px-3 py-2 rounded-lg flex items-center justify-between text-red-700 bg-red-50 hover:bg-red-100 font-semibold">
+                    <div class="flex items-center space-x-2.5">
+                        <i class="fa-solid fa-robot w-5 text-center text-red-500"></i>
+                        <span>AI Spanish Assistant</span>
+                    </div>
+                    <span class="text-[10px] bg-red-200 text-red-900 font-bold px-1.5 py-0.5 rounded">Live</span>
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Display Panel -->
+        <main class="flex-1 bg-white rounded-2xl shadow-sm border border-slate-200 p-6 min-h-[600px] flex flex-col">
+
+            <!-- PANEL: OVERVIEW -->
+            <div id="panel-overview" class="content-panel">
+                <div class="bg-gradient-to-br from-red-900 to-red-950 text-white rounded-xl p-6 sm:p-8 mb-6 shadow-md relative overflow-hidden border-b-4 border-yellow-500">
+                    <div class="relative z-10 max-w-2xl">
+                        <span class="bg-red-800 text-yellow-300 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-500/30 uppercase tracking-wider mb-3 inline-block">Beginner to DELE B2 Masterclass Portal</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold mb-2">Aprende Español (A1 - B2 Complete Syllabus)</h2>
+                        <p class="text-red-100 text-sm sm:text-base leading-relaxed mb-4 bengali-text">
+                            শূন্য থেকে শুরু করে DELE B2 লেভেল পর্যন্ত স্প্যানিশ ভাষা (Spanish Language) ব্যাকরণ, সাবজাংটিভ, অতীতকাল এবং কথ্য রূপের পূর্ণাঙ্গ সিলেবাস। সহজ বাংলায় ব্যাখ্যা ও বাস্তব উদাহরণ সহ।
+                        </p>
+                        <div class="flex flex-wrap gap-3 pt-2">
+                            <button onclick="switchTopic('subjunctive-present')" class="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-red-950 text-sm font-bold rounded-lg shadow transition flex items-center space-x-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                                <span>Master Subjuntivo (B2)</span>
+                            </button>
+                            <button onclick="switchTopic('spanish-vocab')" class="px-4 py-2 bg-white/10 hover:bg-white/20 text-white text-sm font-semibold rounded-lg border border-white/20 transition flex items-center space-x-2">
+                                <i class="fa-solid fa-spell-check"></i>
+                                <span>Browse Vocabulary</span>
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-earth-americas absolute -right-6 -bottom-6 text-9xl text-white/5 pointer-events-none"></i>
+                </div>
+
+                <!-- Chapters Grid -->
+                <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center space-x-2">
+                    <i class="fa-solid fa-layer-group text-red-600"></i>
+                    <span>Complete Grammar Syllabus Modules (A1 to B2)</span>
+                </h3>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="overview-grid">
+                    <!-- Dynamic Grid Cards -->
+                </div>
+            </div>
+
+            <!-- PANEL: ALPHABET & PRONUNCIATION -->
+            <div id="panel-alphabet-pronunciation" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">01. El Alfabeto y Fonética (A1 Foundations)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">স্প্যানিশ বর্ণমালা, সঠিক স্বরবর্ণ উচ্চারণ (Las Vocales) এবং লিসেনিং পরীক্ষার বেসিক নিয়ম।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs">
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <h3 class="font-bold text-red-800 text-sm">Vowels (স্বরবর্ণ: a, e, i, o, u)</h3>
+                        <p class="text-slate-600 bengali-text">স্প্যানিশ স্বরবর্ণগুলো অত্যন্ত বিশুদ্ধ ও সংক্ষিপ্ত হয়। ইংরেজি বা বাংলার মতো স্বরবর্ণের পরিবর্তন খুব একটা হয় না। যেমন:</p>
+                        <ul class="space-y-1 font-mono text-slate-800">
+                            <li><strong>A:</strong> আ (যেমন: *casa* - বাসা)</li>
+                            <li><strong>E:</strong> এ (যেমন: *elefante*)</li>
+                            <li><strong>I:</strong> ই (যেমন: *isla*)</li>
+                            <li><strong>O:</strong> ও (যেমন: *ojo*)</li>
+                            <li><strong>U:</strong> উ (যেমন: *uva*)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3">
+                        <h3 class="font-bold text-red-800 text-sm">Special Consonants (বিশেষ ব্যঞ্জনবর্ণ)</h3>
+                        <p class="text-slate-600 bengali-text">যে বর্ণগুলোর উচ্চারণ নিয়ে শুরুতে বিভ্রান্তি হয়:</p>
+                        <ul class="space-y-1 text-slate-700">
+                            <li><strong>Ñ (enye):</strong> 'ঞ' এর মতো উচ্চারিত হয় (যেমন: *español*)।</li>
+                            <li><strong>H:</strong> স্প্যানিশে H সবসময় নীরব (Silent) থাকে (যেমন: *hola* উচ্চারিত হয় 'ওলা')।</li>
+                            <li><strong>LL:</strong> স্পেনের মূল ভূখণ্ডে 'ইয়ে' বা 'ল্য' এর মতো (যেমন: *sevilla*)।</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: ARTICLES & GENDER -->
+            <div id="panel-articles-gender" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">02. Gender & Definite/Indefinite Articles (A1-A2)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">বিশেষ্যের পুংলিঙ্গ (Masculino) ও স্ত্রীলিঙ্গ (Feminino) এবং নির্দিষ্ট-অনির্দিষ্ট আর্টিকেল (El, La, Un, Una)।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-blue-50 p-4 rounded-xl border border-blue-200 space-y-2">
+                        <h3 class="font-bold text-blue-900 text-sm">Definite Articles (নির্দিষ্ট: The)</h3>
+                        <ul class="space-y-1 text-blue-800 font-mono">
+                            <li><strong>El</strong> libro (পুংলিঙ্গ একবচন)</li>
+                            <li><strong>La</strong> casa (স্ত্রীলিঙ্গ একবচন)</li>
+                            <li><strong>Los</strong> libros (পুংলিঙ্গ বহুবচন)</li>
+                            <li><strong>Las</strong> casas (স্ত্রীলিঙ্গ বহুবচন)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-pink-50 p-4 rounded-xl border border-pink-200 space-y-2">
+                        <h3 class="font-bold text-pink-900 text-sm">Indefinite Articles (অনির্দিষ্ট: A/An/Some)</h3>
+                        <ul class="space-y-1 text-pink-800 font-mono">
+                            <li><strong>Un</strong> coche (একটি গাড়ি)</li>
+                            <li><strong>Una</strong> mesa (একটি টেবিল)</li>
+                            <li><strong>Unos</strong> libros (কয়েকটি বই)</li>
+                            <li><strong>Unas</strong> sillas (কয়েকটি চেয়ার)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PRONOUNS -->
+            <div id="panel-pronouns" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">03. Subject & Object Pronouns (Pronombres Personales)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">কর্তৃকারক (Subject) এবং অবজেক্ট প্রোনাউন (Directo e Indirecto) এর পূর্ণাঙ্গ তালিকা।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">Subject Pronouns</h3>
+                        <ul class="space-y-1 text-slate-700 font-mono">
+                            <li>Yo (আমি)</li>
+                            <li>Tú (তুমি - informal)</li>
+                            <li>Él / Ella / Usted (সে / আপনি)</li>
+                            <li>Nosotros/as (আমরা)</li>
+                            <li>Vosotros/as (তোমরা - Spain)</li>
+                            <li>Ellos / Ellas / Ustedes (তারা / আপনারা)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">Direct Object (Directo)</h3>
+                        <ul class="space-y-1 text-slate-700 font-mono">
+                            <li>Me (আমাকে)</li>
+                            <li>Te (তোমাকে)</li>
+                            <li>Lo / La (তাকে/ইহাকে)</li>
+                            <li>Nos (আমাদের)</li>
+                            <li>Os (তোমাদের)</li>
+                            <li>Los / Las (তাদের)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">Indirect Object (Indirecto)</h3>
+                        <ul class="space-y-1 text-slate-700 font-mono">
+                            <li>Me (আমায়)</li>
+                            <li>Te (তোমায়)</li>
+                            <li>Le (তাকে)</li>
+                            <li>Nos (আমাদের)</li>
+                            <li>Os (তোমাদের)</li>
+                            <li>Les (তাদের)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: SER VS ESTAR -->
+            <div id="panel-ser-estar" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">04. Ser vs. Estar Mastery (A2 Core Concept)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">স্থায়ী বৈশিষ্ট্য (Ser) বনাম সাময়িক অবস্থা ও অবস্থান (Estar) এবং অর্থ পরিবর্তনকারী বিশেষণের তালিকা।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-red-50 p-5 rounded-xl border border-red-200 space-y-2">
+                        <h3 class="font-bold text-red-900 text-sm">SER (Permanent: DOCTOR acronym)</h3>
+                        <p class="text-red-800 bengali-text">Description, Occupation, Characteristic, Time, Origin, Relationship.</p>
+                        <div class="bg-white p-2 rounded border border-red-200 font-mono">Soy bombero. (আমি ফায়ার ফাইটার।)</div>
+                    </div>
+                    <div class="bg-yellow-50 p-5 rounded-xl border border-yellow-200 space-y-2">
+                        <h3 class="font-bold text-yellow-900 text-sm">ESTAR (Temporary: PLACE acronym)</h3>
+                        <p class="text-yellow-800 bengali-text">Position, Location, Action, Condition, Emotion.</p>
+                        <div class="bg-white p-2 rounded border border-yellow-200 font-mono">Estoy cansado. (আমি ক্লান্ত।)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: VERB CONJUGATIONS -->
+            <div id="panel-verb-conjugations" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">05. Present Tense & Irregular Verbs (-AR, -ER, -IR)</h2>
+                            <p class="text-sm text-slate-500 bengali-text">নিয়মিত ও অনিয়মিত বর্তমান কালের রূপান্তর ম্যাট্রিক্স।</p>
+                        </div>
+                        <span class="bg-red-100 text-red-800 text-xs font-extrabold px-3 py-1 rounded-full">A1-A2 Core</span>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-r from-red-900 to-red-950 text-white p-5 rounded-2xl shadow-lg space-y-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        <div>
+                            <label class="block text-xs font-medium text-red-200 mb-1">Select Verb</label>
+                            <select id="spanish-verb-select" onchange="generateSpanishConjugation()" class="w-full bg-red-800 text-white text-xs rounded-lg p-2 border border-red-600 focus:outline-none">
+                                <option value="hablar">Hablar (-ar regular)</option>
+                                <option value="comer">Comer (-er regular)</option>
+                                <option value="vivir">Vivir (-ir regular)</option>
+                                <option value="tener">Tener (Irregular)</option>
+                                <option value="ir">Ir (Irregular)</option>
+                                <option value="ser">Ser (Irregular)</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end sm:col-span-2">
+                            <button onclick="generateSpanishConjugation()" class="px-5 py-2 bg-yellow-500 hover:bg-yellow-600 text-red-950 font-bold text-xs rounded-lg shadow transition">
+                                <i class="fa-solid fa-rotate mr-1"></i> Generate Table
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur rounded-xl p-3 border border-white/10 max-h-72 overflow-y-auto custom-scrollbar">
+                        <table class="w-full text-left text-xs">
+                            <thead class="text-yellow-300 font-bold border-b border-red-700/50">
+                                <tr>
+                                    <th class="p-2">Pronoun</th>
+                                    <th class="p-2">Conjugated Form</th>
+                                    <th class="p-2">Bengali Meaning</th>
+                                </tr>
+                            </thead>
+                            <tbody id="spanish-conjugation-body" class="divide-y divide-red-800/40 text-red-50"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: STEM CHANGING -->
+            <div id="panel-stem-changing" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">06. Stem-Changing & Reflexive Verbs (Verbos Reflexivos)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">ই-আই, ও-উ পরিবর্তনশীল ভার্ব এবং নিজবাচক (Reflexive: me, te, se) ভার্বের ব্যবহার।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Reflexive Verbs (যেমন: *levantarse* - ওঠা)</h3>
+                        <p class="text-slate-600 bengali-text">Me levanto, te levantas, se levanta, nos levantamos, os levantáis, se levantan.</p>
+                        <div class="bg-white p-2 rounded border border-slate-200 font-mono">Me ducho todas las mañanas. (আমি প্রতিদিন সকালে গোসল করি।)</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Stem-Changing (e->ie, o->ue, e->i)</h3>
+                        <p class="text-slate-600 bengali-text">*Querer* (quiero), *Poder* (puedo), *Pedir* (pido) রূপান্তরগুলো কেবল *nosotros/vosotros* ছাড়া সব পুংলিঙ্গ-স্ত্রীলিঙ্গে পরিবর্তিত হয়।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PAST TENSES -->
+            <div id="panel-past-tenses" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">07. Past Tenses: Indefinido vs. Imperfecto vs. Perfecto (B1 Level)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">DELE B1 পরীক্ষার সবচেয়ে গুরুত্বপূর্ণ অংশ: অতীতকালের তিন রূপের পার্থক্য ও প্রয়োগ।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">1. Perfecto (সাম্প্রতিক অতীত)</h3>
+                        <p class="text-slate-600 bengali-text">Haber + Participio। বর্তমানের সাথে যুক্ত কাজ (যেমন: *hoy*, *este año* টাইমওয়ার্ড থাকলে)।</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">2. Indefinido (নির্দিষ্ট অতীত)</h3>
+                        <p class="text-slate-600 bengali-text">অতীতে নির্দিষ্ট সময়ে ঘটে যাওয়া সমাপ্ত ঘটনা (যেমন: *ayer*, *en 2010*)।</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-700 text-sm">3. Imperfecto (চলমান/অভ্যস্ত)</h3>
+                        <p class="text-slate-600 bengali-text">অতীতে নিয়মিত অভ্যাস বা পটভূমি বর্ণনা করতে (যেমন: *cuando era joven*)।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: FUTURE CONDITIONAL -->
+            <div id="panel-future-conditional" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">08. Future & Conditional Moods (Futuro y Condicional)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">ভবিষ্যৎ পরিকল্পনা (Futuro Simple) এবং সম্ভাবনামূলক শর্ত (Condicional: haría, diría)।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Futuro Simple (-é, -ás, -á, -emos, -éis, -án)</h3>
+                        <p class="text-slate-600 bengali-text">Hablaré, comeré, viviré. Irregular stems: tener -> tendr-, venir -> vendr-, decir -> dir-.</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Condicional Simple (-ía, -ías, -ía, -íamos, -íais, -ían)</h3>
+                        <p class="text-slate-600 bengali-text">Would do something. *Me gustaría viajar a España.* (আমি স্পেনে ভ্রমণ করতে পছন্দ করতাম।)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: SUBJUNCTIVE PRESENT -->
+            <div id="panel-subjunctive-present" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">09. Subjuntivo Presente (DELE B2 Masterclass)</h2>
+                            <p class="text-sm text-slate-500 bengali-text">স্প্যানিশ ব্যাকরণের সবচেয়ে কঠিন ও সুন্দর অংশ: ভাবার্থক বর্তমান (Subjunctive Mood)।</p>
+                        </div>
+                        <span class="bg-red-200 text-red-900 text-xs font-extrabold px-3 py-1 rounded-full">B2 Level Essential</span>
+                    </div>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-3 text-xs">
+                    <h3 class="font-bold text-red-900 text-sm">What is Subjuntivo? (ভাবার্থক রূপ)</h3>
+                    <p class="text-slate-700 bengali-text">যখন বাক্যে নিশ্চিত কোনো তথ্য প্রকাশ করা হয় না, বরং ইচ্ছা (deseo), সন্দেহ (duda), আবেগ (emoción), বা অনুরোধ (influencia) প্রকাশ করা হয়, তখন Subjunctive ব্যবহৃত হয়। এর গঠন হলো: <strong>Yo form of Present -> Drop 'o' -> Add opposite vowels (-e for -ar verbs, -a for -er/-ir verbs)।</strong></p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        <div class="bg-white p-3 rounded-lg border border-slate-200">
+                            <span class="font-bold text-red-700 block">W.E.D.D.I.N.G. Triggers:</span>
+                            <span class="text-slate-600">Wishes, Emotions, Doubts, Denials, Impersonal expressions, Negation, God grant.</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg border border-slate-200 font-mono">
+                            <span class="font-bold text-slate-800 block">Example:</span>
+                            Quiero que tú <strong>vengas</strong> a la fiesta. (আমি চাই তুমি পার্টিতে আসো।)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: SUBJUNCTIVE PAST -->
+            <div id="panel-subjunctive-past" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">10. Subjuntivo Imperfecto & Conditional Sentences (B2 Advanced)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">অতীতে সাবজাংটিভ এবং 'Si' (যদি) যুক্ত কাল্পনিক বাক্য গঠন (If clauses)।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Imperfecto de Subjuntivo (-ra / -se endings)</h3>
+                        <p class="text-slate-600 bengali-text">Ellos form of Indefinido -> drop '-ron' -> add '-ra, -ras, -ra, -ramos...'</p>
+                        <div class="bg-white p-2 rounded border border-slate-200 font-mono">Si tuviera dinero, viajaría por el mundo. (যদি আমার টাকা থাকত, আমি সারা পৃথিবী ভ্রমণ করতাম।)</div>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+                        <h3 class="font-bold text-red-800 text-sm">Hypothetical If Clauses (Type 2 & 3)</h3>
+                        <p class="text-slate-600 bengali-text">Si + Imperfecto de Subjuntivo, + Condicional Simple.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PASSIVE IMPERSONAL -->
+            <div id="panel-passive-impersonal" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">11. Passive Voice & Impersonal 'Se' (Pasiva Refleja)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">কর্তাবর্জিত বাক্য বা প্যাসিভ সেন্স প্রকাশে 'Se' এর ব্যবহার (যেমন: *Se habla español*)।</p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 text-xs space-y-2">
+                    <h3 class="font-bold text-red-800 text-sm">Impersonal 'Se' Formula</h3>
+                    <p class="text-slate-700 bengali-text">কোনো নির্দিষ্ট কর্তা ছাড়াই সাধারণ সত্য বা নিয়ম প্রকাশ করতে 'Se + Verb (3rd person singular/plural)' ব্যবহৃত হয়।</p>
+                    <div class="bg-white p-2 rounded border border-slate-200 font-mono">
+                        <strong>Se vende casa.</strong> (বাড়ি বিক্রি করা হয়।) | <strong>Aquí se habla español.</strong> (এখানে স্প্যানিশ বলা হয়।)
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: RELATIVE CLAUSES -->
+            <div id="panel-relative-clauses" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">12. Relative Pronouns & Clauses (Que, Quien, Donde, Cuyo)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">বাক্য সংযোজক প্রোনাউন যেমন 'যিনি', 'যেটি', 'যেখানে' ইত্যাদি (B1-B2 Level)।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                        <span class="font-bold text-red-700 block">Que (Which / That / Who)</span>
+                        <p class="text-slate-600">El libro <em>que</em> compré es muy interesante. (যে বইটি আমি কিনেছি সেটি খুব চমৎকার।)</p>
+                    </div>
+                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-1">
+                        <span class="font-bold text-red-700 block">Donde (Where)</span>
+                        <p class="text-slate-600">La ciudad <em>donde</em> nací es hermosa. (যে শহরে আমি জন্মগ্রহণ করেছি সেটি সুন্দর।)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: PREPOSITIONS SPATIAL -->
+            <div id="panel-prepositions-spatial" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">13. Por vs. Para & Advanced Prepositions</h2>
+                    <p class="text-sm text-slate-500 bengali-text">Por (কারণ, মাধ্যম, সময়) বনাম Para (উদ্দেশ্য, প্রাপক, ডেডলাইন) এর নির্ভুল রূপরেখা।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                    <div class="bg-red-50 p-5 rounded-xl border border-red-200 space-y-2">
+                        <h3 class="font-bold text-red-900 text-sm">POR (Cause, Exchange, Means)</h3>
+                        <ul class="space-y-1 text-red-800 font-mono">
+                            <li>Gracias por todo. (সবকিছুর জন্য ধন্যবাদ।)</li>
+                            <li>Pagué 20 euros por el libro. (বইটির জন্য ২০ ইউরো দিলাম - বিনিময়।)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-yellow-50 p-5 rounded-xl border border-yellow-200 space-y-2">
+                        <h3 class="font-bold text-yellow-900 text-sm">PARA (Goal, Recipient, Deadline)</h3>
+                        <ul class="space-y-1 text-yellow-800 font-mono">
+                            <li>Estudio para aprender. (শেখার জন্য পড়াশোনা করি - উদ্দেশ্য।)</li>
+                            <li>El informe es para el lunes. (রিপোর্টটি সোমবারের জন্য।)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: CONNECTORS DISCOURSE -->
+            <div id="panel-connectors-discourse" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">14. B2 Discourse Connectors (Conectores del Discurso)</h2>
+                    <p class="text-sm text-slate-500 bengali-text">DELE B2 রাইটিং ও স্পিকিং পরীক্ষায় লেভেল উন্নত করতে ব্যবহৃত উচ্চমানের লিংকার্স।</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1">
+                        <span class="font-bold text-red-700 block">Contrast (বিরোধিতা)</span>
+                        <p class="text-slate-600">Sin embargo (যথাযথ), No obstante (তা সত্ত্বেও), A pesar de (সত্ত্বেও)।</p>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1">
+                        <span class="font-bold text-red-700 block">Cause (কারণ)</span>
+                        <p class="text-slate-600">Dado que (যেহেতু), Puesto que (যেহেতু), A causa de (কারণে)।</p>
+                    </div>
+                    <div class="p-3 bg-white border border-slate-200 rounded-xl space-y-1">
+                        <span class="font-bold text-red-700 block">Addition (সংযোজন)</span>
+                        <p class="text-slate-600">Además (তাছাড়া), Por otro lado (অন্যদিকে), En primer lugar (প্রথমত)।</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: SPANISH VOCAB -->
+            <div id="panel-spanish-vocab" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">15. B2 Advanced Vocabulary Hub</h2>
+                            <p class="text-sm text-slate-500 bengali-text">DELE B2 ও প্রফেশনাল লেভেলের উন্নত শব্দভাণ্ডার ও ফ্ল্যাশকার্ড মোড।</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <button onclick="toggleVocabView('list')" id="vocab-view-list" class="px-3 py-1 bg-red-700 text-white text-xs font-semibold rounded-lg">List View</button>
+                            <button onclick="toggleVocabView('flashcard')" id="vocab-view-card" class="px-3 py-1 bg-slate-200 text-slate-700 text-xs font-semibold rounded-lg">Flashcards Mode</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between gap-3 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="relative flex-1">
+                        <input type="text" id="vocabSearch" onkeyup="filterVocab()" placeholder="Search B2 word or meaning..." class="w-full text-xs pl-8 pr-3 py-2 border border-slate-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-red-500">
+                        <i class="fa-solid fa-magnifying-glass absolute left-2.5 top-2.5 text-slate-400 text-xs"></i>
+                    </div>
+                </div>
+                <div id="vocab-list-view" class="max-h-96 overflow-y-auto custom-scrollbar bg-white rounded-xl border border-slate-200 text-xs">
+                    <table class="w-full text-left">
+                        <thead class="bg-slate-100 text-slate-700 font-bold sticky top-0">
+                            <tr>
+                                <th class="p-2.5 border-b">Spanish Word</th>
+                                <th class="p-2.5 border-b">Type</th>
+                                <th class="p-2.5 border-b">Bengali Meaning</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="vocab-table-body"></tbody>
+                    </table>
+                </div>
+                <div id="vocab-flashcard-view" class="hidden flex flex-col items-center justify-center p-8 bg-gradient-to-br from-slate-900 to-red-950 text-white rounded-2xl min-h-[250px] relative text-center">
+                    <span class="text-xs font-bold text-yellow-400 uppercase tracking-widest mb-2" id="flash-type">Type</span>
+                    <h3 class="text-3xl font-extrabold mb-4" id="flash-spanish">Palabra</h3>
+                    <div id="flash-meaning-container" class="cursor-pointer bg-white/10 hover:bg-white/20 px-6 py-3 rounded-xl border border-white/20 transition mb-6" onclick="toggleFlashMeaning()">
+                        <span class="text-sm font-semibold text-yellow-200" id="flash-meaning">Click to reveal Bengali meaning</span>
+                    </div>
+                    <div class="flex space-x-3">
+                        <button onclick="nextVocabFlashcard()" class="px-5 py-2 bg-yellow-500 hover:bg-yellow-600 text-red-950 font-bold text-xs rounded-lg transition">Next Flashcard <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: QUIZ HUB -->
+            <div id="panel-quiz-hub" class="content-panel hidden space-y-6">
+                <div class="border-b border-slate-200 pb-4">
+                    <h2 class="text-xl font-bold text-slate-900">DELE B2 Advanced Grammar & Subjunctive Quiz</h2>
+                    <p class="text-sm text-slate-500 bengali-text">সাবজাংটিভ ও প্রফেশনাল লেভেলের কঠিন গ্রামার যাচাই পরীক্ষা।</p>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 max-w-2xl mx-auto space-y-6" id="quiz-card-container">
+                    <div class="flex items-center justify-between border-b border-slate-200 pb-3">
+                        <span class="text-xs font-bold text-red-700" id="quiz-progress-text">Question 1 of 5</span>
+                        <span class="text-xs font-semibold text-yellow-600 bg-yellow-100 px-2.5 py-1 rounded-full" id="quiz-score-badge">Score: 0</span>
+                    </div>
+                    <div id="quiz-question-box">
+                        <h3 class="text-base font-bold text-slate-800 mb-4" id="quiz-question">Question text here...</h3>
+                        <div class="space-y-2.5" id="quiz-options"></div>
+                    </div>
+                    <div class="flex justify-end pt-2">
+                        <button onclick="submitQuizNext()" id="quiz-next-btn" class="px-5 py-2 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-lg shadow transition hidden">Next Question <i class="fa-solid fa-arrow-right ml-1"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: AI MENTOR -->
+            <div id="panel-ai-mentor" class="content-panel hidden space-y-6 flex flex-col h-full">
+                <div class="border-b border-slate-200 pb-4 flex items-center justify-between">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-900 flex items-center space-x-2">
+                            <i class="fa-solid fa-robot text-red-600"></i>
+                            <span>AI Spanish DELE B2 Examiner</span>
+                        </h2>
+                        <p class="text-sm text-slate-500 bengali-text">DELE B2 সাবজাংটিভ, কন্ডিশনাল বা যেকোনো রাইটিং কারেকশন নিন রিয়েল-টাইমে।</p>
+                    </div>
+                    <span class="bg-red-100 text-red-800 text-xs font-bold px-3 py-1 rounded-full"><i class="fa-solid fa-circle text-[8px] text-red-500 mr-1 animate-pulse"></i> Gemini Active</span>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button onclick="sendAiPreset('Explain Present Subjunctive triggers with advanced examples.')" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-800 border border-red-200 rounded-lg text-xs font-semibold transition">
+                        🪄 Subjunctive Masterclass Tips
+                    </button>
+                    <button onclick="sendAiPreset('Give me an example B2 essay about artificial intelligence in Spanish.')" class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-800 border border-red-200 rounded-lg text-xs font-semibold transition">
+                        ✍️ B2 Writing Sample & Vocab
+                    </button>
+                </div>
+                <div id="ai-chat-container" class="flex-1 bg-slate-50 rounded-2xl border border-slate-200 p-4 h-96 overflow-y-auto custom-scrollbar space-y-4">
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl rounded-tl-sm border border-slate-200 text-slate-800 text-xs sm:text-sm shadow-xs max-w-xl">
+                            <p class="font-bold text-red-900 mb-1">¡Hola! I am your DELE B2 Spanish Examiner AI.</p>
+                            <p class="bengali-text text-slate-700">DELE B2 লেভেলের সাবজাংটিভ বা প্রফেশনাল স্প্যানিশ নিয়ে আপনার যেকোনো প্রশ্ন করুন!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-2 pt-2">
+                    <input type="text" id="ai-user-input" placeholder="Ask about subjunctive, B2 connectors, or essay writing..." 
+                        class="flex-1 bg-white border border-slate-300 text-slate-800 text-sm rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-red-500 shadow-xs"
+                        onkeypress="handleAiKeyPress(event)">
+                    <button onclick="sendAiMessage()" id="ai-send-btn" class="px-6 py-3 bg-red-700 hover:bg-red-800 text-white font-bold text-sm rounded-xl shadow transition flex items-center space-x-2">
+                        <span>Send</span>
+                        <i class="fa-solid fa-paper-plane text-xs"></i>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-red-950 text-red-200 border-t border-red-900 py-6 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4">
+            <div class="flex items-center space-x-2">
+                <div class="w-6 h-6 rounded bg-yellow-500 flex items-center justify-center text-red-950 font-bold text-xs">
+                    <i class="fa-solid fa-earth-americas"></i>
+                </div>
+                <span>Spanish Language Grammar (Beginner to DELE B2) Portal</span>
+            </div>
+            <div>
+                © 2026 <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="text-yellow-400 hover:text-yellow-300 font-bold underline transition">Hasan Al Mahmud</a>. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const overviewTopics = [
+            { id: 'alphabet-pronunciation', title: '01. Alphabet & Phonetics', desc: 'বর্ণমালা, স্বরবর্ণ ও লিসেনিং বেসিক' },
+            { id: 'articles-gender', title: '02. Gender & Articles', desc: 'পুংলিঙ্গ, স্ত্রীলিঙ্গ ও আর্টিকেল' },
+            { id: 'pronouns', title: '03. Subject & Object Pronouns', desc: 'কর্তৃকারক ও ডিরেক্ট-ইনডিরেক্ট প্রোনাউন' },
+            { id: 'ser-estar', title: '04. Ser vs. Estar Mastery', desc: 'স্থায়ী বনাম সাময়িক অবস্থা' },
+            { id: 'verb-conjugations', title: '05. Present & Irregular Verbs', desc: 'বর্তমান কালের নিয়মিত ও অনিয়মিত রূপ' },
+            { id: 'stem-changing', title: '06. Stem-Changing & Reflexive', desc: 'পরিবর্তনশীল ও নিজবাচক ভার্ব' },
+            { id: 'past-tenses', title: '07. Past Tenses (Indefinido/Imperfecto)', desc: 'তিন প্রকার অতীতকালের প্রয়োগ' },
+            { id: 'future-conditional', title: '08. Future & Conditional', desc: 'ভবিষ্যৎ ও কন্ডিশনাল মুড' },
+            { id: 'subjunctive-present', title: '09. Subjuntivo Presente (B2)', desc: 'ভাবার্থক বর্তমান ও সাবজাংটিভ ট্রিগার' },
+            { id: 'subjunctive-past', title: '10. Subjuntivo Imperfecto & If Clauses', desc: 'অতীত সাবজাংটিভ ও কাল্পনিক বাক্য' },
+            { id: 'passive-impersonal', title: '11. Passive & Impersonal Se', desc: 'প্যাসিভ ভয়েস ও অবাস্তব কর্তা' },
+            { id: 'relative-clauses', title: '12. Relative Pronouns & Clauses', desc: 'সংযোজক প্রোনাউন ও ক্লজ' },
+            { id: 'prepositions-spatial', title: '13. Por vs. Para & Prepositions', desc: 'পোর বনাম পারা এবং প্রিপজিশন' },
+            { id: 'connectors-discourse', title: '14. B2 Discourse Connectors', desc: 'উন্নত লিংকার্স ও ডিসকোর্স' },
+            { id: 'spanish-vocab', title: '15. B2 Advanced Vocabulary Hub', desc: 'প্রফেশনাল শব্দভাণ্ডার ও ফ্ল্যাশকার্ড' }
+        ];
+
+        const vocabSample = [
+            { w: 'Abarcar', type: 'Verb', b: 'অন্তর্ভুক্ত করা বা পরিব্যাপ্ত হওয়া (To encompass)' },
+            { w: 'Desarrollo', type: 'Noun', b: 'উন্নয়ন বা বিকাশ (Development)' },
+            { w: 'Imprescindible', type: 'Adjective', b: 'অপরিহার্য বা অত্যন্ত জরুরি (Essential)' },
+            { w: 'Promover', type: 'Verb', b: 'উৎসাহিত বা প্রচার করা (To promote)' },
+            { w: 'Refutar', type: 'Verb', b: 'খণ্ডন করা বা প্রতিবাদ করা (To refute)' },
+            { w: 'Sustancial', type: 'Adjective', b: 'যথেষ্ট বা মৌলিক (Substantial)' },
+            { w: 'Vulnerar', type: 'Verb', b: 'উলঙ্ঘন করা বা ভঙ্গ করা (To violate)' },
+            { w: 'Pertenecer', type: 'Verb', b: 'অধীনস্থ হওয়া বা মালিকানাধীন হওয়া (To belong)' }
+        ];
+
+        const quizQuestions = [
+            { q: '1. ¿Cuál es la forma correcta? "Dudo que él _____ (venir) a la fiesta esta noche."', opts: ['viene', 'venga', 'vendrá', 'viniera'], ans: 1 },
+            { q: '2. Elige la opción correcta para condicional: "Si tuviera más tiempo, _____ (aprender) chino."', opts: ['aprenderé', 'aprendería', 'aprenda', 'aprendiera'], ans: 1 },
+            { q: '3. ¿Qué conector B2 indica contraste?', opts: ['Por lo tanto', 'Sin embargo', 'Además', 'En consecuencia'], ans: 1 },
+            { q: '4. ¿Cómo se expresa "Spanish is spoken here" en voz pasiva refleja?', opts: ['Se habla español', 'Español es hablado', 'Hablamos español', 'Se hablan español'], ans: 0 },
+            { q: '5. ¿Qué significa el verbo avanzado "Abarcar"?', opts: ['নষ্ট করা', 'অন্তর্ভুক্ত করা', 'ভুল করা', 'লুকানো'], ans: 1 }
+        ];
+
+        let currentFlashIndex = 0;
+        let quizCurrentIndex = 0;
+        let quizScore = 0;
+
+        window.onload = function() {
+            renderOverviewGrid();
+            renderVocabTable();
+            generateSpanishConjugation();
+            loadQuizQuestion();
+        };
+
+        function switchTopic(topicId) {
+            document.querySelectorAll('.content-panel').forEach(p => p.classList.add('hidden'));
+            const selectedPanel = document.getElementById(`panel-${topicId}`);
+            if (selectedPanel) selectedPanel.classList.remove('hidden');
+
+            document.querySelectorAll('.topic-btn').forEach(btn => {
+                btn.classList.remove('bg-red-50', 'text-red-700', 'font-bold');
+                btn.classList.add('text-slate-600');
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function switchTab(tabId) {
+            switchTopic(tabId);
+        }
+
+        function toggleMobileMenu() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('hidden');
+        }
+
+        function renderOverviewGrid() {
+            const container = document.getElementById('overview-grid');
+            container.innerHTML = overviewTopics.map((t, idx) => `
+                <div onclick="switchTopic('${t.id}')" class="bg-white hover:bg-red-50/60 border border-slate-200 hover:border-red-300 p-4 rounded-xl shadow-xs transition cursor-pointer flex flex-col justify-between group">
+                    <div>
+                        <span class="text-[10px] font-bold uppercase text-red-600 tracking-wider">Module ${idx + 1}</span>
+                        <h4 class="font-bold text-slate-800 text-sm group-hover:text-red-800 transition mt-0.5">${t.title}</h4>
+                        <p class="text-xs text-slate-500 mt-1 bengali-text">${t.desc}</p>
+                    </div>
+                    <div class="mt-3 flex items-center text-xs font-semibold text-red-600 group-hover:translate-x-1 transition">
+                        <span>Open Syllabus</span>
+                        <i class="fa-solid fa-arrow-right ml-1 text-[10px]"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderVocabTable(data = vocabSample) {
+            document.getElementById('vocab-table-body').innerHTML = data.map(item => `
+                <tr class="hover:bg-slate-50">
+                    <td class="p-2.5 font-bold text-slate-800">${item.w}</td>
+                    <td class="p-2.5 text-xs text-slate-500 italic">${item.type}</td>
+                    <td class="p-2.5 text-slate-700 font-medium bengali-text">${item.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function filterVocab() {
+            const query = document.getElementById('vocabSearch').value.toLowerCase();
+            const filtered = vocabSample.filter(item => 
+                item.w.toLowerCase().includes(query) || item.b.includes(query)
+            );
+            renderVocabTable(filtered);
+        }
+
+        function toggleVocabView(mode) {
+            const listV = document.getElementById('vocab-list-view');
+            const cardV = document.getElementById('vocab-flashcard-view');
+            if (mode === 'flashcard') {
+                listV.classList.add('hidden');
+                cardV.classList.remove('hidden');
+                updateVocabFlashcard();
+            } else {
+                listV.classList.remove('hidden');
+                cardV.classList.add('hidden');
+            }
+        }
+
+        function updateVocabFlashcard() {
+            const item = vocabSample[currentFlashIndex];
+            document.getElementById('flash-spanish').innerText = item.w;
+            document.getElementById('flash-type').innerText = item.type;
+            document.getElementById('flash-meaning').innerText = 'Click to reveal Bengali meaning';
+        }
+
+        function toggleFlashMeaning() {
+            const item = vocabSample[currentFlashIndex];
+            document.getElementById('flash-meaning').innerText = item.b;
+        }
+
+        function nextVocabFlashcard() {
+            currentFlashIndex = (currentFlashIndex + 1) % vocabSample.length;
+            updateVocabFlashcard();
+        }
+
+        function generateSpanishConjugation() {
+            const verb = document.getElementById('spanish-verb-select').value;
+            let data = [];
+
+            if (verb === 'hablar') {
+                data = [
+                    { p: 'Yo', c: 'hablo', b: 'আমি কথা বলি' },
+                    { p: 'Tú', c: 'hablas', b: 'তুমি কথা বলো' },
+                    { p: 'Él / Ella', c: 'habla', b: 'সে কথা বলে' },
+                    { p: 'Nosotros', c: 'hablamos', b: 'আমরা কথা বলি' },
+                    { p: 'Vosotros', c: 'habláis', b: 'তোমরা কথা বলো' },
+                    { p: 'Ellos / Ustedes', c: 'hablan', b: 'তারা কথা বলে' }
+                ];
+            } else if (verb === 'comer') {
+                data = [
+                    { p: 'Yo', c: 'como', b: 'আমি খাই' },
+                    { p: 'Tú', c: 'comes', b: 'তুমি খাও' },
+                    { p: 'Él / Ella', c: 'come', b: 'সে খায়' },
+                    { p: 'Nosotros', c: 'comemos', b: 'আমরা খাই' },
+                    { p: 'Vosotros', c: 'coméis', b: 'তোমরা খাও' },
+                    { p: 'Ellos / Ustedes', c: 'comen', b: 'তারা খায়' }
+                ];
+            } else if (verb === 'vivir') {
+                data = [
+                    { p: 'Yo', c: 'vivo', b: 'আমি বাস করি' },
+                    { p: 'Tú', c: 'vives', b: 'তুমি বাস করো' },
+                    { p: 'Él / Ella', c: 'vive', b: 'সে বাস করে' },
+                    { p: 'Nosotros', c: 'vivimos', b: 'আমরা বাস করি' },
+                    { p: 'Vosotros', c: 'vivís', b: 'তোমরা বাস করো' },
+                    { p: 'Ellos / Ustedes', c: 'viven', b: 'তারা বাস করে' }
+                ];
+            } else if (verb === 'tener') {
+                data = [
+                    { p: 'Yo', c: 'tengo', b: 'আমার আছে' },
+                    { p: 'Tú', c: 'tienes', b: 'তোমার আছে' },
+                    { p: 'Él / Ella', c: 'tiene', b: 'তার আছে' },
+                    { p: 'Nosotros', c: 'tenemos', b: 'আমাদের আছে' },
+                    { p: 'Vosotros', c: 'tenéis', b: 'তোমাদের আছে' },
+                    { p: 'Ellos / Ustedes', c: 'tienen', b: 'তাদের আছে' }
+                ];
+            } else if (verb === 'ir') {
+                data = [
+                    { p: 'Yo', c: 'voy', b: 'আমি যাই' },
+                    { p: 'Tú', c: 'vas', b: 'তুমি যাও' },
+                    { p: 'Él / Ella', c: 'va', b: 'সে যায়' },
+                    { p: 'Nosotros', c: 'vamos', b: 'আমরা যাই' },
+                    { p: 'Vosotros', c: 'vais', b: 'তোমরা যাও' },
+                    { p: 'Ellos / Ustedes', c: 'van', b: 'তারা যায়' }
+                ];
+            } else {
+                data = [
+                    { p: 'Yo', c: 'soy', b: 'আমি হই' },
+                    { p: 'Tú', c: 'eres', b: 'তুমি হও' },
+                    { p: 'Él / Ella', c: 'es', b: 'সে হয়' },
+                    { p: 'Nosotros', c: 'somos', b: 'আমরা হই' },
+                    { p: 'Vosotros', c: 'sois', b: 'তোমরা হও' },
+                    { p: 'Ellos / Ustedes', c: 'son', b: 'তারা হয়' }
+                ];
+            }
+
+            document.getElementById('spanish-conjugation-body').innerHTML = data.map(d => `
+                <tr class="hover:bg-white/5">
+                    <td class="p-2 font-semibold text-yellow-300">${d.p}</td>
+                    <td class="p-2 font-mono text-white font-bold text-sm">${d.c}</td>
+                    <td class="p-2 text-red-100 bengali-text">${d.b}</td>
+                </tr>
+            `).join('');
+        }
+
+        function loadQuizQuestion() {
+            const q = quizQuestions[quizCurrentIndex];
+            document.getElementById('quiz-progress-text').innerText = `Question ${quizCurrentIndex + 1} of ${quizQuestions.length}`;
+            document.getElementById('quiz-question').innerText = q.q;
+
+            const optsBox = document.getElementById('quiz-options');
+            optsBox.innerHTML = q.opts.map((opt, idx) => `
+                <button onclick="handleQuizAnswer(this, ${idx}, ${q.ans})" class="w-full text-left p-3 rounded-lg border border-slate-200 hover:border-red-500 hover:bg-red-50 text-xs font-semibold text-slate-700 transition">
+                    ${opt}
+                </button>
+            `).join('');
+
+            document.getElementById('quiz-next-btn').classList.add('hidden');
+        }
+
+        function handleQuizAnswer(btn, selectedIdx, correctIdx) {
+            const buttons = document.querySelectorAll('#quiz-options button');
+            buttons.forEach(b => b.disabled = true);
+
+            if (selectedIdx === correctIdx) {
+                btn.classList.add('bg-red-700', 'text-white', 'border-red-700');
+                quizScore += 20;
+                document.getElementById('quiz-score-badge').innerText = `Score: ${quizScore}`;
+            } else {
+                btn.classList.add('bg-rose-500', 'text-white', 'border-rose-500');
+                buttons[correctIdx].classList.add('bg-red-700', 'text-white');
+            }
+
+            document.getElementById('quiz-next-btn').classList.remove('hidden');
+        }
+
+        function submitQuizNext() {
+            if (quizCurrentIndex < quizQuestions.length - 1) {
+                quizCurrentIndex++;
+                loadQuizQuestion();
+            } else {
+                document.getElementById('quiz-card-container').innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fa-solid fa-trophy text-5xl text-yellow-500 mb-4"></i>
+                        <h3 class="text-xl font-bold text-slate-900">¡Felicidades! DELE B2 Simulation Completed!</h3>
+                        <p class="text-sm text-slate-600 my-2">Your final score is: <strong class="text-red-700 text-lg">${quizScore}</strong> / 100 points.</p>
+                        <button onclick="resetQuiz()" class="mt-4 px-5 py-2 bg-red-700 hover:bg-red-800 text-white font-bold text-xs rounded-lg shadow">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            quizCurrentIndex = 0;
+            quizScore = 0;
+            document.getElementById('quiz-score-badge').innerText = `Score: 0`;
+            loadQuizQuestion();
+        }
+
+        async function sendAiPreset(promptText) {
+            document.getElementById('ai-user-input').value = promptText;
+            await sendAiMessage();
+        }
+
+        function handleAiKeyPress(e) {
+            if (e.key === 'Enter') {
+                sendAiMessage();
+            }
+        }
+
+        async function sendAiMessage() {
+            const inputEl = document.getElementById('ai-user-input');
+            const prompt = inputEl.value.trim();
+            if (!prompt) return;
+
+            inputEl.value = '';
+            const chatContainer = document.getElementById('ai-chat-container');
+
+            chatContainer.innerHTML += `
+                <div class="flex items-start justify-end space-x-3">
+                    <div class="bg-red-700 text-white p-3.5 rounded-2xl rounded-tr-sm text-xs sm:text-sm shadow-xs max-w-lg font-medium">
+                        ${escapeHtml(prompt)}
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-300 flex items-center justify-center text-slate-700 text-xs font-bold shrink-0">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                </div>
+            `;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            const loadingId = 'loading-' + Date.now();
+            chatContainer.innerHTML += `
+                <div id="${loadingId}" class="flex items-start space-x-3">
+                    <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl rounded-tl-sm border border-slate-200 text-slate-600 text-xs sm:text-sm shadow-xs flex items-center space-x-2">
+                        <i class="fa-solid fa-spinner fa-spin text-red-600"></i>
+                        <span>Consulting DELE B2 Spanish examiner AI...</span>
+                    </div>
+                </div>
+            `;
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+
+            try {
+                const systemPrompt = "You are a professional DELE B2 Spanish language examiner and expert teacher. Provide clear, accurate Spanish grammar rules, verb explanations, subjunctive triggers, and advanced vocabulary tailored for passing DELE B2, with helpful Bengali/English translations.";
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: prompt }] }],
+                    systemInstruction: { parts: [{ text: systemPrompt }] }
+                };
+
+                let response = null;
+                let delay = 1000;
+                for (let attempt = 0; attempt < 3; attempt++) {
+                    try {
+                        response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                        if (response.ok) break;
+                    } catch (err) {
+                        if (attempt === 2) throw err;
+                    }
+                    await new Promise(res => setTimeout(res, delay));
+                    delay *= 2;
+                }
+
+                if (!response || !response.ok) throw new Error('API request failed');
+
+                const result = await response.json();
+                const candidate = result.candidates?.[0];
+                const replyText = candidate?.content?.parts?.[0]?.text || "Lo siento, I couldn't process that question right now. Please try again.";
+
+                document.getElementById(loadingId).remove();
+
+                chatContainer.innerHTML += `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-red-700 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div class="bg-white p-4 rounded-2xl rounded-tl-sm border border-slate-200 text-slate-800 text-xs sm:text-sm shadow-xs max-w-xl leading-relaxed whitespace-pre-line">
+                            ${escapeHtml(replyText)}
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                document.getElementById(loadingId).remove();
+                chatContainer.innerHTML += `
+                    <div class="flex items-start space-x-3">
+                        <div class="w-8 h-8 rounded-full bg-rose-600 flex items-center justify-center text-white text-xs font-bold shrink-0 shadow">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+                        <div class="bg-rose-50 p-4 rounded-2xl rounded-tl-sm border border-rose-200 text-rose-800 text-xs sm:text-sm shadow-xs">
+                            Sorry, connection error occurred while communicating with the AI mentor. Please try again.
+                        </div>
+                    </div>
+                `;
+            }
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const map = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": ''.replace ? '' : '' };
+            return text.replace(/[&<>"']/g, function(m) { 
+                const mapObj = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' };
+                return mapObj[m]; 
+            });
+        }
+
+        function handleGlobalSearch(e) {
+            const q = e.target.value.toLowerCase();
+            if (!q) return;
+            const matching = overviewTopics.find(t => t.title.toLowerCase().includes(q) || t.desc.toLowerCase().includes(q));
+            if (matching) switchTopic(matching.id);
+        }
+    </script>
+</body>
+</html>
