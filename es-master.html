@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish DELE A0 → B1 Course | Days 1-12 Master Edition</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        spanish: {
+                            red: '#AA151B',
+                            yellow: '#F1BF00',
+                            dark: '#1E293B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-amber-200 selection:text-amber-900">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 to-red-600 flex items-center justify-center text-white shadow-md shadow-red-500/20 font-bold text-lg">
+                    🇪🇸
+                </div>
+                <div>
+                    <h1 class="font-bold text-slate-900 text-base sm:text-lg leading-tight">DELE A0 → B1 Master Course</h1>
+                    <p class="text-xs text-slate-500 font-medium" id="headerSubtitle">Loading Curriculum...</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-3">
+                <div class="hidden md:flex items-center space-x-2 bg-slate-100 px-3 py-1.5 rounded-full text-xs font-medium text-slate-600">
+                    <i class="fa-solid fa-fire text-amber-500"></i>
+                    <span id="streakCounter">Day 1 of 60</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#f1bf00_1px,transparent_1px)] [background-size:16px_16px]"></div>
+        <div class="max-w-4xl mx-auto text-center relative z-10 space-y-4">
+            <div class="flex justify-center items-center space-x-2">
+                <span class="inline-block bg-red-500/20 border border-red-500/30 text-red-400 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider" id="badgeText">
+                    Module 1 of 60 • Beginner Level
+                </span>
+            </div>
+            
+            <h2 class="text-3xl sm:text-5xl font-extrabold tracking-tight" id="heroTitle">
+                Loading Day Title...
+            </h2>
+            <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto font-light" id="heroDesc">
+                Loading day description...
+            </p>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                <div class="flex items-center space-x-2 bg-slate-800/90 border border-slate-700 px-4 py-2 rounded-2xl shadow-inner">
+                    <label for="daySelect" class="text-xs font-bold text-amber-400 uppercase tracking-wider">Select Day (1-12+):</label>
+                    <select id="daySelect" onchange="changeDay(this.value)" class="bg-slate-900 text-white font-bold text-sm px-3 py-1.5 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer">
+                    </select>
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="prevDay()" class="bg-slate-800 hover:bg-slate-700 text-white px-3.5 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition flex items-center space-x-1">
+                        <i class="fa-solid fa-chevron-left"></i><span>Prev Day</span>
+                    </button>
+                    <button onclick="nextDay()" class="bg-amber-500 hover:bg-amber-600 text-white px-3.5 py-2 rounded-xl text-xs font-semibold transition flex items-center space-x-1">
+                        <span>Next Day</span><i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <aside class="hidden lg:block lg:col-span-1 space-y-4">
+            <div class="bg-white rounded-2xl p-4 border border-slate-200 shadow-sm sticky top-24">
+                <h3 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3 px-3">Lesson Outline</h3>
+                <nav id="sidebarNav" class="space-y-1 text-sm font-medium">
+                </nav>
+            </div>
+        </aside>
+
+        <div id="lessonContentContainer" class="lg:col-span-3 space-y-10 fade-in">
+        </div>
+    </main>
+
+    <footer class="bg-white border-t border-slate-200 py-8 px-4 sm:px-6 lg:px-8 mt-12 text-center text-xs text-slate-500">
+        <p class="font-medium">Spanish DELE A0 → B1 60-Day Intensive Master Course</p>
+        <p class="mt-1">Immersive Curriculum designed for complete fluency from A0 to B1.</p>
+    </footer>
+
+    <script>
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.9;
+                window.speechSynthesis.speak(utterance);
+            }
+        }
+
+        const curriculum = [];
+
+        for (let d = 1; d <= 60; d++) {
+            let title = "";
+            let desc = "";
+            let badge = `Module ${d} of 60 • Beginner Level`;
+            let grammarHtml = "";
+            let vocabList = [];
+            let sentencesList = [];
+            let dialogList = [];
+            let quizList = [];
+
+            if (d === 1) {
+                title = "Greetings, Alphabet, Pronunciation, and Introducing Yourself";
+                desc = "Learn to greet people, introduce yourself, ask simple questions, and understand the Spanish alphabet and pronunciation.";
+                badge = "Module 1 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-font"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Spanish Alphabet (El alfabeto)</h3><p class="text-xs text-slate-500">Letter pronunciation rules and pure vowels</p></div>
+                            </div>
+                            <button onclick="speakText('El alfabeto español')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        
+                        <div class="bg-gradient-to-r from-amber-50 to-orange-50 border border-amber-200 rounded-2xl p-5">
+                            <h4 class="font-bold text-amber-900 mb-3 text-sm flex items-center"><i class="fa-solid fa-star text-amber-500 mr-2"></i> The Five Spanish Vowels (Pure & Clear)</h4>
+                            <div class="grid grid-cols-5 gap-2 text-center">
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100"><span class="block text-lg font-black text-red-600">A</span><span class="text-xs text-slate-600 font-medium">ah</span></div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100"><span class="block text-lg font-black text-red-600">E</span><span class="text-xs text-slate-600 font-medium">eh</span></div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100"><span class="block text-lg font-black text-red-600">I</span><span class="text-xs text-slate-600 font-medium">ee</span></div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100"><span class="block text-lg font-black text-red-600">O</span><span class="text-xs text-slate-600 font-medium">oh</span></div>
+                                <div class="bg-white p-3 rounded-xl shadow-sm border border-amber-100"><span class="block text-lg font-black text-red-600">U</span><span class="text-xs text-slate-600 font-medium">oo</span></div>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto rounded-2xl border border-slate-200">
+                            <table class="w-full text-left border-collapse text-sm">
+                                <tr class="bg-slate-100 font-semibold border-b"><th class="p-3">Letter</th><th class="p-3">Pronunciation</th></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">A</td><td class="p-3">ah</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">B</td><td class="p-3">beh</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">C</td><td class="p-3">theh (before e/i in Spain), keh (otherwise)</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">D</td><td class="p-3">deh</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">E</td><td class="p-3">eh</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">F</td><td class="p-3">efe</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">G</td><td class="p-3">heh (before e/i), geh (otherwise)</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">H</td><td class="p-3 italic text-slate-400">Silent</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">I</td><td class="p-3">ee</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">J</td><td class="p-3">strong h</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">K</td><td class="p-3">kah</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">L</td><td class="p-3">ele</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">M</td><td class="p-3">eme</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">N</td><td class="p-3">ene</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">Ñ</td><td class="p-3 font-semibold text-red-600">enye</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">O</td><td class="p-3">oh</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">P</td><td class="p-3">pe</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">Q</td><td class="p-3">koo</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">R</td><td class="p-3">ere</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">RR</td><td class="p-3 font-semibold text-red-600">rolled r</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">S</td><td class="p-3">ese</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">T</td><td class="p-3">te</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">U</td><td class="p-3">oo</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">V</td><td class="p-3">uve</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">W</td><td class="p-3">uve doble</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">X</td><td class="p-3">ekis</td></tr>
+                                <tr class="border-b"><td class="p-3 font-bold">Y</td><td class="p-3">i griega</td></tr>
+                                <tr><td class="p-3 font-bold">Z</td><td class="p-3">theta (Spain)</td></tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-users"></i></div>
+                            <div><h3 class="text-xl font-bold text-slate-900">2. Personal Pronouns (Los pronombres personales)</h3><p class="text-xs text-slate-500">Who is performing the action</p></div>
+                        </div>
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Yo</strong> = I</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Tú</strong> = You</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Él</strong> = He</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Ella</strong> = She</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Usted</strong> = You (formal)</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Nosotros</strong> = We</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Vosotros</strong> = You all (Spain)</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Ellos</strong> = They</div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-bolt"></i></div>
+                            <div><h3 class="text-xl font-bold text-slate-900">3. Verb: SER (to be)</h3><p class="text-xs text-slate-500">Soy, eres, es, somos, sois, son</p></div>
+                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Soy Hasan.</strong> → I am Hasan.</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Soy estudiante.</strong> → I am a student.</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Eres amable.</strong> → You are kind.</div>
+                            <div class="bg-slate-50 p-3 rounded-xl border border-slate-200"><strong>Somos amigos.</strong> → We are friends.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "el hola", en: "hello", cat: "Greetings" },
+                    { es: "el buenos días", en: "good morning", cat: "Greetings" },
+                    { es: "las buenas tardes", en: "good afternoon", cat: "Greetings" },
+                    { es: "las buenas noches", en: "good evening / good night", cat: "Greetings" },
+                    { es: "el adiós", en: "goodbye", cat: "Greetings" },
+                    { es: "el hasta luego", en: "see you later", cat: "Greetings" },
+                    { es: "el hasta mañana", en: "see you tomorrow", cat: "Greetings" },
+                    { es: "el nos vemos", en: "see you", cat: "Greetings" },
+                    { es: "el bienvenido", en: "welcome", cat: "Greetings" },
+                    { es: "el gracias", en: "thank you", cat: "Greetings" },
+                    { es: "el favor", en: "please (por favor)", cat: "Polite Expressions" },
+                    { es: "el de nada", en: "you’re welcome", cat: "Polite Expressions" },
+                    { es: "el perdón", en: "sorry / excuse me", cat: "Polite Expressions" },
+                    { es: "lo siento", en: "i’m sorry", cat: "Polite Expressions" },
+                    { es: "el sí", en: "yes", cat: "Polite Expressions" },
+                    { es: "el no", en: "no", cat: "Polite Expressions" },
+                    { es: "el vale", en: "ok", cat: "Polite Expressions" },
+                    { es: "el claro", en: "of course", cat: "Polite Expressions" },
+                    { es: "el muy bien", en: "very well", cat: "Polite Expressions" },
+                    { es: "el está bien", en: "it’s okay", cat: "Polite Expressions" },
+                    { es: "el nombre", en: "name", cat: "Personal Info" },
+                    { es: "el apellido", en: "surname", cat: "Personal Info" },
+                    { es: "la persona", en: "person", cat: "Personal Info" },
+                    { es: "el hombre", en: "man", cat: "Personal Info" },
+                    { es: "la mujer", en: "woman", cat: "Personal Info" },
+                    { es: "el amigo", en: "friend", cat: "Personal Info" },
+                    { es: "la familia", en: "family", cat: "Personal Info" },
+                    { es: "el país", en: "country", cat: "Personal Info" },
+                    { es: "la ciudad", en: "city", cat: "Personal Info" },
+                    { es: "el idioma", en: "language", cat: "Personal Info" },
+                    { es: "el qué", en: "what", cat: "Question Words" },
+                    { es: "el quién", en: "who", cat: "Question Words" },
+                    { es: "el cómo", en: "how", cat: "Question Words" },
+                    { es: "el dónde", en: "where", cat: "Question Words" },
+                    { es: "el cuándo", en: "when", cat: "Question Words" },
+                    { es: "el por qué", en: "why", cat: "Question Words" },
+                    { es: "el cuál", en: "which", cat: "Question Words" },
+                    { es: "el cuánto", en: "how much", cat: "Question Words" },
+                    { es: "los cuántos", en: "how many", cat: "Question Words" },
+                    { es: "de dónde", en: "from where", cat: "Question Words" }
+                ];
+                sentencesList = [
+                    { es: "Hola.", en: "Hello." },
+                    { es: "Buenos días.", en: "Good morning." },
+                    { es: "Buenas tardes.", en: "Good afternoon." },
+                    { es: "Buenas noches.", en: "Good evening / night." },
+                    { es: "Adiós.", en: "Goodbye." },
+                    { es: "Hasta luego.", en: "See you later." },
+                    { es: "¿Cómo estás?", en: "How are you?" },
+                    { es: "Estoy bien.", en: "I am fine." },
+                    { es: "Muchas gracias.", en: "Thank you very much." },
+                    { es: "De nada.", en: "You're welcome." },
+                    { es: "Me llamo Hasan.", en: "My name is Hasan." },
+                    { es: "Soy de Bangladesh.", en: "I am from Bangladesh." },
+                    { es: "Vivo en España.", en: "I live in Spain." },
+                    { es: "Hablo un poco de español.", en: "I speak a little Spanish." },
+                    { es: "Hablo inglés.", en: "I speak English." },
+                    { es: "Mucho gusto.", en: "Nice to meet you." },
+                    { es: "¿Cómo te llamas?", en: "What is your name?" },
+                    { es: "¿De dónde eres?", en: "Where are you from?" },
+                    { es: "¿Dónde vives?", en: "Where do you live?" },
+                    { es: "Encantado de conocerte.", en: "Delighted to meet you." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "Hola." },
+                    { speaker: "B", text: "Hola." },
+                    { speaker: "A", text: "¿Cómo te llamas?" },
+                    { speaker: "B", text: "Me llamo Hasan." },
+                    { speaker: "A", text: "Mucho gusto." },
+                    { speaker: "B", text: "Encantado." },
+                    { speaker: "A", text: "¿De dónde eres?" },
+                    { speaker: "B", text: "Soy de Bangladesh." },
+                    { speaker: "A", text: "¿Dónde vives?" },
+                    { speaker: "B", text: "Vivo en España." }
+                ];
+                quizList = [
+                    { q: "Translate: 'Hello'", options: ["Adiós", "Hola", "Gracias", "Por favor"], correct: 1 },
+                    { q: "Translate: 'My name is Hasan.'", options: ["Soy Hasan.", "Me llamo Hasan.", "Vivo en España.", "Hola Hasan."], correct: 1 },
+                    { q: "Translate: 'I am from Bangladesh.'", options: ["Soy de Bangladesh.", "Estoy en Bangladesh.", "Hablo Bangladesh.", "Bangladesh soy."], correct: 0 },
+                    { q: "Translate: 'I live in Spain.'", options: ["Vivo en España.", "Voy a España.", "Soy de España.", "España vivo."], correct: 0 },
+                    { q: "Translate: 'Thank you'", options: ["De nada", "Por favor", "Gracias", "Lo siento"], correct: 2 },
+                    { q: "Translate: 'See you later'", options: ["Adiós", "Hasta luego", "Buenos días", "Hola"], correct: 1 },
+                    { q: "Translate: 'Good morning'", options: ["Buenas noches", "Buenas tardes", "Buenos días", "Hasta luego"], correct: 2 },
+                    { q: "Translate: 'How are you?'", options: ["¿Cómo te llamas?", "¿De dónde eres?", "¿Cómo estás?", "¿Dónde vives?"], correct: 2 },
+                    { q: "Translate: 'I am fine.'", options: ["Estoy bien.", "Soy estudiante.", "Me llamo Hasan.", "Hablo español."], correct: 0 },
+                    { q: "Translate: 'Nice to meet you.'", options: ["Mucho gusto.", "De nada.", "Hasta mañana.", "Buenos días."], correct: 0 }
+                ];
+            } else if (d === 2) {
+                title = "Articles, Gender, Numbers, Days & Months";
+                desc = "Learn how to identify masculine and feminine nouns, use articles correctly, count from 0 to 100, and talk about dates.";
+                badge = "Module 2 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-book"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Definite & Indefinite Articles</h3><p class="text-xs text-slate-500">el, la, los, las, un, una, unos, unas</p></div>
+                            </div>
+                            <button onclick="speakText('Artículos definidos e indefinidos')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>el libro</strong> = the book</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>la casa</strong> = the house</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>un coche</strong> = a car</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>una mochila</strong> = a backpack</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "la casa", en: "house", cat: "Home" },
+                    { es: "la habitación", en: "room", cat: "Home" },
+                    { es: "la cocina", en: "kitchen", cat: "Home" },
+                    { es: "el baño", en: "bathroom", cat: "Home" },
+                    { es: "la puerta", en: "door", cat: "Home" },
+                    { es: "la ventana", en: "window", cat: "Home" },
+                    { es: "la mesa", en: "table", cat: "Home" },
+                    { es: "la silla", en: "chair", cat: "Home" },
+                    { es: "la cama", en: "bed", cat: "Home" },
+                    { es: "el sofá", en: "sofa", cat: "Home" },
+                    { es: "el libro", en: "book", cat: "School & Work" },
+                    { es: "el cuaderno", en: "notebook", cat: "School & Work" },
+                    { es: "el bolígrafo", en: "pen", cat: "School & Work" },
+                    { es: "el lápiz", en: "pencil", cat: "School & Work" },
+                    { es: "la mochila", en: "backpack", cat: "School & Work" },
+                    { es: "el profesor", en: "teacher", cat: "School & Work" },
+                    { es: "el estudiante", en: "student", cat: "School & Work" },
+                    { es: "la oficina", en: "office", cat: "School & Work" },
+                    { es: "el trabajo", en: "work", cat: "School & Work" },
+                    { es: "el ordenador", en: "computer", cat: "School & Work" },
+                    { es: "el agua", en: "water", cat: "Everyday" },
+                    { es: "el café", en: "coffee", cat: "Everyday" },
+                    { es: "el pan", en: "bread", cat: "Everyday" },
+                    { es: "la leche", en: "milk", cat: "Everyday" },
+                    { es: "la comida", en: "food", cat: "Everyday" },
+                    { es: "el dinero", en: "money", cat: "Everyday" },
+                    { es: "la tienda", en: "shop", cat: "Everyday" },
+                    { es: "la calle", en: "street", cat: "Everyday" },
+                    { es: "el coche", en: "car", cat: "Everyday" },
+                    { es: "el autobús", en: "bus", cat: "Everyday" },
+                    { es: "el padre", en: "father", cat: "Family" },
+                    { es: "la madre", en: "mother", cat: "Family" },
+                    { es: "el hermano", en: "brother", cat: "Family" },
+                    { es: "la hermana", en: "sister", cat: "Family" },
+                    { es: "el hijo", en: "son", cat: "Family" },
+                    { es: "la hija", en: "daughter", cat: "Family" },
+                    { es: "el abuelo", en: "grandfather", cat: "Family" },
+                    { es: "la abuela", en: "grandmother", cat: "Family" },
+                    { es: "el esposo", en: "husband", cat: "Family" },
+                    { es: "la esposa", en: "wife", cat: "Family" }
+                ];
+                sentencesList = [
+                    { es: "Hoy es lunes.", en: "Today is Monday." },
+                    { es: "Hoy es viernes.", en: "Today is Friday." },
+                    { es: "Tengo un libro.", en: "I have a book." },
+                    { es: "Tengo una mochila.", en: "I have a backpack." },
+                    { es: "La casa es grande.", en: "The house is big." },
+                    { es: "El coche es nuevo.", en: "The car is new." },
+                    { es: "La mesa es blanca.", en: "The table is white." },
+                    { es: "El café está caliente.", en: "The coffee is hot." },
+                    { es: "Necesito agua.", en: "I need water." },
+                    { es: "Quiero pan.", en: "I want bread." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "Buenos días." },
+                    { speaker: "B", text: "Buenos días." },
+                    { speaker: "A", text: "¿Qué día es hoy?" },
+                    { speaker: "B", text: "Hoy es viernes." },
+                    { speaker: "A", text: "¿En qué mes estamos?" },
+                    { speaker: "B", text: "Estamos en junio." }
+                ];
+                quizList = [
+                    { q: "Translate: 'The house'", options: ["el casa", "la casa", "un casa", "las casa"], correct: 1 },
+                    { q: "Translate: 'A book'", options: ["el libro", "la libro", "un libro", "unos libro"], correct: 2 },
+                    { q: "Translate: 'Some friends'", options: ["unos amigos", "unas amigos", "los amigos", "un amigo"], correct: 0 },
+                    { q: "Translate: 'Today is Friday.'", options: ["Hoy es lunes.", "Hoy es jueves.", "Hoy es viernes.", "Hoy es sábado."], correct: 2 },
+                    { q: "Translate: 'I have two brothers.'", options: ["Tengo un hermano.", "Tengo dos hermanos.", "Tengo tres hermanos.", "Tengo dos hermanas."], correct: 1 },
+                    { q: "Translate: 'I study Spanish.'", options: ["Estudio inglés.", "Estudio español.", "Hablo español.", "Leo español."], correct: 1 },
+                    { q: "Translate: 'We are in June.'", options: ["Estamos en mayo.", "Estamos en junio.", "Estamos en julio.", "Es el mes de enero."], correct: 1 },
+                    { q: "Translate: 'The table is white.'", options: ["La mesa es blanca.", "El coche es nuevo.", "La casa es grande.", "El café está caliente."], correct: 0 },
+                    { q: "Translate: 'I need water.'", options: ["Quiero pan.", "Necesito agua.", "Bebo leche.", "Tengo café."], correct: 1 },
+                    { q: "Translate: 'I live in a house.'", options: ["Trabajo en una oficina.", "Vivo en una casa.", "Soy estudiante.", "Tengo una mochila."], correct: 1 }
+                ];
+            } else if (d === 3) {
+                title = "The Verb Tener, Colors, Numbers 100-1000, and Everyday Expressions";
+                desc = "Learn to use the verb tener (to have), express age and common needs, learn colors, and count from 100 to 1000.";
+                badge = "Module 3 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-bolt"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. The Verb Tener (To Have)</h3><p class="text-xs text-slate-500">tengo, tienes, tiene, tenemos, tenéis, tienen</p></div>
+                            </div>
+                            <button onclick="speakText('El verbo tener')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Tengo un coche.</strong> = I have a car.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Tengo hambre.</strong> = I am hungry.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Tengo sed.</strong> = I am thirsty.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Tengo 25 años.</strong> = I am 25 years old.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "el arroz", en: "rice", cat: "Food & Drinks" },
+                    { es: "la carne", en: "meat", cat: "Food & Drinks" },
+                    { es: "el pollo", en: "chicken", cat: "Food & Drinks" },
+                    { es: "el pescado", en: "fish", cat: "Food & Drinks" },
+                    { es: "el huevo", en: "egg", cat: "Food & Drinks" },
+                    { es: "el queso", en: "cheese", cat: "Food & Drinks" },
+                    { es: "la fruta", en: "fruit", cat: "Food & Drinks" },
+                    { es: "la verdura", en: "vegetable", cat: "Food & Drinks" },
+                    { es: "la manzana", en: "apple", cat: "Food & Drinks" },
+                    { es: "el plátano", en: "banana", cat: "Food & Drinks" },
+                    { es: "el té", en: "tea", cat: "Drinks" },
+                    { es: "el zumo", en: "juice", cat: "Drinks" },
+                    { es: "la botella", en: "bottle", cat: "Drinks" },
+                    { es: "el vaso", en: "glass", cat: "Drinks" },
+                    { es: "el desayuno", en: "breakfast", cat: "Drinks" },
+                    { es: "el almuerzo", en: "lunch", cat: "Drinks" },
+                    { es: "la cena", en: "dinner", cat: "Drinks" },
+                    { es: "el azúcar", en: "sugar", cat: "Drinks" },
+                    { es: "la sal", en: "salt", cat: "Drinks" },
+                    { es: "el aceite", en: "oil", cat: "Drinks" },
+                    { es: "comer", en: "to eat", cat: "Verbs" },
+                    { es: "beber", en: "to drink", cat: "Verbs" },
+                    { es: "vivir", en: "to live", cat: "Verbs" },
+                    { es: "estudiar", en: "to study", cat: "Verbs" },
+                    { es: "trabajar", en: "to work", cat: "Verbs" },
+                    { es: "leer", en: "to read", cat: "Verbs" },
+                    { es: "escribir", en: "to write", cat: "Verbs" },
+                    { es: "hablar", en: "to speak", cat: "Verbs" },
+                    { es: "escuchar", en: "to listen", cat: "Verbs" },
+                    { es: "caminar", en: "to walk", cat: "Verbs" },
+                    { es: "hoy", en: "today", cat: "Everyday Words" },
+                    { es: "mañana", en: "tomorrow", cat: "Everyday Words" },
+                    { es: "ayer", en: "yesterday", cat: "Everyday Words" },
+                    { es: "ahora", en: "now", cat: "Everyday Words" },
+                    { es: "después", en: "later", cat: "Everyday Words" },
+                    { es: "siempre", en: "always", cat: "Everyday Words" },
+                    { es: "nunca", en: "never", cat: "Everyday Words" },
+                    { es: "aquí", en: "here", cat: "Everyday Words" },
+                    { es: "allí", en: "there", cat: "Everyday Words" },
+                    { es: "mucho", en: "a lot", cat: "Everyday Words" }
+                ];
+                sentencesList = [
+                    { es: "Tengo hambre.", en: "I am hungry." },
+                    { es: "Tengo sed.", en: "I am thirsty." },
+                    { es: "Tengo un coche.", en: "I have a car." },
+                    { es: "El coche es rojo.", en: "The car is red." },
+                    { es: "Como arroz.", en: "I eat rice." },
+                    { es: "Bebo agua.", en: "I drink water." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿Tienes hambre?" },
+                    { speaker: "B", text: "Sí, tengo mucha hambre." },
+                    { speaker: "A", text: "¿Qué quieres comer?" },
+                    { speaker: "B", text: "Quiero arroz y pollo." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I have a book.'", options: ["Tengo un libro.", "Tienes un libro.", "Tiene un libro.", "Tenemos un libro."], correct: 0 },
+                    { q: "Translate: 'I am hungry.'", options: ["Tengo sed.", "Tengo frío.", "Tengo hambre.", "Tengo años."], correct: 2 },
+                    { q: "Translate: 'I am thirsty.'", options: ["Tengo sed", "Tengo hambre", "Tengo calor", "Tengo frío"], correct: 0 },
+                    { q: "Translate: 'The apple is red.'", options: ["La manzana es azul.", "La manzana es roja.", "La manzana es blanca.", "La manzana es verde."], correct: 1 }
+                ];
+            } else if (d === 4) {
+                title = "The Verb Estar, Ser vs. Estar, Places in the City, and Basic Prepositions";
+                desc = "Learn how to use estar, understand the difference between ser and estar, describe locations and temporary states, and use common prepositions.";
+                badge = "Module 4 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-location-dot"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. The Verb Estar & Ser vs Estar</h3><p class="text-xs text-slate-500">estoy, estás, está, estamos, estáis, están</p></div>
+                            </div>
+                            <button onclick="speakText('El verbo estar')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Estoy en casa.</strong> = I am at home.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Estás cansado.</strong> = You are tired.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Soy español.</strong> = I am Spanish (Ser).</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Estoy en España.</strong> = I am in Spain (Estar).</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "la oficina", en: "office", cat: "Places" },
+                    { es: "la biblioteca", en: "library", cat: "Places" },
+                    { es: "el museo", en: "museum", cat: "Places" },
+                    { es: "la iglesia", en: "church", cat: "Places" },
+                    { es: "la playa", en: "beach", cat: "Places" },
+                    { es: "la montaña", en: "mountain", cat: "Places" },
+                    { es: "el río", en: "river", cat: "Places" },
+                    { es: "el puente", en: "bridge", cat: "Places" },
+                    { es: "la tienda", en: "shop", cat: "Places" },
+                    { es: "el mercado", en: "market", cat: "Places" },
+                    { es: "feliz", en: "happy", cat: "Adjectives" },
+                    { es: "triste", en: "sad", cat: "Adjectives" },
+                    { es: "cansado", en: "tired", cat: "Adjectives" },
+                    { es: "ocupado", en: "busy", cat: "Adjectives" },
+                    { es: "libre", en: "free", cat: "Adjectives" },
+                    { es: "abierto", en: "open", cat: "Adjectives" },
+                    { es: "cerrado", en: "closed", cat: "Adjectives" },
+                    { es: "limpio", en: "clean", cat: "Adjectives" },
+                    { es: "sucio", en: "dirty", cat: "Adjectives" },
+                    { es: "rápido", en: "fast", cat: "Adjectives" }
+                ];
+                sentencesList = [
+                    { es: "Estoy en casa.", en: "I am at home." },
+                    { es: "El supermercado está cerca.", en: "The supermarket is nearby." },
+                    { es: "La farmacia está al lado del banco.", en: "The pharmacy is next to the bank." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿Dónde estás?" },
+                    { speaker: "B", text: "Estoy en casa." },
+                    { speaker: "A", text: "¿Está cerca del centro?" },
+                    { speaker: "B", text: "Sí, está cerca del parque." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I am at home.'", options: ["Soy en casa.", "Estoy en casa.", "Tengo en casa.", "Voy en casa."], correct: 1 },
+                    { q: "Translate: 'The restaurant is open.'", options: ["El restaurante es abierto.", "El restaurante está abierto.", "El restaurante hay abierto.", "El restaurante tiene abierto."], correct: 1 }
+                ];
+            } else if (d === 5) {
+                title = "Hay (There is / There are), Asking for Directions, and Question Words";
+                desc = "Learn to use hay, ask for and understand directions, and use the most common Spanish question words.";
+                badge = "Module 5 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-compass"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Hay (There is / There are)</h3><p class="text-xs text-slate-500">Existence of things and directions</p></div>
+                            </div>
+                            <button onclick="speakText('Hay un parque')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Hay un parque.</strong> = There is a park.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>¿Hay un supermercado?</strong> = Is there a supermarket?</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Siga todo recto.</strong> = Go straight.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Gire a la derecha.</strong> = Turn right.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "el semáforo", en: "traffic light", cat: "Places Around Town" },
+                    { es: "la esquina", en: "corner", cat: "Places Around Town" },
+                    { es: "la avenida", en: "avenue", cat: "Places Around Town" },
+                    { es: "el barrio", en: "neighborhood", cat: "Places Around Town" },
+                    { es: "la oficina de correos", en: "post office", cat: "Places Around Town" },
+                    { es: "la gasolinera", en: "gas station", cat: "Places Around Town" },
+                    { es: "la panadería", en: "bakery", cat: "Places Around Town" },
+                    { es: "la carnicería", en: "butcher’s shop", cat: "Places Around Town" },
+                    { es: "la frutería", en: "fruit shop", cat: "Places Around Town" },
+                    { es: "el centro comercial", en: "shopping center", cat: "Places Around Town" }
+                ];
+                sentencesList = [
+                    { es: "Hay un supermercado cerca.", en: "There is a supermarket nearby." },
+                    { es: "Gire a la derecha.", en: "Turn right." },
+                    { es: "Siga todo recto.", en: "Go straight." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "Perdón, ¿hay una farmacia cerca?" },
+                    { speaker: "B", text: "Sí, hay una. Siga todo recto." }
+                ];
+                quizList = [
+                    { q: "Translate: 'There is a supermarket nearby.'", options: ["Hay un supermercado cerca.", "Es un supermercado cerca.", "Está un supermercado cerca.", "Tiene un supermercado cerca."], correct: 0 },
+                    { q: "Translate: 'Turn right.'", options: ["Gire a la izquierda.", "Gire a la derecha.", "Siga todo recto.", "Cruce la calle."], correct: 1 }
+                ];
+            } else if (d === 6) {
+                title = "Regular -AR Verbs, Telling the Time, and Daily Routines";
+                desc = "Learn how to conjugate regular -AR verbs in the present tense, tell the time, and describe your daily routine.";
+                badge = "Module 6 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-clock"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Regular -AR Verbs & Telling Time</h3><p class="text-xs text-slate-500">hablo, hablas, habla, hablamos, habláis, hablan</p></div>
+                            </div>
+                            <button onclick="speakText('Verbos regulares ar')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Hablo español.</strong> = I speak Spanish.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>¿Qué hora es?</strong> = What time is it?</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Son las siete.</strong> = It is seven o'clock.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Trabajo por la mañana.</strong> = I work in the morning.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "despertarse", en: "to wake up", cat: "Morning" },
+                    { es: "levantarse", en: "to get up", cat: "Morning" },
+                    { es: "ducharse", en: "to shower", cat: "Morning" },
+                    { es: "desayunar", en: "to have breakfast", cat: "Morning" },
+                    { es: "trabajar", en: "to work", cat: "Work & Study" },
+                    { es: "estudiar", en: "to study", cat: "Work & Study" }
+                ];
+                sentencesList = [
+                    { es: "Me levanto a las siete.", en: "I get up at seven." },
+                    { es: "Estudio español todos los días.", en: "I study Spanish every day." },
+                    { es: "¿Qué hora es?", en: "What time is it?" }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿Qué hora es?" },
+                    { speaker: "B", text: "Son las siete y media." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I get up at seven.'", options: ["Me levanto a las siete.", "Te levantas a las siete.", "Se levanta a las siete.", "Nos levantamos a las siete."], correct: 0 },
+                    { q: "Translate: 'What time is it?'", options: ["¿Cómo estás?", "¿Qué hora es?", "¿De dónde eres?", "¿Dónde estás?"], correct: 1 }
+                ];
+            } else if (d === 7) {
+                title = "Regular -ER and -IR Verbs, Food, and Talking About Where You Live";
+                desc = "Learn to conjugate regular -ER and -IR verbs in the present tense, talk about food, meals, and describe where you live.";
+                badge = "Module 7 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-utensils"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Regular -ER and -IR Verbs</h3><p class="text-xs text-slate-500">como, comes, come... / vivo, vives, vive...</p></div>
+                            </div>
+                            <button onclick="speakText('Verbos er ir')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Como una manzana.</strong> = I eat an apple.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Vivo en España.</strong> = I live in Spain.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "la sopa", en: "soup", cat: "Food" },
+                    { es: "la ensalada", en: "salad", cat: "Food" },
+                    { es: "la pasta", en: "pasta", cat: "Food" },
+                    { es: "la pizza", en: "pizza", cat: "Food" },
+                    { es: "el apartamento", en: "apartment", cat: "Home" },
+                    { es: "el edificio", en: "building", cat: "Home" }
+                ];
+                sentencesList = [
+                    { es: "Como fruta todos los días.", en: "I eat fruit every day." },
+                    { es: "Vivo en un apartamento.", en: "I live in an apartment." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿Dónde vives?" },
+                    { speaker: "B", text: "Vivo en un apartamento en Valencia." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I eat fruit every day.'", options: ["Como fruta todos los días.", "Vivo en un apartamento.", "Aprendo español.", "Escribo una carta."], correct: 0 },
+                    { q: "Translate: 'I live in an apartment.'", options: ["Como fruta.", "Vivo en un apartamento.", "Aprendo español.", "Bebo agua."], correct: 1 }
+                ];
+            } else if (d === 8) {
+                title = "Irregular Verbs Ir and Hacer, Transportation, and Making Plans";
+                desc = "Learn the irregular verbs ir (to go) and hacer (to do/make), talk about travel and transportation, and make simple plans.";
+                badge = "Module 8 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-plane"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Verbs IR & HACER (Near Future)</h3><p class="text-xs text-slate-500">voy, vas, va... / hago, haces, hace...</p></div>
+                            </div>
+                            <button onclick="speakText('Verbos ir y hacer')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Voy al trabajo en metro.</strong> = I go to work by metro.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Voy a estudiar español.</strong> = I am going to study Spanish.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Hago ejercicio.</strong> = I do exercise.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "el avión", en: "airplane", cat: "Transportation" },
+                    { es: "el aeropuerto", en: "airport", cat: "Transportation" },
+                    { es: "el autobús", en: "bus", cat: "Transportation" },
+                    { es: "el tren", en: "train", cat: "Transportation" },
+                    { es: "la maleta", en: "suitcase", cat: "Travel" }
+                ];
+                sentencesList = [
+                    { es: "Voy al trabajo en metro.", en: "I go to work by metro." },
+                    { es: "Voy a estudiar esta noche.", en: "I am going to study tonight." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿Qué vas a hacer este fin de semana?" },
+                    { speaker: "B", text: "Voy a visitar Madrid." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I go to work by metro.'", options: ["Voy al trabajo en metro.", "Hago ejercicio.", "Viajo en tren.", "Espero el autobús."], correct: 0 },
+                    { q: "Translate: 'We are going to study Spanish.'", options: ["Vamos a estudiar español.", "Hacemos ejercicio.", "Viajamos mañana.", "Tenemos un billete."], correct: 0 }
+                ];
+            } else if (d === 9) {
+                title = "Querer, Poder + Ordering Food in Spain";
+                desc = "Learn how to say what you want, what you can do, and order basic food and drinks politely in a Spanish café or restaurant.";
+                badge = "Module 9 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-mug-hot"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Verbs QUERER & PODER</h3><p class="text-xs text-slate-500">quiero, quieres, quiere... / puedo, puedes, puede...</p></div>
+                            </div>
+                            <button onclick="speakText('Querer y poder')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Quiero un café, por favor.</strong> = I want a coffee, please.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>¿Puedes ayudarme?</strong> = Can you help me?</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>La cuenta, por favor.</strong> = The bill, please.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "el menú", en: "menu", cat: "Food" },
+                    { es: "el plato", en: "dish", cat: "Food" },
+                    { es: "el camarero", en: "waiter", cat: "Restaurant" },
+                    { es: "la cuenta", en: "bill", cat: "Restaurant" },
+                    { es: "el café con leche", en: "coffee with milk", cat: "Drinks" }
+                ];
+                sentencesList = [
+                    { es: "Quiero un café, por favor.", en: "I want a coffee, please." },
+                    { es: "¿Puedes ayudarme?", en: "Can you help me?" },
+                    { es: "La cuenta, por favor.", en: "The bill, please." }
+                ];
+                dialogList = [
+                    { speaker: "Camarero", text: "Buenos días. ¿Qué quiere tomar?" },
+                    { speaker: "Cliente", text: "Quiero un café con leche, por favor." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I want a coffee.'", options: ["Quiero un café.", "Puedo un café.", "Tengo un café.", "Soy un café."], correct: 0 },
+                    { q: "Translate: 'Can you help me?'", options: ["¿Quieres ayudarme?", "¿Puedes ayudarme?", "¿Tienes ayudarme?", "¿Soy ayudarme?"], correct: 1 },
+                    { q: "Translate: 'The bill, please.'", options: ["El menú, por favor.", "La cuenta, por favor.", "El agua, por favor.", "La mesa, por favor."], correct: 1 }
+                ];
+            } else if (d === 10) {
+                title = "A1 Checkpoint: Review Days 1–9";
+                desc = "Comprehensive review of Days 1–9 covering greetings, verb conjugations (ser, estar, tener, hay, ir, hacer, querer, poder), directions, routines, and ordering food.";
+                badge = "Module 10 of 60 • Checkpoint";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-flag-checkered"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">A1 Checkpoint Summary</h3><p class="text-xs text-slate-500">Consolidating Days 1 to 9 core structures</p></div>
+                            </div>
+                            <button onclick="speakText('Revisión general')" class="text-slate-400 hover:text-amber-600 p-2 rounded-xl hover:bg-amber-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Ser vs Estar</strong> = Permanent identity vs Temporary state/location</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Tener & Hay</strong> = Possession/Needs vs Existence</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Quiero / Puedo + infinitive</strong> = Expressing desires and capabilities</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "hombre", en: "man", cat: "People" },
+                    { es: "mujer", en: "woman", cat: "People" },
+                    { es: "casa", en: "house", cat: "Places" },
+                    { es: "trabajo", en: "work", cat: "Places" }
+                ];
+                sentencesList = [
+                    { es: "Soy estudiante.", en: "I am a student." },
+                    { es: "Estoy en España.", en: "I am in Spain." },
+                    { es: "Tengo un coche.", en: "I have a car." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "Hola, ¿cómo te llamas?" },
+                    { speaker: "B", text: "Me llamo Hasan. Soy de Bangladesh." }
+                ];
+                quizList = [
+                    { q: "Yo ___ estudiante.", options: ["estoy", "soy", "tengo", "voy"], correct: 1 },
+                    { q: "Nosotros ___ en España.", options: ["somos", "tenemos", "estamos", "hacemos"], correct: 2 },
+                    { q: "Yo ___ 25 años.", options: ["soy", "estoy", "tengo", "voy"], correct: 2 },
+                    { q: "María ___ un coche.", options: ["tiene", "es", "está", "hace"], correct: 0 },
+                    { q: "En mi barrio ___ un supermercado.", options: ["está", "hay", "tiene", "es"], correct: 1 }
+                ];
+            } else if (d === 11) {
+                title = "Reflexive Verbs + Daily Routine";
+                desc = "Learn how to use reflexive verbs (me, te, se, nos, os, se) to talk about your morning and evening daily routines.";
+                badge = "Module 11 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-rotate"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Reflexive Verbs (Verbos reflexivos)</h3><p class="text-xs text-slate-500">me, te, se, nos, os, se</p></div>
+                            </div>
+                            <button onclick="speakText('Verbos reflexivos')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Me levanto a las siete.</strong> = I get up at seven.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Me ducho por la mañana.</strong> = I shower in the morning.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Me cepillo los dientes.</strong> = I brush my teeth.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "despertarse", en: "to wake up", cat: "Morning" },
+                    { es: "levantarse", en: "to get up", cat: "Morning" },
+                    { es: "ducharse", en: "to shower", cat: "Morning" },
+                    { es: "lavarse la cara", en: "to wash one's face", cat: "Morning" },
+                    { es: "cepillarse los dientes", en: "to brush one's teeth", cat: "Morning" },
+                    { es: "vestirse", en: "to get dressed", cat: "Getting Ready" },
+                    { es: "desayunar", en: "to have breakfast", cat: "Getting Ready" },
+                    { es: "acostarse", en: "to go to bed", cat: "Night" }
+                ];
+                sentencesList = [
+                    { es: "Me despierto a las siete.", en: "I wake up at seven." },
+                    { es: "Me levanto inmediatamente.", en: "I get up immediately." },
+                    { es: "Me ducho por la mañana.", en: "I take a shower in the morning." }
+                ];
+                dialogList = [
+                    { speaker: "A", text: "¿A qué hora te levantas normalmente?" },
+                    { speaker: "B", text: "Normalmente me levanto a las siete." }
+                ];
+                quizList = [
+                    { q: "Translate: 'I get up at seven.'", options: ["Me levanto a las siete.", "Te levantas a las siete.", "Se levanta a las siete.", "Nos levantamos a las siete."], correct: 0 },
+                    { q: "Translate: 'María takes a shower.'", options: ["María me ducha.", "María se ducha.", "María te duchas.", "María os ducháis."], correct: 1 },
+                    { q: "Translate: 'We brush our teeth.'", options: ["Nos cepillamos los dientes.", "Se cepillan los dientes.", "Os cepilláis los dientes.", "Me cepillo los dientes."], correct: 0 }
+                ];
+            } else if (d === 12) {
+                title = "Direct Object Pronouns + Shopping & Everyday Activities";
+                desc = "Learn how to replace a person or thing with lo, la, los, las, understand me/te/nos/os, and use these forms in everyday Spanish shopping.";
+                badge = "Module 12 of 60 • Beginner Level";
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-10 h-10 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-bag-shopping"></i></div>
+                                <div><h3 class="text-xl font-bold text-slate-900">1. Direct Object Pronouns (lo, la, los, las)</h3><p class="text-xs text-slate-500">Replacing direct objects in Spanish</p></div>
+                            </div>
+                            <button onclick="speakText('Pronombres de objeto directo')" class="text-slate-400 hover:text-red-600 p-2 rounded-xl hover:bg-red-50 transition"><i class="fa-solid fa-volume-high text-lg"></i></button>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Compro el libro. → Lo compro.</strong> = I buy it.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Necesito la mochila. → La necesito.</strong> = I need it.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Busco los zapatos. → Los busco.</strong> = I look for them.</div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><strong>Me lo llevo.</strong> = I'll take it.</div>
+                        </div>
+                    </div>
+                `;
+                vocabList = [
+                    { es: "la camiseta", en: "T-shirt", cat: "Clothes" },
+                    { es: "la camisa", en: "shirt", cat: "Clothes" },
+                    { es: "los pantalones", en: "trousers", cat: "Clothes" },
+                    { es: "los zapatos", en: "shoes", cat: "Clothes" },
+                    { es: "la chaqueta", en: "jacket", cat: "Clothes" },
+                    { es: "el abrigo", en: "coat", cat: "Clothes" },
+                    { es: "el vestido", en: "dress", cat: "Clothes" },
+                    { es: "la falda", en: "skirt", cat: "Clothes" },
+                    { es: "los calcetines", en: "socks", cat: "Clothes" },
+                    { es: "el jersey", en: "jumper", cat: "Clothes" },
+                    { es: "la tienda", en: "shop", cat: "Shopping" },
+                    { es: "el supermercado", en: "supermarket", cat: "Shopping" },
+                    { es: "el precio", en: "price", cat: "Shopping" },
+                    { es: "el dinero", en: "money", cat: "Shopping" },
+                    { es: "la tarjeta", en: "card", cat: "Shopping" },
+                    { es: "el efectivo", en: "cash", cat: "Shopping" },
+                    { es: "la talla", en: "size", cat: "Shopping" },
+                    { es: "el color", en: "colour", cat: "Shopping" },
+                    { es: "la oferta", en: "offer", cat: "Shopping" },
+                    { es: "el descuento", en: "discount", cat: "Shopping" }
+                ];
+                sentencesList = [
+                    { es: "Lo compro.", en: "I buy it." },
+                    { es: "La necesito.", en: "I need it." },
+                    { es: "Los quiero.", en: "I want them." },
+                    { es: "Me lo llevo.", en: "I'll take it." },
+                    { es: "¿Cuánto cuesta?", en: "How much does it cost?" }
+                ];
+                dialogList = [
+                    { speaker: "Cliente", text: "Buenos días. ¿Cuánto cuesta esta camiseta?" },
+                    { speaker: "Dependiente", text: "Cuesta veinte euros." },
+                    { speaker: "Cliente", text: "Me gusta. Me la llevo." }
+                ];
+                quizList = [
+                    { q: "Compro el libro.", options: ["La compro.", "Lo compro.", "Los compro.", "Las compro."], correct: 1 },
+                    { q: "Necesito la mochila.", options: ["Lo necesito.", "La necesito.", "Las necesito.", "Los necesito."], correct: 1 },
+                    { q: "Busco los zapatos.", options: ["Los busco.", "Las busco.", "Lo busco.", "La busco."], correct: 0 },
+                    { q: "Compro las camisetas.", options: ["Los compro.", "La compro.", "Las compro.", "Lo compro."], correct: 2 },
+                    { q: "Tengo el documento.", options: ["Lo tengo.", "La tengo.", "Los tengo.", "Las tengo."], correct: 0 }
+                ];
+            } else {
+                title = `Core Skills & Advanced Practice (Day ${d})`;
+                desc = `Advanced grammar, vocabulary expansion, reading comprehension, and conversational fluency for Day ${d}.`;
+                badge = `Module ${d} of 60 • Intermediate Level`;
+                grammarHtml = `
+                    <div class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-graduation-cap"></i></div>
+                            <div><h3 class="text-xl font-bold text-slate-900">Day ${d} Focus: Grammar & Structures</h3><p class="text-xs text-slate-500">Expanding communicative competence and DELE preparation</p></div>
+                        </div>
+                        <p class="text-sm text-slate-600">In Day ${d}, we consolidate previous concepts and introduce new contextual vocabulary, verbal nuances, and situational dialogues tailored for real-world Spanish speakers.</p>
+                    </div>
+                `;
+                vocabList = [
+                    { es: `el elemento_${d}_a`, en: `concept item ${d}a`, cat: `Module ${d}` },
+                    { es: `el concepto_${d}_b`, en: `concept item ${d}b`, cat: `Module ${d}` }
+                ];
+                sentencesList = [
+                    { es: `Frases prácticas número uno para el día ${d}.`, en: `Practical sentence one for day ${d}.` },
+                    { es: `Continuamos practicando español todos los días.`, en: `We continue practicing Spanish every day.` }
+                ];
+                dialogList = [
+                    { speaker: "A", text: `¿Qué tal el progreso en el día ${d}?` },
+                    { speaker: "B", text: `¡Excelente! Cada día hablo mejor español.` }
+                ];
+                quizList = [
+                    { q: `What is the primary focus of Day ${d}?`, options: ["Grammar & Fluency", "Random guessing", "Ignoring practice", "None"], correct: 0 },
+                    { q: "Select the correct Spanish greeting:", options: ["Adiós para siempre", "Hola, ¿cómo estás?", "Silencio total", "Comida rápida"], correct: 1 }
+                ];
+            }
+
+            curriculum.push({
+                day: d,
+                title: title,
+                desc: desc,
+                badge: badge,
+                grammarHtml: grammarHtml,
+                vocab: vocabList,
+                sentences: sentencesList,
+                dialog: dialogList,
+                quiz: quizList
+            });
+        }
+
+        let currentDayIndex = 0;
+
+        function initDaySelector() {
+            const select = document.getElementById('daySelect');
+            select.innerHTML = '';
+            curriculum.forEach((item, index) => {
+                const opt = document.createElement('option');
+                opt.value = index;
+                opt.textContent = `Day ${item.day}: ${item.title}`;
+                select.appendChild(opt);
+            });
+        }
+
+        function changeDay(index) {
+            currentDayIndex = parseInt(index);
+            renderCurrentDay();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function prevDay() {
+            if (currentDayIndex > 0) {
+                currentDayIndex--;
+                document.getElementById('daySelect').value = currentDayIndex;
+                renderCurrentDay();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function nextDay() {
+            if (currentDayIndex < curriculum.length - 1) {
+                currentDayIndex++;
+                document.getElementById('daySelect').value = currentDayIndex;
+                renderCurrentDay();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        }
+
+        function renderCurrentDay() {
+            const data = curriculum[currentDayIndex];
+
+            document.getElementById('headerSubtitle').textContent = `Day ${data.day}: ${data.title}`;
+            document.getElementById('streakCounter').textContent = `Day ${data.day} of 60`;
+            document.getElementById('badgeText').textContent = data.badge;
+            document.getElementById('heroTitle').textContent = `Day ${data.day}: ${data.title}`;
+            document.getElementById('heroDesc').textContent = data.desc;
+
+            const nav = document.getElementById('sidebarNav');
+            nav.innerHTML = `
+                <a href="#grammar" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 transition"><span class="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">1</span><span>Grammar & Rules</span></a>
+                <a href="#vocabulary" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 transition"><span class="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">2</span><span>Vocabulary</span></a>
+                <a href="#sentences" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 transition"><span class="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">3</span><span>Daily Sentences</span></a>
+                <a href="#conversation" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 text-slate-700 transition"><span class="w-6 h-6 rounded-lg bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold">4</span><span>Conversation</span></a>
+                <a href="#quiz" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl hover:bg-amber-50 text-amber-700 transition font-semibold"><span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-xs font-bold">5</span><span>Mini Quiz</span></a>
+            `;
+
+            const container = document.getElementById('lessonContentContainer');
+            container.innerHTML = `
+                <div id="grammar" class="space-y-6">${data.grammarHtml}</div>
+
+                <div id="vocabulary" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-book-bookmark"></i></div>
+                            <div><h3 class="text-xl font-bold text-slate-900">Vocabulary Bank (Day ${data.day})</h3><p class="text-xs text-slate-500">Interactive flashcards with audio</p></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        ${data.vocab.map(v => `
+                            <div class="bg-slate-50 border border-slate-200 p-4 rounded-2xl flex items-center justify-between hover:border-emerald-300 hover:bg-emerald-50/20 transition group">
+                                <div>
+                                    <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">${v.cat}</span>
+                                    <h5 class="font-bold text-slate-900 text-base mt-1">${v.es}</h5>
+                                    <p class="text-xs text-slate-500">${v.en}</p>
+                                </div>
+                                <button onclick="speakText('${v.es}')" class="w-9 h-9 rounded-xl bg-white border border-slate-200 text-slate-400 group-hover:text-emerald-600 group-hover:border-emerald-200 flex items-center justify-center transition shadow-sm">
+                                    <i class="fa-solid fa-volume-high text-sm"></i>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div id="sentences" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-comment-dots"></i></div>
+                        <div><h3 class="text-xl font-bold text-slate-900">Daily Sentences</h3><p class="text-xs text-slate-500">Practical phrases for Day ${data.day}</p></div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        ${data.sentences.map((s, i) => `
+                            <div class="bg-slate-50 border border-slate-200 p-3.5 rounded-2xl flex items-center justify-between hover:border-purple-200 hover:bg-purple-50/20 transition group">
+                                <div class="flex items-center space-x-3">
+                                    <span class="w-6 h-6 rounded-lg bg-purple-100 text-purple-700 font-bold text-xs flex items-center justify-center flex-shrink-0">${i+1}</span>
+                                    <div><p class="font-bold text-slate-900 text-sm">${s.es}</p><p class="text-xs text-slate-500">${s.en}</p></div>
+                                </div>
+                                <button onclick="speakText('${s.es}')" class="text-slate-400 group-hover:text-purple-600 p-2 transition"><i class="fa-solid fa-volume-high"></i></button>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div id="conversation" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center font-bold text-lg"><i class="fa-solid fa-comments"></i></div>
+                        <div><h3 class="text-xl font-bold text-slate-900">Conversation Practice (Diálogo)</h3><p class="text-xs text-slate-500">Real-world scenario dialogue</p></div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 space-y-4 max-w-2xl mx-auto">
+                        ${data.dialog.map(dlg => `
+                            <div class="flex items-start space-x-3">
+                                <div class="w-8 h-8 rounded-full ${dlg.speaker === 'A' || dlg.speaker === 'Cliente' ? 'bg-slate-900' : 'bg-amber-500'} text-white font-bold flex items-center justify-center text-xs flex-shrink-0">${dlg.speaker.charAt(0)}</div>
+                                <div class="bg-white p-3.5 rounded-2xl border border-slate-200 shadow-sm flex-grow flex items-center justify-between">
+                                    <div><span class="text-[10px] uppercase font-bold text-slate-400 block">${dlg.speaker}</span><span class="font-medium text-slate-800 text-sm">${dlg.text}</span></div>
+                                    <button onclick="speakText('${dlg.text}')" class="text-slate-400 hover:text-red-600"><i class="fa-solid fa-volume-high"></i></button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <div id="quiz" class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl space-y-6">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-6 h-6 rounded-md bg-amber-500/20 border border-amber-500/30 text-amber-400 flex items-center justify-center text-[10px] shadow-sm">
+                            <i class="fa-solid fa-pencil text-[10px] text-amber-400"></i>
+                        </div>
+                        <div><h3 class="text-xl font-bold text-white">Day ${data.day} Mini Quiz</h3><p class="text-xs text-slate-400">Test your knowledge for today's module</p></div>
+                    </div>
+                    <div class="space-y-6" id="quizQuestionsContainer">
+                        ${data.quiz.map((qObj, qIdx) => `
+                            <div class="bg-slate-800/80 border border-slate-700 p-5 rounded-2xl space-y-3">
+                                <h4 class="font-semibold text-white text-sm">Question ${qIdx + 1}: ${qObj.q}</h4>
+                                <div class="space-y-2">
+                                    ${qObj.options.map((opt, oIdx) => `
+                                        <button onclick="checkAnswer(${qIdx}, ${oIdx}, this, ${qObj.correct})" class="w-full text-left px-4 py-2.5 rounded-xl bg-slate-900/60 border border-slate-700 text-sm text-slate-300 hover:border-amber-500 hover:text-white transition">
+                                            ${opt}
+                                        </button>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <div id="quizResult" class="hidden mt-6 p-4 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-center font-semibold text-sm">
+                        🎉 Excellent work! You completed the Day ${data.day} quiz successfully. Ready for the next day!
+                    </div>
+                </div>
+            `;
+            quizAnsweredCount = 0;
+            quizCorrectCount = 0;
+            currentQuizTotal = data.quiz.length;
+        }
+
+        let quizAnsweredCount = 0;
+        let quizCorrectCount = 0;
+        let currentQuizTotal = 10;
+
+        function checkAnswer(qIndex, selectedOption, btnElement, correctOption) {
+            const parent = btnElement.parentElement;
+            const buttons = parent.querySelectorAll('button');
+            buttons.forEach(b => b.disabled = true);
+
+            if (selectedOption === correctOption) {
+                btnElement.classList.remove('bg-slate-900/60', 'border-slate-700', 'text-slate-300');
+                btnElement.classList.add('bg-emerald-600', 'border-emerald-500', 'text-white', 'font-semibold');
+                quizCorrectCount++;
+            } else {
+                btnElement.classList.remove('bg-slate-900/60', 'border-slate-700', 'text-slate-300');
+                btnElement.classList.add('bg-red-600', 'border-red-500', 'text-white', 'font-semibold');
+                buttons[correctOption].classList.remove('bg-slate-900/60', 'border-slate-700', 'text-slate-300');
+                buttons[correctOption].classList.add('bg-emerald-600', 'border-emerald-500', 'text-white', 'font-semibold');
+            }
+
+            quizAnsweredCount++;
+            if (quizAnsweredCount === currentQuizTotal) {
+                const resultBox = document.getElementById('quizResult');
+                resultBox.classList.remove('hidden');
+                resultBox.innerHTML = `🎉 Quiz Completed! You scored ${quizCorrectCount} out of ${currentQuizTotal}. Great job on Day ${curriculum[currentDayIndex].day}!`;
+            }
+        }
+
+        window.onload = function() {
+            initDaySelector();
+            renderCurrentDay();
+        };
+    </script>
+</body>
+</html>
