@@ -317,9 +317,10 @@ service cloud.firestore {
                      && request.resource.data.text.size() <= 20000
                      && request.resource.data.get('vis', [request.auth.uid]).hasAny([request.auth.uid])
                      && request.resource.data.get('aud', 'public') in ['public', 'friends', 'me', 'specific'])
-                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views'])
+                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['views', 'vat'])
                     && request.resource.data.views is int
-                    && request.resource.data.views == resource.data.get('views', 0) + 1)
+                    && request.resource.data.views == resource.data.get('views', 0) + 1
+                    && request.resource.data.get('vat', 0) is int)
                     || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['sc', 'sh'])
                     && request.resource.data.sc is int
                     && request.resource.data.sc == resource.data.get('sc', 0) + 1
@@ -329,7 +330,9 @@ service cloud.firestore {
                     && request.resource.data.cc >= 0
                     && (request.resource.data.cc == resource.data.get('cc', 0) + 1
                         || request.resource.data.cc == resource.data.get('cc', 0) - 1))
-                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'reacts'])
+                    || (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['likes', 'reacts', 'rat'])
+                    && request.resource.data.get('rat', {}).diff(resource.data.get('rat', {})).affectedKeys().hasOnly([request.auth.uid])
+                    && request.resource.data.get('rat', {}).get(request.auth.uid, 0) is int
                     && request.resource.data.get('reacts', {}).diff(resource.data.get('reacts', {})).affectedKeys().hasOnly([request.auth.uid])
                     && request.resource.data.get('reacts', {}).get(request.auth.uid, '') in ['', 'like', 'love', 'haha', 'wow', 'sad', 'care', 'angry', 'fire', 'clap', 'party']
                     && request.resource.data.likes.toSet().difference(resource.data.likes.toSet()).hasOnly([request.auth.uid])
@@ -1658,9 +1661,9 @@ transition: background var(--transition-fast), border-color var(--transition-fas
 .sc-row-main { flex: 1; min-width: 0; }
 .sc-name { font-weight: 600; font-size: var(--t-body); color: var(--text-main); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .am-box{gap:.2rem!important;padding-top:.7rem!important}
-.am-row{display:flex;align-items:center;gap:1rem;width:100%;padding:.55rem .2rem;border:0;background:transparent;color:var(--text-main);font:500 var(--t-h) var(--font-body);cursor:pointer;text-align:left;border-radius:14px}
+.am-row{display:flex;align-items:center;gap:.9rem;width:100%;padding:.5rem .2rem;border:0;background:transparent;color:var(--text-main);font:500 var(--t-body) var(--font-body);cursor:pointer;text-align:left;border-radius:14px}
 .am-row:active{background:rgba(148,163,184,.12)}
-.am-ic{flex:none;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.16);font-size:1.15rem}
+.am-ic{flex:none;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(148,163,184,.16);font-size:var(--ic-sm)}
 .mf-line{display:inline-flex;align-items:center;gap:.4rem;max-width:100%;vertical-align:middle}
 .mf-stack{display:inline-flex;flex:none}
 .mf-stack .sc-av{box-shadow:0 0 0 2px var(--bg-main,#04131a)}
@@ -2273,28 +2276,27 @@ box-shadow:0 10px 28px -10px rgba(34,211,238,.65),inset 0 1px 0 rgba(255,255,255
 .st-ov{position:fixed;inset:0;z-index:99999;background:#000e;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.6rem;color:#fff;font:600 var(--t-body) var(--font-body)}
 .st-ov img{max-width:94vw;max-height:78vh;border-radius:12px}
 .st-ov button{border:0;border-radius:8px;padding:.5rem 1rem;cursor:pointer;font:600 var(--t-body) var(--font-body)}
-.nt-top{display:flex;align-items:center;gap:.4rem;padding:.2rem .1rem .3rem}
-.nt-top h2{flex:1;margin:0;font:800 var(--t-title)/1.15 var(--font-heading);color:var(--text-main)}
-.nt-ib{flex:none;width:42px;height:42px;border-radius:50%;border:0;background:rgba(148,163,184,.16);color:var(--text-main);font-size:1.05rem;display:flex;align-items:center;justify-content:center;cursor:pointer}
-.nt-q{display:block;width:100%;margin:.2rem 0 .5rem;height:44px;border-radius:999px;border:1px solid var(--card-border);background:rgba(148,163,184,.1);color:var(--text-main);padding:0 1rem;font:500 var(--t-body) var(--font-body);outline:0}
-.nt-sec{font:800 var(--t-h) var(--font-heading);color:var(--text-main);padding:.9rem .2rem .35rem}
-.nt-row{position:relative;display:flex;align-items:flex-start;gap:.8rem;padding:.75rem .35rem .75rem .4rem;border-radius:16px;cursor:pointer;color:var(--text-main)}
+.nt-top{display:flex;align-items:center;gap:.4rem;padding:.1rem .3rem .7rem}
+.nt-top h2{flex:1;margin:0;font:800 var(--t-title) var(--font-heading);color:var(--text-main)}
+.nt-ib{flex:none;width:38px;height:38px;border-radius:50%;border:0;background:rgba(148,163,184,.16);color:var(--text-main);font-size:var(--ic-sm);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.nt-q{display:block;width:100%;margin:.1rem 0 .5rem;height:40px;border-radius:999px;border:1px solid var(--card-border);background:rgba(148,163,184,.1);color:var(--text-main);padding:0 1rem;font:500 var(--t-body) var(--font-body);outline:0}
+.nt-sec{font:700 var(--t-h) var(--font-heading);color:var(--text-main);padding:.7rem .3rem .3rem}
+.nt-row{position:relative;display:flex;align-items:flex-start;gap:.8rem;padding:.65rem .3rem .65rem .4rem;border-radius:14px;cursor:pointer;color:var(--text-main)}
 .nt-row.new{background:rgba(59,130,246,.14)}
-.nt-av{position:relative;flex:none;width:68px;height:68px}
-.nt-av .sc-av{width:68px!important;height:68px!important}
-.nt-bd{position:absolute;right:-4px;bottom:-4px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;border:2px solid var(--bg-main,#04131a);background:#1b74e4}
-.nt-bd.e{background:#3a3b3c;font-size:1rem;line-height:1}
+.nt-av{position:relative;flex:none;width:46px;height:46px}
+.nt-bd{position:absolute;right:-5px;bottom:-4px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;color:#fff;box-shadow:0 0 0 2px var(--bg-main,#242526);background:#1b74e4}
+.nt-bd.e{background:var(--bg-main,#242526);font-size:13px;line-height:1}
 .nt-bd.cm{background:#31a24c}
 .nt-bd.vw{background:#c97b2b}
 .nt-main{flex:1;min-width:0}
-.nt-tx{font:400 var(--t-h)/1.35 var(--font-body);color:var(--text-main);overflow-wrap:anywhere}
+.nt-tx{font:400 var(--t-body)/1.4 var(--font-body);color:var(--text-main);overflow-wrap:anywhere}
 .nt-tx b{font-weight:700}
-.nt-tm{margin-top:.15rem;font:500 var(--t-body) var(--font-body);color:var(--text-muted)}
+.nt-tm{margin-top:.15rem;font:500 var(--t-sm) var(--font-body);color:var(--text-muted)}
 .nt-row.new .nt-tm{color:#60a5fa;font-weight:700}
-.nt-act{display:flex;gap:.6rem;margin-top:.6rem}
-.nt-act button{flex:1;height:44px;border:0;border-radius:12px;font:700 var(--t-h) var(--font-body);cursor:pointer;background:rgba(148,163,184,.2);color:var(--text-main)}
+.nt-act{display:flex;gap:.5rem;margin-top:.5rem}
+.nt-act button{flex:1;height:36px;border:0;border-radius:10px;font:700 var(--t-body) var(--font-body);cursor:pointer;background:rgba(148,163,184,.2);color:var(--text-main)}
 .nt-act button.p{background:#2563eb;color:#fff}
-.nt-more{flex:none;width:36px;height:36px;border:0;border-radius:50%;background:transparent;color:var(--text-main);font-size:1.1rem;cursor:pointer}
+.nt-more{flex:none;width:32px;height:32px;border:0;border-radius:50%;background:transparent;color:var(--text-main);font-size:var(--ic-sm);cursor:pointer}
 .nt-i{display:flex;align-items:center;gap:.6rem;padding:.7rem;border-bottom:1px solid var(--sublink-card-border);cursor:pointer;font-size:var(--t-body);color:var(--text-main)}
 .nt-i em{font-style:normal;font-size:var(--ic)}
 .sc-new{padding:.1rem .5rem;border-radius:9999px;background:var(--accent-cyan);color:#fff;font:700 var(--t-xs) var(--font-body)}
@@ -4548,7 +4550,7 @@ watchPosts(uid, cb) {
 // If the database refuses them (rules or index not ready), it falls back to the simple feed query
 // and hides posts that are not meant for me inside the app, so the feed never ends up empty.
 const strs = (a) => Array.isArray(a) ? a.filter((v) => typeof v === 'string').slice(0, 30) : [];
-const mapPost = (d) => { const x = d.data(SO); return { id: d.id, from: x.from, text: x.text, pub: +x.pub > 0 ? +x.pub : 0, at: +x.pub > 0 ? +x.pub : ms(x.at), likes: x.likes || [], img: x.img || '', edited: !!x.edited, reacts: x.reacts || {}, views: +x.views || 0, cc: +x.cc || 0, sc: +x.sc || 0, sh: (x.sh && typeof x.sh === 'object') ? x.sh : {}, pin: +x.pin || 0,
+const mapPost = (d) => { const x = d.data(SO); return { id: d.id, from: x.from, text: x.text, pub: +x.pub > 0 ? +x.pub : 0, at: +x.pub > 0 ? +x.pub : ms(x.at), likes: x.likes || [], img: x.img || '', edited: !!x.edited, reacts: x.reacts || {}, rat: (x.rat && typeof x.rat === 'object') ? x.rat : {}, vat: +x.vat || 0, views: +x.views || 0, cc: +x.cc || 0, sc: +x.sc || 0, sh: (x.sh && typeof x.sh === 'object') ? x.sh : {}, pin: +x.pin || 0,
 vis: Array.isArray(x.vis) ? x.vis.filter((v) => typeof v === 'string') : null,
 aud: ['public', 'friends', 'me', 'specific'].includes(x.aud) ? x.aud : 'public', tags: strs(x.tags), loc: typeof x.loc === 'string' ? x.loc : '',
 feel: x.feel && typeof x.feel.t === 'string' ? { e: String(x.feel.e || '').slice(0, 8), t: x.feel.t.slice(0, 30) } : null,
@@ -4602,7 +4604,7 @@ async delMessages(chatId, ids) { const b = F.writeBatch(db); ids.forEach((id) =>
 async markSeen(chatId, uid) { try { await F.updateDoc(dref('chats', chatId), { ['reads.' + uid]: ts() }); } catch (e) { /* ignore */ } },
 async addPost(uid, text, img, x) { x = x || {}; const d = { from: uid, text, likes: [], at: ts(), aud: x.aud || 'public', vis: (x.vis && x.vis.length ? x.vis : ['public', uid]).slice(0, 1500) }; if (img) d.img = img; if (x.tags && x.tags.length) d.tags = x.tags.slice(0, 30); if (x.loc) d.loc = x.loc; if (x.feel) d.feel = x.feel; if (x.ev) d.ev = x.ev; if (x.pub && x.pub > Date.now()) d.pub = Math.round(x.pub); await F.addDoc(col('posts'), d); },
 async reschedulePost(pid, pub) { await F.updateDoc(dref('posts', pid), { pub: Math.round(pub) }); },
-async react(pid, uid, type) { const L = type ? F.arrayUnion(uid) : F.arrayRemove(uid); try { await F.updateDoc(dref('posts', pid), { likes: L, ['reacts.' + uid]: type || '' }); } catch (e) { console.error('react (full write)', e && e.code, e); if (!e || e.code !== 'permission-denied') throw e; await F.updateDoc(dref('posts', pid), { likes: L }); if (type && type !== 'like') showToast('Publish the new Firestore rules so all reactions are saved.'); } },
+async react(pid, uid, type) { const L = type ? F.arrayUnion(uid) : F.arrayRemove(uid); if (type) { try { await F.updateDoc(dref('posts', pid), { likes: L, ['reacts.' + uid]: type, ['rat.' + uid]: Date.now() }); return; } catch (e) { if (!e || e.code !== 'permission-denied') throw e; /* rules without rat yet: use the older write below */ } } try { await F.updateDoc(dref('posts', pid), { likes: L, ['reacts.' + uid]: type || '' }); } catch (e) { console.error('react (full write)', e && e.code, e); if (!e || e.code !== 'permission-denied') throw e; await F.updateDoc(dref('posts', pid), { likes: L }); if (type && type !== 'like') showToast('Publish the new Firestore rules so all reactions are saved.'); } },
 watchStories(cb) {
 return F.onSnapshot(F.query(col('stories'), F.orderBy('at', 'desc'), F.limit(40)),
 (s) => cb(s.docs.map((d) => { const x = d.data(SO); return { id: d.id, from: x.from, img: x.img, at: ms(x.at) }; })),
@@ -4617,7 +4619,7 @@ watchIncoming(uid, cb) { return F.onSnapshot(F.query(col('calls'), F.where('to',
 addIce(id, from, c) { return F.addDoc(col('calls', id, 'ice'), { from, c }); },
 watchIce(id, cb) { return F.onSnapshot(col('calls', id, 'ice'), (s) => s.docChanges().forEach((ch) => { if (ch.type === 'added') cb(ch.doc.data()); })); },
 async likePost(pid, uid, on) { await F.updateDoc(dref('posts', pid), { likes: on ? F.arrayUnion(uid) : F.arrayRemove(uid) }); },
-async viewPost(pid) { await F.updateDoc(dref('posts', pid), { views: F.increment(1) }); },
+async viewPost(pid) { try { await F.updateDoc(dref('posts', pid), { views: F.increment(1), vat: Date.now() }); } catch (e) { if (!e || e.code !== 'permission-denied') throw e; await F.updateDoc(dref('posts', pid), { views: F.increment(1) }); } },
 async countShare(pid, uid) { try { await F.updateDoc(dref('posts', pid), uid ? { sc: F.increment(1), ['sh.' + uid]: Date.now() } : { sc: F.increment(1) }); } catch (e) { console.error('share count (with sharer)', e && e.code, e); if (!uid || !e || e.code !== 'permission-denied') return; try { await F.updateDoc(dref('posts', pid), { sc: F.increment(1) }); showToast('Publish the new Firestore rules so the list of who shared is saved.'); } catch (e2) { console.error('share count', e2 && e2.code, e2); } } },
 async delPost(pid) { await F.deleteDoc(dref('posts', pid)); },
 async editPost(pid, text) { await F.updateDoc(dref('posts', pid), { text, edited: true }); },
@@ -4809,9 +4811,9 @@ async reactMessage(chatId, msgId, uid, key) { const db = load(); const m = (db.m
 async delMessages(chatId, ids) { const db = load(); db.messages[chatId] = (db.messages[chatId] || []).filter((m) => !ids.includes(m.id)); save(db); },
 async markSeen() {},
 async addPost(uid, text, img, x) { x = x || {}; const db = load(); const pubAt = x.pub && x.pub > Date.now() ? Math.round(x.pub) : 0; (db.posts = db.posts || []).push({ id: 'p' + Date.now().toString(36), from: uid, text, img: img || '', at: pubAt || Date.now(), pub: pubAt, likes: [], reacts: {}, aud: x.aud || 'public', vis: x.vis && x.vis.length ? x.vis : ['public', uid], tags: x.tags || [], loc: x.loc || '', feel: x.feel || null, ev: x.ev || null }); save(db); },
-async viewPost(pid) { const db = load(); const p = (db.posts || []).find((x) => x.id === pid); if (p) { p.views = (+p.views || 0) + 1; save(db); } },
+async viewPost(pid) { const db = load(); const p = (db.posts || []).find((x) => x.id === pid); if (p) { p.views = (+p.views || 0) + 1; p.vat = Date.now(); save(db); } },
 async countShare(pid, uid) { const db = load(); const p = (db.posts || []).find((x) => x.id === pid); if (p) { p.sc = (+p.sc || 0) + 1; if (uid) { p.sh = p.sh || {}; p.sh[uid] = Date.now(); } save(db); } },
-async react(pid, uid, type) { const db = load(); const p = (db.posts || []).find((x) => x.id === pid); if (p) { p.likes = p.likes.filter((x) => x !== uid); if (type) p.likes.push(uid); (p.reacts = p.reacts || {})[uid] = type || ''; save(db); } },
+async react(pid, uid, type) { const db = load(); const p = (db.posts || []).find((x) => x.id === pid); if (p) { p.likes = p.likes.filter((x) => x !== uid); if (type) { p.likes.push(uid); (p.rat = p.rat || {})[uid] = Date.now(); } (p.reacts = p.reacts || {})[uid] = type || ''; save(db); } },
 watchStories(cb) { return watch((db) => (db.stories || []).slice().reverse(), cb); },
 async addStory(uid, img) { const db = load(); (db.stories = db.stories || []).push({ id: 's' + Date.now().toString(36), from: uid, img, at: Date.now() }); save(db); },
 async delStory(id) { const db = load(); db.stories = (db.stories || []).filter((x) => x.id !== id); save(db); },
@@ -6400,7 +6402,7 @@ const inc = n.kind === 'req' ? S.byId.get(n.uids[0]) : null;
 const acts = inc ? h('div', { class: 'nt-act' }, h('button', { type: 'button', class: 'p', onclick: (e) => { e.stopPropagation(); acceptFriend(inc); } }, 'Accept'), h('button', { type: 'button', onclick: (e) => { e.stopPropagation(); dropFriend(inc); } }, 'Decline')) : null;
 const txt = textOf(n);
 const row = h('div', { class: 'nt-row' + (n.t > prev ? ' new' : ''), onclick: () => open(n) },
-h('div', { class: 'nt-av' }, avatarEl(u, 68, false), bd),
+h('div', { class: 'nt-av' }, avatarEl(u, 46, false), bd),
 h('div', { class: 'nt-main' }, h('div', { class: 'nt-tx' }, txt), h('div', { class: 'nt-tm' }, ntAgo(n.t)), acts),
 h('button', { type: 'button', class: 'nt-more', 'aria-label': 'More options', onclick: (e) => { e.stopPropagation(); rowMenu(n); } }, h('i', { class: 'fa-solid fa-ellipsis' })));
 row.dataset.q = (txt.map((x) => typeof x === 'string' ? x : x.textContent).join('')).toLowerCase();
@@ -6593,12 +6595,15 @@ else if (f.from === me) { const t = stamp('out:' + o, f.status, at); if (f.statu
 });
 const mine = (S.posts || []).filter((p) => p.from === me).sort((a, b) => (b.at || 0) - (a.at || 0));
 mine.forEach((p, i) => {
-const lk = (p.likes || []).filter((u) => u !== me);
-if (lk.length) { const last = lk[lk.length - 1]; out.push({ id: 'rx:' + p.id, sig: String(lk.length), kind: 'rx', pid: p.id, uids: lk.slice(-2).reverse(), n: lk.length, e: RX[(p.reacts && p.reacts[last]) || 'like'] || RX.like, text: p.text, t: stamp('rx:' + p.id, String(lk.length), p.at) }); }
+const lk0 = (p.likes || []).filter((u) => u !== me);
+const rt = (u) => +(p.rat && p.rat[u]) || 0;
+// newest reaction first: by its saved time, older reactions without a time keep their order in the list
+const lk = lk0.map((u, k) => ({ u, k, t: rt(u) })).sort((a, b) => (b.t - a.t) || (b.k - a.k)).map((x) => x.u);
+if (lk.length) { const last = lk[0]; const real = Math.max(0, ...lk.map(rt)); out.push({ id: 'rx:' + p.id, sig: String(lk.length) + ':' + real, kind: 'rx', pid: p.id, uids: lk.slice(0, 2), n: lk.length, e: RX[(p.reacts && p.reacts[last]) || 'like'] || RX.like, text: p.text, t: real || stamp('rx:' + p.id, String(lk.length), p.at) }); }
 if (i < 12 && p.cc > 0 && !S.cw[p.id]) { S.cm[p.id] = S.cm[p.id] || []; S.cw[p.id] = B.watchComments(p.id, (l) => { S.cm[p.id] = l; refresh(); }); }
 const cl = (S.cm[p.id] || []).filter((c) => c.from && c.from !== me).sort((a, b) => (b.at || 0) - (a.at || 0));
 if (cl.length) { const ids = [...new Set(cl.map((c) => c.from))]; out.push({ id: 'cm:' + p.id, sig: String(cl.length), kind: 'cm', pid: p.id, uids: ids.slice(0, 2), n: ids.length, text: p.text, t: +cl[0].at || p.at }); }
-if (i < 6 && p.views > 0) out.push({ id: 'vw:' + p.id, sig: String(p.views), kind: 'vw', pid: p.id, uids: [me], n: p.views, text: p.text, t: stamp('vw:' + p.id, String(p.views), p.at) });
+if (i < 6 && p.views > 0) out.push({ id: 'vw:' + p.id, sig: String(p.views), kind: 'vw', pid: p.id, uids: [me], n: p.views, text: p.text, t: p.vat || stamp('vw:' + p.id, String(p.views), p.at) });
 });
 if (dirty) lsSet('ntm_' + me, JSON.stringify(st));
 const hid = ntHiddenSet();
