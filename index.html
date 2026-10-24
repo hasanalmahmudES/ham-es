@@ -4291,11 +4291,12 @@ body .fp-posts-sec .fd-stats2 .vws i{font-size:17px!important;width:auto}
 .auth-switch-link{color:#2d65f0}
 
 /* ===== Footer bar: white pill, black outline icons, blue active tab (matches the screenshot) ===== */
-.sc-app{--nv-blue:#2f66f5;--nv-pill:#dfeafd}
+.sc-app{--nv-blue:#4c86ff;--nv-pill:#3a3b3f;--nv-ink:#f1f1f1;--nv-bar:rgba(38,39,42,.94);--nv-line:#4b4c50;--nv-ring:#fff}
+body.day-mode .sc-app{--nv-blue:#2f66f5;--nv-pill:#dfeafd;--nv-ink:#0b0b0b;--nv-bar:#fff;--nv-line:#e2e2e2;--nv-ring:#2f66f5}
 body .sc-tabs{width:min(calc(100% - 26px),520px);bottom:calc(10px + env(safe-area-inset-bottom,0px));padding:5px 6px;gap:0;border-radius:999px;overflow:visible;
-background:#fff;-webkit-backdrop-filter:none;backdrop-filter:none;border:1px solid #e2e2e2;box-shadow:0 2px 12px rgba(0,0,0,.16)}
-body .sc-tab{flex:1 1 0;min-width:0;height:40px;padding:0;margin:0;align-items:center;justify-content:center;border-radius:999px;color:#0b0b0b;background:transparent;box-shadow:none}
-body .sc-tab:hover{color:#0b0b0b}
+background:var(--nv-bar);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border:1px solid var(--nv-line);box-shadow:0 2px 14px rgba(0,0,0,.35)}
+body .sc-tab{flex:1 1 0;min-width:0;height:40px;padding:0;margin:0;align-items:center;justify-content:center;border-radius:999px;color:var(--nv-ink);background:transparent;box-shadow:none}
+body .sc-tab:hover{color:var(--nv-ink)}
 body .sc-tab.active{color:var(--nv-blue);background:var(--nv-pill);box-shadow:none}
 body .sc-tab[data-tab=chats],body .sc-tab[data-tab=friends],body .sc-tab[data-tab=vip]{display:none}
 .sc-tab .nv-ic{width:24px;height:24px;display:block;flex:none}
@@ -4305,7 +4306,7 @@ body .sc-tab[data-tab=chats],body .sc-tab[data-tab=friends],body .sc-tab[data-ta
 .sc-tab .nv-dot{position:absolute;top:5px;left:calc(50% + 4px);width:12px;height:12px;border-radius:50%;background:#d93a3a;pointer-events:none}
 body .sc-tab .sc-badge{top:1px;left:calc(50% + 5px)}
 body .sc-nav-av{width:30px;height:30px;border:2px solid transparent;box-sizing:border-box}
-body .sc-tab.active .sc-nav-av{border-color:var(--nv-blue)}
+body .sc-tab.active .sc-nav-av{border-color:var(--nv-ring)}
 </style>
 </head>
 <body>
